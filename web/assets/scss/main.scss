@@ -1,0 +1,364 @@
+// VARIABLES
+// ---------------------------------------------------------------------------------------------------------------------
+$colorMain: #FF2C2F;
+$colorDark: #111111;
+$colorWhite: #ffffff;
+
+$fontBold: "Roboto", sans-serif;
+
+// DEFAULTS
+// ---------------------------------------------------------------------------------------------------------------------
+.text-main {
+  color: $colorMain;
+}
+
+.progress-bar-main {
+  background-color: $colorMain;
+}
+
+.display-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.display-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btn {
+  text-transform: uppercase;
+}
+
+.btn.btn-default {
+  color: $colorWhite;
+}
+
+.progress-bar-linear {
+  .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
+}
+
+.spacer-top {
+  margin-top: 100px;
+  display: block;
+}
+
+.spacer-bottom {
+  margin-bottom: 100px;
+  display: block;
+}
+
+// GLOBAL
+// ---------------------------------------------------------------------------------------------------------------------
+html, body {
+  font-family: "OpenSans", sans-serif;
+  height: 100%;
+}
+
+body p {
+  font-size: 1.2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $fontBold;
+}
+
+h2 {
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  padding-top: 80px;
+  padding-bottom: 30px;
+
+  > span {
+    display: block;
+    font-size: 1.5em;
+    color: $colorMain;
+  }
+}
+
+h4 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+a, a:link {
+  color: $colorMain;
+  transition: color 0.3s ease
+}
+
+a:active, a:hover {
+  color: $colorDark;
+}
+
+#top {
+  position: absolute;
+  top: 0;
+}
+
+.hideme {
+  opacity: 0;
+}
+
+.noscript-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $colorDark;
+  z-index: 9999;
+  opacity: 0.95;
+
+  .info {
+    width: 800px;
+    height: 300px;
+    text-align: center;
+    color: $colorWhite;
+    font-size: 2.5em;
+
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+  }
+}
+
+// NAVBAR
+// ---------------------------------------------------------------------------------------------------------------------
+.navbar {
+  background-color: $colorDark;
+  font-family: $fontBold;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+  border: 0;
+
+  .navbar-header {
+    .navbar-brand {
+      text-transform: uppercase;
+    }
+  }
+
+  #top-right-menu {
+    & > ul > li.active {
+      > a {
+        background-color: $colorMain !important;
+        color: $colorWhite;
+      }
+    }
+
+    & > ul > li > a {
+      text-transform: uppercase;
+      transition: color 0.3s ease, background-color 0.3s ease;
+
+      &:hover {
+        color: $colorMain;
+        background-color: $colorDark;
+      }
+
+      &:focus, &:active {
+        background-color: $colorDark;
+        color: $colorWhite;
+      }
+    }
+  }
+}
+
+// HOME
+// ---------------------------------------------------------------------------------------------------------------------
+.bg-inverse {
+  background-color: $colorDark;
+  color: $colorWhite;
+}
+
+// Header
+.home-header {
+  margin-top: 29px;
+  width: 100%;
+  height: 500px;
+  text-transform: uppercase;
+
+  background: url('../../images/header.jpg') no-repeat fixed center;
+  background-size: cover;
+
+  .heading {
+    font-family: $fontBold;
+    font-size: 2em;
+    color: $colorWhite;
+  }
+
+  .display-table {
+    opacity: 0;
+    background-color: transparentize($colorDark, 0.4);
+  }
+}
+
+// About
+#about {
+  #about-image {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  #see-webpages {
+    margin-top: 50px;
+  }
+}
+
+// Webpages
+#webpages {
+  .web-service {
+    min-height: 285px;
+
+    h4 {
+      margin: 20px 0;
+    }
+  }
+
+  #see-prices {
+    margin: 100px 0;
+  }
+}
+
+// Ask us
+#ask-us {
+  padding: 30px 0;
+  background-color: $colorMain;
+  color: $colorWhite;
+
+  h2 {
+    padding: 0;
+  }
+
+  .btn.btn-inverse {
+    margin-top: 30px;
+    background-color: $colorWhite;
+    color: $colorMain;
+  }
+}
+
+// Applications
+#applications {
+  .app-service {
+    min-height: 285px;
+
+    h4 {
+      margin: 20px 0;
+    }
+  }
+}
+
+// Prices
+#prices {
+  h3.page-header {
+    margin-top: 0px;
+  }
+
+  #product-hold {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    & > div {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+
+  .product {
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    .panel-heading > h3 {
+      color: $colorMain;
+      text-transform: uppercase;
+      font-family: $fontBold;
+      font-weight: bold;
+    }
+
+    .panel-body {
+      img {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      margin-bottom: 30px;
+
+      & > p {
+        margin-bottom: 30px;
+      }
+
+      .example {
+        width: auto;
+        height: 150px;
+        background: $colorDark;
+        margin-bottom: 30px;
+      }
+    }
+
+    .pricetag {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 0 15px 15px 0;
+      padding: 0;
+      font-weight: bold;
+      color: $colorMain;
+    }
+  }
+}
+
+// Contact
+#contact {
+
+  #map-wrapper {
+    position: relative;
+
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+
+    h2#map-overlay {
+      color: $colorMain;
+      background-color: $colorDark;
+      font-weight: bold;
+      top: 30%;
+      padding: 16px;
+      width: 100%;
+      opacity: 0.9;
+      text-align: center;
+      position: absolute;
+    }
+  }
+
+  .contact-info {
+    font-family: $fontBold;
+
+    h4 {
+      margin-bottom: 0px;
+    }
+
+    .meta {
+      margin-bottom: 30px;
+    }
+  }
+}
