@@ -1,6 +1,7 @@
 $(function () {
 
     $('.home-header .display-table').animate({opacity: 1}, 2000);
+    $('[data-toggle="tooltip"]').tooltip()
 
     $(".progress-bar-linear .progress-bar").each(function (index, value) {
         $(this).animate({

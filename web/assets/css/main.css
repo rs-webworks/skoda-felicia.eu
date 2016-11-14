@@ -1,8 +1,11 @@
 .text-main {
-  color: #FF2C2F; }
+  color: #4ED89A; }
+
+.text-large {
+  font-size: 1.5em; }
 
 .progress-bar-main {
-  background-color: #FF2C2F; }
+  background-color: #4ED89A; }
 
 .display-table {
   display: table;
@@ -18,6 +21,9 @@
 
 .btn.btn-default {
   color: #ffffff; }
+
+.label.label-main {
+  background-color: #4ED89A; }
 
 .progress-bar-linear .progress-bar {
   -webkit-transition: none !important;
@@ -45,23 +51,26 @@ h2 {
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 0.1em;
-  padding-top: 80px;
+  padding-top: 50px;
   padding-bottom: 30px; }
   h2 > span {
     display: block;
     font-size: 1.5em;
-    color: #FF2C2F; }
+    color: #4ED89A; }
+
+h3 {
+  margin-bottom: 30px; }
 
 h4 {
   text-transform: uppercase;
   font-weight: bold; }
 
 a, a:link {
-  color: #FF2C2F;
+  color: #4ED89A;
   transition: color 0.3s ease; }
 
 a:active, a:hover {
-  color: #111111; }
+  color: #252525; }
 
 #top {
   position: absolute;
@@ -76,7 +85,7 @@ a:active, a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #111111;
+  background-color: #252525;
   z-index: 9999;
   opacity: 0.95; }
   .noscript-overlay .info {
@@ -96,139 +105,68 @@ a:active, a:hover {
     max-height: 100%;
     overflow: auto; }
 
+.header-bg {
+  height: 260px;
+  background: url("../../images/layout/header_01.jpg") no-repeat top center;
+  border-bottom: 3px solid #4ED89A; }
+
+header {
+  width: 100%;
+  height: 204px; }
+  header .heading {
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    margin-bottom: 0px; }
+  header .display-table {
+    opacity: 1; }
+  header #subtext {
+    display: block;
+    font-size: 2.2em;
+    line-height: 0.6em; }
+  header .line-box-holder {
+    margin: 5px 25px; }
+    header .line-box-holder .line-box {
+      padding: 5px 15px;
+      margin: 0 5px;
+      background-color: #4ED89A;
+      color: #ffffff;
+      display: inline;
+      font-size: 0.6em;
+      font-weight: bold; }
+
 .navbar {
-  background-color: #111111;
-  font-family: "Roboto", sans-serif;
+  background-color: rgba(78, 216, 154, 0.7);
   letter-spacing: 1px;
-  font-size: 0.8em;
-  border: 0; }
+  border: 0;
+  font-size: 0.8em; }
+  .navbar .navbar-collapse {
+    padding: 0; }
   .navbar .navbar-header .navbar-brand {
     text-transform: uppercase; }
-  .navbar #top-right-menu > ul > li.active > a {
-    background-color: #FF2C2F !important;
-    color: #ffffff; }
-  .navbar #top-right-menu > ul > li > a {
+  .navbar #top-menu > ul {
+    margin-bottom: -3px; }
+  .navbar #top-menu > ul > li.active > a {
+    background-color: #4ED89A !important;
+    color: #ffffff !important;
+    border-bottom: 3px solid #4ED89A; }
+  .navbar #top-menu > ul > li > a {
     text-transform: uppercase;
     transition: color 0.3s ease, background-color 0.3s ease; }
-    .navbar #top-right-menu > ul > li > a:hover {
-      color: #FF2C2F;
-      background-color: #111111; }
-    .navbar #top-right-menu > ul > li > a:focus, .navbar #top-right-menu > ul > li > a:active {
-      background-color: #111111;
+    .navbar #top-menu > ul > li > a:hover {
+      background-color: #ffffff;
+      color: #4ED89A; }
+    .navbar #top-menu > ul > li > a:focus, .navbar #top-menu > ul > li > a:active {
+      background-color: #4ED89A !important;
       color: #ffffff; }
 
 .bg-inverse {
-  background-color: #111111;
+  background-color: #252525;
   color: #ffffff; }
 
-.home-header {
-  margin-top: 29px;
-  width: 100%;
-  height: 500px;
-  text-transform: uppercase;
-  background: url("../../images/header.jpg") no-repeat fixed center;
-  background-size: cover; }
-  .home-header .heading {
-    font-family: "Roboto", sans-serif;
-    font-size: 2em;
-    color: #ffffff; }
-  .home-header .display-table {
-    opacity: 0;
-    background-color: rgba(17, 17, 17, 0.6); }
-
-#about #about-image {
-  margin-top: 100px;
-  margin-bottom: 30px;
-  width: 100%; }
-#about #see-webpages {
-  margin-top: 50px; }
-
-#webpages .web-service {
-  min-height: 285px; }
-  #webpages .web-service h4 {
-    margin: 20px 0; }
-#webpages #see-prices {
-  margin: 100px 0; }
-
-#ask-us {
-  padding: 30px 0;
-  background-color: #FF2C2F;
-  color: #ffffff; }
-  #ask-us h2 {
-    padding: 0; }
-  #ask-us .btn.btn-inverse {
-    margin-top: 30px;
-    background-color: #ffffff;
-    color: #FF2C2F; }
-
-#applications .app-service {
-  min-height: 285px; }
-  #applications .app-service h4 {
-    margin: 20px 0; }
-
-#prices h3.page-header {
-  margin-top: 0px; }
-#prices #product-hold {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
-  #prices #product-hold > div {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex; }
-#prices .product {
-  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-  position: relative; }
-  #prices .product .panel-heading > h3 {
-    color: #FF2C2F;
-    text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold; }
-  #prices .product .panel-body {
-    margin-bottom: 30px; }
-    #prices .product .panel-body img {
-      width: 100%;
-      margin-bottom: 15px; }
-    #prices .product .panel-body > p {
-      margin-bottom: 30px; }
-    #prices .product .panel-body .example {
-      width: auto;
-      height: 150px;
-      background: #111111;
-      margin-bottom: 30px; }
-  #prices .product .pricetag {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 0 15px 15px 0;
-    padding: 0;
-    font-weight: bold;
-    color: #FF2C2F; }
-
-#contact #map-wrapper {
-  position: relative; }
-  #contact #map-wrapper #map {
-    width: 100%;
-    height: 500px; }
-  #contact #map-wrapper h2#map-overlay {
-    color: #FF2C2F;
-    background-color: #111111;
-    font-weight: bold;
-    top: 30%;
-    padding: 16px;
-    width: 100%;
-    opacity: 0.9;
-    text-align: center;
-    position: absolute; }
-#contact .contact-info {
-  font-family: "Roboto", sans-serif; }
-  #contact .contact-info h4 {
-    margin-bottom: 0px; }
-  #contact .contact-info .meta {
-    margin-bottom: 30px; }
+#page-service-manual img {
+  max-width: 100%;
+  border: 2px solid #4ED89A;
+  margin-bottom: 25px; }
 
 /*# sourceMappingURL=main.css.map */
