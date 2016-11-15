@@ -8,56 +8,19 @@
         </h2>
 
 
-        <h3>Kontrola vůle a seřízení lanka akcelerace (karburátorový motor)</h3>
-        <div class="row">
-            <div class="col-xs-8">
-                <ol>
-                    <li>Pedál akcelerace sešlápnout do polohy - plný plyn.</li>
-                    <li>Polohu pro plný plyn překontrolovat na segmentu škrticí klapky. Poloha pro plný plyn musí být
-                        dosažena.
-                    </li>
-                    <li>Táhlo akcelerace nastavit přestavením pružné pojistky <a href="#">-viz šipka-</a> na lanovodu.
-                    </li>
-                </ol>
-            </div>
-
-            <div class="col-xs-4">
-                <img src="{{ asset('images/demo1.png') }}"/>
-            </div>
-        </div>
-
-        <hr/>
-
-
-        <h3>Kontrola vůle a seřízení lanka akcelerace (motor 1,3l se vstřikováním paliva Mono-Motronic)</h3>
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Potřebné speciální nářadí, přístroje a pomůcky</div>
-                    <div class="panel-body">
-                        Diagnostický přístroj V.A.G 1552 nebo V.A.G 1551 s vedením V.A.G 1551/1 a adaptér T003
-                    </div>
+        {% for manpage in manpages %}
+            <h3>{{ manpage.getTitle() }}</h3>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    {{ manpage.getContent()|raw }}
                 </div>
-                <ol>
-                    <li>Táhlo akcelerace přendáním pružné pojistky -1- na držáku lanovodu nastavit tak, aby se
-                        na škrticí klapce dosáhlo plné akcelerace.
-                    </li>
-                    <li>Připojit diagnostický přístroj V.A.G 1552, případně V.A.G 1551 a navolit elektroniku
-                        motoru (adresa 01); navolení při zapnutém zapalování.
-                    </li>
-                    <li>Vstřikovací a zapalovací zařízení Mono-Motronic; skupina oprav 01; Vlastní diagnostika,</li>
-                </ol>
-
-                <small>Zobrazení na displeji:</small>
             </div>
+            {% if not loop.last %}
+                <hr/>
+            {% endif %}
+        {% endfor %}
 
-            <div class="col-xs-4">
-                <img src="{{ asset('images/demo1.png') }}"/>
-                <img src="{{ asset('images/demo1.png') }}"/>
-            </div>
-        </div>
-
-        <div class="spacer-bottom"></div>
     </div>
+
 
 {% endblock %}

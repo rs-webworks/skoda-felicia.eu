@@ -43,6 +43,10 @@ $fontBold: "Roboto", sans-serif;
   background-color: $colorMain;
 }
 
+.badge {
+  background-color: $colorMain;
+}
+
 .progress-bar-linear {
   .progress-bar {
     -webkit-transition: none !important;
@@ -147,12 +151,38 @@ a:active, a:hover {
   }
 }
 
+.vag-display {
+  margin: 20px;
+
+  .title {
+    background: $colorDark;
+    color: $colorWhite;
+    padding: 5px;
+  }
+
+  .display {
+    padding: 10px 25px;
+    background-color: $colorMain;
+
+    .line {
+      text-transform: uppercase;
+      font-family: monospace;
+      font-weight: bold;
+    }
+  }
+}
+
+div.CodeMirror {
+  height: 800px;
+}
+
 // HEADER
 // ---------------------------------------------------------------------------------------------------------------------
 .header-bg {
   height: 260px;
-  background: url('../../images/layout/header_01.jpg') no-repeat top center;
+  background: url('../../images/layout/header_02.jpg') no-repeat top center;
   border-bottom: 3px solid $colorMain;
+  margin-bottom: 30px;
 }
 
 header {
@@ -242,7 +272,7 @@ header {
 // HOME
 // ---------------------------------------------------------------------------------------------------------------------
 .bg-inverse {
-  background-color: $colorDark;
+  background-color: $colorMain;
   color: $colorWhite;
 }
 

@@ -13,6 +13,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.twig');
+        return $this->render('default/index.twig', array(
+            'manpages' => $this->getDoctrine()->getRepository('AppBundle:Manpage')->findAll()
+        ));
     }
 }

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}Škoda Felicia{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700,900&subset=latin-ext"
+              rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/codemirror.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/theme/material.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/dialog/dialog.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
+    {% endblock %}
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<a href="#" id="top"></a>
+<noscript>
+    <div class="noscript-overlay">
+        <div class="info">Tento web vyžaduje pro správnou funkčnost JavaScript.</div>
+    </div>
+</noscript>
+
+<div class="header-bg">
+    <header>
+        <div class="display-table">
+            <div class="display-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="heading">
+                                <strong class="text-large pull-left">Škoda Felicia</strong>
+                                <div class="pull-left line-box-holder visible-md visible-lg">
+                                    <div class="line-box">Manažer obsahu</div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </h1>
+
+                            <div id="subtext" class="text-main hidden-xs">www.skoda-felicia.eu</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#top-menu" aria-expanded="false">
+                        <span class="sr-only">Přepnout menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="top-menu">
+                    {# - Navbar SM, MD #}
+                    <ul class="nav navbar-nav visible-sm visible-md">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bars"></i> Navigace
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Dílenská příručka</li>
+                                <li><a href="{{ url('manpageList') }}">Seznam stránek</a></li>
+                                <li><a href="{{ url('manpageCreate') }}">Vytvořit stránku</a></li>
+                                <li role="separator" class="divider"></li>
+
+                                <li class="dropdown-header">Časté otázky</li>
+                                <li role="separator" class="divider"></li>
+
+                                <li class="dropdown-header">Návody</li>
+                                <li role="separator" class="divider"></li>
+
+                                <li class="dropdown-header">Sportovní úpravy</li>
+                                <li role="separator" class="divider"></li>
+
+                                <li class="dropdown-header">Ke stažení</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    {# - Navbar XS, LG #}
+                    <ul class="nav navbar-nav visible-lg visible-xs">
+                        {# - Dílenská příručka #}
+                        {# ------------------------------------------------------------------------------------------ #}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-book"></i> Dílenská příručka
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('manpageList') }}">Seznam stránek</a></li>
+                                <li><a href="{{ url('manpageCreate') }}">Vytvořit stránku</a></li>
+                            </ul>
+                        </li>
+
+                        {# - Často kladené otázky #}
+                        {# ------------------------------------------------------------------------------------------ #}
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-question-circle"></i> Časté otázky
+                            </a>
+                        </li>
+
+                        {# - Návody #}
+                        {# ------------------------------------------------------------------------------------------ #}
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench"></i> Návody
+                            </a>
+                        </li>
+
+                        {# - Sportovní úpravy #}
+                        {# ------------------------------------------------------------------------------------------ #}
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-dashboard"></i> Sportovní úpravy
+                            </a>
+                        </li>
+
+                        {# - Ke stažení #}
+                        {# ------------------------------------------------------------------------------------------ #}
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-download"></i> Ke stažení
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-form navbar-right">
+                        <a href="{{ url('logout') }}" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i>Odhlásit</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+
+{% for type, messages  in app.session.flashBag.all() %}
+    {% for message in messages %}
+        <div class="container">
+            <div class="alert alert-{{ type }}">
+                <i class="fa fa-exclamation-triangle"></i> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/codemirror.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/xml/xml.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/css/css.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/selection/active-line.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/dialog/dialog.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/searchcursor.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/search.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/scroll/annotatescrollbar.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/jump-to-line.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}
+</body>
+
+</html>

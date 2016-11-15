@@ -1,0 +1,31 @@
+{% extends 'layoutManager.twig' %}
+{% block body %}
+
+    <div class="container" id="manager-home">
+        <h3>Stránky dílenské příručky</h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulek</th>
+                <th>Akce</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for manpage in manpages %}
+                <tr>
+                    <td>{{ manpage.getId() }}</td>
+                    <td>{{ manpage.getTitle() }}</td>
+                    <td>
+                        <a href="{{ url('manpageEdit', {'id': manpage.getId()}) }}" class="btn btn-default btn-xs"><i
+                                    class="fa fa-pencil"></i> Upravit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

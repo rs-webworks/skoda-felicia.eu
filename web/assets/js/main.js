@@ -9,6 +9,18 @@ $(function () {
         }, 2500);
     });
 
+    // var htmlCodeMirror = CodeMirror($('textarea.htmlCodeMirror'), {
+    //     mode: "javascript"
+    // });
+
+    var htmlCodeMirror = CodeMirror.fromTextArea($('textarea.htmlCodeMirror')[0], {
+        mode: "text/html",
+        theme: 'material',
+        lineNumbers: true,
+        lineWrapping: true,
+        styleActiveLine: true
+    });
+
 
     // Smooth scrolling effect
     // -----------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+{% extends 'layoutManager.twig' %}
+{% block body %}
+
+    <div class="container" id="manager-home">
+        <h3>Nová stránka do dílenské příručky</h3>
+
+        {{ form_start(form) }}
+
+        {{ form_errors(form) }}
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

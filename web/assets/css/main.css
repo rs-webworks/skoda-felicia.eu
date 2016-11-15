@@ -25,6 +25,9 @@
 .label.label-main {
   background-color: #4ED89A; }
 
+.badge {
+  background-color: #4ED89A; }
+
 .progress-bar-linear .progress-bar {
   -webkit-transition: none !important;
   transition: none !important; }
@@ -105,10 +108,28 @@ a:active, a:hover {
     max-height: 100%;
     overflow: auto; }
 
+.vag-display {
+  margin: 20px; }
+  .vag-display .title {
+    background: #252525;
+    color: #ffffff;
+    padding: 5px; }
+  .vag-display .display {
+    padding: 10px 25px;
+    background-color: #4ED89A; }
+    .vag-display .display .line {
+      text-transform: uppercase;
+      font-family: monospace;
+      font-weight: bold; }
+
+div.CodeMirror {
+  height: 800px; }
+
 .header-bg {
   height: 260px;
-  background: url("../../images/layout/header_01.jpg") no-repeat top center;
-  border-bottom: 3px solid #4ED89A; }
+  background: url("../../images/layout/header_02.jpg") no-repeat top center;
+  border-bottom: 3px solid #4ED89A;
+  margin-bottom: 30px; }
 
 header {
   width: 100%;
@@ -161,7 +182,7 @@ header {
       color: #ffffff; }
 
 .bg-inverse {
-  background-color: #252525;
+  background-color: #4ED89A;
   color: #ffffff; }
 
 #page-service-manual img {
