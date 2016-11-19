@@ -1,0 +1,46 @@
+{% extends 'layoutManager.twig' %}
+{% block body %}
+
+    <div class="container" id="manager-home">
+        <h3>
+            Stránky dílenské příručky
+            <div class="pull-right">
+                <a href="{{ url('manager_manual_create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>
+                    Přidat</a>
+            </div>
+        </h3>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Titulek</th>
+                <th>Akce</th>
+            </tr>
+            </thead>
+            <tbody class="sortable">
+            {% for page in manual %}
+                <tr data-id="{{ page.getId() }}">
+                    <td>{{ page.getTitle() }}</td>
+                    <td>
+                        <a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i
+                                    class="fa fa-fw fa-pencil"></i></a>
+                        <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}"
+                           class="btn btn-default btn-xs"><i
+                                    class="fa fa-fw fa-image"></i></a>
+                        <div class="pull-right">
+                            <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i
+                                        class="fa fa-fw fa-chevron-circle-down"></i></a>
+                            <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'down'}) }}"><i
+                                        class="fa fa-fw fa-chevron-circle-up"></i></a>
+
+                            <i class="fa fa-fw fa-bars text-muted dragger"></i>
+                        </div>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return $this->render('default/index.twig', array(
-            'manpages' => $this->getDoctrine()->getRepository('AppBundle:Manpage')->findAll()
+            'manual' => $this->get('app.service.manual')->getAll()
         ));
     }
 }

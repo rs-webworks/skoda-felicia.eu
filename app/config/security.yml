@@ -21,6 +21,7 @@ security:
             form_login:
                 login_path: managerLogin
                 check_path: managerLogin
+                csrf_token_generator: security.csrf.token_manager
             logout:
                 path:   /logout
                 target: /

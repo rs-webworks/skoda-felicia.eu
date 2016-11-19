@@ -29,6 +29,13 @@
     </div>
 </noscript>
 
+<div class="loading-overlay">
+    <div class="info">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw text-main"></i>
+        <p>Zpracovávám...</p>
+    </div>
+</div>
+
 <div class="header-bg">
     <header>
         <div class="display-table">
@@ -73,8 +80,8 @@
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">Dílenská příručka</li>
-                                <li><a href="{{ url('manpageList') }}">Seznam stránek</a></li>
-                                <li><a href="{{ url('manpageCreate') }}">Vytvořit stránku</a></li>
+                                <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                                <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
                                 <li role="separator" class="divider"></li>
 
                                 <li class="dropdown-header">Časté otázky</li>
@@ -101,8 +108,8 @@
                                 <i class="fa fa-book"></i> Dílenská příručka
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('manpageList') }}">Seznam stránek</a></li>
-                                <li><a href="{{ url('manpageCreate') }}">Vytvořit stránku</a></li>
+                                <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                                <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
                             </ul>
                         </li>
 
@@ -139,7 +146,10 @@
                         </li>
                     </ul>
                     <div class="navbar-form navbar-right">
-                        <a href="{{ url('logout') }}" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i>Odhlásit</a>
+                        <a href="{{ url('logout') }}" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i>
+                            Odhlásit</a>
+                        <a href="{{ url('home') }}" class="btn btn-default"><i class="fa fa-fw fa-home"></i>
+                            Frontend</a>
                     </div>
                 </div>
             </div>
@@ -177,8 +187,15 @@
     <script src="{{ asset('assets/vendor/codemirror/js/addon/scroll/annotatescrollbar.js') }}"></script>
     <script src="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.js') }}"></script>
     <script src="{{ asset('assets/vendor/codemirror/js/addon/search/jump-to-line.js') }}"></script>
+    <script src="{{ asset('assets/vendor/Sortable/Sortable.min.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 {% endblock %}
 </body>
+
+<footer class="bg-inverse">
+    <div class="container"></div>
+</footer>
 
 </html>

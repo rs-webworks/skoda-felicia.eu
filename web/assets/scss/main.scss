@@ -31,6 +31,10 @@ $fontBold: "Roboto", sans-serif;
   vertical-align: middle;
 }
 
+a.btn {
+  color: $colorWhite !important;
+}
+
 .btn {
   text-transform: uppercase;
 }
@@ -120,7 +124,7 @@ a:active, a:hover {
   opacity: 0;
 }
 
-.noscript-overlay {
+.noscript-overlay, .loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -151,6 +155,10 @@ a:active, a:hover {
   }
 }
 
+.loading-overlay {
+  display: none;
+}
+
 .vag-display {
   margin: 20px;
 
@@ -174,6 +182,20 @@ a:active, a:hover {
 
 div.CodeMirror {
   height: 800px;
+}
+
+.thumbnail-wrapper {
+  height: 150px;
+  overflow: hidden;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.dragger:hover {
+  cursor: pointer;
 }
 
 // HEADER
@@ -285,4 +307,11 @@ header {
     border: 2px solid $colorMain;
     margin-bottom: 25px;
   }
+}
+
+// FOOTER
+// ---------------------------------------------------------------------------------------------------------------------
+footer {
+  margin-top: 30px;
+  padding: 50px 0;
 }

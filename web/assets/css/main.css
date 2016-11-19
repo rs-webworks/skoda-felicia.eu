@@ -16,6 +16,9 @@
   display: table-cell;
   vertical-align: middle; }
 
+a.btn {
+  color: #ffffff !important; }
+
 .btn {
   text-transform: uppercase; }
 
@@ -82,7 +85,7 @@ a:active, a:hover {
 .hideme {
   opacity: 0; }
 
-.noscript-overlay {
+.noscript-overlay, .loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -91,7 +94,7 @@ a:active, a:hover {
   background-color: #252525;
   z-index: 9999;
   opacity: 0.95; }
-  .noscript-overlay .info {
+  .noscript-overlay .info, .loading-overlay .info {
     width: 800px;
     height: 300px;
     text-align: center;
@@ -107,6 +110,9 @@ a:active, a:hover {
     max-width: 100%;
     max-height: 100%;
     overflow: auto; }
+
+.loading-overlay {
+  display: none; }
 
 .vag-display {
   margin: 20px; }
@@ -124,6 +130,16 @@ a:active, a:hover {
 
 div.CodeMirror {
   height: 800px; }
+
+.thumbnail-wrapper {
+  height: 150px;
+  overflow: hidden; }
+  .thumbnail-wrapper img {
+    display: block;
+    max-width: 100%; }
+
+.dragger:hover {
+  cursor: pointer; }
 
 .header-bg {
   height: 260px;
@@ -189,5 +205,9 @@ header {
   max-width: 100%;
   border: 2px solid #4ED89A;
   margin-bottom: 25px; }
+
+footer {
+  margin-top: 30px;
+  padding: 50px 0; }
 
 /*# sourceMappingURL=main.css.map */

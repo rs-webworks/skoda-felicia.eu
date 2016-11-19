@@ -8,11 +8,17 @@
         </h2>
 
 
-        {% for manpage in manpages %}
-            <h3>{{ manpage.getTitle() }}</h3>
+        {% for page in manual %}
+            <h3>{{ page.getTitle() }}</h3>
             <div class="row">
                 <div class="col-xs-12 col-sm-8">
-                    {{ manpage.getContent()|raw }}
+                    {{ page.getContent()|raw }}
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    {% for image in page.getImages() %}
+                        <img src="{{ asset('images/manual/' ~ image.getImageName()) }}" alt="{{ image.getTitle() }}"/>
+                    {% endfor %}
                 </div>
             </div>
             {% if not loop.last %}
