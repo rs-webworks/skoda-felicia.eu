@@ -26,6 +26,9 @@ class ManualController extends Controller
     public function showAction($slug)
     {
         $page = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->findOneBy(array('slug' => $slug));
+        $pagesAround = $this->get('app.service.manual')->getPagesAround($page);
+
+        dump($pagesAround);
 
         if (!$page) {
             $this->addFlash('danger', 'Hledaná stránka nebyla nalezena');
@@ -33,7 +36,8 @@ class ManualController extends Controller
         }
 
         return $this->render('frontend/manual/show.twig', array(
-            'manual' => $page
+            'manual' => $page,
+            'pagesAround' => $pagesAround
         ));
     }
 }

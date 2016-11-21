@@ -10,9 +10,11 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}"/>
         <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}"/>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700,900&subset=latin-ext"
               rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print"/>
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
     {% endblock %}
 </head>
@@ -100,7 +102,7 @@
                     <ul class="nav navbar-nav visible-lg visible-xs">
                         {# - Dílenská příručka #}
                         {# ------------------------------------------------------------------------------------------ #}
-                        <li>
+                        <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
                             <a href="{{ url('frontend_manual') }}">
                                 <i class="fa fa-book"></i> Dílenská příručka
                             </a>
@@ -168,8 +170,16 @@
 {% block javascripts %}
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lightgallery/dist/js/lightgallery.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 {% endblock %}
+
+
+<footer class="bg-inverse">
+    <div class="container"></div>
+</footer>
+
+
 </body>
 
 </html>

@@ -1,34 +1,63 @@
 {% extends 'layout.twig' %}
 {% block body %}
+    {# @var manual \AppBundle\Entity\Manual\Manual #}
 
     <div class="container" id="manual-show">
-        <h2 class="page-header">
-            Dílenská příručka
-            <div class="pull-right">
-                <a href="{{ url('frontend_manual') }}" class="btn btn-sm btn-default">
-                    <i class="fa fa-fw fa-home"></i> Zpět na obsah
-                </a>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Dílenská příručka
+                    <div class="pull-right">
+                        {% block pageButtons %}
+                            <a href="javascript:window.print()" class="btn btn-sm btn-default">
+                                <i class="fa fa-fw fa-print"></i> Vytisknout
+                            </a>
+                            <a href="{{ url('frontend_manual') }}" class="btn btn-sm btn-default">
+                                <i class="fa fa-fw fa-home"></i> Zpět na obsah
+                            </a>
+                        {% endblock %}
+                    </div>
+                </h2>
+                <h3>
+                    {{ manual.getTitle() }}
+                    <br/>
+                    <small>
+                        Pro motory:
+                        <span class="label label-main">BMM</span>
+                        <span class="label label-main">MPI</span>
+                    </small>
+                </h3>
             </div>
-        </h2>
-        <h3>
-            {{ manual.getTitle() }}
-        </h3>
+        </div>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-8">
+            <div class="col-xs-12 col-sm-8 col-print-8">
                 {{ manual.getContent()|raw }}
             </div>
 
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-sm-4 col-print-4" id="lightgallery">
                 {% for image in manual.getImages() %}
-                    <img src="{{ vich_uploader_asset(image, 'imageFile') }}"/>
+                    <a href="{{ vich_uploader_asset(image, 'imageFile') }}">
+                        <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.getTitle() }}"/>
+                    </a>
                 {% endfor %}
             </div>
         </div>
 
         <div class="row">
+
+            <hr/>
             <div class="col-xs-12">
-                <hr/>
+                <div class="pull-right">
+                    <a href="#top" class="btn btn-sm btn-default"><i class="fa fa-fw fa-chevron-up"></i> Nahoru</a>
+                    {{ block("pageButtons") }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row no-print">
+            <div class="col-xs-12">
                 <table class="table table-condensed">
                     <thead>
                     <tr>
@@ -37,34 +66,45 @@
                     </thead>
 
                     <tbody>
+
+                    {% if pagesAround['under']['more'] %}
+                        <tr>
+                            <td class="text-muted">...</td>
+                        </tr>
+                    {% endif %}
+
+                    {# @var page \AppBundle\Entity\Manual\Manual #}
+                    {% for page in pagesAround['under']['pages'] %}
+                        <tr>
+                            <td>
+                                <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                     <tr>
-                        <td class="text-muted">...</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Kontrola vůle (motor 1,3l)</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Kontrola vlanka akcelerace (Mono-Motronic)</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong><i class="fa fa-chevron-right"></i> Kontrola vůle a seřízení lanka akcelerace
-                                (karburátorový motor)</strong>
+                        <td>
+                            <strong><i class="fa fa-chevron-right"></i> {{ manual.getTitle() }}</strong>
                         </td>
                     </tr>
-                    <tr>
-                        <td><a href="#">Kontrola vůle akcelerace (vstřikováním paliva)</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Kontrola vůle a seřízení lanka akcelerace (motor 1,3l)</a></td>
-                    </tr>
-                    <tr>
-                        <td class="text-muted">...</td>
-                    </tr>
+                    {% for page in pagesAround['above']['pages'] %}
+                        <tr>
+                            <td>
+                                <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% if pagesAround['above']['more'] %}
+                        <tr>
+                            <td class="text-muted">...</td>
+                        </tr>
+                    {% endif %}
                     </tbody>
                 </table>
 
             </div>
         </div>
+
+
     </div>
 
 {% endblock %}

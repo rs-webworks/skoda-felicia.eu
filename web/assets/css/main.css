@@ -52,9 +52,6 @@ html, body {
   font-family: "OpenSans", sans-serif;
   height: 100%; }
 
-body p {
-  font-size: 1.2em; }
-
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif; }
 
@@ -120,6 +117,8 @@ a:active, a:hover {
 
 .vag-display {
   margin: 20px; }
+  .vag-display table {
+    width: 100%; }
   .vag-display .title {
     background: #252525;
     color: #ffffff;

@@ -83,10 +83,6 @@ html, body {
   height: 100%;
 }
 
-body p {
-  font-size: 1.2em;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: $fontBold;
 }
@@ -168,6 +164,10 @@ a:active, a:hover {
 
 .vag-display {
   margin: 20px;
+
+  table {
+    width: 100%;
+  }
 
   .title {
     background: $colorDark;
