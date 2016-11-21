@@ -18,6 +18,7 @@
             </tr>
             </thead>
             <tbody class="sortable">
+            {# @var page \AppBundle\Entity\Manual\Manual #}
             {% for page in manual %}
                 <tr data-id="{{ page.getId() }}">
                     <td>{{ page.getTitle() }}</td>
