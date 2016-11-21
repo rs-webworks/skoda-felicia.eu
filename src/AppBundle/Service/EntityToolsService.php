@@ -42,7 +42,7 @@ class EntityToolsService
      */
     public function positionChangeBy($entity, $amount)
     {
-        $this->positionChangeTo($entity, $entity->getPosition() + (int) $amount);
+        $this->positionChangeTo($entity, ($entity->getPosition() + (int) $amount));
     }
 
     /**
@@ -52,7 +52,7 @@ class EntityToolsService
     public function positionChangeTo($entity, $position)
     {
         $entity->setPosition($position);
-        $this->em->persist($entity);
+        $this->em->merge($entity);
         $this->em->flush();
     }
 }

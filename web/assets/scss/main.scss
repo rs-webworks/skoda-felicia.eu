@@ -1,9 +1,11 @@
 // VARIABLES
 // ---------------------------------------------------------------------------------------------------------------------
 $colorMain: #4ED89A;
+$colorMainDark: #2d865e;
 $colorDark: #252525;
 $colorWhite: #ffffff;
 
+$fontDefault: "OpenSans", sans-serif;
 $fontBold: "Roboto", sans-serif;
 
 // DEFAULTS
@@ -33,6 +35,8 @@ $fontBold: "Roboto", sans-serif;
 
 a.btn {
   color: $colorWhite !important;
+  font: $fontDefault;
+  letter-spacing: normal;
 }
 
 .btn {
@@ -68,10 +72,14 @@ a.btn {
   display: block;
 }
 
+.page-header {
+  margin: 20px 0 40px;
+}
+
 // GLOBAL
 // ---------------------------------------------------------------------------------------------------------------------
 html, body {
-  font-family: "OpenSans", sans-serif;
+  font-family: $fontDefault;
   height: 100%;
 }
 
@@ -87,7 +95,6 @@ h2 {
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 0.1em;
-  padding-top: 50px;
   padding-bottom: 30px;
 
   > span {
@@ -107,7 +114,7 @@ h4 {
 }
 
 a, a:link {
-  color: $colorMain;
+  color: $colorMainDark;
   transition: color 0.3s ease
 }
 
@@ -291,6 +298,16 @@ header {
   }
 }
 
+.main-nav-small {
+  li a {
+    padding: 20px 100px 20px 30px;
+
+    &:hover {
+      background-color: $colorMain;
+    }
+  }
+}
+
 // HOME
 // ---------------------------------------------------------------------------------------------------------------------
 .bg-inverse {
@@ -301,7 +318,7 @@ header {
 // PAGE - SERVICE MANUAL
 // ---------------------------------------------------------------------------------------------------------------------
 
-#page-service-manual {
+#manual-show {
   img {
     max-width: 100%;
     border: 2px solid $colorMain;

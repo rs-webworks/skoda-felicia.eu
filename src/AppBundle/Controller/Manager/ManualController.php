@@ -50,7 +50,7 @@ class ManualController extends Controller
         }
 
         $redirectId = $image->getManual()->getId();
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->remove($image);
         $em->flush();
 
@@ -102,6 +102,27 @@ class ManualController extends Controller
         return $this->render('manager/manual/create.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * @Route("/manager/manual/delete/{id}", name="manager_manual_delete", requirements={"id": "\d+"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function manualDeleteAction(Request $request, $id)
+    {
+        $manual = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->find($id);
+        if (!$manual) {
+            $this->addFlash('danger', 'Stránka nebyla nalezena');
+            return $this->redirectToRoute('manager_manual_list');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($manual);
+        $em->flush();
+
+        $this->addFlash('success', 'Stránka byla úspěšně smazána');
+        return $this->redirectToRoute('manager_manual_list');
     }
 
     /**

@@ -28,16 +28,22 @@ class Manual
     private $content;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Manual\ManualImage", mappedBy="manual")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Manual\ManualImage", mappedBy="manual", cascade={"remove"})
      * @ORM\OrderBy({"position"="ASC"})
      */
     private $images;
 
     /**
-     * @Gedmo\SortablePosition()
-     * @ORM\Column(type="integer")
+     * @Gedmo\SortablePosition
+     * @ORM\Column(name="position", type="integer")
      */
     private $position;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     /**
      * @return mixed
@@ -102,6 +108,14 @@ class Manual
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
 

@@ -1,0 +1,70 @@
+{% extends 'layout.twig' %}
+{% block body %}
+
+    <div class="container" id="manual-show">
+        <h2 class="page-header">
+            Dílenská příručka
+            <div class="pull-right">
+                <a href="{{ url('frontend_manual') }}" class="btn btn-sm btn-default">
+                    <i class="fa fa-fw fa-home"></i> Zpět na obsah
+                </a>
+            </div>
+        </h2>
+        <h3>
+            {{ manual.getTitle() }}
+        </h3>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                {{ manual.getContent()|raw }}
+            </div>
+
+            <div class="col-xs-12 col-sm-4">
+                {% for image in manual.getImages() %}
+                    <img src="{{ vich_uploader_asset(image, 'imageFile') }}"/>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <hr/>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Další stránky:</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td class="text-muted">...</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Kontrola vůle (motor 1,3l)</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Kontrola vlanka akcelerace (Mono-Motronic)</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong><i class="fa fa-chevron-right"></i> Kontrola vůle a seřízení lanka akcelerace
+                                (karburátorový motor)</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Kontrola vůle akcelerace (vstřikováním paliva)</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Kontrola vůle a seřízení lanka akcelerace (motor 1,3l)</a></td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">...</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

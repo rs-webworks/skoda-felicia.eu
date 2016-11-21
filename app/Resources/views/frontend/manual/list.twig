@@ -1,0 +1,33 @@
+{% extends 'layout.twig' %}
+{% block body %}
+
+    <div class="container" id="manual-list">
+        <h2 class="page-header">
+            Oficiální
+            <span>Dílenská příručka</span>
+        </h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Obsah</th>
+                {#<th>Akce</th>#}
+            </tr>
+            </thead>
+            <tbody>
+            {% for page in manual %}
+                <tr data-id="{{ page.getId() }}">
+                    <td>
+                        <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
+                    </td>
+                    {#<td>#}
+                    {#<a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i#}
+                    {#class="fa fa-fw fa-pencil"></i></a>#}
+
+                    {#</td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

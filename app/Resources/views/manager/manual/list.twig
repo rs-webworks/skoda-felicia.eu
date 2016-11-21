@@ -27,12 +27,15 @@
                         <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}"
                            class="btn btn-default btn-xs"><i
                                     class="fa fa-fw fa-image"></i></a>
+                        <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}"
+                           class="btn btn-danger btn-xs"><i
+                                    class="fa fa-fw fa-trash"></i></a>
+
                         <div class="pull-right">
                             <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i
                                         class="fa fa-fw fa-chevron-circle-down"></i></a>
                             <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'down'}) }}"><i
                                         class="fa fa-fw fa-chevron-circle-up"></i></a>
-
                             <i class="fa fa-fw fa-bars text-muted dragger"></i>
                         </div>
 
