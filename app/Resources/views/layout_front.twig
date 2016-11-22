@@ -8,22 +8,14 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="{{ url('frontend_manual') }}">
+                                <a href="{{ url('frontend_home') }}">
                                     <h1 class="heading">
                                         <strong class="text-large pull-left">Škoda Felicia</strong>
                                         <div class="pull-left line-box-holder visible-md visible-lg">
-                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                                 title="1.3 karburátor">135
-                                            </div>
-                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                                 title="1.3 BMM / MPI">135B/M
-                                            </div>
-                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                                 title="1.6 MPI">AEE
-                                            </div>
-                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                                 title="1.9 diesel">AEF
-                                            </div>
+                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom" title="1.3 karburátor">BMM</div>
+                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom" title="1.3 BMM / MPI">MPI</div>
+                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom" title="1.6 MPI">AEE</div>
+                                            <div class="line-box" data-toggle="tooltip" data-placement="bottom" title="1.9 diesel">AEF</div>
                                         </div>
                                         <div class="clearfix"></div>
                                     </h1>
@@ -57,21 +49,24 @@
                                     <i class="fa fa-bars"></i> Navigace
                                     <span class="caret"></span></a>
                                 <ul class="dropdown-menu main-nav-small">
-                                    <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-book"></i> Dílenská
-                                            příručka</a>
+                                    <li>
+                                        <a href="{{ url('frontend_manual') }}"><i class="fa fa-book"></i> Dílenská příručka</a>
                                     </li>
 
-                                    <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-question-circle"></i>
-                                            Časté
-                                            otázky</a></li>
-
-                                    <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-wrench"></i> Návody</a>
+                                    <li>
+                                        <a href="{{ url('frontend_faq') }}"><i class="fa fa-question-circle"></i> Časté otázky</a>
                                     </li>
 
-                                    <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-dashboard"></i> Sportovní
-                                            úpravy</a></li>
+                                    <li>
+                                        <a href="{{ url('frontend_guide') }}"><i class="fa fa-wrench"></i> Návody</a>
+                                    </li>
 
-                                    <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-download"></i> Ke stažení</a>
+                                    <li>
+                                        <a href="{{ url('frontend_tuning') }}"><i class="fa fa-dashboard"></i> Sportovní úpravy</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ url('frontend_download') }}"><i class="fa fa-download"></i> Ke stažení</a>
                                     </li>
                                 </ul>
                             </li>
@@ -89,32 +84,32 @@
 
                             {# - Často kladené otázky #}
                             {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
+                            <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
+                                <a href="{{ url('frontend_faq') }}">
                                     <i class="fa fa-question-circle"></i> Časté otázky
                                 </a>
                             </li>
 
                             {# - Návody #}
                             {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
+                            <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
+                                <a href="{{ url('frontend_guide') }}">
                                     <i class="fa fa-wrench"></i> Návody
                                 </a>
                             </li>
 
                             {# - Sportovní úpravy #}
                             {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
+                            <li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>
+                                <a href="{{ url('frontend_tuning') }}">
                                     <i class="fa fa-dashboard"></i> Sportovní úpravy
                                 </a>
                             </li>
 
                             {# - Ke stažení #}
                             {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
+                            <li {% if app.request.attributes.get('_route') starts with 'frontend_download' %}class="active"{% endif %}>
+                                <a href="{{ url('frontend_download') }}">
                                     <i class="fa fa-download"></i> Ke stažení
                                 </a>
                             </li>
@@ -136,10 +131,10 @@
 {% block footerLinks %}
     <ul class="list-inline">
         <li><a href="{{ url('frontend_manual') }}">Dílenská příručka</a></li>
-        <li><a href="">Časté otázky</a></li>
-        <li><a href="">Návody</a></li>
-        <li><a href="">Sportovní úpravy</a></li>
-        <li><a href="">Ke stažení</a></li>
+        <li><a href="{{ url('frontend_faq') }}">Časté otázky</a></li>
+        <li><a href="{{ url('frontend_guide') }}">Návody</a></li>
+        <li><a href="{{ url('frontend_tuning') }}">Sportovní úpravy</a></li>
+        <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
         <li><a href="">Autoři</a></li>
         <li><a href="{{ url('manager_home') }}">Správa obsahu</a></li>
     </ul>

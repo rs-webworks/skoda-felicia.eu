@@ -11,25 +11,38 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends Controller
 {
     /**
-     * @Route("/hledani", name="frontend_search")
-     * @Method({"GET"})
+     * @Route("/vyhledavani", name="frontend_search")
      */
     public function searchAction(Request $request)
     {
-        $form = $this->createForm(SearchForm::class, $request, array(
-            'action' => $this->generateUrl('frontend_search'),
-            'method' => 'GET'
+        $form = $this->createForm(SearchForm::class, null, array(
+            'action' => $this->generateUrl('frontend_search_result')
         ));
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            return $this->render('frontend/search/result.twig', array(
-                'searchForm' => $form
-            ));
-        }
 
         return $this->render('frontend/search/form.twig', array(
             'searchForm' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/hledani/{query}", name="frontend_search_result", defaults={"query" = null})
+     */
+    public function searchResultsAction(Request $request, $query)
+    {
+        $form = $this->createForm(SearchForm::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            return $this->redirectToRoute('frontend_search_result', array('query' => $data['query']));
+        }
+
+        if ($query) {
+            dump('Query sent: ' . $query);
+        }
+
+        return $this->render('frontend/search/result.twig', array(
+            'query' => $query
         ));
     }
 }

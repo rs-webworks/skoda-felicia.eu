@@ -27,6 +27,12 @@ a.btn {
 .btn.btn-default {
   color: #ffffff; }
 
+.btn.btn-main {
+  background-color: #4ED89A; }
+
+.btn.btn-main-dark {
+  background-color: #2d865e; }
+
 .label.label-main {
   background-color: #4ED89A; }
 
@@ -223,6 +229,20 @@ header {
   color: #ffffff; }
   .bg-inverse h2 span {
     color: #2d865e; }
+
+#home-index .navbox {
+  margin-bottom: 20px; }
+  #home-index .navbox .btn:hover {
+    transition: background-color 0.3s ease;
+    background-color: #2d865e; }
+  #home-index .navbox .btn {
+    padding: 30px 15px;
+    width: 100%;
+    white-space: normal;
+    min-height: 220px; }
+    #home-index .navbox .btn h3 {
+      margin-bottom: 0;
+      line-height: 1.2em; }
 
 #manual-show img {
   max-width: 100%;

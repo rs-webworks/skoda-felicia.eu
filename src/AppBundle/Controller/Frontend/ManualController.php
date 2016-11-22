@@ -8,13 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ManualController extends Controller
 {
     /**
-     * @Route("/", name="frontend_manual")
+     * @Route("/dilenska-prirucka/obsah/{engine}", name="frontend_manual", defaults={"engine" = null})
      */
-    public function indexAction()
+    public function indexAction($engine = null)
     {
         return $this->render('frontend/manual/list.twig', array(
-            'manual' => $this->get('app.service.manual')->getAll(),
-            'engines' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findAll()
+            'manual' => $this->get('app.service.manual')->getAll($engine),
+            'engines' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findAll(),
+            'filterEngine' => $engine
         ));
     }
 

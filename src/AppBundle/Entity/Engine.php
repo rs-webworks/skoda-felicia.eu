@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -30,6 +31,12 @@ class Engine
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Manual\Manual", mappedBy="engines")
      */
     private $manuals;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=10, unique=true)
+     */
+    private $slug;
 
     /**
      * Engine constructor.
@@ -87,5 +94,11 @@ class Engine
         $this->manuals = $manuals;
     }
 
-
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

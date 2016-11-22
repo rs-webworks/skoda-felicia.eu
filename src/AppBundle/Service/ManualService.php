@@ -25,8 +25,27 @@ class ManualService
         $this->repository = $this->em->getRepository('AppBundle:Manual\Manual');
     }
 
-    public function getAll()
+    /**
+     * @param null $engine
+     * @return \AppBundle\Entity\Manual\Manual[]|array
+     */
+    public function getAll($engine = null)
     {
+        $criteria = array();
+        if ($engine) {
+            $engine = $this->em->getRepository('AppBundle:Engine')->findOneBy(array('slug' => $engine));
+
+            $qb = $this->em->createQueryBuilder();
+            $qb->from('AppBundle:Manual\Manual', 'm')
+                ->select('m')
+                ->leftJoin('m.engines', 'e')
+                ->where('e = :engine')
+                ->orderBy('m.position', 'ASC')
+                ->setParameter('engine', $engine);
+
+            return $qb->getQuery()->getResult();
+        }
+
         $results = $this->em->getRepository('AppBundle:Manual\Manual')->findBy(array(), array('position' => 'ASC'));
         return $results;
     }

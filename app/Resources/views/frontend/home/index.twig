@@ -1,0 +1,71 @@
+{% extends 'layout_front.twig' %}
+{% block body %}
+
+    <div class="container" id="home-index">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Navigace
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="{{ url('frontend_manual') }}" class="btn btn-main">
+                    <div class="text-center">
+                        <i class="fa fa-fw fa-5x fa-book"></i>
+
+                        <h3>Dílenská příručka</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="{{ url('frontend_faq') }}" class="btn btn-main">
+                    <div class="text-center">
+                        <i class="fa fa-fw fa-5x fa-question-circle"></i>
+
+                        <h3>Časté otázky</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="{{ url('frontend_guide') }}" class="btn btn-main">
+                    <div class="text-center">
+                        <i class="fa fa-fw fa-5x fa-wrench"></i>
+
+                        <h3>Návody</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="{{ url('frontend_tuning') }}" class="btn btn-main">
+                    <div class="text-center">
+                        <i class="fa fa-fw fa-5x fa-dashboard"></i>
+
+                        <h3>Sportovní úpravy</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="{{ url('frontend_download') }}" class="btn btn-main">
+                    <div class="text-center">
+                        <i class="fa fa-fw fa-5x fa-download"></i>
+
+                        <h3>Ke stažení</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="" class="btn btn-main">
+                    <div class="text-center">
+                        <i class="fa fa-fw fa-5x fa-user"></i>
+
+                        <h3>Autoři</h3>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

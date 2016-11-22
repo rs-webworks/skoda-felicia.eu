@@ -47,6 +47,14 @@ a.btn {
   color: $colorWhite;
 }
 
+.btn.btn-main {
+  background-color: $colorMain;
+}
+
+.btn.btn-main-dark {
+  background-color: $colorMainDark;
+}
+
 .label.label-main {
   background-color: $colorMain;
 }
@@ -337,6 +345,29 @@ header {
   h2 {
     span {
       color: $colorMainDark;
+    }
+  }
+}
+
+#home-index {
+  .navbox {
+    margin-bottom: 20px;
+
+    .btn:hover {
+      transition: background-color 0.3s ease;
+      background-color: $colorMainDark;
+    }
+
+    .btn {
+      padding: 30px 15px;
+      width: 100%;
+      white-space: normal;
+      min-height: 220px;
+
+      h3 {
+        margin-bottom: 0;
+        line-height: 1.2em;
+      }
     }
   }
 }
