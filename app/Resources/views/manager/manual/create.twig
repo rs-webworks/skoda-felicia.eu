@@ -1,8 +1,13 @@
-{% extends 'layoutManager.twig' %}
+{% extends 'layout_manager.twig' %}
 {% block body %}
 
     <div class="container" id="manager-home">
         <h3>Nová stránka do dílenské příručky</h3>
+        <ol class="breadcrumb">
+            <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+            <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
+            <li class="active">Nová stránka</li>
+        </ol>
 
         {{ form_start(form) }}
 

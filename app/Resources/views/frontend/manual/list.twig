@@ -1,4 +1,4 @@
-{% extends 'layout.twig' %}
+{% extends 'layout_front.twig' %}
 {% block body %}
 
     <div class="container" id="manual-list">
@@ -26,7 +26,8 @@
                 <p>Pokud by někomu přeci jen nějaká stránka, která se v původním dokumentu nachází, chyběla v této nové
                     zdigitalizované podobě, může zažádat o její převedení pomocí <a href="#">kontaktů</a> na správce.
                 </p>
-                <p>Dílenská příručka není servisní manuál, jedná se o soubor postupů prováděných v servisech pro
+                <p><strong>Dílenská příručka není servisní manuál</strong>, jedná se o soubor postupů prováděných v
+                    servisech pro
                     kontrolu a seřízení vozidla. Pokud máte zájem o návody typu: výměna dílů, oprava, demontáž a montáž
                     atd., pokračujte do sekce <a
                             href="#">Návody</a>.</p>
@@ -36,7 +37,8 @@
             </div>
 
             <div class="col-xs-12 col-md-6">
-                <p>Pro snadnější vyhledávání byly přidány tagy označující motorizaci. Jejich legenda je
+                <p>Pro snadnější vyhledávání byly přidány tagy označující motorizaci. Pokud tag není uveden vztahuje se
+                    kapitola na všechny. Jejich legenda je
                     následující:</p>
 
                 <table class="table table-condensed">
@@ -48,26 +50,13 @@
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td><span class="label label-main">CARB</span></td>
-                        <td>Motor 1.3 karburátor (export)</td>
-                    </tr>
-                    <tr>
-                        <td><span class="label label-main">BMM</span></td>
-                        <td>Motor 1.3 jednobod. Bosch Mono-motronic</td>
-                    </tr>
-                    <tr>
-                        <td><span class="label label-main">MPI</span></td>
-                        <td>Motor 1.3 s vícebod. Siemens Simos 2P</td>
-                    </tr>
-                    <tr>
-                        <td><span class="label label-main">1.6</span></td>
-                        <td>Motor 1.6 s vícebod. 1 AV MPI</td>
-                    </tr>
-                    <tr>
-                        <td><span class="label label-main">1.9 D</span></td>
-                        <td>Motor 1.9 diesel</td>
-                    </tr>
+                    {# @var engine \AppBundle\Entity\Engine #}
+                    {% for engine in engines %}
+                        <tr>
+                            <td><span class="label label-main">{{ engine.getName() }}</span></td>
+                            <td>{{ engine.getDescription() }}</td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
 
@@ -99,13 +88,16 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {# @var page \AppBundle\Entity\Manual\Manual #}
                     {% for page in manual %}
                         <tr data-id="{{ page.getId() }}">
                             <td>
                                 <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
                             </td>
                             <td>
-                                <span class="label label-main">MPI</span>
+                                {% for engine in page.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
                             </td>
                         </tr>
                     {% endfor %}

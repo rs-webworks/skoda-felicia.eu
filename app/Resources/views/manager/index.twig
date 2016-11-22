@@ -1,8 +1,81 @@
-{% extends 'layoutManager.twig' %}
+{% extends 'layout_manager.twig' %}
 {% block body %}
 
     <div class="container" id="manager-home">
+        <h2>Správa obsahu
+            <span>Navigace</span></h2>
 
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-book"></i> Dílenská příručka</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                            <li><a href="{{ url('manager_manual_create') }}">Vytvořit novou stránku</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-question-circle"></i> Časté otázky</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li><a href="">Seznam otázek a odpovědí</a></li>
+                            <li><a href="">Vytvořit otázku</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-wrench"></i> Návody</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li><a href="">Seznam článků</a></li>
+                            <li><a href="">Vytvořit článek</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li><a href="">Seznam článků</a></li>
+                            <li><a href="">Vytvořit článek</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-fw fa-download"></i> Ke stažení</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li><a href="">Seznam souborů</a></li>
+                            <li><a href="">Přidat soubor ke stažení</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

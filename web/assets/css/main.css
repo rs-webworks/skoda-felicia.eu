@@ -50,7 +50,14 @@ a.btn {
 
 html, body {
   font-family: "OpenSans", sans-serif;
-  height: 100%; }
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+  html #wrapper, body #wrapper {
+    min-height: 100%;
+    position: relative; }
+  html #content, body #content {
+    padding-bottom: 250px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif; }
@@ -144,11 +151,17 @@ div.CodeMirror {
 .dragger:hover {
   cursor: pointer; }
 
+mark {
+  background-color: #2d865e;
+  color: #ffffff; }
+
 .header-bg {
   height: 260px;
   background: url("../../images/layout/header_02.jpg") no-repeat top center;
   border-bottom: 3px solid #4ED89A;
   margin-bottom: 30px; }
+  .header-bg.manager {
+    height: 56px; }
 
 header {
   width: 100%;
@@ -208,6 +221,8 @@ header {
 .bg-inverse {
   background-color: #4ED89A;
   color: #ffffff; }
+  .bg-inverse h2 span {
+    color: #2d865e; }
 
 #manual-show img {
   max-width: 100%;
@@ -215,7 +230,13 @@ header {
   margin-bottom: 25px; }
 
 footer {
-  margin-top: 30px;
-  padding: 50px 0; }
+  padding: 50px 0;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+  footer a.author {
+    color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */

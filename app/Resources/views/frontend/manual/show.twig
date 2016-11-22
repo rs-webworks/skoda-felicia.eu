@@ -1,4 +1,4 @@
-{% extends 'layout.twig' %}
+{% extends 'layout_front.twig' %}
 {% block body %}
     {# @var manual \AppBundle\Entity\Manual\Manual #}
 
@@ -21,11 +21,14 @@
                 <h3>
                     {{ manual.getTitle() }}
                     <br/>
-                    <small>
-                        Pro motory:
-                        <span class="label label-main">BMM</span>
-                        <span class="label label-main">MPI</span>
-                    </small>
+                    {% if manual.getEngines()|length %}
+                        <small>
+                            Pro motory:
+                            {% for engine in manual.getEngines() %}
+                                <span class="label label-main">{{ engine.getName() }}</span>
+                            {% endfor %}
+                        </small>
+                    {% endif %}
                 </h3>
             </div>
         </div>
@@ -45,7 +48,6 @@
         </div>
 
         <div class="row">
-
             <hr/>
             <div class="col-xs-12">
                 <div class="pull-right">
@@ -53,6 +55,8 @@
                     {{ block("pageButtons") }}
                 </div>
             </div>
+
+            <div class="spacer-bottom"></div>
         </div>
 
 
@@ -62,14 +66,14 @@
                     <thead>
                     <tr>
                         <th>Další stránky:</th>
+                        <th>Motorizace:</th>
                     </tr>
                     </thead>
 
                     <tbody>
-
                     {% if pagesAround['under']['more'] %}
                         <tr>
-                            <td class="text-muted">...</td>
+                            <td class="text-muted" colspan="2">...</td>
                         </tr>
                     {% endif %}
 
@@ -79,11 +83,21 @@
                             <td>
                                 <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
                             </td>
+                            <td>
+                                {% for engine in page.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
+                            </td>
                         </tr>
                     {% endfor %}
                     <tr>
                         <td>
                             <strong><i class="fa fa-chevron-right"></i> {{ manual.getTitle() }}</strong>
+                        </td>
+                        <td>
+                            {% for engine in manual.getEngines() %}
+                                <span class="label label-main">{{ engine.getName() }}</span>
+                            {% endfor %}
                         </td>
                     </tr>
                     {% for page in pagesAround['above']['pages'] %}
@@ -91,11 +105,16 @@
                             <td>
                                 <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
                             </td>
+                            <td>
+                                {% for engine in page.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
+                            </td>
                         </tr>
                     {% endfor %}
                     {% if pagesAround['above']['more'] %}
                         <tr>
-                            <td class="text-muted">...</td>
+                            <td class="text-muted" colspan="2">...</td>
                         </tr>
                     {% endif %}
                     </tbody>

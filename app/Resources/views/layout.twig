@@ -7,179 +7,131 @@
     <title>{% block title %}Škoda Felicia{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}"/>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700,900&subset=latin-ext"
-              rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print"/>
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
-    {% endblock %}
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700,900&subset=latin-ext"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
+    {% block stylesheets %}{% endblock %}
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-<a href="#" id="top"></a>
-<noscript>
-    <div class="noscript-overlay">
-        <div class="info">Tento web vyžaduje pro správnou funkčnost JavaScript.</div>
-    </div>
-</noscript>
+<div id="wrapper">
+    <a href="#" id="top"></a>
+    <noscript>
+        <div class="noscript-overlay">
+            <div class="info">Tento web vyžaduje pro správnou funkčnost JavaScript.</div>
+        </div>
+    </noscript>
 
-<div class="header-bg">
-    <header>
-        <div class="display-table">
-            <div class="display-table-cell">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h1 class="heading">
-                                <strong class="text-large pull-left">Škoda Felicia</strong>
-                                <div class="pull-left line-box-holder visible-md visible-lg">
-                                    <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                         title="1.3 karburátor">135
-                                    </div>
-                                    <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                         title="1.3 BMM / MPI">135B/M
-                                    </div>
-                                    <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                         title="1.6 MPI">AEE
-                                    </div>
-                                    <div class="line-box" data-toggle="tooltip" data-placement="bottom"
-                                         title="1.9 diesel">AEF
-                                    </div>
+
+    {% block header %}
+        <div class="header-bg">
+            <header>
+                <div class="display-table">
+                    <div class="display-table-cell">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a href="{{ url('frontend_manual') }}">
+                                        <h1 class="heading">
+                                            <strong class="text-large pull-left">Škoda Felicia</strong>
+                                            <div class="pull-left line-box-holder visible-md visible-lg">
+                                                <div class="line-box" data-toggle="tooltip" data-placement="bottom"
+                                                     title="1.3 karburátor">135
+                                                </div>
+                                                <div class="line-box" data-toggle="tooltip" data-placement="bottom"
+                                                     title="1.3 BMM / MPI">135B/M
+                                                </div>
+                                                <div class="line-box" data-toggle="tooltip" data-placement="bottom"
+                                                     title="1.6 MPI">AEE
+                                                </div>
+                                                <div class="line-box" data-toggle="tooltip" data-placement="bottom"
+                                                     title="1.9 diesel">AEF
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </h1>
+                                    </a>
+
+                                    <div id="subtext" class="text-main hidden-xs">www.skoda-felicia.eu</div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </h1>
-
-                            <div id="subtext" class="text-main hidden-xs">www.skoda-felicia.eu</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <nav class="navbar navbar-default">
+                <nav class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#top-menu" aria-expanded="false">
+                                <span class="sr-only">Přepnout menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="top-menu">
+                            {% block menu %}{% endblock %}
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+    {% endblock %}
+
+    {% for type, messages  in app.session.flashBag.all() %}
+        {% for message in messages %}
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#top-menu" aria-expanded="false">
-                        <span class="sr-only">Přepnout menu</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                <div class="alert alert-{{ type }}">
+                    <i class="fa fa-exclamation-triangle"></i> {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                <div class="collapse navbar-collapse" id="top-menu">
-                    {# - Navbar SM, MD #}
-                    <ul class="nav navbar-nav visible-sm visible-md">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bars"></i> Navigace
-                                <span class="caret"></span></a>
-                            <ul class="dropdown-menu main-nav-small">
-                                <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-book"></i> Dílenská příručka</a>
-                                </li>
-
-                                <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-question-circle"></i> Časté
-                                        otázky</a></li>
-
-                                <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-wrench"></i> Návody</a></li>
-
-                                <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-dashboard"></i> Sportovní
-                                        úpravy</a></li>
-
-                                <li><a href="{{ url('frontend_manual') }}"><i class="fa fa-download"></i> Ke stažení</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    {# - Navbar XS, LG #}
-                    <ul class="nav navbar-nav visible-lg visible-xs">
-                        {# - Dílenská příručka #}
-                        {# ------------------------------------------------------------------------------------------ #}
-                        <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
-                            <a href="{{ url('frontend_manual') }}">
-                                <i class="fa fa-book"></i> Dílenská příručka
-                            </a>
-                        </li>
-
-                        {# - Často kladené otázky #}
-                        {# ------------------------------------------------------------------------------------------ #}
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-question-circle"></i> Časté otázky
-                            </a>
-                        </li>
-
-                        {# - Návody #}
-                        {# ------------------------------------------------------------------------------------------ #}
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-wrench"></i> Návody
-                            </a>
-                        </li>
-
-                        {# - Sportovní úpravy #}
-                        {# ------------------------------------------------------------------------------------------ #}
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-dashboard"></i> Sportovní úpravy
-                            </a>
-                        </li>
-
-                        {# - Ke stažení #}
-                        {# ------------------------------------------------------------------------------------------ #}
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-download"></i> Ke stažení
-                            </a>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Hledat...">
-                        </div>
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
             </div>
-        </nav>
-    </header>
-</div>
-
-{% for type, messages  in app.session.flashBag.all() %}
-    {% for message in messages %}
-        <div class="container">
-            <div class="alert alert-{{ type }}">
-                <i class="fa fa-exclamation-triangle"></i> {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
+        {% endfor %}
     {% endfor %}
-{% endfor %}
 
-{% block body %}{% endblock %}
+    <div id="content">
+        {% block body %}{% endblock %}
+    </div>
 
-{% block javascripts %}
+
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/lightgallery/dist/js/lightgallery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-{% endblock %}
+    {% block javascripts %}{% endblock %}
 
 
-<footer class="bg-inverse">
-    <div class="container"></div>
-</footer>
+    <footer class="bg-inverse no-print">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p>
+                        <strong><i class="fa fa-chevron-left"></i> Rychlá navigace <i class="fa fa-chevron-right"></i>
+                        </strong>
+                    </p>
 
-
+                    {% block footerLinks %}{% endblock %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <br/><a href="http://raito.cz/" class="pull-left author"><strong>RS</strong>WEBWORKS 2016</a>
+                    <a class="pull-right" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img
+                                alt="Licence Creative Commons" style="border-width:0"
+                                src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"/></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
 </body>
 
 </html>

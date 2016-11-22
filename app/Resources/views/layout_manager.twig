@@ -1,0 +1,136 @@
+{% extends 'layout.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/codemirror.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/theme/material.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/dialog/dialog.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.css') }}"/>
+{% endblock %}
+
+{% block header %}
+    <div class="header-bg manager">
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#top-menu" aria-expanded="false">
+                            <span class="sr-only">Přepnout menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="top-menu">
+                        {# - Navbar SM, MD #}
+                        <ul class="nav navbar-nav visible-sm visible-md">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bars"></i> Navigace
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Dílenská příručka</li>
+                                    <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                                    <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <li class="dropdown-header">Časté otázky</li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <li class="dropdown-header">Návody</li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <li class="dropdown-header">Sportovní úpravy</li>
+                                    <li role="separator" class="divider"></li>
+
+                                    <li class="dropdown-header">Ke stažení</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        {# - Navbar XS, LG #}
+                        <ul class="nav navbar-nav visible-lg visible-xs">
+                            {# - Dílenská příručka #}
+                            {# ------------------------------------------------------------------------------------------ #}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-book"></i> Dílenská příručka
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                                    <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
+                                </ul>
+                            </li>
+
+                            {# - Často kladené otázky #}
+                            {# ------------------------------------------------------------------------------------------ #}
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-question-circle"></i> Časté otázky
+                                </a>
+                            </li>
+
+                            {# - Návody #}
+                            {# ------------------------------------------------------------------------------------------ #}
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-wrench"></i> Návody
+                                </a>
+                            </li>
+
+                            {# - Sportovní úpravy #}
+                            {# ------------------------------------------------------------------------------------------ #}
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-dashboard"></i> Sportovní úpravy
+                                </a>
+                            </li>
+
+                            {# - Ke stažení #}
+                            {# ------------------------------------------------------------------------------------------ #}
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-download"></i> Ke stažení
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="navbar-form navbar-right">
+                            <a href="{{ url('logout') }}" class="btn btn-default"><i class="fa fa-fw fa-sign-out"></i>
+                                Odhlásit</a>
+                            <a href="{{ url('frontend_manual') }}" class="btn btn-default"><i
+                                        class="fa fa-fw fa-home"></i>
+                                Frontend</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/vendor/codemirror/js/codemirror.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/xml/xml.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/javascript/javascript.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/css/css.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/mode/htmlmixed/htmlmixed.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/selection/active-line.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/dialog/dialog.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/searchcursor.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/search.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/scroll/annotatescrollbar.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.js') }}"></script>
+    <script src="{{ asset('assets/vendor/codemirror/js/addon/search/jump-to-line.js') }}"></script>
+    <script src="{{ asset('assets/vendor/Sortable/Sortable.min.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+{% endblock %}
+
+{% block footerLinks %}
+    <ul class="list-inline">
+        <li><a href="{{ url('logout') }}">Odhlásit</a></li>
+        <li><a href="{{ url('frontend_manual') }}">Frontend</a></li>
+    </ul>
+{% endblock %}

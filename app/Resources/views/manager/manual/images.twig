@@ -1,4 +1,4 @@
-{% extends 'layoutManager.twig' %}
+{% extends 'layout_manager.twig' %}
 {% block body %}
 
     <div class="container" id="manager-home">
@@ -6,6 +6,11 @@
             <small>{{ manual.getTitle() }}</small>
         </h3>
 
+        <ol class="breadcrumb">
+            <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+            <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
+            <li class="active">Obrázky ke stránce</li>
+        </ol>
 
         <div class="row">
             {% if manual.getImages()|length == 0 %}

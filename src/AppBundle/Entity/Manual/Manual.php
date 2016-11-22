@@ -3,9 +3,10 @@
 namespace AppBundle\Entity\Manual;
 
 use AppBundle\Entity\Identifier;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="manual_pages")
@@ -44,6 +45,20 @@ class Manual
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Engine", inversedBy="manuals")
+     * @ORM\JoinTable(name="manuals_engines")
+     */
+    private $engines;
+
+    /**
+     * Manual constructor.
+     */
+    public function __construct()
+    {
+        $this->engines = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -116,6 +131,22 @@ class Manual
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEngines()
+    {
+        return $this->engines;
+    }
+
+    /**
+     * @param mixed $engines
+     */
+    public function setEngines($engines)
+    {
+        $this->engines = $engines;
     }
 
 

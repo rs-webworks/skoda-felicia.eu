@@ -1,24 +1,25 @@
 {
-  "name": "eryse",
-  "authors": [
-    "Raito Akehanareru <raito.akehanareru@gmail.com>"
-  ],
-  "description": "Symfony based CMS",
-  "main": "web/app.php",
-  "license": "MIT",
-  "homepage": "",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "web/assets/vendor/",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "bootstrap": "^3.3.7",
-    "font-awesome": "^4.6.3",
-    "Sortable": "sortablejs#^1.4.2"
-  }
+    "name": "eryse",
+    "authors": [
+        "Raito Akehanareru <raito.akehanareru@gmail.com>"
+    ],
+    "description": "Symfony based CMS",
+    "main": "web/app.php",
+    "license": "MIT",
+    "homepage": "",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "web/assets/vendor/",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "^3.3.7",
+        "font-awesome": "^4.6.3",
+        "Sortable": "sortablejs#^1.4.2",
+        "lightgallery": "^1.3.6"
+    }
 }

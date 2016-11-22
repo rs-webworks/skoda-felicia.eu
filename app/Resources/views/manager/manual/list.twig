@@ -1,4 +1,4 @@
-{% extends 'layoutManager.twig' %}
+{% extends 'layout_manager.twig' %}
 {% block body %}
 
     <div class="container" id="manager-home">
@@ -10,11 +10,18 @@
             </div>
         </h3>
 
+        <ol class="breadcrumb">
+            <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+            <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
+            <li class="active">Seznam stránek</li>
+        </ol>
+
         <table class="table">
             <thead>
             <tr>
                 <th>Titulek</th>
-                <th>Akce</th>
+                <th>Motorizace</th>
+                <th class="text-right">Akce</th>
             </tr>
             </thead>
             <tbody class="sortable">
@@ -23,16 +30,27 @@
                 <tr data-id="{{ page.getId() }}">
                     <td>{{ page.getTitle() }}</td>
                     <td>
-                        <a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i
-                                    class="fa fa-fw fa-pencil"></i></a>
-                        <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}"
-                           class="btn btn-default btn-xs"><i
-                                    class="fa fa-fw fa-image"></i></a>
-                        <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}"
-                           class="btn btn-danger btn-xs"><i
-                                    class="fa fa-fw fa-trash"></i></a>
-
+                        {% for engine in page.getEngines() %}
+                            <span class="label label-main">{{ engine.getName() }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>
                         <div class="pull-right">
+                            <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}"
+                               class="btn btn-default btn-xs"><i
+                                        class="fa fa-fw fa-search"></i></a>
+                            <a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}"
+                               class="btn btn-default btn-xs"><i
+                                        class="fa fa-fw fa-pencil"></i></a>
+                            <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}"
+                               class="btn btn-default btn-xs"><i
+                                        class="fa fa-fw fa-image"></i></a>
+                            <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}"
+                               class="btn btn-danger btn-xs"><i
+                                        class="fa fa-fw fa-trash"></i></a>
+
+                            &nbsp;&nbsp;
+
                             <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i
                                         class="fa fa-fw fa-chevron-circle-down"></i></a>
                             <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'down'}) }}"><i

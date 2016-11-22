@@ -81,6 +81,17 @@ a.btn {
 html, body {
   font-family: $fontDefault;
   height: 100%;
+  margin: 0;
+  padding: 0;
+
+  #wrapper {
+    min-height: 100%;
+    position: relative;
+  }
+
+  #content {
+    padding-bottom: 250px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -205,9 +216,18 @@ div.CodeMirror {
   cursor: pointer;
 }
 
+mark {
+  background-color: $colorMainDark;
+  color: $colorWhite;
+}
+
 // HEADER
 // ---------------------------------------------------------------------------------------------------------------------
 .header-bg {
+  &.manager {
+    height: 56px;
+  }
+
   height: 260px;
   background: url('../../images/layout/header_02.jpg') no-repeat top center;
   border-bottom: 3px solid $colorMain;
@@ -313,6 +333,12 @@ header {
 .bg-inverse {
   background-color: $colorMain;
   color: $colorWhite;
+
+  h2 {
+    span {
+      color: $colorMainDark;
+    }
+  }
 }
 
 // PAGE - SERVICE MANUAL
@@ -329,6 +355,14 @@ header {
 // FOOTER
 // ---------------------------------------------------------------------------------------------------------------------
 footer {
-  margin-top: 30px;
   padding: 50px 0;
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  a.author {
+    color: $colorWhite;
+  }
 }
