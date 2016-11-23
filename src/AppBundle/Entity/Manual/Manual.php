@@ -53,6 +53,11 @@ class Manual
     private $engines;
 
     /**
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $fullWidth;
+
+    /**
      * Manual constructor.
      */
     public function __construct()
@@ -147,6 +152,22 @@ class Manual
     public function setEngines($engines)
     {
         $this->engines = $engines;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getFullWidth()
+    {
+        return $this->fullWidth;
+    }
+
+    /**
+     * @param boolean $fullWidth
+     */
+    public function setFullWidth($fullWidth = false)
+    {
+        $this->fullWidth = $fullWidth;
     }
 
 

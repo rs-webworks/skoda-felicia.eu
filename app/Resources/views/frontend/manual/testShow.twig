@@ -1,0 +1,74 @@
+{% extends 'layout_front.twig' %}
+{% block body %}
+
+    <div class="container" id="manual-show">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Dílenská příručka
+                    <div class="pull-right">
+                        {% block pageButtons %}
+                            <a href="javascript:window.print()" class="btn btn-sm btn-default">
+                                <i class="fa fa-fw fa-print"></i> Vytisknout
+                            </a>
+                            <a href="{{ url('frontend_manual') }}" class="btn btn-sm btn-default">
+                                <i class="fa fa-fw fa-home"></i> Zpět na obsah
+                            </a>
+                        {% endblock %}
+                    </div>
+                </h2>
+                <h3>
+                    Připojení diagnostické přístroje VAG a přečtění paměti závad (vozy od 01.95)
+                    <br/>
+                    <small>
+                        Pro motory:
+                        <span class="label label-main">TEST</span>
+                    </small>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-print-8">
+                {# -------------------------------------------------------------------------------------------------- #}
+                {# -------------------------------------------------------------------------------------------------- #}
+
+                {# -------------------------------------------------------------------------------------------------- #}
+                {# -------------------------------------------------------------------------------------------------- #}
+            </div>
+            <div class="col-xs-12 col-sm-4 col-print-4" id="lightgallery">
+                images
+            </div>
+        </div>
+
+        <div class="row">
+            <hr/>
+            <div class="col-xs-12">
+                <div class="pull-right">
+                    <a href="#top" class="btn btn-sm btn-default"><i class="fa fa-fw fa-chevron-up"></i> Nahoru</a>
+                    {{ block("pageButtons") }}
+                </div>
+            </div>
+
+            <div class="spacer-bottom"></div>
+        </div>
+
+
+        <div class="row no-print">
+            <div class="col-xs-12">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Další stránky:</th>
+                        <th>Motorizace:</th>
+                    </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

@@ -36,6 +36,12 @@ a.btn {
 .label.label-main {
   background-color: #4ED89A; }
 
+.panel.panel-info {
+  border-color: #757575; }
+  .panel.panel-info .panel-heading {
+    border-color: #757575;
+    background-color: #757575; }
+
 .badge {
   background-color: #4ED89A; }
 

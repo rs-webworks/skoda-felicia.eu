@@ -31,7 +31,7 @@ class Version20161122121718 extends AbstractMigration implements ContainerAwareI
 
         $engine = new Engine();
         $engine->setName('BMM');
-        $engine->setDescription('1.3 jednobod. vstřik. Bosch Mono-motronic');
+        $engine->setDescription('1.3 jednobod. vstřik. Bosch Mono-Motronic');
         $em->persist($engine);
 
         $engine = new Engine();

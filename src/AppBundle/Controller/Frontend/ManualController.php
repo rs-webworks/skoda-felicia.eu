@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Frontend;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ManualController extends Controller
@@ -38,5 +39,14 @@ class ManualController extends Controller
             'manual' => $page,
             'pagesAround' => $pagesAround
         ));
+    }
+
+    /**
+     * @Route("/dilenska-prirucka/test/", name="frontend_manual_show_test")
+     * @Template("frontend/manual/testShow.twig")
+     */
+    public function testShowAction()
+    {
+
     }
 }

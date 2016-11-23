@@ -3,6 +3,7 @@
 $colorMain: #4ED89A;
 $colorMainDark: #2d865e;
 $colorDark: #252525;
+$colorShadow: #757575;
 $colorWhite: #ffffff;
 
 $fontDefault: "OpenSans", sans-serif;
@@ -57,6 +58,14 @@ a.btn {
 
 .label.label-main {
   background-color: $colorMain;
+}
+
+.panel.panel-info {
+  border-color: $colorShadow;
+  .panel-heading {
+    border-color: $colorShadow;
+    background-color: $colorShadow;
+  }
 }
 
 .badge {
