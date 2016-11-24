@@ -42,6 +42,13 @@ a.btn {
     border-color: #757575;
     background-color: #757575; }
 
+.panel.panel-main {
+  border-color: #4ED89A; }
+  .panel.panel-main .panel-heading {
+    border-color: #4ED89A;
+    background-color: #4ED89A;
+    color: #ffffff; }
+
 .badge {
   background-color: #4ED89A; }
 
@@ -254,6 +261,11 @@ header {
   max-width: 100%;
   border: 2px solid #4ED89A;
   margin-bottom: 25px; }
+
+.text-content h4 {
+  margin-top: 40px; }
+  .text-content h4.no-margin {
+    margin-top: 0px; }
 
 footer {
   padding: 50px 0;

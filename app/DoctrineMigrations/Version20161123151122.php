@@ -3,11 +3,13 @@
 namespace Application\Migrations;
 
 use AppBundle\Entity\Manual\Manual;
+use AppBundle\Entity\Manual\ManualImage;
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
@@ -15,6 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 class Version20161123151122 extends AbstractMigration implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
+
 
     /**
      * @param Schema $schema
@@ -26,7 +29,8 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
 
         $manual = new Manual();
         $manual->setTitle('Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy od 01.95)');
-        $manual->setContent(' <div class="panel panel-default">
+        $manual->setContent(<<<'TAG'
+ <div class="panel panel-default">
                     <div class="panel-heading">Potřebné speciální nářadí a pomůcky</div>
                     <div class="panel-body">
                         <ul>
@@ -62,9 +66,9 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
                                 class="fa fa-picture-o"></i> [1] šipka</span>
                     (u vozů RHD je umístěná taktéž na pravé straně vozu).</p>
 
-                <h3>Průběh práce:</h3>
+                <h4>Průběh práce:</h4>
                 <ol>
-                    <li>Pomocí vedení VAG 1551/3 připojit diagnostický přístroj.</li>
+                    <li>Pomocí vedení VAG 1551/3 připojit diagnostický přístroj</li>
                     <li>Spustit motor a nechat jej běžet na volnoběh</li>
                     <li>Na displayi se zobrazí:
 
@@ -78,7 +82,7 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
                             </div>
                         </div>
                     </li>
-                    <li>Zadat 00 pro adresu "Automatický test" a potvrdit <span class="badge">Q</span>.</li>
+                    <li>Zadat 00 pro adresu "Automatický test" a potvrdit <span class="badge">Q</span></li>
                 </ol>
                 <p>Diagnostický přístroj postupně zobrazí všechny známé adresy. Pokud odpoví řídící jednotka svojí
                     identifikací, zobrazí se na displayi všechny v paměti uložené závady, nebo se zobrazí "Nezjištěna
@@ -109,9 +113,19 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
                         <p>Sledujte, zda odpověděly řídící jednotky všech na voze namontovaných systémů. Pokud některá
                             řídící jednotka neodpoví, zkontrolovat "K" vedení k diagnostické svorkovnici.</p>
                     </div>
-                </div>');
+                </div>
+TAG
+        );
         $manual->setFullWidth(false);
         $em->persist($manual);
+
+        $image = new ManualImage();
+        $image->setTitle('s01-0019');
+        $image->setImageFile(
+            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/s01-0019.png',
+                's01-0019.png', null, null, null, true));
+        $image->setManual($manual);
+        $em->persist($image);
         $em->flush();
     }
 

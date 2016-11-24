@@ -68,6 +68,15 @@ a.btn {
   }
 }
 
+.panel.panel-main {
+  border-color: $colorMain;
+  .panel-heading {
+    border-color: $colorMain;
+    background-color: $colorMain;
+    color: $colorWhite;
+  }
+}
+
 .badge {
   background-color: $colorMain;
 }
@@ -389,6 +398,16 @@ header {
     max-width: 100%;
     border: 2px solid $colorMain;
     margin-bottom: 25px;
+  }
+}
+
+.text-content {
+  h4 {
+    margin-top: 40px;
+
+    &.no-margin {
+      margin-top: 0px;
+    }
   }
 }
 

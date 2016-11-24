@@ -2,16 +2,18 @@
 
 namespace Application\Migrations;
 
-    use AppBundle\Entity\Manual\Manual;
-    use Doctrine\DBAL\Migrations\AbstractMigration;
-    use Doctrine\DBAL\Schema\Schema;
-    use Doctrine\ORM\EntityManager;
-    use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-    use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use AppBundle\Entity\Manual\Manual;
+use AppBundle\Entity\Manual\ManualImage;
+use Doctrine\DBAL\Migrations\AbstractMigration;
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-    /**
-     * Auto-generated Migration: Please modify to your needs!
-     */
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
 class Version20161123163510 extends AbstractMigration implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
@@ -25,12 +27,14 @@ class Version20161123163510 extends AbstractMigration implements ContainerAwareI
         $em = $this->container->get('doctrine.orm.entity_manager');
 
         $manual = new Manual();
-        $manual->setTitle('Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy od 01.95)');
-        $manual->setContent(' <div class="panel panel-default">
+        $manual->setTitle('Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy do 01.95)');
+        $manual->setContent(<<<'TAG'
+<div class="panel panel-default">
                     <div class="panel-heading">Potřebné speciální nářadí a pomůcky</div>
                     <div class="panel-body">
                         <ul>
-                            <li>Diagnostický přístroj VAG 1552 nebo VAG 1551 s vedením VAG 1551/3</li>
+                            <li>Zkušební adaptér T 003</li>
+                            <li>Diagnostický přístroj VAG 1552 nebo VAG 1551 s vedením VAG 1551/1</li>
                         </ul>
                     </div>
                 </div>
@@ -47,27 +51,48 @@ class Version20161123163510 extends AbstractMigration implements ContainerAwareI
                 <div class="panel panel-info">
                     <div class="panel-heading"><i class="fa fa-exclamation-triangle"></i> Upozornění</div>
                     <div class="panel-body">
-                        <p>Následující popis se vztahuje pouze na diagnostický přístroj VAG 1552 s použitím programové
-                            karty
-                            2.0.</p>
-                        <p>Použití přístroje VAG 1551 je obdobné s ohledem na specifické odlišnosti (např. jiné
-                            zobrazení
-                            displaye apod.)</p>
+                        <p>Všechny funkce, které jsou možné, prověřte diagnostickým přístrojem VAG 1552, nebo se mohou
+                            prověřit též diag. přístrojem VAG 1551.</p>
                     </div>
                 </div>
 
+                <p>Zkušební adaptér T 003 sestává z následujících částí:</p>
+                <ul class="list-unstyled">
+                    <li><span class="label label-default"><i class="fa fa-picture-o"></i> [1] 1</span> Světelná dioda
+                        (LED)
+                    </li>
+                    <li><span class="label label-default"><i class="fa fa-picture-o"></i> [1] 2</span> Spínač zkušebního
+                        adaptéru
+                    </li>
+                    <li><span class="label label-default"><i class="fa fa-picture-o"></i> [1] 3</span> Připojovací
+                        svorkovnice pro diagnostické přístroje VAG 1552/1
+                    </li>
+                    <li><span class="label label-default"><i class="fa fa-picture-o"></i> [1] 4</span> Připojovací 5-ti
+                        pólová svorkovnice pro připojení adaptéru do diagnostické zásuvky
+                    </li>
+                </ul>
 
-                <p>Diagnostická 16-pólová svorkovnice je umístěna vpravo pod přístrojovou deskou v prostoru vedle
-                    pojistkového panelu <span class="label label-default"><i
-                                class="fa fa-picture-o"></i> [1] šipka</span>
-                    (u vozů RHD je umístěná taktéž na pravé straně vozu).</p>
-
-                <h3>Průběh práce:</h3>
+                <h4>Průběh práce:</h4>
                 <ol>
-                    <li>Pomocí vedení VAG 1551/3 připojit diagnostický přístroj.</li>
-                    <li>Spustit motor a nechat jej běžet na volnoběh</li>
-                    <li>Na displayi se zobrazí:
+                    <li>Diagnostický přístroj VAG připojit následovně:</li>
+                    <li>Připojit adaptér T 003 do diagnostické zásuvky. Spínač adaptéru musí být v poloze vypnuto
+                        (směrem ke svět. diodě)
+                    </li>
+                    <li>Před připojením zkušebního adaptéru je nutno sejmout ochranný kryt diagnostické svorkovnice a po
+                        ukončení měření jej nasunout opět zpátky
+                    </li>
+                    <li>5-ti pólová diagnostická svorkovnice <span class="label label-default"><i
+                                    class="fa fa-picture-o"></i> [2] šipka</span> se nachází v zadní části motorového
+                        prostoru mezi nídobkou s aktivním uhlím a stěnou motorového prostoru.
+                    </li>
+                    <li>Zapnout zapalování</li>
+                    <li>Připojit diagnostický přístroj na svorkovnici adaptéru</li>
+                    <li>Nejdříve připojit svorkovnici do černé zásuvky (napájení diag. přístroje)</li>
+                </ol>
 
+                <h4>Přečtení paměti závad:</h4>
+                <ol>
+                    <li>Na displayi se zobrazí:
                         <div class="vag-display">
                             <div class="title">Display VAG</div>
                             <div class="display">
@@ -77,41 +102,81 @@ class Version20161123163510 extends AbstractMigration implements ContainerAwareI
                                 <div class="line">Zadejte adresu XX</div>
                             </div>
                         </div>
-                    </li>
-                    <li>Zadat 00 pro adresu "Automatický test" a potvrdit <span class="badge">Q</span>.</li>
-                </ol>
-                <p>Diagnostický přístroj postupně zobrazí všechny známé adresy. Pokud odpoví řídící jednotka svojí
-                    identifikací, zobrazí se na displayi všechny v paměti uložené závady, nebo se zobrazí "Nezjištěna
-                    žádná závada".</p>
-                <p>Závady systému, které byly případně uloženy do paměti závad, se zobrazí (nutno zapsat). Potom vyšle
-                    diagnostický přístroj další adresu.</p>
 
-                <p>Po ukončení automatického testu se na displayi zobrazí:</p>
-                <div class="vag-display">
-                    <div class="title">Display VAG</div>
-                    <div class="display">
-                        <div class="line">Test systému vozidla
-                            <div class="pull-right">HELP</div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Upozornění</div>
+                            <div class="panel-body">Nebude li na displayi indikován žádný údaj, nepřipojujte druhou
+                                svorkovnici. V tomto případě překontrolujte napájení diag. přístroje a odstraňte závadu.
+                            </div>
                         </div>
-                        <div class="line">Zadejte adresu XX</div>
-                    </div>
-                </div>
-                <p>Vypněte zapalování.</p>
+                    </li>
 
-
-                <div class="panel panel-info">
-                    <div class="panel-heading"><i class="fa fa-exclamation-triangle"></i> Upozornění</div>
-                    <div class="panel-body">
-                        <p>Není-li na displayi žádné zobrazení, přezkoušet podle elektrického schématu elektrické
-                            napájení přístroje VAG.</p>
-                        <p>Tlačítkem HELP přístroje pro čtení závad může být proveden dotaz na přehled možných
-                            adres.</p>
-                        <p>Sledujte, zda odpověděly řídící jednotky všech na voze namontovaných systémů. Pokud některá
-                            řídící jednotka neodpoví, zkontrolovat "K" vedení k diagnostické svorkovnici.</p>
-                    </div>
-                </div>');
+                    <li>Do bílé zásuvky diagnostického přístroje připojte druhou svorkovnici
+                        <ul>
+                            <li>Tlačítkem HELP je možno na displayi vyvolat další pokyny pro obsluhu</li>
+                            <li>Tlačítkem <span class="badge"><i class="fa fa-arrow-right"></i></span> se přechází k
+                                dalšímu kroku diag. programu
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Nastartovat motor a nechat běžet na volnoběh</li>
+                    <li>Diagnostický přístroj obsluhovat podle pokynů zobrazených na displayi</li>
+                    <li>Tlačítky vložit adresu "01" - <strong>Elektronika motoru</strong></li>
+                    <li>Na displayi se zobrazí:
+                        <div class="vag-display">
+                            <div class="title">Display VAG</div>
+                            <div class="display">
+                                <div class="line">Test systému vozidla
+                                    <div class="pull-right">HELP</div>
+                                </div>
+                                <div class="line">01 - Elektronika motoru</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>Vložení adresy potvrdit tlačítkem <span class="badge">Q</span></li>
+                    <li>Po zobrazení identifikace řídící jednotky stisknout tlačítko <span class="badge"><i
+                                    class="fa fa-arrow-right"></i></span></li>
+                    <li>Tlačítky navolit "02" pro vyvolání paměti závad a potvrdit tlačítkem <span
+                                class="badge">Q</span>:
+                        <div class="vag-display">
+                            <div class="title">Display VAG</div>
+                            <div class="display">
+                                <div class="line">Test systému vozidla
+                                    <div class="pull-right">HELP</div>
+                                </div>
+                                <div class="line">02 - Výzva k výpisu chybové paměti</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>Na displayi se zobrazí počet uložených závad v paměti nebo "Nezjištěna žádná závada". Uložené
+                        závady se budou postupně zobrazovat tlačítkem <span class="badge"><i
+                                    class="fa fa-arrow-right"></i></span></li>
+                    <li>V případě, že nebyla zjištěna žádná závada pokračujte tlačítkem <span class="badge"><i
+                                    class="fa fa-arrow-right"></i></span></li>
+                </ol>
+TAG
+        );
         $manual->setFullWidth(false);
         $em->persist($manual);
+
+        $image = new ManualImage();
+        $imageName = 's01-0002';
+        $image->setTitle($imageName);
+        $image->setImageFile(
+            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
+                $imageName . '.png', null, null, null, true));
+        $image->setManual($manual);
+        $em->persist($image);
+
+        $image = new ManualImage();
+        $imageName = 's01-0001';
+        $image->setTitle($imageName);
+        $image->setImageFile(
+            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
+                $imageName . '.png', null, null, null, true));
+        $image->setManual($manual);
+        $em->persist($image);
+
         $em->flush();
     }
 
