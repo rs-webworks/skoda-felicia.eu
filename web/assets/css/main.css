@@ -105,6 +105,11 @@ a, a:link {
 a:active, a:hover {
   color: #252525; }
 
+tr.tr-heading {
+  background-color: #F3F3F3; }
+  tr.tr-heading td {
+    padding: 3px 5px !important; }
+
 #top {
   position: absolute;
   top: 0; }
@@ -173,6 +178,32 @@ div.CodeMirror {
 mark {
   background-color: #2d865e;
   color: #ffffff; }
+
+.row-flex, .row-flex > div[class*='col-'] {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1 1 auto; }
+
+.row-flex-wrap {
+  -webkit-flex-flow: row wrap;
+  align-content: flex-start;
+  flex: 0; }
+
+.row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
+  margin: -.2px;
+  /* hack adjust for wrapping */ }
+
+.container-flex > div[class*='col-'] div, .row-flex > div[class*='col-'] div {
+  width: 100%; }
+
+.flex-col {
+  display: flex;
+  display: -webkit-flex;
+  flex: 1 100%;
+  flex-flow: column nowrap; }
 
 .header-bg {
   height: 260px;
@@ -263,7 +294,9 @@ header {
   margin-bottom: 25px; }
 
 .text-content h4 {
-  margin-top: 40px; }
+  margin: 60px 0px 20px; }
+  .text-content h4.page-header {
+    margin-bottom: 20px; }
   .text-content h4.no-margin {
     margin-top: 0px; }
 

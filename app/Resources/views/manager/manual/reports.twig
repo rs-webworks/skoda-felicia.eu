@@ -1,0 +1,82 @@
+{% extends 'layout_manager.twig' %}
+{% block body %}
+
+    <div class="container" id="manager-home">
+        <h3>
+            Stránky dílenské příručky
+        </h3>
+
+        <ol class="breadcrumb">
+            <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+            <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
+            <li class="active">Reporty</li>
+        </ol>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="col-xs-2">Email</th>
+                <th class="col-xs-1">IP</th>
+                {#<th>Stránka</th>#}
+                <th class="col-xs-2">Datum a čas</th>
+                <th>Zpráva</th>
+                <th class="text-right col-xs-1">Akce</th>
+            </tr>
+            </thead>
+            <tbody>
+            {# @var page \AppBundle\Entity\Manual\Report #}
+
+            <tr class="tr-heading text-muted">
+                <td colspan="5">Nevyřízené</td>
+            </tr>
+            {% set unresolved = [] %}
+            {% for report in reports %}
+
+                {% if report.isResolved() %}
+                    {% set unresolved = unresolved|merge([report]) %}
+                {% else %}
+                    <tr data-id="{{ report.getId() }}">
+                        <td>{{ report.getEmail() }}</td>
+                        <td>{{ report.getIp() }}</td>
+                        {#<td>{{ report.getManual().getTitle() }}</td>#}
+                        <td>{{ report.getSent().format('d.m.Y H:i:s') }}</td>
+                        <td>{{ report.getMessage() }}</td>
+                        <td>
+                            <div class="pull-right">
+                                <a href="{{ url('manager_manual_report_toggle', {"id": report.getId}) }}"
+                                   class="btn btn-success btn-xs"><i class="fa fa-fw fa-check"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+            <tr class="tr-heading text-muted">
+                <td colspan="5">Vyřízené</td>
+            </tr>
+            {% for report in unresolved %}
+                <tr data-id="{{ report.getId() }}" class="text-muted">
+                    <td>{{ report.getEmail() }}</td>
+                    <td>{{ report.getIp() }}</td>
+                    {#<td>{{ report.getManual().getTitle() }}</td>#}
+                    <td>{{ report.getSent().format('d.m.Y H:i:s') }}</td>
+                    <td>{{ report.getMessage() }}</td>
+                    <td>
+                        <div class="pull-right">
+                            <a href="{{ url('manager_manual_report_toggle', {"id": report.getId}) }}"
+                               class="btn btn-danger btn-xs"><i class="fa fa-fw fa-times"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+
+{% endblock %}

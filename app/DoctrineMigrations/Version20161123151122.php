@@ -30,7 +30,7 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
         $manual = new Manual();
         $manual->setTitle('Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy od 01.95)');
         $manual->setContent(<<<'TAG'
- <div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">Potřebné speciální nářadí a pomůcky</div>
                     <div class="panel-body">
                         <ul>
@@ -66,7 +66,7 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
                                 class="fa fa-picture-o"></i> [1] šipka</span>
                     (u vozů RHD je umístěná taktéž na pravé straně vozu).</p>
 
-                <h4>Průběh práce:</h4>
+                <h4 class="page-header">Průběh práce:</h4>
                 <ol>
                     <li>Pomocí vedení VAG 1551/3 připojit diagnostický přístroj</li>
                     <li>Spustit motor a nechat jej běžet na volnoběh</li>

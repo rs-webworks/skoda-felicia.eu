@@ -29,7 +29,7 @@ class Version20161124163204 extends AbstractMigration implements ContainerAwareI
         $manual = new Manual();
         $manual->setTitle('Spojkový pedál: Kontrola polohy, nastavení');
         $manual->setContent(<<<'TAG'
-<div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">Výchozí podmínky</div>
                     <div class="panel-body">
                         <ul>
@@ -39,11 +39,11 @@ class Version20161124163204 extends AbstractMigration implements ContainerAwareI
                     </div>
                 </div>
 
-                <h4>Seřizovací hodnota</h4>
+                <h4 class="page-header">Seřizovací hodnota</h4>
                 <p>Spojkový pedál 0 &plusmn; 3 mm vůči brzdovému pedálu <span class="label label-default"><i
                                 class="fa fa-picture-o"></i> [1]</span></p>
 
-                <h4>Seřízení polohy</h4>
+                <h4 class="page-header">Seřízení polohy</h4>
                 <ol>
                     <li>Před seřízením vytáhnout pojistku <span class="label label-default"><i
                                     class="fa fa-picture-o"></i> [2] 2</span></li>

@@ -1,0 +1,32 @@
+{% extends 'layout_front.twig' %}
+{% block body %}
+
+    <div class="container" id="report-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Nahlášení chyby
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p><strong>Předmět:</strong> {{ manual.getTitle() }}</p>
+                <p>Zaslat můžete jakékoliv připomínky týkající se uvedených postupů nebo třeba i
+                    gramatických/textových/překlepových chyb. Pokud chcete navrhnout lepší/jednodušší nebo alternativní
+                    postup, zkuste prosím nejdříve poslat návrh na článek do sekce Návody. Rádi nové podněty přijmeme a
+                    přidáme s odkazem do dílenské příručky.</p>
+                <p>Váš email slouží pouze pro případnou komunikaci nebo uvedení jako reference do příručky v případě, že
+                    bude vaše připomínka natolik přínosná, že jí do textu umístíme. Nebudeme Vám posílat žádné
+                    automatické zprávy ani jej předávat někam dále.</p>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+
+                <button type="submit" class="btn btn-default pull-right"><i class="fa fa-fw fa-send"></i> Odeslat
+                </button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

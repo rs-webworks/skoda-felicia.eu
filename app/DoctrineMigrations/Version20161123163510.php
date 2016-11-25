@@ -29,7 +29,7 @@ class Version20161123163510 extends AbstractMigration implements ContainerAwareI
         $manual = new Manual();
         $manual->setTitle('Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy do 01.95)');
         $manual->setContent(<<<'TAG'
-<div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">Potřebné speciální nářadí a pomůcky</div>
                     <div class="panel-body">
                         <ul>
@@ -72,7 +72,7 @@ class Version20161123163510 extends AbstractMigration implements ContainerAwareI
                     </li>
                 </ul>
 
-                <h4>Průběh práce:</h4>
+                <h4 class="page-header">Průběh práce:</h4>
                 <ol>
                     <li>Diagnostický přístroj VAG připojit následovně:</li>
                     <li>Připojit adaptér T 003 do diagnostické zásuvky. Spínač adaptéru musí být v poloze vypnuto
@@ -90,7 +90,7 @@ class Version20161123163510 extends AbstractMigration implements ContainerAwareI
                     <li>Nejdříve připojit svorkovnici do černé zásuvky (napájení diag. přístroje)</li>
                 </ol>
 
-                <h4>Přečtení paměti závad:</h4>
+                <h4 class="page-header">Přečtení paměti závad:</h4>
                 <ol>
                     <li>Na displayi se zobrazí:
                         <div class="vag-display">

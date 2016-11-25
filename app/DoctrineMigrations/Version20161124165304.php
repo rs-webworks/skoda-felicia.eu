@@ -29,11 +29,11 @@ class Version20161124165304 extends AbstractMigration implements ContainerAwareI
         $manual = new Manual();
         $manual->setTitle('Brzdová soustava: Funkce a nastavení');
         $manual->setContent(<<<'TAG'
-                <h4 class="no-margin">Ruční brzda</h4>
+                <h4 class="no-margin page-header">Ruční brzda</h4>
                 <p>Seřízení má být provedeno tak, aby páka zapadla při síle 100 + 40 N do druhého zářezu.</p>
                 <p>Vahadlo <span class="label label-default"><i class="fa fa-picture-o"></i> [1] šipka</span> musí být
                     vždy kolmo k páce ruční brzdy.</p>
-                <h4>Zkouška posilovače brzd</h4>
+                <h4 class="page-header">Zkouška posilovače brzd</h4>
                 <ol>
                     <li>Vypnout motor a několikrát silně sešlápnout brzdový pedál, čímž dojde ke zrušení podtlaku v
                         posilovači.

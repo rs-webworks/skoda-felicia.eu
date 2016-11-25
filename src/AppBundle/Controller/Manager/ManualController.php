@@ -4,9 +4,10 @@ namespace AppBundle\Controller\Manager;
 
 use AppBundle\Entity\Manual\Manual;
 use AppBundle\Entity\Manual\ManualImage;
-use AppBundle\Form\ManualImageForm;
 use AppBundle\Form\ManualForm;
+use AppBundle\Form\ManualImageForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -178,6 +179,24 @@ class ManualController extends Controller
         return $this->redirectToRoute('manager_manual_images', array(
             'id' => $returnId
         ));
+    }
+
+    /**
+     * @Route("/manager/manual/reports/", name="manager_manual_reports")
+     * @Template("manager/manual/reports.twig")
+     */
+    public function manualReportsAction(){
+        return array(
+            'reports' => $this->get('app.service.report')->getAll()
+        );
+    }
+
+    /**
+     * @Route("/manager/manual/report/toggle-status/{id}", name="manager_manual_report_toggle", requirements={"id": "\d+"})
+     */
+    public function manualReportToggleAction($id){
+        $this->get('app.service.report')->toggle($id);
+        return $this->redirectToRoute('manager_manual_reports');
     }
 
     /**
