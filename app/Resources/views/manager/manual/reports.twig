@@ -13,13 +13,13 @@
             <li class="active">Reporty</li>
         </ol>
 
-        <table class="table">
+        <table class="table small">
             <thead>
             <tr>
                 <th class="col-xs-2">Email</th>
                 <th class="col-xs-1">IP</th>
-                {#<th>Stránka</th>#}
-                <th class="col-xs-2">Datum a čas</th>
+                <th class="col-xs-2">Stránka</th>
+                <th class="col-xs-1">Datum a čas</th>
                 <th>Zpráva</th>
                 <th class="text-right col-xs-1">Akce</th>
             </tr>
@@ -28,7 +28,7 @@
             {# @var page \AppBundle\Entity\Manual\Report #}
 
             <tr class="tr-heading text-muted">
-                <td colspan="5">Nevyřízené</td>
+                <td colspan="6">Nevyřízené</td>
             </tr>
             {% set unresolved = [] %}
             {% for report in reports %}
@@ -37,11 +37,13 @@
                     {% set unresolved = unresolved|merge([report]) %}
                 {% else %}
                     <tr data-id="{{ report.getId() }}">
-                        <td>{{ report.getEmail() }}</td>
-                        <td>{{ report.getIp() }}</td>
-                        {#<td>{{ report.getManual().getTitle() }}</td>#}
-                        <td>{{ report.getSent().format('d.m.Y H:i:s') }}</td>
-                        <td>{{ report.getMessage() }}</td>
+                        {% block tabledata %}
+                            <td title="{{ report.getEmail() }}">{{ report.getEmail()|truncate(25) }}</td>
+                            <td>{{ report.getIp() }}</td>
+                            <td>{{ report.getManual().getTitle()|truncate(30) }}</td>
+                            <td>{{ report.getSent().format('d.m.Y H:i:s') }}</td>
+                            <td>{{ report.getMessage() }}</td>
+                        {% endblock %}
                         <td>
                             <div class="pull-right">
                                 <a href="{{ url('manager_manual_report_toggle', {"id": report.getId}) }}"
@@ -54,15 +56,11 @@
             {% endfor %}
 
             <tr class="tr-heading text-muted">
-                <td colspan="5">Vyřízené</td>
+                <td colspan="6">Vyřízené</td>
             </tr>
             {% for report in unresolved %}
                 <tr data-id="{{ report.getId() }}" class="text-muted">
-                    <td>{{ report.getEmail() }}</td>
-                    <td>{{ report.getIp() }}</td>
-                    {#<td>{{ report.getManual().getTitle() }}</td>#}
-                    <td>{{ report.getSent().format('d.m.Y H:i:s') }}</td>
-                    <td>{{ report.getMessage() }}</td>
+                    {{ block('tabledata') }}
                     <td>
                         <div class="pull-right">
                             <a href="{{ url('manager_manual_report_toggle', {"id": report.getId}) }}"

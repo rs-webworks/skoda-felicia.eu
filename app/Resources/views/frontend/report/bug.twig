@@ -11,8 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
-                <p><strong>Předmět:</strong> {{ manual.getTitle() }}</p>
+            <div class="col-xs-12 col-sm-6">
                 <p>Zaslat můžete jakékoliv připomínky týkající se uvedených postupů nebo třeba i
                     gramatických/textových/překlepových chyb. Pokud chcete navrhnout lepší/jednodušší nebo alternativní
                     postup, zkuste prosím nejdříve poslat návrh na článek do sekce Návody. Rádi nové podněty přijmeme a
@@ -20,14 +19,26 @@
                 <p>Váš email slouží pouze pro případnou komunikaci nebo uvedení jako reference do příručky v případě, že
                     bude vaše připomínka natolik přínosná, že jí do textu umístíme. Nebudeme Vám posílat žádné
                     automatické zprávy ani jej předávat někam dále.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <p><strong>Předmět</strong><br/> {{ manual.getTitle() }}</p>
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
-
-                <button type="submit" class="btn btn-default pull-right"><i class="fa fa-fw fa-send"></i> Odeslat
-                </button>
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6">
+                        <div class="g-recaptcha" data-sitekey="6LeBPg0UAAAAAL_hVWH8VbpkQVZ7v2HJlZYeW0el"></div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6">
+                        <button type="submit" class="btn btn-default pull-right">
+                            <i class="fa fa-fw fa-send"></i> Odeslat
+                        </button>
+                    </div>
+                </div>
                 {{ form_end(form) }}
             </div>
+
         </div>
     </div>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}

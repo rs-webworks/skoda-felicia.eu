@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\Manual\Report;
 use AppBundle\Form\ReportForm;
+use ReCaptcha\ReCaptcha;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,11 +28,18 @@ class ReportController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $report->setIp($request->getClientIp());
-            $report->setManual($manual);
-            $this->get('app.service.report')->save($report);
-            $this->addFlash('success', 'Tvoje připomínka byla úspěšně uložena a brzy se jí bude někdo věnovat. Děkujeme.');
-            return $this->redirectToRoute('frontend_home');
+            $recaptcha = new ReCaptcha('6LeBPg0UAAAAALzndboAL_GziWFf1c3BW73Bh2oz');
+            $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
+
+            if (!$resp->isSuccess()) {
+                $this->addFlash('danger', 'Anti-spam ověření selhalo (důvod:' . $resp->error . ')');
+            } else {
+                $report->setIp($request->getClientIp());
+                $report->setManual($manual);
+                $this->get('app.service.report')->save($report);
+                $this->addFlash('success', 'Tvoje připomínka byla úspěšně uložena a brzy se jí bude někdo věnovat. Děkujeme.');
+                return $this->redirectToRoute('frontend_home');
+            }
         }
 
         return array(

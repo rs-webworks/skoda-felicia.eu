@@ -295,7 +295,7 @@ mark {
 
   height: 260px;
   background: url('../../images/layout/header_02.jpg') no-repeat top center;
-  border-bottom: 3px solid $colorMain;
+  border-bottom: 3px solid $colorMainDark;
   margin-bottom: 30px;
 }
 
@@ -343,6 +343,14 @@ header {
   border: 0;
   font-size: 0.8em;
 
+  &.affix {
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+    border-bottom: 3px solid $colorMainDark;
+    background-color: transparentize($colorMain, 0);
+  }
+
   .navbar-collapse {
     padding: 0;
   }
@@ -360,9 +368,9 @@ header {
 
     & > ul > li.active {
       > a {
-        background-color: $colorMain !important;
+        background-color: $colorMainDark !important;
         color: $colorWhite !important;
-        border-bottom: 3px solid $colorMain;
+        border-bottom: 3px solid $colorMainDark;
       }
     }
 
@@ -376,7 +384,7 @@ header {
       }
 
       &:focus, &:active {
-        background-color: $colorMain !important;
+        background-color: $colorMainDark !important;
         color: $colorWhite;
       }
     }

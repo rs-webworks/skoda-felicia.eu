@@ -208,7 +208,7 @@ mark {
 .header-bg {
   height: 260px;
   background: url("../../images/layout/header_02.jpg") no-repeat top center;
-  border-bottom: 3px solid #4ED89A;
+  border-bottom: 3px solid #2d865e;
   margin-bottom: 30px; }
   .header-bg.manager {
     height: 56px; }
@@ -243,6 +243,12 @@ header {
   letter-spacing: 1px;
   border: 0;
   font-size: 0.8em; }
+  .navbar.affix {
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+    border-bottom: 3px solid #2d865e;
+    background-color: #4ed89a; }
   .navbar .navbar-collapse {
     padding: 0; }
   .navbar .navbar-header .navbar-brand {
@@ -250,9 +256,9 @@ header {
   .navbar #top-menu > ul {
     margin-bottom: -3px; }
   .navbar #top-menu > ul > li.active > a {
-    background-color: #4ED89A !important;
+    background-color: #2d865e !important;
     color: #ffffff !important;
-    border-bottom: 3px solid #4ED89A; }
+    border-bottom: 3px solid #2d865e; }
   .navbar #top-menu > ul > li > a {
     text-transform: uppercase;
     transition: color 0.3s ease, background-color 0.3s ease; }
@@ -260,7 +266,7 @@ header {
       background-color: #ffffff;
       color: #4ED89A; }
     .navbar #top-menu > ul > li > a:focus, .navbar #top-menu > ul > li > a:active {
-      background-color: #4ED89A !important;
+      background-color: #2d865e !important;
       color: #ffffff; }
 
 .main-nav-small li a {

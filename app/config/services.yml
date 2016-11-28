@@ -18,6 +18,13 @@ services:
         class: AppBundle\Service\EntityToolsService
         arguments: ['@doctrine.orm.entity_manager']
 
+    # Twig
+    # ------------------------------------------------------------------------------------------------------------------
+    twig.extension.text:
+         class: Twig_Extensions_Extension_Text
+         tags:
+             - { name: twig.extension }
+
 
     # Doctrine GEDMO extensions
     # ------------------------------------------------------------------------------------------------------------------
