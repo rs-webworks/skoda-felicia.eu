@@ -7,14 +7,20 @@
     <title>{% block title %}Home{% endblock %} | Škoda Felicia</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
+    {# - Fonts #}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700Roboto:400,700,900&subset=latin-ext" rel="stylesheet">
+
+    {# - Vendors #}
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700,900&subset=latin-ext"
-          rel="stylesheet">
+
+    {# - Styles #}
     <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print"/>
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
+
+    {# - Sublayouts styles #}
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -67,16 +73,9 @@
                 <nav class="navbar navbar-default navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#top-menu" aria-expanded="false">
-                                <span class="sr-only">Přepnout menu</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
                         </div>
 
-                        <div class="collapse navbar-collapse" id="top-menu">
+                        <div id="top-menu">
                             {% block menu %}{% endblock %}
                         </div>
                     </div>
@@ -87,20 +86,20 @@
 
     {% for type, messages  in app.session.flashBag.all() %}
         {% for message in messages %}
-            <div class="container">
+            <section id="alerts" class="container">
                 <div class="alert alert-{{ type }}">
                     <i class="fa fa-exclamation-triangle"></i> {{ message }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
+            </section>
         {% endfor %}
     {% endfor %}
 
-    <div id="content">
+    <section id="content">
         {% block body %}{% endblock %}
-    </div>
+    </section>
 
 
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>

@@ -55,7 +55,7 @@ class Manual
     /**
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $fullWidth;
+    private $fullWidth = false;
 
     /**
      * Manual constructor.

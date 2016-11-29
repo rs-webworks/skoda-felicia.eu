@@ -3,14 +3,18 @@
 {% block body %}
 
     <div class="container" id="home-index">
-        <div class="row">
+
+
+        {# Navigation #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+        <section class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
                     Navigace
                 </h2>
             </div>
-        </div>
-        <div class="row">
+        </section>
+        <section class="row">
             <div class="navbox col-xs-12 col-sm-6 col-md-4 col-lg-2">
                 <a href="{{ url('frontend_manual') }}" class="btn btn-main">
                     <div class="text-center">
@@ -65,8 +69,76 @@
                     </div>
                 </a>
             </div>
+        </section>
+        {# //Navigation #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
 
-        </div>
+
+        <section class="row">
+            {# Latest version #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="page-header">
+                    Aktuální verze
+                </h2>
+                <div class="panel panel-main">
+                    <div class="panel-heading">{{ version }}
+                        <span class="pull-right">{{ latest['released']|date('d.m.Y') }}</span></div>
+                    <div class="panel-body">
+                        <ul>
+                            {% for change in latest['changes'] %}
+                                <li>{{ change }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="{{ url('frontend_about_changelog') }}">Zobrazit changelog</a>
+            </div>
+            {# //Latest version #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+
+
+            {# Database #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="page-header">
+                    Databáze
+                </h2>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Typ</th>
+                        <th>Počet</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Stránek dílenské příručky</td>
+                        <td>{{ dbstats['manuals'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Otázek a odpovědí</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Počet návodů</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Stránek sportovních úprav</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Souborů ke stažení</td>
+                        <td>0</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            {# //Database #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+        </section>
     </div>
-
 {% endblock %}

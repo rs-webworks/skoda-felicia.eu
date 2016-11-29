@@ -47,7 +47,9 @@ $(function () {
         });
     }
 
-    $("#lightgallery").lightGallery();
+    $("#lightgallery").lightGallery({
+        selector: 'a'
+    });
 
     // Smooth scrolling effect
     // -----------------------------------------------------------------------------------------------------------------

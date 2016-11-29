@@ -149,7 +149,7 @@ h4 {
 
 a, a:link {
   color: $colorMainDark;
-  transition: color 0.3s ease
+  transition: color 0.3s ease;
 }
 
 a:active, a:hover {
@@ -339,6 +339,7 @@ header {
 // ---------------------------------------------------------------------------------------------------------------------
 .navbar {
   background-color: transparentize($colorMain, 0.3);
+  transition: background-color 1s ease;
   letter-spacing: 1px;
   border: 0;
   font-size: 0.8em;
@@ -346,7 +347,7 @@ header {
   &.affix {
     top: 0;
     width: 100%;
-    z-index: 99999;
+    z-index: 999;
     border-bottom: 3px solid $colorMainDark;
     background-color: transparentize($colorMain, 0);
   }

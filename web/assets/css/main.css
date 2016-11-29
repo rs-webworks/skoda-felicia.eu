@@ -240,13 +240,14 @@ header {
 
 .navbar {
   background-color: rgba(78, 216, 154, 0.7);
+  transition: background-color 1s ease;
   letter-spacing: 1px;
   border: 0;
   font-size: 0.8em; }
   .navbar.affix {
     top: 0;
     width: 100%;
-    z-index: 99999;
+    z-index: 999;
     border-bottom: 3px solid #2d865e;
     background-color: #4ed89a; }
   .navbar .navbar-collapse {

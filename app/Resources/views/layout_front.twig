@@ -31,18 +31,11 @@
             <nav class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#top-menu" aria-expanded="false">
-                            <span class="sr-only">Přepnout menu</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="top-menu">
-                        {# - Navbar SM, MD #}
-                        <ul class="nav navbar-nav visible-sm visible-md">
+                    <div id="top-menu">
+                        {# - Navbar XS - MD #}
+                        <ul class="nav navbar-nav hidden-lg">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">
@@ -73,7 +66,7 @@
                         </ul>
 
                         {# - Navbar XS, LG #}
-                        <ul class="nav navbar-nav visible-lg visible-xs">
+                        <ul class="nav navbar-nav visible-lg">
                             {# - Dílenská příručka #}
                             {# ------------------------------------------------------------------------------------------ #}
                             <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
@@ -136,6 +129,7 @@
         <li><a href="{{ url('frontend_tuning') }}">Sportovní úpravy</a></li>
         <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
         <li><a href="">Autoři</a></li>
+        <li><a href="{{ url('frontend_about_changelog') }}">Changelog</a></li>
         <li><a href="{{ url('manager_home') }}">Správa obsahu</a></li>
     </ul>
 {% endblock %}

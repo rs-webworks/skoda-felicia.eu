@@ -1,0 +1,17 @@
+'0.0.2@alpha':
+    'released': 2016-11-29
+    'changes':
+        - 'První nasazení na live server'
+        - 'Zpřístupněno veřejnosti online'
+        - 'Přidána sekce: Dílenská příručka'
+        - 'Možnost nahlásit chybu'
+        - 'Administrace'
+        - 'Vyhledávání'
+        - 'Možnosti tisku'
+        - 'Mobilní responzivita'
+
+'0.0.1@dev':
+    'released': 2016-11-01
+    'changes':
+        - 'První release'
+        - 'Neveřejná vývojová větev'

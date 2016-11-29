@@ -1,0 +1,33 @@
+{% extends 'layout_front.twig' %}
+{% block title %}Changelog{% endblock %}
+{% block body %}
+
+    <div class="container" id="download-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Historie verzí
+                    <span>Changelog</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                {% for version, log in changelog %}
+                    <div class="panel panel-{% if loop.first %}main{% else %}default{% endif %}">
+                        <div class="panel-heading">{{ version }}
+                            <span class="pull-right">{{ log['released']|date('d.m.Y') }}</span></div>
+                        <div class="panel-body">
+                            <ul>
+                                {% for change in log['changes'] %}
+                                    <li>{{ change }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

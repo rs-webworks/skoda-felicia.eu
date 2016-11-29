@@ -107,6 +107,20 @@ class ManualService
                 'pages' => $above
             )
         );
+    }
 
+    /**
+     * @param string $query
+     * @return array
+     */
+    public function search($query)
+    {
+        return $this->repository->createQueryBuilder('m')
+            ->addSelect("MATCH_AGAINST (m.content, m.title, :searchterm 'IN NATURAL MODE') as score")
+            ->add('where', 'MATCH_AGAINST(m.content, m.title, :searchterm) > 0')
+            ->setParameter('searchterm', $query)
+            ->orderBy('score', 'desc')
+            ->getQuery()
+            ->getResult();
     }
 }

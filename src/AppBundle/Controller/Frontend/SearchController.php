@@ -37,12 +37,14 @@ class SearchController extends Controller
             return $this->redirectToRoute('frontend_search_result', array('query' => $data['query']));
         }
 
+        $results = array();
         if ($query) {
-            dump('Query sent: ' . $query);
+            $results = $this->get('app.service.manual')->search($query);
         }
 
         return $this->render('frontend/search/result.twig', array(
-            'query' => $query
+            'query' => $query,
+            'results' => $results
         ));
     }
 }
