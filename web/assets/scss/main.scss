@@ -121,6 +121,10 @@ html, body {
   }
 }
 
+.no-margin {
+  margin-top: 0px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $fontBold;
 }
@@ -139,7 +143,8 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 45px;
 }
 
 h4 {
@@ -303,6 +308,13 @@ header {
   width: 100%;
   height: 204px;
 
+  h1 a {
+    color: $colorWhite;
+    &:hover {
+      color: $colorMain;
+    }
+  }
+
   .heading {
     text-transform: uppercase;
     font-family: $fontBold;
@@ -417,22 +429,18 @@ header {
 
 #home-index {
   .navbox {
-    margin-bottom: 20px;
-
-    .btn:hover {
-      transition: background-color 0.3s ease;
-      background-color: $colorMainDark;
-    }
-
     .btn {
-      padding: 30px 15px;
-      width: 100%;
-      white-space: normal;
-      min-height: 220px;
+      text-align: left;
+      font-size: 1.2em;
+      background-color: $colorWhite;
+      border-color: $colorLightShadow;
+      color: $colorDark !important;
+      text-transform: none;
+      padding: 20px;
+      margin-bottom: 20px;
 
-      h3 {
-        margin-bottom: 0;
-        line-height: 1.2em;
+      &:hover {
+        color: $colorMainDark !important;
       }
     }
   }
@@ -456,10 +464,14 @@ header {
     &.page-header {
       margin-bottom: 20px;
     }
+  }
+}
 
-    &.no-margin {
-      margin-top: 0px;
-    }
+// PAGE - SERVICE MANUAL
+// ---------------------------------------------------------------------------------------------------------------------
+#about-authors {
+  #paypal-button {
+    margin: 30px 0;
   }
 }
 

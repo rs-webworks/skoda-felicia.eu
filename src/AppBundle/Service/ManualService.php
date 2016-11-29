@@ -91,7 +91,6 @@ class ManualService
             $moreUnder = true;
         }
 
-        dump($above);
         if (count($above) > $count) {
             array_pop($above);
             $moreAbove = true;

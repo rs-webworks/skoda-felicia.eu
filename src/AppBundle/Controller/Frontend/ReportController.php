@@ -32,7 +32,7 @@ class ReportController extends Controller
             $resp = $recaptcha->verify($request->request->get('g-recaptcha-response'), $request->getClientIp());
 
             if (!$resp->isSuccess()) {
-                $this->addFlash('danger', 'Anti-spam ověření selhalo (důvod:' . $resp->error . ')');
+                $this->addFlash('danger', 'Anti-spam ověření selhalo.');
             } else {
                 $report->setIp($request->getClientIp());
                 $report->setManual($manual);

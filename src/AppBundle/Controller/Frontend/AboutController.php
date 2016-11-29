@@ -27,4 +27,13 @@ class AboutController extends Controller
             return array('changelog' => Yaml::parse($file->getContents()));
         }
     }
+
+    /**
+     * @Route("/informace/autori", name="frontend_about_authors")
+     * @Template("frontend/about/authors.twig")
+     */
+    public function authorsAction()
+    {
+
+    }
 }

@@ -1,0 +1,114 @@
+{% extends 'layout_front.twig' %}
+{% block title %}Changelog{% endblock %}
+{% block body %}
+
+    <div class="container" id="about-authors">
+        {# Authors #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Autoři
+                    <span>www.skoda-felicia.eu</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="{{ asset('images/authors/raito.jpg') }}" alt="Raito"/>
+                    <div class="caption">
+                        <h3>Raito</h3>
+                        <p>Vývojář celé této srandy, autor grafického návrhu, "ruční přepisovač" kompletní dílenské příručky, majitel asi 50ti aut včetně několika Felicií.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# //Authors #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+
+        {# About project #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    O projektu
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="no-margin">Proč tento web vznikl?</h3>
+                <p>Kvalitní materiály pro servis se bohužel až doposud nacházely všude po celém webu nekonzistentně,
+                    některé časem zastaraly, některé byly ve špatné podobě. Hlavní motivací byla digitalizace dílenské
+                    příručky, která se dochovala pouze v PDF podobě - tzn. bez vyhledvání, možností kloudně kopírovat
+                    text, navíc neprakticky jako několik objemných PDF souborů.</p>
+                <p>Postupem času se na tento web připojilo i několik dalších funkčních obsahových částí. Jednou z nich
+                    je například odpověď na jednoduché, přesto neustále kladené otázky majitelů tohoto zatím stále hojně
+                    rozšířeného vozu. Je dost možné, že za několik dalších let už tyto návody a postupy budou sloužit
+                    leda vášnivým majitelům posledních několika málo kousků.</p>
+
+                <h3>Mám pocit, že vidím jen špičku ledovce, je to pravda?</h3>
+                <p>Trochu. To co běžný uživatel tohoto webu vidí je frontend, víceméně jen rozhrání pro přístup k
+                    databázi a jejím datům. Za tím vším ale stojí backend systém, který umožňuje správu obsahu, vašich
+                    připomínek, formátování, práci s obrázky a další.</p>
+
+                <h3>Technicky řečeno, "na čem tohle všechno běží"?</h3>
+                <p>Pokud se budeme bavit o hardware, je to celkem bezpředmětné. Jako autor nevidím na stroje, které se
+                    navíc pravidelně mění za výkonější. Co se ale týče software, zde už můžu zcela konkrétně uvést
+                    použité technologie:</p>
+                <ul>
+                    <li>Celá aplikace je napsaná ve frameworku Symfony 3 na PHP 7</li>
+                    <li>Použitá je celá řada knihoven:
+
+                        <ul>
+                            <li>Doctrine 2 ORM</li>
+                            <li>Gedmo Doctrine Extensions</li>
+                            <li>Twig template engine</li>
+                            <li>Google reCAPTCHA</li>
+                            <li>Font Awesome 4</li>
+                            <li>jQuery 3</li>
+                            <li>lightgallery</li>
+                            <li>Bootstrap 3</li>
+                            <li>a spousty dalších...</li>
+                        </ul>
+                    </li>
+                    <li>Šablony plně využívají HTML5 a CSS3</li>
+                    <li>Databázový systém je zatím z důvodu hostingu MySQL, plánuji však přesun na PostgreSQL</li>
+                    <li>Celá aplikace, vyjma knihoven, je dílem autora, nebylo použito žádné existující CMS řešení</li>
+                </ul>
+
+                <h3>Z čeho je placený server hosting a doména?</h3>
+                <p>Veškeré výdaje na provoz tohoto webu platím jako autor sám. Pokud ti někdy nějaká část tohoto webu
+                    pomohla nebo ušetřila čas tak mi můžeš přispět na chod webu tlačítkem Donate, viz. následující
+                    odstavec. Pokud se nahromadí více příspěvků dovyrobím jako díky pro dárce síň slávy. Osobně vnímám
+                    reklamu pouze jako negativní vliv na člověka,
+                    proto zde nikde žádné otravné odkazy nenajdete.</p>
+
+                <h3 id="donate">Můžu nějak přispět/finančně poděkovat?</h3>
+                <p>Pro zaslání libovolného finančního obnosu jakožto poděkování můžete použít bezpečnou platební bránu PayPal pomocí tohoto tlačítka:</p>
+
+                <div class="text-center">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+                        <input type="image" id="paypal-button" src="{{ asset('images/donate.jpg') }}" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+
+                <p>Pokud z nějakého důvodu nedůvěřujete platbám přes internet můžete použít přímé bankovní spojení a poslat příspěvek na:</p>
+                <p>Číslo účtu: <strong>1464562022 / 3030</strong> (AirBank)
+                    <br/>
+                    VS: <strong>131619</strong>
+                </p>
+                <p>a do poznámky pro příjemce tvoje jméno nebo email, pokud chceš být uveřejněn v síni slávy.
+                </p>
+            </div>
+        </div>
+        {# //About project #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+    </div>
+
+{% endblock %}
