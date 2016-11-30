@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20161124163204 extends AbstractMigration implements ContainerAwareInterface
+class Version20161130200753 extends AbstractMigration implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
@@ -27,31 +27,28 @@ class Version20161124163204 extends AbstractMigration implements ContainerAwareI
         $em = $this->container->get('doctrine.orm.entity_manager');
 
         $manual = new Manual();
-        $manual->setTitle('Spojkový pedál: Kontrola polohy, nastavení');
+        $manual->setTitle('Kontrola stavu převodového oleje');
         $manual->setContent(<<<'TAG'
                 <div class="panel panel-default">
-                    <div class="panel-heading">Výchozí podmínky</div>
+                    <div class="panel-heading">Upozornění</div>
                     <div class="panel-body">
-                        <ul>
-                            <li>Spojkový pedál bez vůle</li>
-                            <li>Spojkový pedál v klidové poloze</li>
-                        </ul>
+                        <p>Při kontrole stavu hladiny převodového oleje musí vozidlo stát na vodorovné ploše.</p>
                     </div>
                 </div>
 
-                <h4 class="page-header">Seřizovací hodnota</h4>
-                <p>Spojkový pedál 0 &plusmn; 3 mm vůči brzdovému pedálu <span class="label label-default"><i
-                                class="fa fa-picture-o"></i> [1]</span></p>
+                <h4>Převodovka do 04.97</h4>
+                <p>Pro kontrolu stavu převodového oleje je třeba vymontovat a zamontovat náhon tachometru a změřit výšku hladiny "A" viz.
+                    <span class="label label-default"><i class="fa fa-picture-o"></i> [1]</span> která musí být nejméně A = 4 mm.
+                </p>
 
-                <h4 class="page-header">Seřízení polohy</h4>
+                <h4>Převodovka od 05.97</h4>
+                <p>Hladina oleje musí minimálně zasahovat do spodního okraje pastorku <span class="label label-default"><i class="fa fa-picture-o"></i> [2]</span>
+                </p>
+
                 <ol>
-                    <li>Před seřízením vytáhnout pojistku <span class="label label-default"><i
-                                    class="fa fa-picture-o"></i> [2] 2</span></li>
-                    <li>Polohu spojkového pedálu seřídit otáčením seřizovací matice <span class="label label-default"><i
-                                    class="fa fa-picture-o"></i> [2] 1</span></li>
-                    <li>Po seřízení nasadit pojistku <span class="label label-default"><i class="fa fa-picture-o"></i> [2] 2</span>
-                        zpět
-                    </li>
+                    <li>V případě nutnosti doplnit převodový olej otvorem náhonu tachometru</li>
+                    <li>Náhon tachometru opět namontovat</li>
+                    <li>Příložku náhonového hřídele tachometru opět namontovat a šroub utáhnout momentem 10 Nm</li>
                 </ol>
 TAG
         );
@@ -59,7 +56,7 @@ TAG
         $em->persist($manual);
 
         $image = new ManualImage();
-        $imageName = 's30-0001';
+        $imageName = 's02-0021';
         $image->setTitle($imageName);
         $image->setImageFile(
             new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
@@ -68,7 +65,7 @@ TAG
         $em->persist($image);
 
         $image = new ManualImage();
-        $imageName = 's30-0010';
+        $imageName = 's34-0220';
         $image->setTitle($imageName);
         $image->setImageFile(
             new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',

@@ -58,6 +58,8 @@ TAG
         $em->persist($image);
 
         $em->flush();
+
+        $this->addSql('SELECT `id` FROM `ext_log_entries` LIMIT 1'); //Ping for migrations.
     }
 
     /**

@@ -27,7 +27,8 @@ class Version20161123144630 extends AbstractMigration implements ContainerAwareI
         $manual = new Manual();
         $manual->setTitle('Přehled motorů');
         $manual->setFullWidth(true);
-        $manual->setContent('
+        $manual->setContent(<<<'TAG'
+
         <table class="table table-bordered table-condensed table-striped">
                     <thead>
                     <tr>
@@ -83,7 +84,7 @@ class Version20161123144630 extends AbstractMigration implements ContainerAwareI
                         <td>50 / 5000</td>
                     </tr>
                     <tr>
-                        <th>Max. točivý moment nM / rpm</th>
+                        <th>Max. točivý moment Nm / rpm</th>
                         <td>94 / 3000</td>
                         <td>94 / 3250</td>
                         <td>100 / 3750</td>
@@ -243,9 +244,13 @@ class Version20161123144630 extends AbstractMigration implements ContainerAwareI
                     <small><sup>6</sup> Podle cílové země, pokud ano tak pouze neřízený katalyzátor bez lambda sondy
                     </small>
                 </p>
-        ');
+        
+TAG
+        );
         $em->persist($manual);
         $em->flush();
+
+        $this->addSql('SELECT `id` FROM `ext_log_entries` LIMIT 1'); //Ping for migrations.
     }
 
 

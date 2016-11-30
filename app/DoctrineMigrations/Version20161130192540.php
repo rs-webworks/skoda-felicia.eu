@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20161124163204 extends AbstractMigration implements ContainerAwareInterface
+class Version20161130192540 extends AbstractMigration implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
@@ -23,43 +23,44 @@ class Version20161124163204 extends AbstractMigration implements ContainerAwareI
      */
     public function up(Schema $schema)
     {
+
         /** @var EntityManager $em */
         $em = $this->container->get('doctrine.orm.entity_manager');
 
         $manual = new Manual();
-        $manual->setTitle('Spojkový pedál: Kontrola polohy, nastavení');
+        $manual->setTitle('Výměna oleje v převodovce');
         $manual->setContent(<<<'TAG'
-                <div class="panel panel-default">
-                    <div class="panel-heading">Výchozí podmínky</div>
-                    <div class="panel-body">
-                        <ul>
-                            <li>Spojkový pedál bez vůle</li>
-                            <li>Spojkový pedál v klidové poloze</li>
-                        </ul>
-                    </div>
-                </div>
+                <p>Výměnu oleje provádět pouze když má motor provozní teplotu, jedině tak je zajištěna dostatečná
+                    tekutost oleje a možnost jeho dokonalého vpuštění.</p>
+                <p>Vždy vyměnit těsnící kroužek vypouštěcího šroubu.</p>
 
-                <h4 class="page-header">Seřizovací hodnota</h4>
-                <p>Spojkový pedál 0 &plusmn; 3 mm vůči brzdovému pedálu <span class="label label-default"><i
-                                class="fa fa-picture-o"></i> [1]</span></p>
-
-                <h4 class="page-header">Seřízení polohy</h4>
+                <h4>Vypuštění převodového oleje</h4>
                 <ol>
-                    <li>Před seřízením vytáhnout pojistku <span class="label label-default"><i
-                                    class="fa fa-picture-o"></i> [2] 2</span></li>
-                    <li>Polohu spojkového pedálu seřídit otáčením seřizovací matice <span class="label label-default"><i
-                                    class="fa fa-picture-o"></i> [2] 1</span></li>
-                    <li>Po seřízení nasadit pojistku <span class="label label-default"><i class="fa fa-picture-o"></i> [2] 2</span>
-                        zpět
+                    <li>Vypouštěcí šroub <span class="label label-default"><i class="fa fa-picture-o"></i> [1]</span>
+                        ve spodní části převodovky vyšroubovat a olej vypustit
                     </li>
+                    <li>Vypouštěcí šroub opět zašroubovat a utáhnout momentem 35 Nm</li>
+                    <li>Vymontovat hřídel náhonu tachometru</li>
+                    <li>K tomu je třeba odšroubovat upevňovací šroub příložky a vyjmout hřídel náhonu tachometru
+                        <span class="label label-default"><i class="fa fa-picture-o"></i> [2]</span></li>
+                    <li>Vzniklým otvorem naplnit převodovku olejem v množství <strong>2,4 litru</strong></li>
                 </ol>
+
+                <h4>Specifikace převodového oleje</h4>
+                <span>API-GL 4</span>
+                <ul>
+                    <li>SAE 75 W</li>
+                    <li>SAE 75 W-80</li>
+                    <li>SAE 75 W-85</li>
+                    <li>SAE 75 W-90</li>
+                </ul>
 TAG
         );
         $manual->setFullWidth(false);
         $em->persist($manual);
 
         $image = new ManualImage();
-        $imageName = 's30-0001';
+        $imageName = 's02-0014';
         $image->setTitle($imageName);
         $image->setImageFile(
             new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
@@ -68,7 +69,7 @@ TAG
         $em->persist($image);
 
         $image = new ManualImage();
-        $imageName = 's30-0010';
+        $imageName = 's02-0022';
         $image->setTitle($imageName);
         $image->setImageFile(
             new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',

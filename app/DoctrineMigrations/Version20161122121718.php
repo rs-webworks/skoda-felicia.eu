@@ -50,6 +50,8 @@ class Version20161122121718 extends AbstractMigration implements ContainerAwareI
         $em->persist($engine);
 
         $em->flush();
+
+        $this->addSql('SELECT `id` FROM `ext_log_entries` LIMIT 1');
     }
 
     /**

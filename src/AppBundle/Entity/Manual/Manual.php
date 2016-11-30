@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Table(name="manual_pages")
+ * @ORM\Table(name="manual_pages", indexes={@ORM\Index(name="fulltext_index",columns={"content","title"})})
  * @ORM\Entity(repositoryClass="Gedmo\Sortable\Entity\Repository\SortableRepository")
  */
 class Manual
