@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "741255d0f504345deb04c4ceb0773a84",
-    "content-hash": "b148e4bd10b96f81bd7f4647e3496d60",
+    "hash": "7c59b8b2072bd83f2a856d824845add2",
+    "content-hash": "4af0ec2fe7ee6a58662ac38c313c5e10",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -46,56 +46,6 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
-        },
-        {
-            "name": "ciricihq/match-against-bundle",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ciricihq/MatchAgainstBundle.git",
-                "reference": "e3d41a58571ad7a722caae49df8bcadf8aac8c60"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ciricihq/MatchAgainstBundle/zipball/e3d41a58571ad7a722caae49df8bcadf8aac8c60",
-                "reference": "e3d41a58571ad7a722caae49df8bcadf8aac8c60",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Cirici\\MatchAgainstBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Cirici New Media",
-                    "email": "info@cirici.com",
-                    "homepage": "http://cirici.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Genar Trias",
-                    "email": "genar@cirici.com",
-                    "homepage": "http://genar.me/"
-                }
-            ],
-            "description": " A search bundle for symfony, using MySQL FULLTEXT MATCH AGAINST",
-            "keywords": [
-                "Symfony2",
-                "full-text",
-                "match-against",
-                "mysql",
-                "symfony"
-            ],
-            "time": "2016-04-11 22:07:07"
         },
         {
             "name": "doctrine/annotations",
@@ -303,16 +253,16 @@
         },
         {
             "name": "doctrine/common",
-            "version": "v2.6.1",
+            "version": "v2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "a579557bc689580c19fee4e27487a67fe60defc0"
+                "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/a579557bc689580c19fee4e27487a67fe60defc0",
-                "reference": "a579557bc689580c19fee4e27487a67fe60defc0",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
+                "reference": "7bce00698899aa2c06fe7365c76e4d78ddb15fa3",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +322,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2015-12-25 13:18:31"
+            "time": "2016-11-30 16:50:46"
         },
         {
             "name": "doctrine/dbal",
@@ -1232,6 +1182,46 @@
                 "parameters management"
             ],
             "time": "2015-11-10 17:04:01"
+        },
+        {
+            "name": "isometriks/spam-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/isometriks/IsometriksSpamBundle.git",
+                "reference": "6750758208eacff872fb072843c39e0bda0a60f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/isometriks/IsometriksSpamBundle/zipball/6750758208eacff872fb072843c39e0bda0a60f7",
+                "reference": "6750758208eacff872fb072843c39e0bda0a60f7",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Isometriks\\Bundle\\SpamBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Craig Blanchette",
+                    "email": "craig.blanchette@gmail.com",
+                    "homepage": "http://isometriks.com"
+                },
+                {
+                    "name": "Patrik Pacin",
+                    "email": "github@exploit.cz",
+                    "homepage": "https://exploit.cz"
+                }
+            ],
+            "description": "Provides spam protection for Symfony3 forms",
+            "keywords": [
+                "spam",
+                "symfony3"
+            ],
+            "time": "2016-09-23 18:48:09"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2396,16 +2386,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.1.7",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "db1c32c7237a6594e5e1974524c973d18066b141"
+                "reference": "b96a144bc875684f3338f697687147a2696d73eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/db1c32c7237a6594e5e1974524c973d18066b141",
-                "reference": "db1c32c7237a6594e5e1974524c973d18066b141",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/b96a144bc875684f3338f697687147a2696d73eb",
+                "reference": "b96a144bc875684f3338f697687147a2696d73eb",
                 "shasum": ""
             },
             "require": {
@@ -2473,6 +2463,7 @@
                 "symfony/validator": "self.version",
                 "symfony/var-dumper": "self.version",
                 "symfony/web-profiler-bundle": "self.version",
+                "symfony/workflow": "self.version",
                 "symfony/yaml": "self.version"
             },
             "require-dev": {
@@ -2482,7 +2473,7 @@
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.4",
                 "doctrine/orm": "~2.4,>=2.4.5",
-                "egulias/email-validator": "~1.2,>=1.2.1",
+                "egulias/email-validator": "~1.2,>=1.2.8|~2.0",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection-docblock": "^3.0",
@@ -2494,7 +2485,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2533,7 +2524,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-11-21 02:44:44"
+            "time": "2016-11-30 08:46:24"
         },
         {
             "name": "twig/extensions",
@@ -2932,16 +2923,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.1.7",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "c80098acb81e604eb18030c5e444032ef948f9e7"
+                "reference": "a56acfdb96be7c82f4bcf16b7c77f1960690b0e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/c80098acb81e604eb18030c5e444032ef948f9e7",
-                "reference": "c80098acb81e604eb18030c5e444032ef948f9e7",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/a56acfdb96be7c82f4bcf16b7c77f1960690b0e2",
+                "reference": "a56acfdb96be7c82f4bcf16b7c77f1960690b0e2",
                 "shasum": ""
             },
             "require": {
@@ -2950,10 +2941,13 @@
             "suggest": {
                 "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
             },
+            "bin": [
+                "bin/simple-phpunit"
+            ],
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2983,7 +2977,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-11-17 10:59:24"
+            "time": "2016-11-25 22:54:21"
         }
     ],
     "aliases": [],

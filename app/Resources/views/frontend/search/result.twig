@@ -3,6 +3,13 @@
 {% block body %}
 
     <div class="container" id="search-result">
+
+        {% if form.errors is not empty %}
+            <div class="alert alert-danger has-error">
+                <i class="fa fa-fw fa-exclamation-triangle"></i> Antispamová ochrana: Formulář byl odeslán příliš rychle
+            </div>
+        {% endif %}
+
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">

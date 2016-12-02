@@ -2,34 +2,23 @@
 
 namespace Application\Migrations;
 
-use AppBundle\Entity\Manual\Manual;
-use AppBundle\Entity\Manual\ManualImage;
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20161125131620 extends AbstractMigration implements ContainerAwareInterface
+class Version20161125131620 extends AbstractMigration
 {
-    use ContainerAwareTrait;
 
     /**
      * @param Schema $schema
      */
     public function up(Schema $schema)
     {
-        /** @var EntityManager $em */
-        $em = $this->container->get('doctrine.orm.entity_manager');
-
-        $manual = new Manual();
-        $manual->setTitle('Kontrola opotřebení a napnutí řemene alternátoru');
-        $manual->setContent(<<<'TAG'
-                <h4 class="no-margin page-header">Klínový řemen - kontrola opotřebení</h4>
+        $this->addSql(<<<TAG
+            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (6,	'Kontrola opotřebení a napnutí řemene alternátoru',	'                <h4 class="no-margin page-header">Klínový řemen - kontrola opotřebení</h4>
                 <p>Zkontrolujte opotřebení na:</p>
                 <ul>
                     <li>Trhliny spodní části (natržení, lomy v jádru, lomy v příčném řezu).</li>
@@ -169,78 +158,24 @@ class Version20161125131620 extends AbstractMigration implements ContainerAwareI
                         (asi 10 otáček).
                     </li>
                     <li>Přitáhnout nejdříve spodní a potom horní šroub alternátoru momentem 23 Nm.</li>
-                </ol>
+                </ol>',	5,	'kontrola-opotrebeni-a-napnuti-remene-alternatoru',	0);
 TAG
         );
-        $manual->setFullWidth(false);
-        $em->persist($manual);
 
-        $image = new ManualImage();
-        $imageName = 's02-0023';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
+        $images = array(
+            's02-0023',
+            's02-0012',
+            's02-0025',
+            's27-0015',
+            's02-0024',
+            's27-0014',
+            's13-0029'
+        );
 
-        $image = new ManualImage();
-        $imageName = 's02-0012';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-
-        $image = new ManualImage();
-        $imageName = 's02-0025';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-
-        $image = new ManualImage();
-        $imageName = 's27-0015';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-
-        $image = new ManualImage();
-        $imageName = 's02-0024';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-
-        $image = new ManualImage();
-        $imageName = 's27-0014';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-
-        $image = new ManualImage();
-        $imageName = 's13-0029';
-        $image->setTitle($imageName);
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/' . $imageName . '.png',
-                $imageName . '.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-
-        $em->flush();
-
-        $this->addSql('SELECT `id` FROM `ext_log_entries` LIMIT 1'); //Ping for migrations.
+        $i = 0;
+        foreach ($images as $image) {
+            $this->addSql("INSERT INTO `manual_images` (`manual_id`, `title`, `image_name`, `position`) VALUES (6,	'$image',	'$image.png',	" . $i++ . ");");
+        }
     }
 
     /**

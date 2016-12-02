@@ -26,6 +26,8 @@ class SearchForm extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults(array(
+            'timed_spam' => true,
+        ));
     }
 }

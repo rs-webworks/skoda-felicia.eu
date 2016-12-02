@@ -44,7 +44,8 @@ class SearchController extends Controller
 
         return $this->render('frontend/search/result.twig', array(
             'query' => $query,
-            'results' => $results
+            'results' => $results,
+            'form' => $form
         ));
     }
 }

@@ -2,21 +2,14 @@
 
 namespace Application\Migrations;
 
-use AppBundle\Entity\Manual\Manual;
-use AppBundle\Entity\Manual\ManualImage;
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20161123151122 extends AbstractMigration implements ContainerAwareInterface
+class Version20161123151122 extends AbstractMigration
 {
-    use ContainerAwareTrait;
 
 
     /**
@@ -24,13 +17,9 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
      */
     public function up(Schema $schema)
     {
-        /** @var EntityManager $em */
-        $em = $this->container->get('doctrine.orm.entity_manager');
-
-        $manual = new Manual();
-        $manual->setTitle('Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy od 01.95)');
-        $manual->setContent(<<<'TAG'
-                <div class="panel panel-default">
+        $this->addSql(<<<TAG
+            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (2,	'Připojení diagnostického přístroje VAG a přečtění paměti závad (vozy od 01.95)',	'                <div class="panel panel-default">
                     <div class="panel-heading">Potřebné speciální nářadí a pomůcky</div>
                     <div class="panel-body">
                         <ul>
@@ -113,22 +102,11 @@ class Version20161123151122 extends AbstractMigration implements ContainerAwareI
                         <p>Sledujte, zda odpověděly řídící jednotky všech na voze namontovaných systémů. Pokud některá
                             řídící jednotka neodpoví, zkontrolovat "K" vedení k diagnostické svorkovnici.</p>
                     </div>
-                </div>
+                </div>',	1,	'pripojeni-diagnostickeho-pristroje-vag-a-precteni-pameti-zavad-vozy-od-01-95',	0);
 TAG
         );
-        $manual->setFullWidth(false);
-        $em->persist($manual);
 
-        $image = new ManualImage();
-        $image->setTitle('s01-0019');
-        $image->setImageFile(
-            new UploadedFile($this->container->getParameter('kernel.root_dir') . '/../web/images/preload/s01-0019.png',
-                's01-0019.png', null, null, null, true));
-        $image->setManual($manual);
-        $em->persist($image);
-        $em->flush();
-
-        $this->addSql('SELECT `id` FROM `ext_log_entries` LIMIT 1'); //Ping for migrations.
+        $this->addSql("INSERT INTO `manual_images` (`manual_id`, `title`, `image_name`, `position`) VALUES (2,	's01-0019',	's01-0019.png',	0);");
     }
 
     /**

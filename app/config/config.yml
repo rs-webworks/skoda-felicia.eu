@@ -126,3 +126,9 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
+isometriks_spam:
+    timed:
+        min: 7
+        max: 3600
+        global: false
+        message: 'Ochrana proti spamu: Formulář byl odeslán příliš rychle.'
