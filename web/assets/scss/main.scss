@@ -349,6 +349,10 @@ header {
 
 // NAVBAR
 // ---------------------------------------------------------------------------------------------------------------------
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: $colorMainDark;
+}
+
 .navbar {
   background-color: transparentize($colorMain, 0.3);
   transition: background-color 1s ease;
@@ -400,6 +404,30 @@ header {
         background-color: $colorMainDark !important;
         color: $colorWhite;
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu {
+    position: absolute;
+    background-color: $colorWhite;
+    width: 100%;
+    color: $colorShadow;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px;
+
+    li {
+      & > a {
+        color: $colorDark !important;
+        padding: 20px;
+
+        &:hover {
+          background-color: $colorMain !important;
+          color: $colorWhite !important;
+        }
+      }
+
     }
   }
 }
@@ -472,6 +500,12 @@ header {
 #about-authors {
   #paypal-button {
     margin: 30px 0;
+  }
+
+  .author {
+    h2 {
+      padding-bottom: 0px;
+    }
   }
 }
 

@@ -246,6 +246,9 @@ header {
       font-size: 0.6em;
       font-weight: bold; }
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: #2d865e; }
+
 .navbar {
   background-color: rgba(78, 216, 154, 0.7);
   transition: background-color 1s ease;
@@ -278,6 +281,20 @@ header {
       background-color: #2d865e !important;
       color: #ffffff; }
 
+@media (max-width: 767px) {
+  .navbar-nav .open .dropdown-menu {
+    position: absolute;
+    background-color: #ffffff;
+    width: 100%;
+    color: #757575;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px; }
+    .navbar-nav .open .dropdown-menu li > a {
+      color: #252525 !important;
+      padding: 20px; }
+      .navbar-nav .open .dropdown-menu li > a:hover {
+        background-color: #4ED89A !important;
+        color: #ffffff !important; } }
 .main-nav-small li a {
   padding: 20px 100px 20px 30px; }
   .main-nav-small li a:hover {
@@ -313,6 +330,8 @@ header {
 
 #about-authors #paypal-button {
   margin: 30px 0; }
+#about-authors .author h2 {
+  padding-bottom: 0px; }
 
 footer {
   padding: 50px 0;
