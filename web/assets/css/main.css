@@ -314,7 +314,10 @@ header {
   color: #252525 !important;
   text-transform: none;
   padding: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  white-space: normal; }
+  #home-index .navbox .btn hr {
+    margin: 5px 0; }
   #home-index .navbox .btn:hover {
     color: #2d865e !important; }
 

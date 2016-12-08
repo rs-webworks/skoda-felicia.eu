@@ -25,6 +25,11 @@ services:
          tags:
              - { name: twig.extension }
 
+    twig.extension.stringloader:
+           class: Twig_Extension_StringLoader
+           tags:
+               - { name: twig.extension }
+
 
     # Doctrine GEDMO extensions
     # ------------------------------------------------------------------------------------------------------------------
