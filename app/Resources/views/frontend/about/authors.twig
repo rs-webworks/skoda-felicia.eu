@@ -41,32 +41,22 @@
         <div class="row">
             <div class="col-xs-12">
                 <h3 class="no-margin">Proč tento web vznikl?</h3>
-                <p>Kvalitní materiály pro servis se bohužel až doposud nacházely všude po celém webu nekonzistentně,
-                    některé časem zastaraly, některé byly ve špatné podobě. Hlavní motivací byla digitalizace dílenské
-                    příručky, která se dochovala pouze v PDF podobě - tzn. bez vyhledvání, možností kloudně kopírovat
+                <p>Kvalitní materiály pro servis Felicie se bohužel až doposud nacházely různě po celém webu zcela nekonzistentně,
+                    některé se časem staly nepoužitelné, spousta z nich byla i ve špatné digitální podobě. Hlavní motivací byla digitalizace dílenské
+                    příručky, která se dochovala pouze v PDF - tzn. bez vyhledvání, možností kloudně kopírovat
                     text, navíc neprakticky jako několik objemných PDF souborů.</p>
                 <p>Postupem času se na tento web připojilo i několik dalších funkčních obsahových částí. Jednou z nich
-                    je například odpověď na jednoduché, přesto neustále kladené otázky majitelů tohoto zatím stále hojně
+                    je například odpověď na jednoduché, přesto neustále kladené otázky majitelů tohoto stále hojně
                     rozšířeného vozu. Je dost možné, že za několik dalších let už tyto návody a postupy budou sloužit
                     leda vášnivým majitelům posledních několika málo kousků.</p>
 
-                <h3>Mám pocit, že vidím jen špičku ledovce, je to pravda?</h3>
-                <p>Trochu. To co běžný uživatel tohoto webu vidí je frontend, víceméně jen rozhrání pro přístup k
-                    databázi a jejím datům. Za tím vším ale stojí backend systém, který umožňuje správu obsahu, vašich
-                    připomínek, formátování, práci s obrázky a další.</p>
-
-                <h3>Technicky řečeno, "na čem tohle všechno běží"?</h3>
-                <p>Pokud se budeme bavit o hardware, je to celkem bezpředmětné. Jako autor nevidím na stroje, které se
-                    navíc pravidelně mění za výkonější. Co se ale týče software, zde už můžu zcela konkrétně uvést
-                    použité technologie:</p>
+                <h3>Technická data webu</h3>
                 <ul>
                     <li>Celá aplikace je napsaná ve frameworku Symfony 3 na PHP 7</li>
                     <li>Použitá je celá řada knihoven:
 
                         <ul>
-                            <li>Doctrine 2 ORM</li>
-                            <li>Gedmo Doctrine Extensions</li>
-                            <li>Twig template engine</li>
+                            <li>Doctrine 2 ORM + GEDMO ext.</li>
                             <li>Google reCAPTCHA</li>
                             <li>Font Awesome 4</li>
                             <li>jQuery 3</li>
@@ -75,20 +65,18 @@
                             <li>a spousty dalších...</li>
                         </ul>
                     </li>
-                    <li>Šablony plně využívají HTML5 a CSS3</li>
-                    <li>Databázový systém je zatím z důvodu hostingu MySQL, plánuji však přesun na PostgreSQL</li>
+                    <li>Šablony jsou pasné v Twigu a plně HTML5 + CSS3</li>
                     <li>Celá aplikace, vyjma knihoven, je dílem autora, nebylo použito žádné existující CMS řešení</li>
                 </ul>
 
                 <h3>Z čeho je placený server hosting a doména?</h3>
                 <p>Veškeré výdaje na provoz tohoto webu platím jako autor sám. Pokud ti někdy nějaká část tohoto webu
                     pomohla nebo ušetřila čas tak mi můžeš přispět na chod webu tlačítkem Donate, viz. následující
-                    odstavec. Pokud se nahromadí více příspěvků dovyrobím jako díky pro dárce síň slávy. Osobně vnímám
-                    reklamu pouze jako negativní vliv na člověka,
-                    proto zde nikde žádné otravné odkazy nenajdete.</p>
+                    odstavec. Časem je plánováno i přidání Síně slávy, která bude sloužit jako jmenovité poděkování
+                    všem kdož přispěli, ať už finančně nebo obsahově.</p>
 
-                <h3 id="donate">Můžu nějak přispět/finančně poděkovat?</h3>
-                <p>Pro zaslání libovolného finančního obnosu jakožto poděkování můžete použít bezpečnou platební bránu PayPal pomocí tohoto tlačítka:</p>
+                <h3 id="donate">Příspěvek na chod webu</h3>
+                <p>Pro zaslání libovolného finančního obnosu jakožto poděkování/podporu můžete použít bezpečnou platební bránu PayPal pomocí tohoto tlačítka:</p>
 
                 <div class="text-center">
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -100,12 +88,14 @@
                     </form>
                 </div>
 
+                <p>Veškeré příspěvky jsou využity na další rozšiřování funkcinality a chod stránek.</p>
+
                 <p>Pokud z nějakého důvodu nedůvěřujete platbám přes internet můžete použít přímé bankovní spojení a poslat příspěvek na:</p>
                 <p>Číslo účtu: <strong>1464562022 / 3030</strong> (AirBank)
                     <br/>
                     VS: <strong>131619</strong>
                 </p>
-                <p>a do poznámky pro příjemce tvoje jméno nebo email, pokud chceš být uveřejněn v síni slávy.
+                <p>a do poznámky pro příjemce tvoje jméno nebo email, pokud chceš být uveřejněn v plánované Síni slávy.
                 </p>
             </div>
         </div>
@@ -135,7 +125,7 @@
                         <a href="https://www.facebook.com/Akehanareru">Facebook</a>
                     </li>
                     <li>
-                        <i class="fa fa-fw fa-facebook-official"></i>&nbsp;
+                        <i class="fa fa-fw fa-car"></i>&nbsp;
                         <a href="https://www.drivetribe.com/t/FxOaFrdeQwO13l_6wIl-kg/">Drivetribe</a>
                     </li>
                 </ul>
