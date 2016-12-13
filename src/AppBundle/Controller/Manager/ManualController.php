@@ -37,6 +37,19 @@ class ManualController extends Controller
     }
 
     /**
+     * @param Manual $manual
+     * @return array
+     * @Route("/manager/manual/migration/{id}", name="manager_manual_migration", requirements={"id": "\d+"})
+     * @Template("manager/manual/migration.twig")
+     */
+    public function manualMigrationAction(Manual $manual)
+    {
+        return array(
+            'manual' => $manual
+        );
+    }
+
+    /**
      * @Route("/manager/manual/images/delete/{id}", name="manager_manual_images_delete", requirements={"id": "\d+"})
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -185,7 +198,8 @@ class ManualController extends Controller
      * @Route("/manager/manual/reports/", name="manager_manual_reports")
      * @Template("manager/manual/reports.twig")
      */
-    public function manualReportsAction(){
+    public function manualReportsAction()
+    {
         return array(
             'reports' => $this->get('app.service.report')->getAll()
         );
@@ -194,7 +208,8 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/report/toggle-status/{id}", name="manager_manual_report_toggle", requirements={"id": "\d+"})
      */
-    public function manualReportToggleAction($id){
+    public function manualReportToggleAction($id)
+    {
         $this->get('app.service.report')->toggle($id);
         return $this->redirectToRoute('manager_manual_reports');
     }

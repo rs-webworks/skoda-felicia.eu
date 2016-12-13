@@ -24,7 +24,7 @@ class Version20161203115619 extends AbstractMigration
               <li>Výpustný šroub očistit, nasadit nový těsnící kroužek a utáhnout momentem <strong>65 Nm</strong>
               </li>
               <li>Pokud je to zapotřebí, postupujte dále dle postupu
-                <a href="{{ url('frontend_manual_show', {"slug": "vymena-olejoveho-filtru"}) }}">Výměna olejového filtru</a>
+                <a href="{{ url("frontend_manual_show", {"slug": "vymena-olejoveho-filtru"}) }}">Výměna olejového filtru</a>
               </li>
               <li>Nalít olej podle dané specifikace</li>
               <li>Uzávěr oleje opět nasadit</li>
@@ -159,7 +159,6 @@ class Version20161203115619 extends AbstractMigration
             <p>Při doplnění mohou být oleje i navzájem míchány.</p>',	11,	'vymena-motoroveho-oleje',	0);
 TAG
         );
-
     }
 
     /**
