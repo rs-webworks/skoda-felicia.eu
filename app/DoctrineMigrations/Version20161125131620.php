@@ -17,8 +17,8 @@ class Version20161125131620 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-            (6,	'Kontrola opotřebení a napnutí řemene alternátoru',	'                <h4 class="no-margin page-header">Klínový řemen - kontrola opotřebení</h4>
+            INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (6, 2,	'Kontrola opotřebení a napnutí řemene alternátoru',	'                <h4 class="no-margin page-header">Klínový řemen - kontrola opotřebení</h4>
                 <p>Zkontrolujte opotřebení na:</p>
                 <ul>
                     <li>Trhliny spodní části (natržení, lomy v jádru, lomy v příčném řezu).</li>

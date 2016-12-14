@@ -128,7 +128,7 @@ vich_uploader:
 
 isometriks_spam:
     timed:
-        min: 7
+        min: 4
         max: 3600
         global: false
         message: 'Ochrana proti spamu: Formulář byl odeslán příliš rychle.'

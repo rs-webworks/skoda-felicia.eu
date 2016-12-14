@@ -16,8 +16,8 @@
         <label for="code">Vygenerovaný kód:</label>
         <textarea id="code" name="code" id="" cols="30" rows="20" class="form-control">
             $this->addSql(<<<TAG
-                    INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-                    ({{ manual.getId() }}, '{{ manual.getTitle() }}', '{{ manual.getContent() }}', {{ manual.getPosition() }}, '{{ manual.getSlug() }}', 0);
+                    INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+                    ({{ manual.getId() }}, {{ manual.getCategory().getId() }}, '{{ manual.getTitle() }}', '{{ manual.getContent() }}', {{ manual.getPosition() }}, '{{ manual.getSlug() }}', 0);
 TAG
             );
 

@@ -16,8 +16,8 @@ class Version20161213143858 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-                    INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-                    (13, 'Výměna čističe paliva - palivového filtru', '<div class="panel panel-default">
+                    INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+                    (13,2, 'Výměna čističe paliva - palivového filtru', '<div class="panel panel-default">
                     <div class="panel-heading">Upozornění</div>
                     <div class="panel-body">
                         <ul>
@@ -34,22 +34,22 @@ class Version20161213143858 extends AbstractMigration
                     <span class="label label-default"><i class="fa fa-picture-o"></i> [1]</span></p>
                 <p>Obrázek znázorňuje jeho umístění po demontáži tepelné clony výfukového potrubí</p>
 
-                <ul>
+                <ol>
                     <li>Vyšroubovat připevňovací šrouby tepelné clony
                         <span class="label label-default"><i class="fa fa-picture-o"></i> [2] šipky</span> a tepelnou clonu vyjmout
                     </li>
                     <li>Povolit páskové spony na čistič paliva a stáhnout hadice</li>
                     <li>Povolit šroub připevňovací objímky a čistič vyjmout</li>
-                </ul>
+                </ol>
 
                 <h4>Montáž čističe paliva</h4>
-                <ul>
+                <ol>
                     <li>Montáž se provede opačným postupem než demontáž</li>
                     <li>Při montáži je třeba respektovat směr průtoku paliva čističem. Směr je vyznačen na tělese čističe šipkou
                         <span class="label label-default"><i class="fa fa-picture-o"></i> [1]</span></li>
                     <li>Při zpětném nasazování tepelné clony dbejte na to, aby se nedotýkala nikde palivového potrubí</li>
                     <li>Provést kontrolu palivového systému na těsnost</li>
-                </ul>', 12, 'vymena-cistice-paliva-palivoveho-filtru', 0);
+                </ol>', 12, 'vymena-cistice-paliva-palivoveho-filtru', 0);
 TAG
         );
 

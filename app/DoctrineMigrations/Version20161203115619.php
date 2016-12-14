@@ -16,8 +16,8 @@ class Version20161203115619 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-            (12,	'Výměna motorového oleje',	'<p>Výměnu oleje je potřeba provádět pokud možno při provozní teplotě motoru.</p>
+            INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (12,2,	'Výměna motorového oleje',	'<p>Výměnu oleje je potřeba provádět pokud možno při provozní teplotě motoru.</p>
             <ol>
               <li>Sejmout uzávěr oleje</li>
               <li>Vyšroubovat vypouštěcí šroub ve spodním víku motoru a vytékající olej zachytit do příslušné nádoby</li>

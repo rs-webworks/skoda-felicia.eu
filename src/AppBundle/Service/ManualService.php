@@ -5,7 +5,6 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Manual\Manual;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query\ResultSetMapping;
 
 class ManualService
 {
@@ -47,6 +46,15 @@ class ManualService
         }
 
         $results = $this->em->getRepository('AppBundle:Manual\Manual')->findBy(array(), array('position' => 'ASC'));
+        return $results;
+    }
+
+    /**
+     * @return \AppBundle\Entity\Manual\ManualCategory[]|array
+     */
+    public function getAllByCategory()
+    {
+        $results = $this->em->getRepository('AppBundle:Manual\ManualCategory')->findAll();
         return $results;
     }
 

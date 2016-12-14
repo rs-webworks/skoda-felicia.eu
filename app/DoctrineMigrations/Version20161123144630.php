@@ -17,8 +17,8 @@ class Version20161123144630 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-            (1,	'Přehled motorů',	'
+            INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (1, 1,	'Přehled motorů',	'
             <table class="table table-bordered table-condensed table-striped">
                         <thead>
                         <tr>

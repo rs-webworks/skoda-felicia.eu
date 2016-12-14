@@ -17,8 +17,8 @@ class Version20161124165304 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-            (5,	'Brzdová soustava: Funkce a nastavení',	'                <h4 class="no-margin page-header">Ruční brzda</h4>
+            INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (5, 2,	'Brzdová soustava: Funkce a nastavení',	'                <h4 class="no-margin page-header">Ruční brzda</h4>
                 <p>Seřízení má být provedeno tak, aby páka zapadla při síle 100 + 40 N do druhého zářezu.</p>
                 <p>Vahadlo <span class="label label-default"><i class="fa fa-picture-o"></i> [1] šipka</span> musí být
                     vždy kolmo k páce ruční brzdy.</p>

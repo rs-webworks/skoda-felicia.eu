@@ -20,6 +20,11 @@ class ManualForm extends AbstractType
     {
         $builder
             ->add('title', TextType::class, array('label' => 'Titulek kapitoly'))
+            ->add('category', EntityType::class, array(
+                'label' => 'Kategorie',
+                'class' => 'AppBundle\Entity\Manual\ManualCategory',
+                'choice_label' => 'title'
+            ))
             ->add('engines', EntityType::class, array(
                 'label' => 'Motorizace',
                 'class' => 'AppBundle\Entity\Engine',

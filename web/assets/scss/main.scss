@@ -163,10 +163,10 @@ a:active, a:hover {
 
 tr.tr-heading {
   td {
-    padding: 3px 5px !important;
+    padding: 5px 10px !important;
   }
   background-color: $colorLightShadow;
-  //color: $colorShadow;
+  font-weight: bold;
 }
 
 #top {

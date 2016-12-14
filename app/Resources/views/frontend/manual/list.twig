@@ -28,10 +28,9 @@
                     zdigitalizované podobě, může zažádat o její převedení pomocí
                     <a href="{{ url('frontend_about_authors') }}">kontaktů</a> na správce.
                 </p>
-                <p><strong>Dílenská příručka není servisní manuál</strong>, jedná se o soubor postupů prováděných v
-                    servisech pro
-                    kontrolu a seřízení vozidla. Pokud máte zájem o návody typu: výměna dílů, oprava, demontáž a montáž
-                    atd., pokračujte do sekce <a
+                <p>
+                    <strong>Dílenská příručka</strong> je soubor postupů vydaných oficiálně výrobcem vozidla pro autorizované servisy. Pokud máte zájem o uživatelské rady, návody na vylepšení jízdních vlastností, osvědčené a moderní fanouškovské postupy, pokračujte do sekce
+                    <a
                             href="#">Návody</a>.</p>
                 <p>Jestliže hledáte jednoduché odpovědi na jednoduché otázky jako například: <i>Jakou použít nemrznoucí
                         směs?</i>, <i>Jakým způsobem vyřadit imobilizér?</i>, <i>Jaká je nejlepší baterie pro motor
@@ -89,7 +88,7 @@
                         {# @var engine \AppBundle\Entity\Engine #}
                         {% for engine in engines %}
                             <a href="{{ url('frontend_manual', {'engine': engine.getSlug()}) }}#obsah"
-                               class="btn btn-sm {% if engine.getSlug() == filterEngine %}btn-main-dark{% else %}btn-main{% endif %}">{{ engine.getName() }}</a>
+                               class="btn btn-sm {% if engine == filterEngine %}btn-main-dark{% else %}btn-main{% endif %}">{{ engine.getName() }}</a>
                         {% endfor %}
                         <a href="{{ url('frontend_manual') }}#obsah"
                            class="btn btn-sm btn-default">Vše</a>
@@ -104,18 +103,25 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {# @var page \AppBundle\Entity\Manual\Manual #}
-                    {% for page in manual %}
-                        <tr data-id="{{ page.getId() }}">
-                            <td>
-                                <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
-                            </td>
-                            <td>
-                                {% for engine in page.getEngines() %}
-                                    <span class="label label-main">{{ engine.getName() }}</span>
-                                {% endfor %}
-                            </td>
+                    {% for category in manualCategories %}
+                        <tr class="tr-heading">
+                            <td colspan="2">{{ category.getTitle() }}</td>
                         </tr>
+                        {# @var page \AppBundle\Entity\Manual\Manual #}
+                        {% for page in category.getManuals() %}
+                            {% if page.hasEngine(filterEngine) %}
+                                <tr data-id="{{ page.getId() }}">
+                                    <td>
+                                        <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
+                                    </td>
+                                    <td>
+                                        {% for engine in page.getEngines() %}
+                                            <span class="label label-main">{{ engine.getName() }}</span>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>

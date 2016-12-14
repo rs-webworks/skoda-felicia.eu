@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Manual;
 
+use AppBundle\Entity\Engine;
 use AppBundle\Entity\Identifier;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,6 +22,13 @@ class Manual
      * @Assert\NotBlank(message="Toto pole musí být vyplněno")
      */
     private $title;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Manual\ManualCategory", inversedBy="manuals")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @Gedmo\SortableGroup
+     */
+    private $category;
 
     /**
      * @ORM\Column(type="text")
@@ -170,5 +178,38 @@ class Manual
         $this->fullWidth = $fullWidth;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @param Engine|null $searchEngine
+     * @return bool
+     */
+    public function hasEngine(Engine $searchEngine = null)
+    {
+        if ($searchEngine === null) {
+            return true;
+        }
+
+        foreach ($this->engines as $engine) {
+            if ($engine == $searchEngine) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

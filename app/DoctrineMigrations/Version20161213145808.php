@@ -16,8 +16,8 @@ class Version20161213145808 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-                    INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-                    (14, 'Výměna čističe paliva - palivového filtru', '<div class="panel panel-default">
+                    INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+                    (14,2, 'Výměna čističe paliva - palivového filtru', '<div class="panel panel-default">
                     <div class="panel-heading">Upozornění</div>
                     <div class="panel-body">
                         <ul>
@@ -33,17 +33,17 @@ class Version20161213145808 extends AbstractMigration
                 <p>Čistič paliva se nachází v motorovém prostoru v blízkosti posilovač brzd
                     <span class="label label-default"><i class="fa fa-picture-o"></i> [1]</span></p>
 
-                <ul>
+                <ol>
                     <li>Povolit páskové spony na čističi paliva a stáhnout hadice</li>
-                </ul>
+                </ol>
 
                 <h4>Montáž čističe paliva</h4>
-                <ul>
+                <ol>
                     <li>Montáž se provede opačným postupem než demontáž</li>
                     <li>Při montáži je třeba respektovat směr průtoku paliva čističem. Směr je vyznačen na tělese čističe šipkou
                         <span class="label label-default"><i class="fa fa-picture-o"></i> [1] šipky</span></li>
                     <li>Provést kontrolu palivového systému na těsnost</li>
-                </ul>', 13, 'vymena-cistice-paliva-palivoveho-filtru-1', 0);
+                </ol>', 13, 'vymena-cistice-paliva-palivoveho-filtru-1', 0);
 TAG
         );
 

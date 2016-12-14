@@ -17,8 +17,8 @@ class Version20161124163204 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-                INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-                (4,	'Spojkový pedál: Kontrola polohy, nastavení',	'                <div class="panel panel-default">
+                INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+                (4, 2,	'Spojkový pedál: Kontrola polohy, nastavení',	'                <div class="panel panel-default">
                     <div class="panel-heading">Výchozí podmínky</div>
                     <div class="panel-body">
                         <ul>

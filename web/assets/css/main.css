@@ -110,9 +110,10 @@ a:active, a:hover {
   color: #252525; }
 
 tr.tr-heading {
-  background-color: #F3F3F3; }
+  background-color: #F3F3F3;
+  font-weight: bold; }
   tr.tr-heading td {
-    padding: 3px 5px !important; }
+    padding: 5px 10px !important; }
 
 #top {
   position: absolute;

@@ -18,8 +18,8 @@ class Version20161130192540 extends AbstractMigration
     {
 
         $this->addSql(<<<TAG
-            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-            (7,	'Výměna oleje v převodovce',	'                <p>Výměnu oleje provádět pouze když má motor provozní teplotu, jedině tak je zajištěna dostatečná
+            INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+            (7,2,	'Výměna oleje v převodovce',	'                <p>Výměnu oleje provádět pouze když má motor provozní teplotu, jedině tak je zajištěna dostatečná
                     tekutost oleje a možnost jeho dokonalého vpuštění.</p>
                 <p>Vždy vyměnit těsnící kroužek vypouštěcího šroubu.</p>
 

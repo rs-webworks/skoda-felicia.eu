@@ -28,14 +28,14 @@
                 <h3>
                     {{ manual.getTitle() }}
                     <br/>
-                    {% if manual.getEngines()|length %}
-                        <small>
+                    <small>Kategorie: <span class="label label-default">{{ manual.getCategory().getTitle() }}</span>
+                        {% if manual.getEngines()|length %}
                             Pro motory:
                             {% for engine in manual.getEngines() %}
                                 <span class="label label-main">{{ engine.getName() }}</span>
                             {% endfor %}
-                        </small>
-                    {% endif %}
+                        {% endif %}
+                    </small>
                 </h3>
             </section>
         </div>

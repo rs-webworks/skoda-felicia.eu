@@ -16,8 +16,8 @@ class Version20161203110338 extends AbstractMigration
     public function up(Schema $schema)
     {
         $this->addSql(<<<TAG
-            INSERT INTO `manual_pages` (`id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
-                (11,	'Kontrola výšky hladiny motorového oleje',	'<p>Během kontroly výšky hladiny motorového oleje musí vůz stát na vodorovné ploše. Kontrolu provádět po vypnutí motoru a nejméně po 3-minutové přestávce, aby mohl olej stéci do spodního víka motoru.</p>
+            INSERT INTO `manual_pages` (`id`, `category_id`, `title`, `content`, `position`, `slug`, `full_width`) VALUES
+                (11,2,	'Kontrola výšky hladiny motorového oleje',	'<p>Během kontroly výšky hladiny motorového oleje musí vůz stát na vodorovné ploše. Kontrolu provádět po vypnutí motoru a nejméně po 3-minutové přestávce, aby mohl olej stéci do spodního víka motoru.</p>
                 <ol>
                   <li>Vytáhnout měrku na olej, otřít ji čistým hadrem a měrku zpět zasunout</li>
                   <li>Měrku opět vytáhnout a odečíst výšku hladiny oleje</li>

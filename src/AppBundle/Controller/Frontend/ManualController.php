@@ -14,9 +14,9 @@ class ManualController extends Controller
     public function indexAction($engine = null)
     {
         return $this->render('frontend/manual/list.twig', array(
-            'manual' => $this->get('app.service.manual')->getAll($engine),
+            'manualCategories' => $this->get('app.service.manual')->getAllByCategory(),
             'engines' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findAll(),
-            'filterEngine' => $engine
+            'filterEngine' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findOneBy(array('slug' => $engine))
         ));
     }
 

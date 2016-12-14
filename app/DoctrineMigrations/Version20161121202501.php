@@ -30,6 +30,11 @@ class Version20161121202501 extends AbstractMigration
         $this->addSql('ALTER TABLE manual_images ADD CONSTRAINT FK_AF8289A39BA073D6 FOREIGN KEY (manual_id) REFERENCES manual_pages (id)');
         $this->addSql('ALTER TABLE manuals_engines ADD CONSTRAINT FK_3AE78ED39BA073D6 FOREIGN KEY (manual_id) REFERENCES manual_pages (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE manuals_engines ADD CONSTRAINT FK_3AE78ED3E78C9C0A FOREIGN KEY (engine_id) REFERENCES engines (id) ON DELETE CASCADE');
+
+        $this->addSql('CREATE TABLE manual_categories (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, position INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE manual_pages ADD category_id INT NOT NULL');
+        $this->addSql('ALTER TABLE manual_pages ADD CONSTRAINT FK_62B17ED612469DE2 FOREIGN KEY (category_id) REFERENCES manual_categories (id)');
+        $this->addSql('CREATE INDEX IDX_62B17ED612469DE2 ON manual_pages (category_id)');
     }
 
     /**
@@ -51,5 +56,10 @@ class Version20161121202501 extends AbstractMigration
         $this->addSql('DROP TABLE manual_images');
         $this->addSql('DROP TABLE manual_pages');
         $this->addSql('DROP TABLE manuals_engines');
+
+        $this->addSql('ALTER TABLE manual_pages DROP FOREIGN KEY FK_62B17ED612469DE2');
+        $this->addSql('DROP TABLE manual_categories');
+        $this->addSql('DROP INDEX IDX_62B17ED612469DE2 ON manual_pages');
+        $this->addSql('ALTER TABLE manual_pages DROP category_id');
     }
 }
