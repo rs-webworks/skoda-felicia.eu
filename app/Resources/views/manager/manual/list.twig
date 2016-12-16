@@ -4,7 +4,7 @@
 
     <div class="container" id="manager-home">
         <h3>
-            Stránky dílenské příručky
+            Stránky dílenské příručky (celkem: {{ manual.getTotalItemCount }})
             <div class="pull-right">
                 <a href="{{ url('manager_manual_create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>
                     Přidat</a>
@@ -20,9 +20,20 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Titulek</th>
+                <th>
+                    {{ knp_pagination_sortable(manual, 'Titulek', 'm.title') }}
+                    {% if manual.isSorted('m.title') %}
+                        {% if manual.getDirection() == "desc" %}
+                            <i class="fa fa-fw fa-chevron-down"></i>
+                        {% elseif manual.getDirection() == "asc" %}
+                            <i class="fa fa-fw fa-chevron-up"></i>
+                        {% endif %}
+                    {% endif %}
+                </th>
                 <th>Motorizace</th>
-                <th class="text-right">Akce</th>
+                <th class="text-right">
+                    Akce
+                </th>
             </tr>
             </thead>
             <tbody class="sortable">
@@ -51,9 +62,7 @@
                                         class="fa fa-fw fa-database"></i></a>
                             <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}"
                                class="btn btn-danger btn-xs"><i
-                                        class="fa fa-fw fa-trash"></i></a>
-
-                            &nbsp;&nbsp;
+                                        class="fa fa-fw fa-trash"></i></a> &nbsp;&nbsp;
 
                             <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i
                                         class="fa fa-fw fa-chevron-circle-down"></i></a>
@@ -67,6 +76,7 @@
             {% endfor %}
             </tbody>
         </table>
+        {{ knp_pagination_render(manual) }}
     </div>
 
 {% endblock %}

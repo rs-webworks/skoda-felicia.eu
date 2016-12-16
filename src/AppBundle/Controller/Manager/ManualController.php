@@ -17,10 +17,17 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/list/", name="manager_manual_list")
      */
-    public function manualListAction()
+    public function manualListAction(Request $request)
     {
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->createQueryBuilder('m'),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('manager/manual/list.twig', array(
-            'manual' => $this->get('app.service.manual')->getAll()
+            'manual' => $pagination
         ));
     }
 
