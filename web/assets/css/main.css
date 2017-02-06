@@ -79,7 +79,7 @@ html, body {
     padding-bottom: 250px; }
 
 .no-margin {
-  margin-top: 0px; }
+  margin-top: 0px !important; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif; }

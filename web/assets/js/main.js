@@ -9,11 +9,11 @@ $(function () {
         }, 2500);
     });
 
-    $('nav.navbar').affix({
-        offset: {
-            top: $('header').height()
-        }
-    });
+    // $('nav.navbar').affix({
+    //     offset: {
+    //         top: $('header').height()
+    //     }
+    // });
 
 
     if ($('.sortable').length > 0) {
