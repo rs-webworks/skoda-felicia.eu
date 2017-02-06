@@ -18,6 +18,13 @@ services:
         class: AppBundle\Service\EntityToolsService
         arguments: ['@doctrine.orm.entity_manager']
 
+    app.listener.maintenance:
+        class: AppBundle\Service\MaintenanceListener
+        arguments:
+            container: "@service_container"
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
     # Twig
     # ------------------------------------------------------------------------------------------------------------------
     twig.extension.text:

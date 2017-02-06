@@ -98,12 +98,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <p>
-                        <strong><i class="fa fa-chevron-left"></i> Rychlá navigace <i class="fa fa-chevron-right"></i>
-                        </strong>
-                    </p>
+                    {% if maintenance is not defined %}
+                        <p>
+                            <strong><i class="fa fa-chevron-left"></i> Rychlá navigace
+                                <i class="fa fa-chevron-right"></i>
+                            </strong>
+                        </p>
 
-                    {% block footerLinks %}{% endblock %}
+                        {% block footerLinks %}{% endblock %}
+                    {% endif %}
                 </div>
             </div>
             <div class="row">
