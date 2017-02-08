@@ -327,9 +327,13 @@ header {
   margin-bottom: 25px; }
 
 .text-content h4 {
-  margin: 60px 0px 20px; }
+  margin: 60px 0px 20px;
+  border-bottom: 2px solid #00b39a;
+  padding-bottom: 9px; }
   .text-content h4.page-header {
     margin-bottom: 20px; }
+.text-content .label {
+  white-space: normal; }
 
 #about-authors #paypal-button {
   margin: 30px 0; }

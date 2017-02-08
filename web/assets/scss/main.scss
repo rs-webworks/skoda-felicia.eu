@@ -511,10 +511,16 @@ header {
 .text-content {
   h4 {
     margin: 60px 0px 20px;
+    border-bottom: 2px solid $colorMain;
+    padding-bottom: 9px;
 
     &.page-header {
       margin-bottom: 20px;
     }
+  }
+
+  .label {
+    white-space: normal;
   }
 }
 
