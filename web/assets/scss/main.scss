@@ -1,7 +1,9 @@
 // VARIABLES
 // ---------------------------------------------------------------------------------------------------------------------
-$colorMain: #4ED89A;
-$colorMainDark: #2d865e;
+//$colorMain: #4ED89A;
+$colorMain: #00b39a;
+$colorMainDark: #16bda6;
+$colorMainDarkest: #09584d;
 $colorDark: #252525;
 $colorShadow: #757575;
 $colorLightShadow: #F3F3F3;
@@ -9,6 +11,21 @@ $colorWhite: #ffffff;
 
 $fontDefault: "OpenSans", sans-serif;
 $fontBold: "Roboto", sans-serif;
+
+// MIXINS
+// ---------------------------------------------------------------------------------------------------------------------
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote(( $y / $x ) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
 
 // DEFAULTS
 // ---------------------------------------------------------------------------------------------------------------------
@@ -54,7 +71,7 @@ a.btn {
 }
 
 .btn.btn-main-dark {
-  background-color: $colorMainDark;
+  background-color: $colorMainDarkest;
 }
 
 .label.label-main {
@@ -152,8 +169,8 @@ h4 {
   font-weight: bold;
 }
 
-a, a:link {
-  color: $colorMainDark;
+a, a:link, a:focus {
+  color: $colorMain;
   transition: color 0.3s ease;
 }
 
@@ -247,8 +264,7 @@ div.CodeMirror {
   overflow: hidden;
 
   img {
-    display: block;
-    max-width: 100%;
+    max-height: 150px;
   }
 }
 
@@ -527,6 +543,14 @@ footer {
   left: 0;
 
   a.author {
-    color: $colorWhite;
+
+  }
+
+  a, a:link, a:active, a:visited {
+    color: $colorDark;
+
+    &.author {
+      color: $colorWhite;
+    }
   }
 }
