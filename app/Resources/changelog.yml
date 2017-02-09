@@ -1,15 +1,23 @@
+'0.0.3@beta':
+    'released': 2017-02-09
+    'changes':
+        - 'Spuštěn Online veřejný test'
+        - 'Přepsána první část dílenské příručky - Servisní prohlídky'
+        - 'Poladěny barvy výchozího schéma'
+        - 'Příprava sekce "Ke stažení"'
+        - 'Doplněno Google Analytics'
+        - 'Přidáno pár odkazů pro rychlejší navigaci na stránce'
+
 '0.0.2@alpha':
     'released': 2016-11-29
     'changes':
         - 'První nasazení na live server'
-        - 'Zpřístupněno veřejnosti online'
         - 'Přidána sekce: Dílenská příručka'
         - 'Možnost nahlásit chybu'
         - 'Administrace'
         - 'Vyhledávání'
         - 'Možnosti tisku'
         - 'Mobilní responzivita'
-        - 'Přepsána první část dílenské příručky - Servisní prohlídky'
 
 '0.0.1@dev':
     'released': 2016-11-01

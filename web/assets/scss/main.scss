@@ -4,6 +4,7 @@
 $colorMain: #00b39a;
 $colorMainDark: #16bda6;
 $colorMainDarkest: #09584d;
+$colorMainLight: #1ff9db;
 $colorDark: #252525;
 $colorShadow: #757575;
 $colorLightShadow: #F3F3F3;
@@ -31,6 +32,10 @@ $fontBold: "Roboto", sans-serif;
 // ---------------------------------------------------------------------------------------------------------------------
 .text-main {
   color: $colorMain;
+}
+
+.text-main-light {
+  color: $colorMainLight;
 }
 
 .text-large {
@@ -326,8 +331,8 @@ header {
 
   h1 a {
     color: $colorWhite;
-    &:hover {
-      color: $colorMain;
+    &:hover, &:focus {
+      color: $colorMainLight;
     }
   }
 
@@ -519,8 +524,19 @@ header {
     }
   }
 
+  h5 {
+    margin-top: 30px;
+    font-size: 17px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $colorMain;
+  }
+
+  .alert h4 {
+    border: 0;
+  }
+
   .label {
-    white-space: normal;
+    display: inline-block;
   }
 }
 
