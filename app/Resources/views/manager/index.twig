@@ -8,77 +8,82 @@
 
         <div class="row row-flex row-flex-wrap">
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-fw fa-book"></i> Dílenská příručka</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
-                            <li><a href="{{ url('manager_manual_create') }}">Vytvořit novou stránku</a></li>
-                            <li><a href="{{ url('manager_manual_reports') }}">
-                                    Reporty ({{ manual['unresolvedReports'] }})</a></li>
-
-                        </ul>
-                    </div>
+                <div class="list-group">
+                    <span href="#" class="list-group-item list-group-item-main title">
+                        <i class="fa fa-fw fa-book"></i> Dílenská příručka
+                    </span>
+                    <a href="{{ url('manager_manual_list') }}" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Seznam stránek
+                    </a>
+                    <a href="{{ url('manager_manual_category_list') }}" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Seznam kategorií
+                    </a>
+                    <a href="{{ url('manager_manual_create') }}" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Vytvořit novou stránku
+                    </a>
+                    <a href="{{ url('manager_manual_reports') }}" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Reporty
+                        <span class="badge">{{ manual['unresolvedReports'] }}</span>
+                    </a>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-fw fa-question-circle"></i> Časté otázky</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li><a href="">Seznam otázek a odpovědí</a></li>
-                            <li><a href="">Vytvořit otázku</a></li>
-                        </ul>
-                    </div>
+                <div class="list-group">
+                    <span href="#" class="list-group-item list-group-item-main title">
+                        <i class="fa fa-fw fa-question-circle"></i> Časté otázky
+                    </span>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Seznam otázek a odpovědí
+                    </a>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Vytvořit otázku
+                    </a>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-fw fa-wrench"></i> Návody</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li><a href="">Seznam článků</a></li>
-                            <li><a href="">Vytvořit článek</a></li>
-                        </ul>
-                    </div>
+                <div class="list-group">
+                    <span href="#" class="list-group-item list-group-item-main title">
+                        <i class="fa fa-fw fa-wrench"></i> Návody
+                    </span>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Seznam článků
+                    </a>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Vytvořit článek
+                    </a>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li><a href="">Seznam článků</a></li>
-                            <li><a href="">Vytvořit článek</a></li>
-                        </ul>
-                    </div>
+                <div class="list-group">
+                    <span href="#" class="list-group-item list-group-item-main title">
+                        <i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy
+                    </span>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Seznam článků
+                    </a>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Vytvořit článek
+                    </a>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-fw fa-download"></i> Ke stažení</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li><a href="{{ url('manager_download_list') }}">Seznam souborů</a></li>
-                            <li><a href="">Přidat soubor ke stažení</a></li>
-                        </ul>
-                    </div>
+                <div class="list-group">
+                    <span href="#" class="list-group-item list-group-item-main title">
+                        <i class="fa fa-fw fa-download"></i> Ke stažení
+                    </span>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Seznam souborů
+                    </a>
+                    <a href="" class="list-group-item">
+                        <i class="fa fa-fw fa-chevron-circle-right"></i> Přidat soubor
+                    </a>
                 </div>
             </div>
+
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col"></div>
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col"></div>
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col"></div>

@@ -1,14 +1,16 @@
 security:
 
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
 
     providers:
         in_memory:
             memory:
                 users:
                     admin:
-                        password: root
+                        password: $2y$12$yvuFSRkQhZUhk3OqBWXuQ.vw1E.ryLYDtup4gFWiPil9kzfhtRv8q
                         roles: 'ROLE_ADMIN'
 
     firewalls:

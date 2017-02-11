@@ -6,6 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Validator\Constraints\Url;
 use Symfony\Component\Yaml\Yaml;
 
 class HomeController extends Controller
@@ -31,4 +36,35 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * @Route("/styl/{theme}", name="frontend_switch_theme")
+     * @param $theme
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function switchThemeAction(Request $request, $theme)
+    {
+        $themes = array(
+            'lightEmerald',
+            'lightCherry',
+            'lightSky',
+            'darkObsidian',
+            'darkEmerald',
+            'darkCherry',
+            'darkSky'
+        );
+
+        $url = $request->headers->get('referer');
+        if (!$url) {
+            $url = $this->generateUrl('frontend_home');
+        }
+
+        $response = new RedirectResponse($url);
+
+        if (array_search($theme, $themes) !== false) {
+            $cookie = new Cookie('selectedTheme', $theme);
+            $response->headers->setCookie($cookie);
+        }
+
+        return $response;
+    }
 }

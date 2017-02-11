@@ -1,0 +1,65 @@
+// Bootstrap overrides
+// ---------------------------------------------------------------------------------------------------------------------
+
+.btn {
+  text-transform: uppercase;
+
+  &.btn-default {
+    color: $colorWhite;
+  }
+}
+
+.panel {
+  &.panel-info {
+    border-color: $colorShadow;
+
+    .panel-heading {
+      border-color: $colorShadow;
+      background-color: $colorShadow;
+    }
+  }
+}
+
+a.btn {
+  color: $colorWhite !important;
+  font: $fontDefault;
+  letter-spacing: normal;
+}
+
+.list-group-item {
+  &.title {
+    font-weight: bold;
+  }
+
+  &:link, &:visited, &:active {
+    color: $colorText;
+  }
+}
+
+.badge {
+  background-color: $colorMain;
+}
+
+.page-header {
+  margin: 20px 0 40px;
+}
+
+mark {
+  background-color: $colorMainDark;
+  color: $colorWhite;
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: $colorMain;
+
+  &:hover, &:focus {
+    color: $colorMainDark;
+  }
+}
+
+// Codemirror
+// ---------------------------------------------------------------------------------------------------------------------
+
+div.CodeMirror {
+  height: 800px;
+}

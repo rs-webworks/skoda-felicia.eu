@@ -1,0 +1,34 @@
+// Colors
+// ---------------------------------------------------------------------------------------------------------------------
+
+$colorMain: #2d2d2d;
+$colorMainDark: #00b39a;
+$colorMainDarkest: #09584d;
+$colorMainLight: #1ff9db;
+$colorDark: #252525;
+$colorText: #555555;
+$colorShadow: #757575;
+$colorLightShadow: #F3F3F3;
+$colorWhite: #ffffff;
+
+$colorLink: $colorMainDark;
+$colorFooterLink: $colorLink;
+$colorBackground: $colorWhite;
+
+$vagColor: $colorMainDark;
+
+$fontDefault: "OpenSans", sans-serif;
+$fontBold: "Roboto", sans-serif;
+
+// IMPORTS
+// ---------------------------------------------------------------------------------------------------------------------
+@import '../partials/variables';
+@import '../partials/overrides';
+@import '../partials/globals';
+@import '../partials/vag';
+@import '../partials/header';
+@import '../partials/navbar';
+// Pages
+@import '../pages/home';
+@import '../pages/manual';
+@import '../pages/authors';

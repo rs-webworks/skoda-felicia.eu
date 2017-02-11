@@ -23,6 +23,12 @@ class ManualCategory
     private $title;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * @Gedmo\SortablePosition
      * @ORM\Column(type="integer")
      */
@@ -65,6 +71,14 @@ class ManualCategory
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

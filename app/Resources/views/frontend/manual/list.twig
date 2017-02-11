@@ -5,132 +5,67 @@
     <div class="container" id="manual-list">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="page-header">
-                    Oficiální
-                    <span>Dílenská příručka
-
-                    <div class="pull-right">
-                        <a href="#obsah" class="btn btn-sm btn-default"><i class="fa fa-fw fa-chevron-down"></i> Obsah</a>
-                    </div>
-                    </span>
-
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <p>Níže naleznete přepis z PDF verze Dílenské příručky pro vozy Škoda Felicia. Přepis není záměrně
-                    kompletní, byly vynechány stránky, které z pohledu dnešního čtenáře jsou zcela nepoužitelné,
-                    např.:</p>
-                <ul>
-                    <li>Skladování nových vozidel ŠKODA</li>
-                    <li>Předprodejní prohlídka</li>
-                    <li>Vybavení pracoviště</li>
-                    <li>Postupy pro měření emisí</li>
-                    <li>a podobné...</li>
-                </ul>
-
-                <p>Pokud by někomu přeci jen nějaká stránka, která se v původním dokumentu nachází, chyběla v této nové
-                    zdigitalizované podobě, může zažádat o její převedení pomocí
-                    <a href="{{ url('frontend_about_authors') }}">kontaktů</a> na správce.
-                </p>
-                <p>
-                    <strong>Dílenská příručka</strong> je soubor postupů vydaných oficiálně výrobcem vozidla pro autorizované servisy. Pokud máte zájem o uživatelské rady, návody na vylepšení jízdních vlastností, osvědčené a moderní fanouškovské postupy, pokračujte do sekce
-                    <a
-                            href="#">Návody</a>.</p>
-                <p>Jestliže hledáte jednoduché odpovědi na jednoduché otázky jako například: <i>Jakou použít nemrznoucí
-                        směs?</i>, <i>Jakým způsobem vyřadit imobilizér?</i>, <i>Jaká je nejlepší baterie pro motor
-                        xxx?</i> pak se obrattě na sekci <a href="#">Časté otázky</a>.</p>
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    <li><a href="{{ url('frontend_manual') }}">Dílenská příručka</a></li>
+                    <li class="active">{{ category.getTitle() }}</li>
+                </ol>
             </div>
 
-            <div class="col-xs-12 col-md-6">
-                <p>Pro snadnější vyhledávání byly přidány tagy označující motorizaci. Pokud tag není uveden vztahuje se
-                    kapitola na všechny. Jejich legenda je
-                    následující:</p>
-
-                <table class="table table-condensed">
-                    <thead>
-                    <tr>
-                        <th>Tag</th>
-                        <th>Význam</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    {# @var engine \AppBundle\Entity\Engine #}
-                    {% for engine in engines %}
-                        <tr>
-                            <td><span class="label label-main">{{ engine.getName() }}</span></td>
-                            <td>{{ engine.getDescription() }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
-                <p>
-                    Některé názvy kapitol byly pozměněny pro jednodušší hledání, například:
-                </p>
-                <p>
-                    <small>původní název:</small>
-                    <br/>
-                    <i>Kontrola vůle a seřízení lanka akcelerace (motor 1,3l se vstřikováním paliva Simos 2P)</i>
-                </p>
-                <p>
-                    <small>nový název:</small>
-                    <br/>
-                    <i>Kontrola vůle a seřízení lanka akcelerace <span class="label label-main">MPI</span></i>
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
             <div class="col-xs-12">
-                <div class="spacer-top"></div>
-                <h2 class="page-header" id="obsah">
-                    Obsah:
+                <h2 class="page-header">
+                    {{ category.getTitle() }}
 
                     <div class="pull-right">
                         <small>Výběr motorizace:</small>
                         {# @var engine \AppBundle\Entity\Engine #}
                         {% for engine in engines %}
-                            <a href="{{ url('frontend_manual', {'engine': engine.getSlug()}) }}#obsah"
+                            <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug(),'engine': engine.getSlug()}) }}"
                                class="btn btn-sm {% if engine == filterEngine %}btn-main-dark{% else %}btn-main{% endif %}">{{ engine.getName() }}</a>
                         {% endfor %}
-                        <a href="{{ url('frontend_manual') }}#obsah"
+                        <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}"
                            class="btn btn-sm btn-default">Vše</a>
                     </div>
                     <div class="clearfix"></div>
                 </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Název kapitoly</th>
+                        <th>
+                            {{ knp_pagination_sortable(manuals, 'Titulek', 'm.title') }}
+                            {% if manuals.isSorted('m.title') %}
+                                {% if manuals.getDirection() == "desc" %}
+                                    <i class="fa fa-fw fa-chevron-down"></i>
+                                {% elseif manuals.getDirection() == "asc" %}
+                                    <i class="fa fa-fw fa-chevron-up"></i>
+                                {% endif %}
+                            {% endif %}
+                        </th>
                         <th>Motorizace</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {% for category in manualCategories %}
-                        <tr class="tr-heading">
-                            <td colspan="2">{{ category.getTitle() }}</td>
+                    <tbody class="sortable">
+                    {# @var page \AppBundle\Entity\Manual\Manual #}
+                    {% for page in manuals %}
+                        <tr data-id="{{ page.getId() }}">
+                            <td>
+                                <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
+                            </td>
+                            <td>
+                                {% for engine in page.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
+                            </td>
                         </tr>
-                        {# @var page \AppBundle\Entity\Manual\Manual #}
-                        {% for page in category.getManuals() %}
-                            {% if page.hasEngine(filterEngine) %}
-                                <tr data-id="{{ page.getId() }}">
-                                    <td>
-                                        <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
-                                    </td>
-                                    <td>
-                                        {% for engine in page.getEngines() %}
-                                            <span class="label label-main">{{ engine.getName() }}</span>
-                                        {% endfor %}
-                                    </td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>
+                {{ knp_pagination_render(manuals) }}
+
             </div>
         </div>
     </div>

@@ -1,0 +1,24 @@
+.vag-display {
+  margin: 20px;
+
+  table {
+    width: 100%;
+  }
+
+  .title {
+    background: $colorDark;
+    color: $colorWhite;
+    padding: 5px;
+  }
+
+  .display {
+    padding: 10px 25px;
+    background-color: $vagColor;
+
+    .line {
+      text-transform: uppercase;
+      font-family: monospace;
+      font-weight: bold;
+    }
+  }
+}

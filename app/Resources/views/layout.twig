@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Oficiální dílenská příručka pro Škoda Felicia, dále také rady tipy, triky a návody..." />
     <title>{% block title %}Home{% endblock %} | Škoda Felicia</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
     {# - Fonts #}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700Roboto:400,700,900&subset=latin-ext" rel="stylesheet">
 
     {# - Vendors #}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}" />
 
     {# - Styles #}
-    <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print" />
+
+    {% if app.request.cookies.get('selectedTheme') %}
+        <link rel="stylesheet" href="{{ asset('assets/css/'~ app.request.cookies.get('selectedTheme') ~'_theme.css') }}" />
+    {% else %}
+        <link rel="stylesheet" href="{{ asset('assets/css/lightEmerald_theme.css') }}" />
+    {% endif %}
 
     {# - Sublayouts styles #}
     {% block stylesheets %}{% endblock %}
@@ -125,14 +131,24 @@
 
                         {% block footerLinks %}{% endblock %}
                     {% endif %}
+
+                    <div id="theme-picker">
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'lightEmerald'}) }}" class="theme-switch light emerald" data-toggle="tooltip" data-placement="top" title="Light Emerald styl"></a>
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'lightCherry'}) }}" class="theme-switch light cherry" data-toggle="tooltip" data-placement="top" title="Light Cherry styl"></a>
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'lightSky'}) }}" class="theme-switch light sky" data-toggle="tooltip" data-placement="top" title="Light Sky styl"></a>
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkObsidian'}) }}" class="theme-switch dark obsidian" data-toggle="tooltip" data-placement="top" title="Dark Obsidian styl"></a>
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkEmerald'}) }}" class="theme-switch dark emerald" data-toggle="tooltip" data-placement="top" title="Dark Emerald styl"></a>
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkCherry'}) }}" class="theme-switch dark cherry" data-toggle="tooltip" data-placement="top" title="Dark Emerald styl"></a>
+                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkSky'}) }}" class="theme-switch dark sky" data-toggle="tooltip" data-placement="top" title="Dark Emerald styl"></a>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <br/><a href="http://raito.cz/" class="pull-left author"><strong>RS</strong>WEBWORKS 2016</a>
+                    <br /><a href="http://raito.cz/" class="pull-left author"><strong>RS</strong>WEBWORKS 2016</a>
                     <a class="pull-right" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img
-                                alt="Licence Creative Commons" style="border-width:0"
-                                src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"/></a>
+                                alt="Licence Creative Commons" id="creative-license"
+                                src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
                 </div>
             </div>
         </div>

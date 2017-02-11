@@ -204,10 +204,8 @@ class Manual
             return true;
         }
 
-        foreach ($this->engines as $engine) {
-            if ($engine == $searchEngine) {
-                return true;
-            }
+        if ($this->engines->contains($searchEngine)) {
+            return true;
         }
 
         return false;

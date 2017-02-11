@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Manual\Manual;
+use AppBundle\Entity\Manual\ManualCategory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
@@ -54,7 +55,7 @@ class ManualService
      */
     public function getAllByCategory()
     {
-        $results = $this->em->getRepository('AppBundle:Manual\ManualCategory')->findAll();
+        $results = $this->em->getRepository('AppBundle:Manual\ManualCategory')->findBy(array(), array('position' => 'ASC'));
         return $results;
     }
 
@@ -64,6 +65,15 @@ class ManualService
     public function saveManual(Manual $manual)
     {
         $this->em->persist($manual);
+        $this->em->flush();
+    }
+
+    /**
+     * @param ManualCategory $category
+     */
+    public function saveManualCategory(ManualCategory $category)
+    {
+        $this->em->persist($category);
         $this->em->flush();
     }
 

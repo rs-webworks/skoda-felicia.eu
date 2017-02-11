@@ -1,0 +1,27 @@
+// Home
+// ---------------------------------------------------------------------------------------------------------------------
+#home-index {
+  .navbox {
+    .btn {
+      text-align: left;
+      font-size: 1.2em;
+      background-color: $colorWhite;
+      border-color: $colorLightShadow;
+      color: $colorDark !important;
+      text-transform: none;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      white-space: normal;
+
+      hr {
+        margin: 5px 0;
+      }
+
+      &:hover {
+        color: $colorMainDark !important;
+      }
+    }
+  }
+
+}

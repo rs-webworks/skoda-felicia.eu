@@ -1,3 +1,11 @@
+'1.0.0':
+    'released': 2017-02-09
+    'changes':
+        - 'Přidány nové kategorie do Dílenské příručky'
+        - 'Předěláno procházení Dílenské příručky podle kategorií'
+        - 'Přidány stránky pro chyby 400, 401, 403, 404, 500 a generic'
+        - 'Zoptimalizováno filtrování podle motorizace'
+
 '0.0.3@beta':
     'released': 2017-02-09
     'changes':

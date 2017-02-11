@@ -1,0 +1,55 @@
+// Header
+// ---------------------------------------------------------------------------------------------------------------------
+.header-bg {
+  &.manager {
+    height: 56px;
+  }
+
+  height: 260px;
+  background: url('../../../images/layout/header_01.jpg') no-repeat top center;
+  border-bottom: 3px solid $colorMainDark;
+  margin-bottom: 30px;
+}
+
+header {
+  width: 100%;
+  height: 204px;
+
+  h1 a {
+    color: $colorWhite;
+    &:hover, &:focus {
+      color: $colorMainLight;
+    }
+  }
+
+  .heading {
+    text-transform: uppercase;
+    font-family: $fontBold;
+    color: $colorWhite;
+    margin-bottom: 0px;
+  }
+
+  .display-table {
+    opacity: 1;
+  }
+
+  #subtext {
+    display: block;
+    font-size: 2.2em;
+    line-height: 0.6em;
+  }
+
+  .line-box-holder {
+    margin: 5px 25px;
+
+    .line-box {
+      padding: 5px 15px;
+      margin: 0 5px;
+      background-color: $colorMain;
+      color: $colorWhite;
+      display: inline;
+      font-size: 0.6em;
+      font-weight: bold;
+    }
+  }
+}

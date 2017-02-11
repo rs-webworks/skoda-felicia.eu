@@ -1,0 +1,148 @@
+{% extends 'layout_front.twig' %}
+{% block title %}Dílenská příručka{% endblock %}
+{% block body %}
+
+    <div class="container" id="manual-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Oficiální
+                    <span>Dílenská příručka
+                    </span>
+
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-7">
+                <h4>Info</h4>
+                <p>Digitalizovaná podoba Dílenské příručky pro vozy Škoda Felicia. Přepis není záměrně
+                    kompletní, byly vynechány stránky, které z pohledu dnešního čtenáře jsou zcela nepoužitelné,
+                    např.:</p>
+                <ul>
+                    <li>Skladování nových vozidel ŠKODA</li>
+                    <li>Předprodejní prohlídka</li>
+                    <li>Vybavení pracoviště</li>
+                    <li>Postupy pro měření emisí</li>
+                    <li>a podobné...</li>
+                </ul>
+
+                <p>Pokud by někomu přeci jen nějaká stránka, která se v původním dokumentu nachází, chyběla v této nové
+                    zdigitalizované podobě, může zažádat o její převedení pomocí
+                    <a href="{{ url('frontend_about_authors') }}">kontaktů</a> na správce.
+                </p>
+                <p>
+                    <strong>Dílenská příručka</strong> je soubor postupů vydaných oficiálně výrobcem vozidla pro autorizované servisy. Pokud máte zájem o uživatelské rady, návody na vylepšení jízdních vlastností, osvědčené a moderní fanouškovské postupy, pokračujte do sekce
+                    <a
+                            href="#">Návody</a>.</p>
+                <p>Jestliže hledáte jednoduché odpovědi na jednoduché otázky jako například: <i>Jakou použít nemrznoucí
+                        směs?</i>, <i>Jakým způsobem vyřadit imobilizér?</i>, <i>Jaká je nejlepší baterie pro motor
+                        xxx?</i> pak se obrattě na sekci <a href="#">Časté otázky</a>.</p>
+
+                <p>Pro snadnější vyhledávání byly přidány tagy označující motorizaci. Pokud tag není uveden vztahuje se
+                    kapitola na všechny. Jejich legenda je
+                    následující:</p>
+
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Tag</th>
+                        <th>Význam</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {# @var engine \AppBundle\Entity\Engine #}
+                    {% for engine in engines %}
+                        <tr>
+                            <td><span class="label label-main">{{ engine.getName() }}</span></td>
+                            <td>{{ engine.getDescription() }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <p>
+                    Některé názvy kapitol byly pozměněny pro jednodušší hledání, například:
+                </p>
+                <p>
+                    <small>původní název:</small>
+                    <br />
+                    <i>Kontrola vůle a seřízení lanka akcelerace (motor 1,3l se vstřikováním paliva Simos 2P)</i>
+                </p>
+                <p>
+                    <small>nový název:</small>
+                    <br />
+                    <i>Kontrola vůle a seřízení lanka akcelerace <span class="label label-main">MPI</span></i>
+                </p>
+            </div>
+
+            <div class="col-xs-12 col-md-5">
+
+                <h4>Kategorie</h4>
+                <div class="list-group">
+                    {% for category in manualCategories %}
+                        <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}" class="list-group-item">
+                            <i class="fa fa-fw fa-chevron-right"></i> {{ category.getTitle() }}
+                            <span class="badge">{{ category.getManuals()|length }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+
+                {#<h2 class="page-header" id="obsah">#}
+                {#Obsah:#}
+
+                {#<div class="pull-right">#}
+                {#<small>Výběr motorizace:</small>#}
+                {# @var engine \AppBundle\Entity\Engine #}
+                {#{% for engine in engines %}#}
+                {#<a href="{{ url('frontend_manual', {'engine': engine.getSlug()}) }}#obsah"#}
+                {#class="btn btn-sm {% if engine == filterEngine %}btn-main-dark{% else %}btn-main{% endif %}">{{ engine.getName() }}</a>#}
+                {#{% endfor %}#}
+                {#<a href="{{ url('frontend_manual') }}#obsah"#}
+                {#class="btn btn-sm btn-default">Vše</a>#}
+                {#</div>#}
+                {#<div class="clearfix"></div>#}
+                {#</h2>#}
+
+                {#<table class="table">#}
+                {#<thead>#}
+                {#<tr>#}
+                {#<th>Název kapitoly</th>#}
+                {#<th>Motorizace</th>#}
+                {#</tr>#}
+                {#</thead>#}
+                {#<tbody>#}
+                {#{% for category in manualCategories %}#}
+                {#<tr class="tr-heading">#}
+                {#<td colspan="2">{{ category.getTitle() }}</td>#}
+                {#</tr>#}
+                {# @var page \AppBundle\Entity\Manual\Manual #}
+                {#{% for page in category.getManuals() %}#}
+                {#{% if page.hasEngine(filterEngine) %}#}
+                {#<tr data-id="{{ page.getId() }}">#}
+                {#<td>#}
+                {#<a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>#}
+                {#</td>#}
+                {#<td>#}
+                {#{% for engine in page.getEngines() %}#}
+                {#<span class="label label-main">{{ engine.getName() }}</span>#}
+                {#{% endfor %}#}
+                {#</td>#}
+                {#</tr>#}
+                {#{% endif %}#}
+                {#{% endfor %}#}
+                {#{% endfor %}#}
+                {#</tbody>#}
+                {#</table>#}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

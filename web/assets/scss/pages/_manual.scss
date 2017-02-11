@@ -1,0 +1,38 @@
+// Manual
+// ---------------------------------------------------------------------------------------------------------------------
+
+#manual-show {
+  img {
+    max-width: 100%;
+    border: 2px solid $colorMain;
+    margin-bottom: 25px;
+  }
+}
+
+.text-content {
+  h4 {
+    margin: 60px 0px 20px;
+    border-bottom: 2px solid $colorMain;
+    padding-bottom: 9px;
+
+    &.page-header {
+      margin-bottom: 20px;
+    }
+  }
+
+  .alert h4 {
+    border: 0;
+  }
+
+  .label {
+    display: inline-block;
+  }
+}
+
+article {
+
+  h3.post-title {
+    line-height: 45px;
+    font-size: 2em;
+  }
+}

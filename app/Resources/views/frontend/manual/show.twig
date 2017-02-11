@@ -4,39 +4,73 @@
     {# @var manual \AppBundle\Entity\Manual\Manual #}
 
     <article class="container" id="manual-show">
+
+        <div class="row no-print">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    <li><a href="{{ url('frontend_manual') }}">Dílenská příručka</a></li>
+                    <li>
+                        <a href="{{ url('frontend_manual_category_list', {'slug': manual.getCategory().getSlug()}) }}">{{ manual.getCategory().getTitle() }}</a>
+                    </li>
+                    <li class="active">{{ manual.getTitle() }}</li>
+                </ol>
+            </div>
+        </div>
         {# Heading #}
         {# ---------------------------------------------------------------------------------------------------------- #}
         <div class="row">
             <section class="col-xs-12">
-                <h2 class="page-header">
-                    Dílenská příručka
-                    <div class="pull-right">
-                        {% block pageButtons %}
-                            <a href="{{ url("frontend_report_bug", {"slug": manual.getSlug()}) }}" class="btn btn-sm btn-default">
-                                <i class="fa fa-fw fa-flag"></i> Nahlásit chybu
-                            </a>
-                            <a href="javascript:window.print()" class="btn btn-sm btn-default">
-                                <i class="fa fa-fw fa-print"></i> Vytisknout
-                            </a>
-                            <a href="{{ url('frontend_manual') }}" class="btn btn-sm btn-default">
-                                <i class="fa fa-fw fa-home"></i> Zpět na obsah
-                            </a>
-                        {% endblock %}
-                    </div>
-                    <div class="clearfix"></div>
-                </h2>
-                <h3>
-                    {{ manual.getTitle() }}
-                    <br/>
-                    <small>Kategorie: <span class="label label-default">{{ manual.getCategory().getTitle() }}</span>
-                        {% if manual.getEngines()|length %}
-                            Pro motory:
-                            {% for engine in manual.getEngines() %}
-                                <span class="label label-main">{{ engine.getName() }}</span>
-                            {% endfor %}
-                        {% endif %}
-                    </small>
-                </h3>
+
+                <div class="visible-lg visible-md">
+                    <h3 class="page-header post-title">
+                        {{ manual.getTitle() }}
+                        <br />
+                        <small>Kategorie:
+                            <span class="label label-default">{{ manual.getCategory().getTitle() }}</span>
+                            {% if manual.getEngines()|length %}
+                                Pro motory:
+                                {% for engine in manual.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </small>
+                        <div class="pull-right">
+                            {% block pageButtons %}
+                                <a href="{{ url("frontend_report_bug", {"slug": manual.getSlug()}) }}" class="btn btn-sm btn-default">
+                                    <i class="fa fa-fw fa-flag"></i> Nahlásit chybu
+                                </a>
+                                <a href="javascript:window.print()" class="btn btn-sm btn-default">
+                                    <i class="fa fa-fw fa-print"></i> Vytisknout
+                                </a>
+                                <a href="{{ url('frontend_manual_category_list', {'slug': manual.getCategory().getSlug()}) }}" class="btn btn-sm btn-default">
+                                    <i class="fa fa-fw fa-home"></i> Zpět do kategorie
+                                </a>
+                            {% endblock %}
+                        </div>
+                    </h3>
+                </div>
+
+                <div class="hidden-lg hidden-md text-center">
+                    <h3 class="page-header post-title">
+                        {{ manual.getTitle() }}
+                        <br />
+                        <small>Kategorie:
+                            <span class="label label-default">{{ manual.getCategory().getTitle() }}</span>
+                            {% if manual.getEngines()|length %}
+                                Pro motory:
+                                {% for engine in manual.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </small>
+                        <div>
+                            {{ block('pageButtons') }}
+                        </div>
+                    </h3>
+                </div>
+                <div class="clearfix"></div>
+
             </section>
         </div>
         {# //Heading #}
@@ -60,7 +94,7 @@
                             <i class="fa fa-picture-o"></i> [{{ image.getPosition() +1 }}]
                         </div>
                         <a href="{{ vich_uploader_asset(image, 'imageFile') }}">
-                            <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.getTitle() }}"/>
+                            <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.getTitle() }}" />
                         </a>
                     {% endfor %}
                 </div>
@@ -72,7 +106,7 @@
         {# Buttons #}
         {# ---------------------------------------------------------------------------------------------------------- #}
         <section class="row">
-            <hr/>
+            <hr />
             <div class="col-xs-12">
                 <div class="pull-right">
                     <a href="#top" class="btn btn-sm btn-default"><i class="fa fa-fw fa-chevron-up"></i> Nahoru</a>

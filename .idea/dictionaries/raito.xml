@@ -2,6 +2,8 @@
   <dictionary name="raito">
     <words>
       <w>manpage</w>
+      <w>mixins</w>
+      <w>referer</w>
       <w>symfony</w>
       <w>vich</w>
     </words>
