@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller\Manager;
 
+use AppBundle\Entity\Download\Download;
 use AppBundle\Entity\Manual\Manual;
 use AppBundle\Form\ManualForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,6 +15,7 @@ class DownloadController extends Controller
 
     /**
      * @Route("/manager/download/list/", name="manager_download_list")
+     * @Template("manager/download/list.twig")
      */
     public function downloadListAction(Request $request)
     {
@@ -23,56 +26,58 @@ class DownloadController extends Controller
             10
         );
 
-        return $this->render('manager/download/list.twig', array(
+        return array(
             'downloads' => $pagination
-        ));
+        );
     }
 
 
     /**
      * @Route("/manager/download/edit/{id}", name="manager_download_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Template("manager/download/edit.twig")
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function downloadEditAction(Request $request, $id)
     {
-        $manual = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->find($id);
-        $form = $this->createForm(ManualForm::class, $manual);
+        $download = $this->getDoctrine()->getRepository('AppBundle:Download\Download')->find($id);
+        $form = $this->createForm(DownloadForm::class, $download);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $manual = $form->getData();
-            $this->get('app.service.manual')->saveManual($manual);
-            $this->addFlash('success', 'Stránka příručky úspěšně upravena');
-            return $this->redirectToRoute('manager_manual_list');
+            $download = $form->getData();
+            $this->get('app.service.download')->save($download);
+            $this->addFlash('success', 'Soubor úspěšně upraven');
+            return $this->redirectToRoute('manager_download_list');
         }
 
-        return $this->render('manager/manual/edit.twig', array(
+        return array(
             'form' => $form->createView()
-        ));
+        );
     }
 
     /**
      * @Route("/manager/download/create/", name="manager_download_create")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Template("manager/manual/create.twig")
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function downloadCreateAction(Request $request)
     {
-        $manual = new Manual();
-        $form = $this->createForm(ManualForm::class, $manual);
+        $download = new Download();
+        $form = $this->createForm(DownloadForm::class, $download);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $manual = $form->getData();
-            $this->get('app.service.manual')->saveManual($manual);
-            $this->addFlash('success', 'Stránka příručky úspěšně uložena');
-            return $this->redirectToRoute('manager_manual_list');
+            $download = $form->getData();
+            $this->get('app.service.download')->save($download);
+            $this->addFlash('success', 'Soubor úspěšně uložen');
+            return $this->redirectToRoute('manager_download_list');
         }
 
-        return $this->render('manager/manual/create.twig', array(
+        return array(
             'form' => $form->createView()
-        ));
+        );
     }
 
     /**

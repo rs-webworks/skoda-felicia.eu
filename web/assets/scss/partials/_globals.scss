@@ -242,6 +242,10 @@ footer {
         opacity: 1;
       }
 
+      &.active {
+        opacity: 1;
+      }
+
       &.dark {
         border-color: #171717 !important;
       }

@@ -204,6 +204,8 @@ footer {
     transition: opacity 0.5s ease; }
     footer #theme-picker .theme-switch:hover {
       opacity: 1; }
+    footer #theme-picker .theme-switch.active {
+      opacity: 1; }
     footer #theme-picker .theme-switch.dark {
       border-color: #171717 !important; }
     footer #theme-picker .theme-switch.obsidian {

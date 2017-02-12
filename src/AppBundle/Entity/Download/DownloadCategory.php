@@ -34,6 +34,13 @@ class DownloadCategory
      */
     private $downloads;
 
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
     /**
      * @return mixed
      */
@@ -81,6 +88,14 @@ class DownloadCategory
     public function setDownloads($downloads)
     {
         $this->downloads = $downloads;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
 

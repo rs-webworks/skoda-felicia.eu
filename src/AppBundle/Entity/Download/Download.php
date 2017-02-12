@@ -49,6 +49,17 @@ class Download
     private $imageName;
 
     /**
+     * @Vich\UploadableField(mapping="download_file", fileNameProperty="fileName")
+     * @var File
+     */
+    private $file;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $fileName;
+
+    /**
      * @Gedmo\SortablePosition
      * @ORM\Column(name="position", type="integer")
      */
@@ -156,6 +167,42 @@ class Download
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return Download
+     */
+    public function setFile(File $file = null)
+    {
+        $this->file = $file;
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string $imageName
+     * @return Download
+     */
+    public function setFileName($imageName)
+    {
+        $this->fileName = $imageName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
     }
 
 
