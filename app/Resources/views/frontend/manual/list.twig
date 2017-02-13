@@ -16,15 +16,15 @@
                 <h2 class="page-header">
                     {{ category.getTitle() }}
 
-                    <div class="pull-right">
+                    <div class="pull-right engines">
                         <small>Výběr motorizace:</small>
                         {# @var engine \AppBundle\Entity\Engine #}
                         {% for engine in engines %}
                             <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug(),'engine': engine.getSlug()}) }}"
-                               class="btn btn-sm {% if engine == filterEngine %}btn-main-dark{% else %}btn-main{% endif %}">{{ engine.getName() }}</a>
+                               class="btn btn-sm btn-main{% if engine == filterEngine %} active{% endif %}">{{ engine.getName() }}</a>
                         {% endfor %}
                         <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}"
-                           class="btn btn-sm btn-default">Vše</a>
+                           class="btn btn-sm btn-default{% if filterEngine is null %} active{% endif %}">Vše</a>
                     </div>
                     <div class="clearfix"></div>
                 </h2>

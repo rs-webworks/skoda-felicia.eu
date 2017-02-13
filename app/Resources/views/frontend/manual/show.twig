@@ -88,7 +88,7 @@
                     {{ include(template_from_string(manual.getContent() | raw)) }}
                 </div>
 
-                <div class="col-xs-12 col-sm-4 col-print-4" id="lightgallery">
+                <div class="col-xs-12 col-sm-4 col-print-4 lightgallery">
                     {% for image in manual.getImages() %}
                         <div class="label label-default">
                             <i class="fa fa-picture-o"></i> [{{ image.getPosition() +1 }}]

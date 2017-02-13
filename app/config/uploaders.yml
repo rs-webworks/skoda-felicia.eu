@@ -1,0 +1,30 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        manual_image:
+            uri_prefix:         /images/manual
+            upload_destination: '%kernel.root_dir%/../web/images/manual'
+            namer: vich_uploader.namer_origname
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        download_image:
+            uri_prefix:         /images/download
+            upload_destination: '%kernel.root_dir%/../web/images/download'
+            namer: vich_uploader.namer_origname
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        download_file:
+            uri_prefix:         /downloads
+            upload_destination: '%kernel.root_dir%/../web/downloads'
+            namer: vich_uploader.namer_origname
+
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true

@@ -1,10 +1,9 @@
 <?php
 
-namespace AppBundle\Controller\Manager;
+namespace AppBundle\Controller\Manager\Download;
 
 use AppBundle\Entity\Download\Download;
-use AppBundle\Entity\Manual\Manual;
-use AppBundle\Form\ManualForm;
+use AppBundle\Form\Download\DownloadForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -59,7 +58,7 @@ class DownloadController extends Controller
     /**
      * @Route("/manager/download/create/", name="manager_download_create")
      * @param Request $request
-     * @Template("manager/manual/create.twig")
+     * @Template("manager/download/create.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function downloadCreateAction(Request $request)
@@ -69,7 +68,9 @@ class DownloadController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Download $download */
             $download = $form->getData();
+            $download->setClickCount(0);
             $this->get('app.service.download')->save($download);
             $this->addFlash('success', 'Soubor úspěšně uložen');
             return $this->redirectToRoute('manager_download_list');
@@ -82,23 +83,23 @@ class DownloadController extends Controller
 
     /**
      * @Route("/manager/download/delete/{id}", name="manager_download_delete", requirements={"id": "\d+"})
-     * @param Request $request
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function downloadDeleteAction(Request $request, $id)
+    public function downloadDeleteAction($id)
     {
-        $manual = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->find($id);
-        if (!$manual) {
-            $this->addFlash('danger', 'Stránka nebyla nalezena');
-            return $this->redirectToRoute('manager_manual_list');
+        $download = $this->getDoctrine()->getRepository('AppBundle:Download\Download')->find($id);
+        if (!$download) {
+            $this->addFlash('danger', 'Soubor nebyl nalezen');
+            return $this->redirectToRoute('manager_download_list');
         }
 
         $em = $this->getDoctrine()->getManager();
-        $em->remove($manual);
+        $em->remove($download);
         $em->flush();
 
-        $this->addFlash('success', 'Stránka byla úspěšně smazána');
-        return $this->redirectToRoute('manager_manual_list');
+        $this->addFlash('success', 'Soubor byl úspěšně smazán');
+        return $this->redirectToRoute('manager_download_list');
     }
 
     /**
@@ -116,7 +117,7 @@ class DownloadController extends Controller
     public function downloadMoveAction($id, $direction, $changeBy = null)
     {
         $entityTools = $this->get('app.service.entitytools');
-        $entity = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->find($id);
+        $entity = $this->getDoctrine()->getRepository('AppBundle:Download\Download')->find($id);
 
         if ($direction == 'up') {
             $entityTools->positionMoveUp($entity);
@@ -128,7 +129,7 @@ class DownloadController extends Controller
             $this->addFlash('danger', 'Nebyl rozpoznán správný směr přesunu');
         }
 
-        return $this->redirectToRoute('manager_manual_list');
+        return $this->redirectToRoute('manager_download_list');
     }
 
 

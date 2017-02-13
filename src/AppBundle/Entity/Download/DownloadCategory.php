@@ -34,6 +34,11 @@ class DownloadCategory
      */
     private $downloads;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $icon;
+
 
     /**
      * @Gedmo\Slug(fields={"title"})
@@ -96,6 +101,22 @@ class DownloadCategory
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param mixed $icon
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
     }
 
 

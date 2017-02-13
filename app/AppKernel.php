@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Isometriks\Bundle\SpamBundle\IsometriksSpamBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new BFOS\TwigExtensionsBundle\BFOSTwigExtensionsBundle(),
 
             // Application bundles:
             new AppBundle\AppBundle(),

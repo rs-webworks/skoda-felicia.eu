@@ -4,17 +4,111 @@
 
     <div class="container" id="download-list">
         <div class="row">
+            {# Breadcrumbs #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    {% if currentCategory is not null %}
+                        <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
+                        <li class="active">{{ currentCategory.getTitle() }}</li>
+                    {% else %}
+                        <li class="active">Ke stažení</li>
+                    {% endif %}
+                </ol>
+            </div>
+            {# / Breadcrumbs #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+
+            {# Header #}
+            {# ------------------------------------------------------------------------------------------------------ #}
             <div class="col-xs-12">
                 <h2 class="page-header">
-                    Soubory
-                    <span>Ke stažení</span>
+                    {% if currentCategory is not null %}
+                        Kategorie
+                        <span>
+                            <i class="fa fa-fw fa-{{ currentCategory.getIcon() }}"></i> {{ currentCategory.getTitle() }}
+                        </span>
+                    {% else %}
+                        <span>Všechny soubory</span>
+                    {% endif %}
+
                 </h2>
             </div>
+            {# Header #}
+            {# ------------------------------------------------------------------------------------------------------ #}
         </div>
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <h3><i class="fa fa-fw fa-5x fa-wrench"></i> Litujeme ale tato sekce je zatím ve fázi přípravy.</h3>
+            {# Menu #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+            <div class="col-xs-12 col-sm-3">
+                <h5 class="no-margin">Kategorie</h5>
+                <div class="list-group">
+                    <a href="{{ url('frontend_download') }}" class="list-group-item{% if currentCategory is null %} active{% endif %}">
+                        <i class="fa fa-fw fa-download"></i>
+                        &nbsp;Všechny soubory
+                        <span class="badge">{{ downloadsCount }}</span>
+                    </a>
+                    {# @var category \AppBundle\Entity\Download\DownloadCategory #}
+                    {% for category in categories %}
+                        <a href="{{ url('frontend_download', {'category': category.getSlug()}) }}" class="list-group-item{% if currentCategory == category %} active{% endif %}">
+                            <i class="fa fa-fw fa-{{ category.getIcon() }}"></i>
+                            &nbsp;{{ category.getTitle() }}
+                            <span class="badge">{{ category.getDownloads()|length }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
+            {# / Menu #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+
+            {# List #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+            <div class="col-xs-12 col-sm-9">
+
+                <h5 class="no-margin">Soubory</h5>
+                {% if downloads|length == 0 %}
+                    <h3 class="text-muted text-center">V této kategorii zatím nejsou žádné soubory.</h3>
+                {% endif %}
+
+                {# @var download \AppBundle\Entity\Download\Download #}
+                {% for download in downloads %}
+                    <div class="panel panel-default download" data-id="{{ download.getId() }}">
+                        <div class="panel-body">
+                            <div class="media">
+                                <div class="media-left lightgallery">
+                                    <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
+                                        <img class="media-object download-image" src="{{ vich_uploader_asset(download, 'imageFile') }}" alt="{{ download.getTitle() }}" />
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h3 class="media-heading">{{ download.getTitle() }}</h3>
+                                    <hr />
+                                    {{ download.getDescription()|raw }}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <span class="label label-main"><i class="fa fa-fw fa-info-circle"></i> {{ download.getFile().getSize()|bfos_format_bytes }}</span>
+                            <span class="label label-default"><i class="fa fa-fw fa-file"></i> .{{ download.getFile().getExtension() }}</span>
+                            <span class="label label-default"><i class="fa fa-fw fa-cloud-download"></i> {{ download.getClickCount() }}x</span>
+
+                            <div class="pull-right">
+                                <a href="{{ url('frontend_download_request', {'slug': download.getSlug()}) }}" class="btn btn-sm btn-default"><i class="fa fa-fw fa-download"></i> Stáhnout</a>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {{ knp_pagination_render(downloads) }}
+
+            </div>
+            {# / List #}
+            {# ------------------------------------------------------------------------------------------------------ #}
         </div>
     </div>
 

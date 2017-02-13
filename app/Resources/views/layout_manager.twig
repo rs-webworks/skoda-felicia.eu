@@ -1,9 +1,9 @@
 {% extends 'layout.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/codemirror.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/theme/material.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/dialog/dialog.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/codemirror.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/css/theme/material.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/dialog/dialog.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/codemirror/js/addon/search/matchesonscrollbar.css') }}" />
 {% endblock %}
 
 {% block header %}
@@ -52,6 +52,11 @@
 
                         {# - Navbar XS, LG #}
                         <ul class="nav navbar-nav visible-lg visible-xs">
+                            <li>
+
+                                <a href="{{ url('manager_home') }}" title="Dashboard"><i
+                                            class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            </li>
                             {# - Dílenská příručka #}
                             {# ------------------------------------------------------------------------------------------ #}
                             <li class="dropdown">
@@ -99,8 +104,6 @@
                             </li>
                         </ul>
                         <div class="navbar-form navbar-right">
-                            <a href="{{ url('manager_home') }}" class="btn btn-default" title="Dashboard"><i
-                                        class="fa fa-fw fa-dashboard"></i></a>
                             <a href="{{ url('frontend_manual') }}" class="btn btn-default" title="Frontend"><i
                                         class="fa fa-fw fa-home"></i></a>
                             <a href="{{ url('logout') }}" class="btn btn-default" title="Odhlásit"><i

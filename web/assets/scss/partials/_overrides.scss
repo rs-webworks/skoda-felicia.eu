@@ -57,6 +57,16 @@ mark {
   }
 }
 
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  color: $colorWhite;
+  background-color: $colorMain;
+}
+
+.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
+  color: $colorMain;
+  background-color: $colorWhite;
+}
+
 // Codemirror
 // ---------------------------------------------------------------------------------------------------------------------
 

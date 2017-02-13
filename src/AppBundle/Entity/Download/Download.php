@@ -35,7 +35,7 @@ class Download
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Toto pole musí být vyplněno")
      */
-    private $desc;
+    private $description;
 
     /**
      * @Vich\UploadableField(mapping="download_image", fileNameProperty="imageName")
@@ -119,17 +119,17 @@ class Download
     /**
      * @return mixed
      */
-    public function getDesc()
+    public function getDescription()
     {
-        return $this->desc;
+        return $this->description;
     }
 
     /**
      * @param mixed $desc
      */
-    public function setDesc($desc)
+    public function setDescription($description)
     {
-        $this->desc = $desc;
+        $this->description = $description;
     }
 
 
@@ -245,5 +245,14 @@ class Download
     {
         return $this->clickCount++;
     }
+
+    /**
+     * @param mixed $clickCount
+     */
+    public function setClickCount($clickCount)
+    {
+        $this->clickCount = $clickCount;
+    }
+
 
 }

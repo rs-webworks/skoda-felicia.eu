@@ -42,11 +42,11 @@
                 <tr data-id="{{ download.getId() }}">
                     <td>{{ download.getTitle() }}</td>
                     <td>
-                        <span class="label label-main">{{ download.category().getName() }}</span>
+                        <span class="label label-main"><i class="fa fa-fw fa-{{ download.getCategory().getIcon() }}"></i> {{ download.getCategory().getTitle() }}</span>
                     </td>
                     <td>
                         <div class="pull-right">
-                            <a href="{{ url('frontend_download_show', {'slug': download.getSlug()}) }}"
+                            <a href="{{ url('frontend_download', {'slug': download.getSlug()}) }}"
                                class="btn btn-default btn-xs"><i
                                         class="fa fa-fw fa-search"></i></a>
                             <a href="{{ url('manager_download_edit', {'id': download.getId()}) }}"

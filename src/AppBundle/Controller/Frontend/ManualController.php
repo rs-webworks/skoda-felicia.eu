@@ -14,7 +14,7 @@ class ManualController extends Controller
      */
     public function indexAction($engine = null)
     {
-        return $this->render('frontend/manual/home.twig', array(
+        return $this->render('frontend/manual/index.twig', array(
             'manualCategories' => $this->get('app.service.manual')->getAllByCategory(),
             'engines' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findAll()
         ));
@@ -58,7 +58,7 @@ class ManualController extends Controller
         return array(
             'engines' => $this->getDoctrine()->getRepository('AppBundle:Engine')->findAll(),
             'manuals' => $pagination,
-            'filterEngine' => $this->getDoctrine()->getRepository('AppBundle:Engine')->findOneBy(array('slug' => $engine)),
+            'filterEngine' => $engine,
             'category' => $category
         );
     }

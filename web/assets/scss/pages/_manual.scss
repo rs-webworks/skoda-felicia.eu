@@ -9,6 +9,17 @@
   }
 }
 
+#manual-list {
+  .engines {
+    & > a {
+      opacity: 0.5;
+    }
+    & > a.active {
+      opacity: 1;
+    }
+  }
+}
+
 .text-content {
   h4 {
     margin: 60px 0px 20px;

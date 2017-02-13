@@ -36,7 +36,7 @@ h2 {
   > span {
     display: block;
     font-size: 1.5em;
-    color: $colorMain;
+    color: $colorMainDark;
   }
 }
 
@@ -280,7 +280,7 @@ footer {
 }
 
 .text-main {
-  color: $colorMain;
+  color: $colorMainDark;
 }
 
 .text-main-light {
@@ -307,7 +307,7 @@ footer {
 }
 
 .btn.btn-main {
-  background-color: $colorMain;
+  background-color: $colorMainDark;
 }
 
 .btn.btn-main-dark {
@@ -315,7 +315,7 @@ footer {
 }
 
 .label.label-main {
-  background-color: $colorMain;
+  background-color: $colorMainDark;
 }
 
 .panel.panel-main {

@@ -10,6 +10,10 @@ services:
         class: AppBundle\Service\ManualService
         arguments: ['@doctrine.orm.entity_manager']
 
+    app.service.download:
+        class: AppBundle\Service\DownloadService
+        arguments: ['@doctrine.orm.entity_manager']
+
     app.service.report:
         class: AppBundle\Service\ReportService
         arguments: ['@doctrine.orm.entity_manager']
@@ -18,8 +22,10 @@ services:
         class: AppBundle\Service\EntityToolsService
         arguments: ['@doctrine.orm.entity_manager']
 
+    # Listener
+    # ------------------------------------------------------------------------------------------------------------------
     app.listener.maintenance:
-        class: AppBundle\Service\MaintenanceListener
+        class: AppBundle\Listener\MaintenanceListener
         arguments:
             container: "@service_container"
         tags:

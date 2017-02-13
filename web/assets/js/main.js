@@ -47,7 +47,7 @@ $(function () {
         });
     }
 
-    $("#lightgallery").lightGallery({
+    $(".lightgallery").lightGallery({
         selector: 'a'
     });
 
