@@ -2,7 +2,7 @@
 {% block title %}O autorech{% endblock %}
 {% block body %}
 
-    <div class="container" id="about-authors">
+    <section class="container" id="about-authors">
         {# Authors #}
         {# ---------------------------------------------------------------------------------------------------------- #}
         <div class="row">
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default author">
+        <article class="panel panel-default author">
             <div class="panel-body">
                 <div class="col-xs-12 col-sm-2">
                     <img src="{{ asset('images/authors/raito.jpg') }}" class="img-responsive img-circle" alt="Raito" />
@@ -25,21 +25,18 @@
                     <a href="#zprava"><i class="fa fa-envelope"></i> Napsat zprávu</a>
                 </div>
             </div>
-        </div>
+        </article>
         {# //Authors #}
         {# ---------------------------------------------------------------------------------------------------------- #}
 
         {# About project #}
         {# ---------------------------------------------------------------------------------------------------------- #}
-        <div class="row">
+        <article class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
                     O projektu
                 </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
+
                 <h3 class="no-margin">Proč tento web vznikl?</h3>
                 <p>Kvalitní materiály pro servis Felicie se bohužel až doposud nacházely různě po celém webu zcela nekonzistentně,
                     některé se časem staly nepoužitelné, spousta z nich byla i ve špatné digitální podobě. Hlavní motivací byla digitalizace dílenské
@@ -106,7 +103,7 @@
                 <p>a do poznámky pro příjemce tvoje jméno nebo email, pokud chceš být uveřejněn v plánované Síni slávy.
                 </p>
             </div>
-        </div>
+        </article>
         {# //About project #}
         {# ---------------------------------------------------------------------------------------------------------- #}
 
@@ -142,6 +139,6 @@
 
         {# //Message #}
         {# ---------------------------------------------------------------------------------------------------------- #}
-    </div>
+    </section>
 
 {% endblock %}

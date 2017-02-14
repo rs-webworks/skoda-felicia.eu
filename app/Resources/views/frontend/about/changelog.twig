@@ -2,7 +2,7 @@
 {% block title %}Changelog{% endblock %}
 {% block body %}
 
-    <div class="container" id="about-changelog">
+    <section class="container" id="about-changelog">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-xs-12">
                 {% for version, log in changelog %}
-                    <div class="panel panel-{% if loop.first %}main{% else %}default{% endif %}">
+                    <article class="panel panel-{% if loop.first %}main{% else %}default{% endif %}">
                         <div class="panel-heading">{{ version }}
                             <span class="pull-right">{{ log['released']|date('d.m.Y') }}</span></div>
                         <div class="panel-body">
@@ -24,10 +24,10 @@
                                 {% endfor %}
                             </ul>
                         </div>
-                    </div>
+                    </article>
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </section>
 
 {% endblock %}

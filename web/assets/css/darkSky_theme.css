@@ -235,7 +235,7 @@ footer {
   color: #1b96ff; }
 
 .text-main-light {
-  color: #6abaff; }
+  color: #4eadff; }
 
 .text-large {
   font-size: 1.5em; }
@@ -243,20 +243,8 @@ footer {
 .progress-bar-main {
   background-color: #2d2d2d; }
 
-.display-table {
-  display: table;
-  width: 100%;
-  height: 100%; }
-
-.display-table-cell {
-  display: table-cell;
-  vertical-align: middle; }
-
 .btn.btn-main {
   background-color: #1b96ff; }
-
-.btn.btn-main-dark {
-  background-color: #113f67; }
 
 .label.label-main {
   background-color: #1b96ff; }
@@ -294,26 +282,41 @@ footer {
 
 .header-bg {
   height: 260px;
-  background: url("../../../images/layout/header_01.jpg") no-repeat top center;
+  background: #252525 url("../../../images/layout/header_01.jpg") no-repeat top center;
   border-bottom: 3px solid #1b96ff;
   margin-bottom: 30px; }
   .header-bg.manager {
     height: 56px; }
 
 header {
+  animation-name: background_fade;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
   width: 100%;
-  height: 204px; }
+  height: 260px; }
+@keyframes background_fade {
+  from {
+    background-color: #252525; }
+  to {
+    background-color: rgba(37, 37, 37, 0); } }
+  header .display-table {
+    display: table;
+    width: 100%;
+    height: 204px; }
+  header .display-table-cell {
+    display: table-cell;
+    vertical-align: middle; }
   header h1 a {
     color: #ffffff; }
     header h1 a:hover, header h1 a:focus {
-      color: #6abaff; }
+      color: #4eadff; }
   header .heading {
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
     color: #ffffff;
     margin-bottom: 0px; }
-  header .display-table {
-    opacity: 1; }
   header #subtext {
     display: block;
     font-size: 2.2em;
@@ -338,12 +341,16 @@ header {
   letter-spacing: 1px;
   border: 0;
   font-size: 0.8em; }
+  .navbar .container {
+    transition: width 1s ease; }
   .navbar.affix {
     top: 0;
     width: 100%;
     z-index: 999;
     border-bottom: 3px solid #1b96ff;
     background-color: #2d2d2d; }
+    .navbar.affix .container {
+      width: 100%; }
   .navbar .navbar-collapse {
     padding: 0; }
   .navbar .navbar-header .navbar-brand {
@@ -404,8 +411,9 @@ header {
   margin-bottom: 25px; }
 
 #manual-list .engines > a {
+  transition: opacity 0.5s;
   opacity: 0.5; }
-#manual-list .engines > a.active {
+#manual-list .engines > a.active, #manual-list .engines > a:hover {
   opacity: 1; }
 
 .text-content h4 {

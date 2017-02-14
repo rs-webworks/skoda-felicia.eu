@@ -2,20 +2,22 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 $colorMain: #2d2d2d;
-$colorMainDark: #ff1b45;
-$colorMainDarkest: #770027;
-$colorMainLight: #ff7790;
+$colorMainAlt: #dc2c43;
+$colorMainDark: darken($colorMainAlt, 10%);
+$colorMainLight: lighten($colorMainAlt, 10%);
+//$colorMainDarkest: #770027;
+//$colorMainLight: #ff7790;
 $colorDark: #252525;
 $colorText: #555555;
 $colorShadow: #757575;
 $colorLightShadow: #F3F3F3;
 $colorWhite: #ffffff;
 
-$colorLink: $colorMainDark;
+$colorLink: $colorMainAlt;
 $colorFooterLink: $colorLink;
 $colorBackground: $colorWhite;
 
-$vagColor: $colorMainDark;
+$vagColor: $colorMainAlt;
 
 $fontDefault: "OpenSans", sans-serif;
 $fontBold: "Roboto", sans-serif;

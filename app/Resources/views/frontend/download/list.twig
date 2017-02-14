@@ -2,7 +2,7 @@
 {% block title %}Ke stažení{% endblock %}
 {% block body %}
 
-    <div class="container" id="download-list">
+    <section class="container" id="download-list">
         <div class="row">
             {# Breadcrumbs #}
             {# ------------------------------------------------------------------------------------------------------ #}
@@ -43,7 +43,7 @@
             {# ------------------------------------------------------------------------------------------------------ #}
             <div class="col-xs-12 col-sm-3">
                 <h5 class="no-margin">Kategorie</h5>
-                <div class="list-group">
+                <nav class="list-group">
                     <a href="{{ url('frontend_download') }}" class="list-group-item{% if currentCategory is null %} active{% endif %}">
                         <i class="fa fa-fw fa-download"></i>
                         &nbsp;Všechny soubory
@@ -57,7 +57,7 @@
                             <span class="badge">{{ category.getDownloads()|length }}</span>
                         </a>
                     {% endfor %}
-                </div>
+                </nav>
             </div>
             {# / Menu #}
             {# ------------------------------------------------------------------------------------------------------ #}
@@ -73,7 +73,7 @@
 
                 {# @var download \AppBundle\Entity\Download\Download #}
                 {% for download in downloads %}
-                    <div class="panel panel-default download" data-id="{{ download.getId() }}">
+                    <article class="panel panel-default download" data-id="{{ download.getId() }}">
                         <div class="panel-body">
                             <div class="media">
                                 <div class="media-left lightgallery">
@@ -101,7 +101,7 @@
 
                             <div class="clearfix"></div>
                         </div>
-                    </div>
+                    </article>
                 {% endfor %}
 
                 {{ knp_pagination_render(downloads) }}
@@ -110,6 +110,6 @@
             {# / List #}
             {# ------------------------------------------------------------------------------------------------------ #}
         </div>
-    </div>
+    </section>
 
 {% endblock %}

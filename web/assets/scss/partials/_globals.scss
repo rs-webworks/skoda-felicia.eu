@@ -36,7 +36,7 @@ h2 {
   > span {
     display: block;
     font-size: 1.5em;
-    color: $colorMainDark;
+    color: $colorMainAlt;
   }
 }
 
@@ -116,7 +116,7 @@ tr.tr-heading {
 
   h2 {
     span {
-      color: $colorMainDark;
+      color: $colorMainAlt;
     }
   }
 }
@@ -280,7 +280,7 @@ footer {
 }
 
 .text-main {
-  color: $colorMainDark;
+  color: $colorMainAlt;
 }
 
 .text-main-light {
@@ -295,27 +295,12 @@ footer {
   background-color: $colorMain;
 }
 
-.display-table {
-  display: table;
-  width: 100%;
-  height: 100%;
-}
-
-.display-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .btn.btn-main {
-  background-color: $colorMainDark;
-}
-
-.btn.btn-main-dark {
-  background-color: $colorMainDarkest;
+  background-color: $colorMainAlt;
 }
 
 .label.label-main {
-  background-color: $colorMainDark;
+  background-color: $colorMainAlt;
 }
 
 .panel.panel-main {

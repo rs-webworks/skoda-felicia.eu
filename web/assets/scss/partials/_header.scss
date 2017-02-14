@@ -6,14 +6,41 @@
   }
 
   height: 260px;
-  background: url('../../../images/layout/header_01.jpg') no-repeat top center;
-  border-bottom: 3px solid $colorMainDark;
+  background: #252525 url('../../../images/layout/header_01.jpg') no-repeat top center;
+  border-bottom: 3px solid $colorMainAlt;
   margin-bottom: 30px;
 }
 
 header {
+  @keyframes background_fade {
+    from {
+      background-color: rgba(#252525, 1);
+    }
+    to {
+      background-color: rgba(#252525, 0);
+    }
+  }
+
+  animation-name: background_fade;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+
   width: 100%;
-  height: 204px;
+  height: 260px;
+  //background-color: rgba(#252525, 1);
+
+  .display-table {
+    display: table;
+    width: 100%;
+    height: 204px;
+  }
+
+  .display-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
 
   h1 a {
     color: $colorWhite;
@@ -27,10 +54,6 @@ header {
     font-family: $fontBold;
     color: $colorWhite;
     margin-bottom: 0px;
-  }
-
-  .display-table {
-    opacity: 1;
   }
 
   #subtext {

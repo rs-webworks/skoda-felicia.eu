@@ -45,7 +45,7 @@ a.btn {
 }
 
 mark {
-  background-color: $colorMainDark;
+  background-color: $colorMainAlt;
   color: $colorWhite;
 }
 
@@ -53,7 +53,7 @@ mark {
   color: $colorMain;
 
   &:hover, &:focus {
-    color: $colorMainDark;
+    color: $colorMainAlt;
   }
 }
 

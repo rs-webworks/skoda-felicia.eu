@@ -1,18 +1,18 @@
 // Colors
 // ---------------------------------------------------------------------------------------------------------------------
 
-$colorMain: #ff1b45;
-$colorMainDark: #ff2946;
-$colorMainDarkest: #770027;
-$colorMainLight: #ff7790;
+$colorMain: #ca2644;
+$colorMainAlt: lighten($colorMain, 5%);
+$colorMainDark: darken($colorMain, 10%);
+$colorMainLight: lighten($colorMain, 10%);
 $colorDark: #252525;
 $colorText: #555555;
 $colorShadow: #757575;
 $colorLightShadow: #F3F3F3;
 $colorWhite: #ffffff;
 
-$colorLink: $colorMainDark;
-$colorFooterLink: $colorMainDarkest;
+$colorLink: $colorMainAlt;
+$colorFooterLink: $colorWhite;
 $colorBackground: $colorWhite;
 
 $vagColor: $colorMain;

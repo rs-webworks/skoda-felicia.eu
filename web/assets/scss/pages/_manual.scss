@@ -12,9 +12,10 @@
 #manual-list {
   .engines {
     & > a {
+      transition: opacity 0.5s;
       opacity: 0.5;
     }
-    & > a.active {
+    & > a.active, & > a:hover {
       opacity: 1;
     }
   }

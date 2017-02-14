@@ -1,7 +1,7 @@
 // Navbar
 // ---------------------------------------------------------------------------------------------------------------------
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: $colorMainDark;
+  background-color: $colorMainAlt;
 }
 
 .navbar {
@@ -11,12 +11,20 @@
   border: 0;
   font-size: 0.8em;
 
+  & .container {
+    transition: width 1s ease;
+  }
+
   &.affix {
     top: 0;
     width: 100%;
     z-index: 999;
-    border-bottom: 3px solid $colorMainDark;
+    border-bottom: 3px solid $colorMainAlt;
     background-color: transparentize($colorMain, 0);
+
+    & .container {
+      width: 100%;
+    }
   }
 
   .navbar-collapse {
@@ -36,9 +44,9 @@
 
     & > ul > li.active {
       > a {
-        background-color: $colorMainDark !important;
+        background-color: $colorMainAlt !important;
         color: $colorWhite !important;
-        border-bottom: 3px solid $colorMainDark;
+        border-bottom: 3px solid $colorMainAlt;
       }
     }
 
@@ -52,7 +60,7 @@
       }
 
       &:focus, &:active {
-        background-color: $colorMainDark !important;
+        background-color: $colorMainAlt !important;
         color: $colorWhite;
       }
     }

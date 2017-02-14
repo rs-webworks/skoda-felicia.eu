@@ -2,17 +2,17 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 $colorMain: #00b39a;
-$colorMainDark: #16bda6;
-$colorMainDarkest: #09584d;
-$colorMainLight: #1ff9db;
+$colorMainAlt: lighten($colorMain, 5%);
+$colorMainDark: darken($colorMain, 10%);
+$colorMainLight: lighten($colorMain, 10%);
 $colorDark: #252525;
 $colorText: #555555;
 $colorShadow: #757575;
 $colorLightShadow: #F3F3F3;
 $colorWhite: #ffffff;
 
-$colorLink: $colorMainDark;
-$colorFooterLink: $colorMainDarkest;
+$colorLink: $colorMain;
+$colorFooterLink: $colorWhite;
 $colorBackground: $colorWhite;
 
 $vagColor: $colorMain;

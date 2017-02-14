@@ -2,9 +2,9 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 $colorMain: #2d2d2d;
-$colorMainDark: #4e4e4e;
-$colorMainDarkest: #1d1d1d;
-$colorMainLight: #b1b1b1;
+$colorMainAlt: #4e4e4e;
+$colorMainDark: darken($colorMain, 10%);
+$colorMainLight: lighten($colorMain, 10%);
 $colorDark: #252525;
 $colorText: #555555;
 $colorShadow: #757575;
@@ -12,11 +12,11 @@ $colorLightShadow: #F3F3F3;
 $colorWhite: #ffffff;
 $colorBackground: $colorWhite;
 
-$colorLink: $colorMainDark;
+$colorLink: $colorMainAlt;
 $colorFooterLink: $colorMainLight;
 $colorBackground: $colorWhite;
 
-$vagColor: $colorMainLight;
+$vagColor: $colorMainAlt;
 
 $fontDefault: "OpenSans", sans-serif;
 $fontBold: "Roboto", sans-serif;
