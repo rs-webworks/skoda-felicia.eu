@@ -66,6 +66,14 @@
 
                             {# - Navbar XS, LG #}
                             <ul class="nav navbar-nav visible-lg">
+
+                                <li class="totop">
+                                    <a href="#top">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                </li>
+
+
                                 {# - Dílenská příručka #}
                                 {# ------------------------------------------------------------------------------------------ #}
                                 <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
@@ -106,7 +114,6 @@
                                     </a>
                                 </li>
                             </ul>
-
                             {{ render(controller('AppBundle:Frontend/Search:search', {request: app.request})) }}
                         {% endif %}
                     </div>

@@ -49,6 +49,12 @@
                     </tr>
                     </thead>
                     <tbody class="sortable">
+                    {% if manuals|length == 0 %}
+                        <tr>
+                            <td colspan="2" class="text-muted text-center">V této kategorii nejsou zatím žádné stránky.</td>
+                        </tr>
+                    {% endif %}
+
                     {# @var page \AppBundle\Entity\Manual\Manual #}
                     {% for page in manuals %}
                         <tr data-id="{{ page.getId() }}">

@@ -51,6 +51,8 @@ $(function () {
         selector: 'a'
     });
 
+    $('body').scrollspy({target: '.spy-active'});
+
     // Smooth scrolling effect
     // -----------------------------------------------------------------------------------------------------------------
     $(function () {
@@ -69,27 +71,6 @@ $(function () {
     });
     // -----------------------------------------------------------------------------------------------------------------
 
-
-    // Fade in on scroll
-    // -----------------------------------------------------------------------------------------------------------------
-    // on load
-    uncoverVisibleObjects();
-
-    // on scroll
-    $(window).scroll(function () {
-        uncoverVisibleObjects();
-    });
-
-    function uncoverVisibleObjects() {
-        $('.hideme').each(function (i) {
-            var bottom_of_object = $(this).offset().top;
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-            if (bottom_of_window > bottom_of_object + 70) {
-                $(this).animate({'opacity': 1}, 1000);
-            }
-        });
-    }
 
     function showLoadingOverlay() {
         $('.loading-overlay').fadeIn();

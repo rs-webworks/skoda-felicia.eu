@@ -15,6 +15,12 @@
     transition: width 1s ease;
   }
 
+  .nav.navbar-nav > li.totop {
+    transition: all 1s;
+    opacity: 0;
+    width: 0;
+  }
+
   &.affix {
     top: 0;
     width: 100%;
@@ -24,6 +30,11 @@
 
     & .container {
       width: 100%;
+    }
+
+    .nav.navbar-nav > li.totop {
+      width: auto;
+      opacity: 1;
     }
   }
 
@@ -60,7 +71,7 @@
       }
 
       &:focus, &:active {
-        background-color: $colorMainAlt !important;
+        background: none !important;
         color: $colorWhite;
       }
     }

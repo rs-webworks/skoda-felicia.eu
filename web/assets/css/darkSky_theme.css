@@ -301,6 +301,8 @@ header {
     background-color: #252525; }
   to {
     background-color: rgba(37, 37, 37, 0); } }
+  header#manager {
+    height: 56px; }
   header .display-table {
     display: table;
     width: 100%;
@@ -343,6 +345,10 @@ header {
   font-size: 0.8em; }
   .navbar .container {
     transition: width 1s ease; }
+  .navbar .nav.navbar-nav > li.totop {
+    transition: all 1s;
+    opacity: 0;
+    width: 0; }
   .navbar.affix {
     top: 0;
     width: 100%;
@@ -351,6 +357,9 @@ header {
     background-color: #2d2d2d; }
     .navbar.affix .container {
       width: 100%; }
+    .navbar.affix .nav.navbar-nav > li.totop {
+      width: auto;
+      opacity: 1; }
   .navbar .navbar-collapse {
     padding: 0; }
   .navbar .navbar-header .navbar-brand {
@@ -368,7 +377,7 @@ header {
       background-color: #ffffff;
       color: #2d2d2d; }
     .navbar #top-menu > ul > li > a:focus, .navbar #top-menu > ul > li > a:active {
-      background-color: #1b96ff !important;
+      background: none !important;
       color: #ffffff; }
 
 @media (max-width: 767px) {
