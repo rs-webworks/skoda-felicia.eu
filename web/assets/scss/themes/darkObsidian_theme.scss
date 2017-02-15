@@ -4,7 +4,7 @@
 $colorMain: #2d2d2d;
 $colorMainAlt: #4e4e4e;
 $colorMainDark: darken($colorMain, 10%);
-$colorMainLight: lighten($colorMain, 10%);
+$colorMainLight: lighten($colorMain, 50%);
 $colorDark: #252525;
 $colorText: #555555;
 $colorShadow: #757575;
@@ -15,6 +15,7 @@ $colorBackground: $colorWhite;
 $colorLink: $colorMainAlt;
 $colorFooterLink: $colorMainLight;
 $colorBackground: $colorWhite;
+$colorAffixNavbarBg: $colorMain;
 
 $vagColor: $colorMainAlt;
 

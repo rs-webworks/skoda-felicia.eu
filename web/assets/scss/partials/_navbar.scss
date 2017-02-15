@@ -11,6 +11,11 @@
   border: 0;
   font-size: 0.8em;
 
+  .container-wrap {
+    margin: 0 auto;
+    max-width: 1280px;
+  }
+
   & .container {
     transition: width 1s ease;
   }
@@ -26,14 +31,14 @@
     width: 100%;
     z-index: 999;
     border-bottom: 3px solid $colorMainAlt;
-    background-color: transparentize($colorMain, 0);
+    background-color: $colorAffixNavbarBg;
 
     & .container {
       width: 100%;
     }
 
     .nav.navbar-nav > li.totop {
-      width: auto;
+      width: 45px;
       opacity: 1;
     }
   }
@@ -49,6 +54,20 @@
   }
 
   #top-menu {
+    .mobile-search {
+      padding: 15px;
+
+      form {
+        .form-group {
+          display: inline-block;
+        }
+
+        button {
+          margin-top: -3px; // ugly hack
+        }
+      }
+    }
+
     & > ul {
       margin-bottom: -3px;
     }

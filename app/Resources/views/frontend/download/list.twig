@@ -27,7 +27,7 @@
                     {% if currentCategory is not null %}
                         Kategorie
                         <span>
-                            <i class="fa fa-fw fa-{{ currentCategory.getIcon() }}"></i> {{ currentCategory.getTitle() }}
+                            <i class="fa fa-fw fa-{{ currentCategory.getIcon() }} hidden-xs"></i> {{ currentCategory.getTitle() }}
                         </span>
                     {% else %}
                         <span>Všechny soubory</span>

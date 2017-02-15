@@ -1,14 +1,27 @@
 {% extends 'layout.twig' %}
 
 {% block header %}
-    <div class="header-bg">
+    <div class="header-bg bg-{{ random(8) }}">
         <header>
             <div class="display-table">
                 <div class="display-table-cell">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xs-12">
+                            {# - Header XS #}
+                            <div class="col-xs-12 visible-xs text-center">
+                                <h1 class="heading">
+                                    <a href="{{ url('frontend_home') }}"><strong>Škoda Felicia</strong></a>
+                                </h1>
+                                <div id="subtext" class="text-main-light">www.skoda-felicia.eu</div>
 
+                                {% if maintenance is not defined %}
+                                    <br /><a class="btn btn-main" href="{{ url('frontend_about_authors') }}#donate"><i class="fa fa-paypal"></i> Jak přispět na provoz?</a>
+                                {% endif %}
+                                <div class="clearfix"></div>
+                            </div>
+
+                            {# - Header SM > #}
+                            <div class="col-xs-12 hidden-xs">
                                 <h1 class="heading">
                                     <a href="{{ url('frontend_home') }}"><strong class="text-large pull-left">Škoda Felicia</strong></a>
                                 </h1>
@@ -19,7 +32,7 @@
                                 </div>
                                 <div class="clearfix"></div>
 
-                                <div id="subtext" class="text-main-light hidden-xs">www.skoda-felicia.eu</div>
+                                <div id="subtext" class="text-main-light">www.skoda-felicia.eu</div>
                             </div>
                         </div>
                     </div>
@@ -27,95 +40,105 @@
             </div>
 
             <nav class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                    </div>
+                <div class="container-wrap">
+                    <div class="container">
+                        <div class="navbar-header">
+                        </div>
 
-                    <div id="top-menu">
-                        {% if maintenance is not defined %}
-                            {# - Navbar XS - MD #}
-                            <ul class="nav navbar-nav hidden-lg">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-bars"></i> Navigace
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu main-nav-small">
-                                        <li>
-                                            <a href="{{ url('frontend_manual') }}"><i class="fa fa-book"></i> Dílenská příručka</a>
-                                        </li>
+                        <div id="top-menu">
+                            {% if maintenance is not defined %}
+                                {# - Navbar XS - MD #}
+                                <ul class="nav navbar-nav hidden-lg">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-bars"></i> Navigace
+                                            <span class="caret"></span></a>
+                                        <ul class="dropdown-menu main-nav-small">
+                                            <li>
+                                                <a href="{{ url('frontend_manual') }}"><i class="fa fa-book"></i> Dílenská příručka</a>
+                                            </li>
 
-                                        <li>
-                                            <a href="{{ url('frontend_faq') }}"><i class="fa fa-question-circle"></i> Časté otázky</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ url('frontend_faq') }}"><i class="fa fa-question-circle"></i> Časté otázky</a>
+                                            </li>
 
-                                        <li>
-                                            <a href="{{ url('frontend_guide') }}"><i class="fa fa-wrench"></i> Návody</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ url('frontend_guide') }}"><i class="fa fa-wrench"></i> Návody</a>
+                                            </li>
 
-                                        <li>
-                                            <a href="{{ url('frontend_tuning') }}"><i class="fa fa-dashboard"></i> Sportovní úpravy</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ url('frontend_tuning') }}"><i class="fa fa-dashboard"></i> Sportovní úpravy</a>
+                                            </li>
 
-                                        <li>
-                                            <a href="{{ url('frontend_download') }}"><i class="fa fa-download"></i> Ke stažení</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                            <li>
+                                                <a href="{{ url('frontend_download') }}"><i class="fa fa-download"></i> Ke stažení</a>
+                                            </li>
+                                            <li class="divider visible-xs"></li>
+                                            <li class="visible-xs">
+                                                <div class="mobile-search">
+                                                    {{ render(controller('AppBundle:Frontend/Search:search', {request: app.request})) }}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
 
-                            {# - Navbar XS, LG #}
-                            <ul class="nav navbar-nav visible-lg">
+                                {# - Navbar XS, LG #}
+                                <ul class="nav navbar-nav visible-lg">
 
-                                <li class="totop">
-                                    <a href="#top">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-                                </li>
+                                    <li class="totop">
+                                        <a href="#top">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                    </li>
 
 
-                                {# - Dílenská příručka #}
-                                {# ------------------------------------------------------------------------------------------ #}
-                                <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
-                                    <a href="{{ url('frontend_manual') }}">
-                                        <i class="fa fa-book"></i> Dílenská příručka
-                                    </a>
-                                </li>
+                                    {# - Dílenská příručka #}
+                                    {# ------------------------------------------------------------------------------------------ #}
+                                    <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
+                                        <a href="{{ url('frontend_manual') }}">
+                                            <i class="fa fa-book"></i> Dílenská příručka
+                                        </a>
+                                    </li>
 
-                                {# - Často kladené otázky #}
-                                {# ------------------------------------------------------------------------------------------ #}
-                                <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
-                                    <a href="{{ url('frontend_faq') }}">
-                                        <i class="fa fa-question-circle"></i> Časté otázky
-                                    </a>
-                                </li>
+                                    {# - Často kladené otázky #}
+                                    {# ------------------------------------------------------------------------------------------ #}
+                                    <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
+                                        <a href="{{ url('frontend_faq') }}">
+                                            <i class="fa fa-question-circle"></i> Časté otázky
+                                        </a>
+                                    </li>
 
-                                {# - Návody #}
-                                {# ------------------------------------------------------------------------------------------ #}
-                                <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                    <a href="{{ url('frontend_guide') }}">
-                                        <i class="fa fa-wrench"></i> Návody
-                                    </a>
-                                </li>
+                                    {# - Návody #}
+                                    {# ------------------------------------------------------------------------------------------ #}
+                                    <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
+                                        <a href="{{ url('frontend_guide') }}">
+                                            <i class="fa fa-wrench"></i> Návody
+                                        </a>
+                                    </li>
 
-                                {# - Sportovní úpravy #}
-                                {# ------------------------------------------------------------------------------------------ #}
-                                <li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>
-                                    <a href="{{ url('frontend_tuning') }}">
-                                        <i class="fa fa-dashboard"></i> Sportovní úpravy
-                                    </a>
-                                </li>
+                                    {# - Sportovní úpravy #}
+                                    {# ------------------------------------------------------------------------------------------ #}
+                                    <li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>
+                                        <a href="{{ url('frontend_tuning') }}">
+                                            <i class="fa fa-dashboard"></i> Sportovní úpravy
+                                        </a>
+                                    </li>
 
-                                {# - Ke stažení #}
-                                {# ------------------------------------------------------------------------------------------ #}
-                                <li {% if app.request.attributes.get('_route') starts with 'frontend_download' %}class="active"{% endif %}>
-                                    <a href="{{ url('frontend_download') }}">
-                                        <i class="fa fa-download"></i> Ke stažení
-                                    </a>
-                                </li>
-                            </ul>
-                            {{ render(controller('AppBundle:Frontend/Search:search', {request: app.request})) }}
-                        {% endif %}
+                                    {# - Ke stažení #}
+                                    {# ------------------------------------------------------------------------------------------ #}
+                                    <li {% if app.request.attributes.get('_route') starts with 'frontend_download' %}class="active"{% endif %}>
+                                        <a href="{{ url('frontend_download') }}">
+                                            <i class="fa fa-download"></i> Ke stažení
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="hidden-xs navbar-form navbar-right">
+                                    {{ render(controller('AppBundle:Frontend/Search:search', {request: app.request})) }}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </nav>

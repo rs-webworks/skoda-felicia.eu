@@ -6,9 +6,15 @@
   }
 
   height: 260px;
-  background: #252525 url('../../../images/layout/header_01.jpg') no-repeat top center;
+  background: #252525 no-repeat top center;
   border-bottom: 3px solid $colorMainAlt;
   margin-bottom: 30px;
+
+  @for $i from 0 through 8 {
+    &.bg-#{$i} {
+      background-image: url('../../../images/layout/header_#{$i}.jpg');
+    }
+  }
 }
 
 header {
@@ -17,7 +23,7 @@ header {
       background-color: rgba(#252525, 1);
     }
     to {
-      background-color: rgba(#252525, 0);
+      background-color: rgba(#252525, 0.6);
     }
   }
 
@@ -28,8 +34,8 @@ header {
   animation-timing-function: ease-in;
 
   width: 100%;
-  height: 260px;
-  //background-color: rgba(#252525, 1);
+  height: 257px;
+  background-color: rgba(#252525, 0.6);
 
   &#manager {
     height: 56px;
