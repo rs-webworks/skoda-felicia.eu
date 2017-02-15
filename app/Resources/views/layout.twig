@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.css') }}" />
 
     {# - Styles #}
-    <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}" media="print" />
+    <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}?version={{ application.getCurrentVersion() }}" media="print" />
 
     {% if app.request.cookies.get('selectedTheme') %}
-        <link rel="stylesheet" href="{{ asset('assets/css/'~ app.request.cookies.get('selectedTheme') ~'_theme.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/'~ app.request.cookies.get('selectedTheme') ~'_theme.css') }}?version={{ application.getCurrentVersion() }}" />
     {% else %}
-        <link rel="stylesheet" href="{{ asset('assets/css/lightEmerald_theme.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/darkEmerald_theme.css') }}?version={{ application.getCurrentVersion() }}" />
     {% endif %}
 
     {# - Sublayouts styles #}
@@ -146,7 +146,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <br /><a href="http://raito.cz/" class="pull-left author"><strong>RS</strong>WEBWORKS 2016</a>
+                    <br /><a href="#" class="pull-left author"><strong>RS</strong>WEBWORKS 2017</a>
                     <a class="pull-right" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img
                                 alt="Licence Creative Commons" id="creative-license"
                                 src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>

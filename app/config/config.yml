@@ -41,6 +41,8 @@ twig:
         - 'VichUploaderBundle:Form:fields.html.twig'
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        application: '@app.service.application'
 
 # Doctrine Configuration
 doctrine:

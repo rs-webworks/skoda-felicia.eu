@@ -14,8 +14,21 @@
             </div>
         </div>
         <div class="row">
+
+            <div class="col-xs-12 col-md-5">
+                <h5 class="no-margin">Kategorie</h5>
+                <div class="list-group">
+                    {% for category in manualCategories %}
+                        <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}" class="list-group-item clearfix">
+                            <i class="fa fa-fw fa-chevron-right"></i> {{ category.getTitle() }}
+                            <span class="badge">{{ category.getManuals()|length }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
             <div class="col-xs-12 col-md-7">
-                <h4>Info</h4>
+                <h5 class="no-margin">Info</h5>
                 <p>Digitalizovaná podoba Dílenské příručky pro vozy Škoda Felicia. Přepis není záměrně
                     kompletní, byly vynechány stránky, které z pohledu dnešního čtenáře jsou zcela nepoužitelné,
                     např.:</p>
@@ -75,66 +88,6 @@
                     <br />
                     <i>Kontrola vůle a seřízení lanka akcelerace <span class="label label-main">MPI</span></i>
                 </p>
-            </div>
-
-            <div class="col-xs-12 col-md-5">
-
-                <h4>Kategorie</h4>
-                <div class="list-group">
-                    {% for category in manualCategories %}
-                        <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}" class="list-group-item">
-                            <i class="fa fa-fw fa-chevron-right"></i> {{ category.getTitle() }}
-                            <span class="badge">{{ category.getManuals()|length }}</span>
-                        </a>
-                    {% endfor %}
-                </div>
-
-                {#<h2 class="page-header" id="obsah">#}
-                {#Obsah:#}
-
-                {#<div class="pull-right">#}
-                {#<small>Výběr motorizace:</small>#}
-                {# @var engine \AppBundle\Entity\Engine #}
-                {#{% for engine in engines %}#}
-                {#<a href="{{ url('frontend_manual', {'engine': engine.getSlug()}) }}#obsah"#}
-                {#class="btn btn-sm {% if engine == filterEngine %}btn-main-dark{% else %}btn-main{% endif %}">{{ engine.getName() }}</a>#}
-                {#{% endfor %}#}
-                {#<a href="{{ url('frontend_manual') }}#obsah"#}
-                {#class="btn btn-sm btn-default">Vše</a>#}
-                {#</div>#}
-                {#<div class="clearfix"></div>#}
-                {#</h2>#}
-
-                {#<table class="table">#}
-                {#<thead>#}
-                {#<tr>#}
-                {#<th>Název kapitoly</th>#}
-                {#<th>Motorizace</th>#}
-                {#</tr>#}
-                {#</thead>#}
-                {#<tbody>#}
-                {#{% for category in manualCategories %}#}
-                {#<tr class="tr-heading">#}
-                {#<td colspan="2">{{ category.getTitle() }}</td>#}
-                {#</tr>#}
-                {# @var page \AppBundle\Entity\Manual\Manual #}
-                {#{% for page in category.getManuals() %}#}
-                {#{% if page.hasEngine(filterEngine) %}#}
-                {#<tr data-id="{{ page.getId() }}">#}
-                {#<td>#}
-                {#<a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>#}
-                {#</td>#}
-                {#<td>#}
-                {#{% for engine in page.getEngines() %}#}
-                {#<span class="label label-main">{{ engine.getName() }}</span>#}
-                {#{% endfor %}#}
-                {#</td>#}
-                {#</tr>#}
-                {#{% endif %}#}
-                {#{% endfor %}#}
-                {#{% endfor %}#}
-                {#</tbody>#}
-                {#</table>#}
             </div>
         </div>
 

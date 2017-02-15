@@ -22,6 +22,10 @@ services:
         class: AppBundle\Service\EntityToolsService
         arguments: ['@doctrine.orm.entity_manager']
 
+    app.service.application:
+        class: AppBundle\Service\ApplicationService
+        arguments: ['%kernel.root_dir%']
+
     # Listener
     # ------------------------------------------------------------------------------------------------------------------
     app.listener.maintenance:

@@ -44,14 +44,14 @@
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <h5 class="no-margin">Kategorie</h5>
                 <nav class="list-group">
-                    <a href="{{ url('frontend_download') }}" class="list-group-item{% if currentCategory is null %} active{% endif %}">
+                    <a href="{{ url('frontend_download') }}" class="list-group-item clearfix{% if currentCategory is null %} active{% endif %}">
                         <i class="fa fa-fw fa-download"></i>
                         &nbsp;Všechny soubory
                         <span class="badge">{{ downloadsCount }}</span>
                     </a>
                     {# @var category \AppBundle\Entity\Download\DownloadCategory #}
                     {% for category in categories %}
-                        <a href="{{ url('frontend_download', {'category': category.getSlug()}) }}" class="list-group-item{% if currentCategory == category %} active{% endif %}">
+                        <a href="{{ url('frontend_download', {'category': category.getSlug()}) }}" class="list-group-item clearfix{% if currentCategory == category %} active{% endif %}">
                             <i class="fa fa-fw fa-{{ category.getIcon() }}"></i>
                             &nbsp;{{ category.getTitle() }}
                             <span class="badge">{{ category.getDownloads()|length }}</span>
@@ -75,7 +75,18 @@
                 {% for download in downloads %}
                     <article class="panel panel-default download" data-id="{{ download.getId() }}">
                         <div class="panel-body">
-                            <div class="media">
+                            <div class="row visible-xs">
+                                <div class="col-xs-12 lightgallery">
+                                    <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
+                                        <img class="media-object download-image-mobile" src="{{ vich_uploader_asset(download, 'imageFile') }}" alt="{{ download.getTitle() }}" />
+                                    </a>
+                                    <h3>{{ download.getTitle() }}</h3>
+                                    <hr />
+                                    {{ download.getDescription()|raw }}
+                                </div>
+                            </div>
+
+                            <div class="media hidden-xs">
                                 <div class="media-left lightgallery">
                                     <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
                                         <img class="media-object download-image" src="{{ vich_uploader_asset(download, 'imageFile') }}" alt="{{ download.getTitle() }}" />
