@@ -6,8 +6,12 @@
         <h3>
             Stránky dílenské příručky (celkem: {{ manual.getTotalItemCount }})
             <div class="pull-right">
-                <a href="{{ url('manager_manual_create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>
-                    Přidat</a>
+                <a href="{{ url('manager_manual_create') }}" class="btn btn-sm btn-success">
+                    <i class="fa fa-plus"></i> Přidat
+                </a>
+                <a href="{{ url('manager_manual_category_list') }}" class="btn btn-sm btn-default">
+                    <i class="fa fa-list"></i> Kategorie
+                </a>
             </div>
         </h3>
 
@@ -48,26 +52,13 @@
                     </td>
                     <td>
                         <div class="pull-right">
-                            <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}"
-                               class="btn btn-default btn-xs"><i
-                                        class="fa fa-fw fa-search"></i></a>
-                            <a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}"
-                               class="btn btn-default btn-xs"><i
-                                        class="fa fa-fw fa-pencil"></i></a>
-                            <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}"
-                               class="btn btn-default btn-xs"><i
-                                        class="fa fa-fw fa-image"></i></a>
-                            <a href="{{ url('manager_manual_migration', {'id': page.getId()}) }}"
-                               class="btn btn-default btn-xs"><i
-                                        class="fa fa-fw fa-database"></i></a>
-                            <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}"
-                               class="btn btn-danger btn-xs"><i
-                                        class="fa fa-fw fa-trash"></i></a> &nbsp;&nbsp;
+                            <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}" class="btn btn-default btn-xs" target="_blank"><i class="fa fa-fw fa-search"></i></a>
+                            <a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-pencil"></i></a>
+                            <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-image"></i></a>
+                            <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i></a> &nbsp;&nbsp;
 
-                            <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i
-                                        class="fa fa-fw fa-chevron-circle-down"></i></a>
-                            <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'down'}) }}"><i
-                                        class="fa fa-fw fa-chevron-circle-up"></i></a>
+                            <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i class="fa fa-fw fa-chevron-circle-down"></i></a>
+                            <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'down'}) }}"><i class="fa fa-fw fa-chevron-circle-up"></i></a>
                             {#<i class="fa fa-fw fa-bars text-muted dragger"></i>#}
                         </div>
 

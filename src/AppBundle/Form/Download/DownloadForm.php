@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
@@ -26,8 +27,12 @@ class DownloadForm extends AbstractType
                 'class' => 'AppBundle\Entity\Download\DownloadCategory',
                 'choice_label' => 'title'
             ))
-            ->add('imageFile', VichImageType::class, array('label' => 'Obrázek'))
-            ->add('file', VichImageType::class, array('label' => 'Soubor'))
+            ->add('imageFile', VichImageType::class, array(
+                'label' => 'Obrázek',
+                'required' => false))
+            ->add('file', VichFileType::class, array(
+                'label' => 'Soubor',
+                'required' => false))
             ->add('description', TextareaType::class, array(
                 'required' => false, // This is because codeMirror fills input only on save, thus causing an error
                 'label' => 'Popis (HTML)',

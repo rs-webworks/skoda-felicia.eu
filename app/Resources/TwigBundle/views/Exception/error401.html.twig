@@ -1,22 +1,7 @@
-{% extends 'layout_front.twig' %}
-{% block title %}Changelog{% endblock %}
-{% block body %}
+{% extends '@Twig/Exception/error_base.twig' %}
+{% block title %}Chyba{% endblock %}
 
-    <div class="container" id="about-changelog">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="page-header">
-                    401
-                    <span>neoprávněný přístup</span>
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <h3><i class="fa fa-fw fa-times-circle"></i> Váš klíček nepasuje :(</h3>
-                <a href="{{ url('frontend_home') }}">Vrátit se na úvod</a>
-            </div>
-        </div>
-    </div>
-
+{% block errorType %}
+    401
+    <span>neoprávněný přístup</span>
 {% endblock %}

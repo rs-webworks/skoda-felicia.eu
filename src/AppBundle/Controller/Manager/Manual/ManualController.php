@@ -47,19 +47,6 @@ class ManualController extends Controller
     }
 
     /**
-     * @param Manual $manual
-     * @return array
-     * @Route("/manager/manual/migration/{id}", name="manager_manual_migration", requirements={"id": "\d+"})
-     * @Template("manager/manual/migration.twig")
-     */
-    public function manualMigrationAction(Manual $manual)
-    {
-        return array(
-            'manual' => $manual
-        );
-    }
-
-    /**
      * @Route("/manager/manual/images/delete/{id}", name="manager_manual_images_delete", requirements={"id": "\d+"})
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

@@ -6,8 +6,12 @@
         <h3>
             Soubory ke stažení (celkem: {{ downloads.getTotalItemCount }})
             <div class="pull-right">
-                <a href="{{ url('manager_download_create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>
-                    Přidat</a>
+                <a href="{{ url('manager_download_create') }}" class="btn btn-sm btn-success">
+                    <i class="fa fa-plus"></i> Přidat
+                </a>
+                <a href="{{ url('manager_download_category_list') }}" class="btn btn-sm btn-default">
+                    <i class="fa fa-list"></i> Kategorie
+                </a>
             </div>
         </h3>
 

@@ -1,3 +1,16 @@
+'1.0.2':
+    'released': 2017-02-15
+    'changes':
+        - 'Upraveno zobrazení souborů ke stažení na mobilních zařízeních'
+        - 'Čísla v "odznacích" u seznamů nyní floatují správně (zejména na menších zařízeních)'
+        - 'Navigace předělána do kompaktnější varianty s novým rozdělením obsahu'
+        - 'Invalidace cache pro CSS & JS soubory aplikace nyní podle čísla verze aplikace'
+        - 'Menší kosmetické úpravy seznamu dílenské příručky'
+        - 'Soubory ke stažení nyní pracují s tokenem a request-delay - preventivní anti-flood ochrana'
+        - 'Nyní je možno zobrazit detail souboru - pro lepší odkazování na konkrétní soubory'
+        - 'Kosmetické úpravy seznamu souborů'
+        - 'Changelog má hezčí odrážky'
+
 '1.0.1':
     'released': 2017-02-15
     'changes':

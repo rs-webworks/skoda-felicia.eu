@@ -41,6 +41,7 @@ class DownloadController extends Controller
     {
         $download = $this->getDoctrine()->getRepository('AppBundle:Download\Download')->find($id);
         $form = $this->createForm(DownloadForm::class, $download);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -56,24 +56,27 @@
                                             <span class="caret"></span></a>
                                         <ul class="dropdown-menu main-nav-small">
                                             <li>
+                                                <a href="{{ url('frontend_home') }}"><i class="fa fa-home"></i> Úvod</a>
+                                            </li>
+
+                                            <li>
                                                 <a href="{{ url('frontend_manual') }}"><i class="fa fa-book"></i> Dílenská příručka</a>
                                             </li>
-
-                                            <li>
-                                                <a href="{{ url('frontend_faq') }}"><i class="fa fa-question-circle"></i> Časté otázky</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="{{ url('frontend_guide') }}"><i class="fa fa-wrench"></i> Návody</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="{{ url('frontend_tuning') }}"><i class="fa fa-dashboard"></i> Sportovní úpravy</a>
-                                            </li>
-
                                             <li>
                                                 <a href="{{ url('frontend_download') }}"><i class="fa fa-download"></i> Ke stažení</a>
                                             </li>
+                                            {#
+                                            <li>
+                                                <a href="{{ url('frontend_faq') }}"><i class="fa fa-question-circle"></i> Časté otázky</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('frontend_guide') }}"><i class="fa fa-wrench"></i> Návody</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('frontend_tuning') }}"><i class="fa fa-dashboard"></i> Sportovní úpravy</a>
+                                            </li>
+                                            #}
+
                                             <li class="divider visible-xs"></li>
                                             <li class="visible-xs">
                                                 <div class="mobile-search">
@@ -126,7 +129,7 @@
                                             {# - Často kladené otázky #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_faq') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-question-circle"></i> Časté otázky & odpovědi
                                                 </a>
                                             </li>
@@ -134,7 +137,7 @@
                                             {# - Návody #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_guide') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-wrench"></i> Návody
                                                 </a>
                                             </li>
@@ -142,7 +145,7 @@
                                             {# - Technická data #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_guide') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-info"></i> Technická data
                                                 </a>
                                             </li>
@@ -150,7 +153,7 @@
                                             {# - Sportovní úpravy #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_tuning') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy
                                                 </a>
                                             </li>
@@ -166,7 +169,7 @@
                                             {# - Často kladené otázky #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_faq') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-car"></i> Dekodér VIN
                                                 </a>
                                             </li>
@@ -174,7 +177,7 @@
                                             {# - Návody #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_guide') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-car"></i> Dekodér čísla motoru
                                                 </a>
                                             </li>
@@ -182,7 +185,7 @@
                                             {# - Technická data #}
                                             {# ------------------------------------------------------------------------------------------ #}
                                             <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                <a href="{{ url('frontend_guide') }}">
+                                                <a href="{{ url('frontend_notyet') }}">
                                                     <i class="fa fa-fw fa-car"></i> ETKA
                                                 </a>
                                             </li>
@@ -211,9 +214,9 @@
     {% block footerLinks %}
         <ul class="list-inline">
             <li><a href="{{ url('frontend_manual') }}">Dílenská příručka</a></li>
-            <li><a href="{{ url('frontend_faq') }}">Časté otázky</a></li>
-            <li><a href="{{ url('frontend_guide') }}">Návody</a></li>
-            <li><a href="{{ url('frontend_tuning') }}">Sportovní úpravy</a></li>
+            <li><a href="{{ url('frontend_notyet') }}">Časté otázky</a></li>
+            <li><a href="{{ url('frontend_notyet') }}">Návody</a></li>
+            <li><a href="{{ url('frontend_notyet') }}">Sportovní úpravy</a></li>
             <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
             <li><a href="{{ url('frontend_about_authors') }}">Autoři</a></li>
             <li><a href="{{ url('frontend_about_changelog') }}">Changelog</a></li>

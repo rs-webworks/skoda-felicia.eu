@@ -3,22 +3,27 @@
 {% block body %}
 
     <div class="container" id="manager-home">
-        <h3>Úprava stránky dílenské příručky
+        <h3>Úprava souboru ke stažení
             <div class="pull-right">
-                <a href="{{ url('manager_manual_list') }}" class="btn btn-sm btn-default"><i class="fa fa-list"></i>
+                <a href="{{ url('manager_download_list') }}" class="btn btn-sm btn-default"><i class="fa fa-list"></i>
                     Zpět na seznam</a>
             </div>
         </h3>
 
         <ol class="breadcrumb">
             <li><a href="{{ url('manager_home') }}">Manažer</a></li>
-            <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
-            <li class="active">Úprava stránky</li>
+            <li><a href="{{ url('manager_download_list') }}">Soubory ke stažení</a></li>
+            <li class="active">Úprava souboru</li>
         </ol>
 
         {{ form_start(form) }}
 
         {{ form_errors(form) }}
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.category) }}
+
+        {{ form_row(form.imageFile) }}
 
         {{ form_widget(form) }}
 

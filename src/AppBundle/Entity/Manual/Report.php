@@ -34,8 +34,7 @@ class Report
 
     /**
      * @var Manual $manual
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Manual\Manual", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Manual\Manual", inversedBy="reports")
      */
     protected $manual;
 

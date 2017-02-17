@@ -32,4 +32,13 @@ class AboutController extends Controller
     {
 
     }
+
+    /**
+     * @Route("/pripravujeme", name="frontend_notyet")
+     * @Template("frontend/about/notyet.twig")
+     */
+    public function notyetAction()
+    {
+
+    }
 }

@@ -18,9 +18,9 @@
                         <div class="panel-heading">{{ version }}
                             <span class="pull-right">{{ log['released']|date('d.m.Y') }}</span></div>
                         <div class="panel-body">
-                            <ul>
+                            <ul class="fa-ul">
                                 {% for change in log['changes'] %}
-                                    <li>{{ change }}</li>
+                                    <li><i class="fa-li fa fa-check-square"></i> {{ change }}</li>
                                 {% endfor %}
                             </ul>
                         </div>

@@ -10,104 +10,89 @@
     <div class="header-bg manager bg-{{ random(8) }}">
         <header id="manager">
             <nav class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#top-menu" aria-expanded="false">
-                            <span class="sr-only">Přepnout menu</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
+                <div class="container-wrap">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#top-menu" aria-expanded="false">
+                                <span class="sr-only">Přepnout menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
 
-                    <div class="collapse navbar-collapse" id="top-menu">
-                        {# - Navbar SM, MD #}
-                        <ul class="nav navbar-nav visible-sm visible-md">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-bars"></i> Navigace
-                                    <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Dílenská příručka</li>
-                                    <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
-                                    <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
-                                    <li><a href="{{ url('manager_manual_reports') }}">Nahlášené připomínky</a></li>
-                                    <li role="separator" class="divider"></li>
+                        <div class="collapse navbar-collapse" id="top-menu">
+                            {# - Navbar SM, MD #}
+                            <ul class="nav navbar-nav visible-sm visible-md">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-bars"></i> Navigace
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-header">Dílenská příručka</li>
+                                        <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                                        <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
+                                        <li><a href="{{ url('manager_manual_reports') }}">Nahlášené připomínky</a></li>
+                                        <li role="separator" class="divider"></li>
 
-                                    <li class="dropdown-header">Časté otázky</li>
-                                    <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Časté otázky</li>
+                                        <li role="separator" class="divider"></li>
 
-                                    <li class="dropdown-header">Návody</li>
-                                    <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Návody</li>
+                                        <li role="separator" class="divider"></li>
 
-                                    <li class="dropdown-header">Sportovní úpravy</li>
-                                    <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Sportovní úpravy</li>
+                                        <li role="separator" class="divider"></li>
 
-                                    <li class="dropdown-header">Ke stažení</li>
-                                </ul>
-                            </li>
-                        </ul>
+                                        <li class="dropdown-header">Ke stažení</li>
+                                    </ul>
+                                </li>
+                            </ul>
 
-                        {# - Navbar XS, LG #}
-                        <ul class="nav navbar-nav visible-lg visible-xs">
-                            <li>
+                            {# - Navbar XS, LG #}
+                            <ul class="nav navbar-nav visible-lg visible-xs">
+                                <li>
 
-                                <a href="{{ url('manager_home') }}" title="Dashboard"><i
-                                            class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                            </li>
-                            {# - Dílenská příručka #}
-                            {# ------------------------------------------------------------------------------------------ #}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-book"></i> Dílenská příručka
-                                    <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
-                                    <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
-                                    <li><a href="{{ url('manager_manual_reports') }}">Nahlášené připomínky</a></li>
-                                </ul>
-                            </li>
+                                    <a href="{{ url('manager_home') }}" title="Dashboard"><i
+                                                class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                                </li>
+                                {# - Dílenská příručka #}
+                                {# ------------------------------------------------------------------------------------------ #}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-book"></i> Dílenská příručka
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ url('manager_manual_list') }}">Seznam stránek</a></li>
+                                        <li><a href="{{ url('manager_download_category_list') }}">Seznam kategorií</a></li>
+                                        <li><a href="{{ url('manager_manual_create') }}">Vytvořit stránku</a></li>
+                                        <li><a href="{{ url('manager_manual_reports') }}">Nahlášené připomínky</a></li>
+                                    </ul>
+                                </li>
 
-                            {# - Často kladené otázky #}
-                            {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-question-circle"></i> Časté otázky
-                                </a>
-                            </li>
-
-                            {# - Návody #}
-                            {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-wrench"></i> Návody
-                                </a>
-                            </li>
-
-                            {# - Sportovní úpravy #}
-                            {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-dashboard"></i> Sportovní úpravy
-                                </a>
-                            </li>
-
-                            {# - Ke stažení #}
-                            {# ------------------------------------------------------------------------------------------ #}
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-download"></i> Ke stažení
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="navbar-form navbar-right">
-                            <a href="{{ url('frontend_manual') }}" class="btn btn-default" title="Frontend"><i
-                                        class="fa fa-fw fa-home"></i></a>
-                            <a href="{{ url('logout') }}" class="btn btn-default" title="Odhlásit"><i
-                                        class="fa fa-fw fa-sign-out"></i></a>
+                                {# - Ke stažení #}
+                                {# ------------------------------------------------------------------------------------------ #}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-download"></i> Ke stažení
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ url('manager_download_list') }}">Seznam souborů</a></li>
+                                        <li><a href="{{ url('manager_download_category_list') }}">Seznam kategorií</a></li>
+                                        <li><a href="{{ url('manager_download_create') }}">Vytvořit soubor</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="navbar-form navbar-right">
+                                <a href="{{ url('frontend_manual') }}" class="btn btn-default" title="Frontend"><i
+                                            class="fa fa-fw fa-home"></i></a>
+                                <a href="{{ url('logout') }}" class="btn btn-default" title="Odhlásit"><i
+                                            class="fa fa-fw fa-sign-out"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

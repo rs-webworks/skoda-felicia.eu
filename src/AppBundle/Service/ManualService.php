@@ -26,6 +26,17 @@ class ManualService
     }
 
     /**
+     * @return integer
+     */
+    public function countAll()
+    {
+        $qb = $this->em->getRepository('AppBundle:Manual\Manual')->createQueryBuilder('m');
+        $qb->select('COUNT(m)');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
      * @param null $engine
      * @return \AppBundle\Entity\Manual\Manual[]|array
      */

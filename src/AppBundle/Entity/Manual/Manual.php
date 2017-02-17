@@ -66,6 +66,11 @@ class Manual
     private $fullWidth = false;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Manual\Report", mappedBy="manual", cascade={"remove"})
+     */
+    private $reports;
+
+    /**
      * Manual constructor.
      */
     public function __construct()
@@ -193,6 +198,15 @@ class Manual
     {
         $this->category = $category;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReports()
+    {
+        return $this->reports;
+    }
+
 
     /**
      * @param Engine|null $searchEngine

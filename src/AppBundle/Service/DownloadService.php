@@ -25,6 +25,16 @@ class DownloadService
         $this->repository = $this->em->getRepository('AppBundle:Download\Download');
     }
 
+    /**
+     * @return integer
+     */
+    public function countAll()
+    {
+        $qb = $this->em->getRepository('AppBundle:Download\Download')->createQueryBuilder('d');
+        $qb->select('COUNT(d)');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 
     /**
      * @param Download $download

@@ -16,12 +16,17 @@
                         </div>
                     {% endif %}
 
+                    <h2 class="text-center">
+                        Správa obsahu
+                        <span>Přihlášení</span>
+                    </h2>
+
                     <div class="form-group">
                         <label for="username">Jméno:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
                             <input class="form-control" type="text" id="username" name="_username"
-                                   value="{{ last_username }}"/>
+                                   value="{{ last_username }}" />
                         </div>
                     </div>
 
@@ -29,12 +34,12 @@
                         <label for="username">Heslo:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
-                            <input class="form-control" type="password" id="password" name="_password"/>
+                            <input class="form-control" type="password" id="password" name="_password" />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="hidden" name="_target_path" value="/manager"/>
+                        <input type="hidden" name="_target_path" value="/manager" />
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"
                         >
                         <button type="submit" class="btn btn-default pull-right"><i class="fa fa-fw fa-sign-in"></i>

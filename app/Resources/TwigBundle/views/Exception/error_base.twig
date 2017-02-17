@@ -1,0 +1,30 @@
+{% extends 'layout_front.twig' %}
+{% block title %}Changelog{% endblock %}
+{% block body %}
+
+    <section class="container" id="error-generic">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header text-center">
+                    {% block errorType %}
+                        chyba
+                        <span>požadavek bohužel selhal</span>
+                    {% endblock %}
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <span class="fa-stack fa-lg fa-5x">
+                  <i class="fa fa-cog fa-stack-1x fa-spin"></i>
+                  <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                </span>
+
+                <div class="spacer-top-half"></div>
+                <p>Pokud se tato chyba zobrazuje často nebo by se dle Vašeho názoru zobrazovat neměla, napište prosím správci na <a href="mailto:admin@skoda-felicia.eu">admin@skoda-felicia.eu</a></p>
+                <a href="{{ url('frontend_home') }}">Vrátit se na úvod</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

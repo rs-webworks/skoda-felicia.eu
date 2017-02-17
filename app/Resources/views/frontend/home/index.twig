@@ -23,33 +23,37 @@
                 </a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <a href="{{ url('frontend_faq') }}" class="btn btn-default">
-                    <i class="fa fa-fw fa-question-circle text-muted"></i> Časté otázky
-                    <hr />
-                    <small class="text-muted">Odpovědi na velice často kladené otázky, zejména na Facebooku</small>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <a href="{{ url('frontend_guide') }}" class="btn btn-default">
-                    <i class="fa fa-fw fa-wrench text-muted"></i> Návody
-                    <hr />
-                    <small class="text-muted">Uživatelské návody a postupy pro servis, vylepšení, úpravy a jiné</small>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
-                <a href="{{ url('frontend_tuning') }}" class="btn btn-default">
-                    <i class="fa fa-fw fa-dashboard text-muted"></i> Sportovní úpravy
-                    <hr />
-                    <small class="text-muted">Teorie a návody pro závodní úpravy na okruh, do vrchu, rallycross a další</small>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
                 <a href="{{ url('frontend_download') }}" class="btn btn-default">
                     <i class="fa fa-fw fa-download text-muted"></i> Ke stažení
                     <hr />
                     <small class="text-muted">Užitečné soubory - diagnostické nástroje, schéma pojistek, dílenská příručka...</small>
                 </a>
             </div>
+            {#
+                        <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                            <a href="{{ url('frontend_notyet') }}" class="btn btn-default">
+                                <i class="fa fa-fw fa-question-circle text-muted"></i> Časté otázky
+                                <hr />
+                                <small class="text-muted">Odpovědi na velice často kladené otázky, zejména na Facebooku</small>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                            <a href="{{ url('frontend_notyet') }}" class="btn btn-default">
+                                <i class="fa fa-fw fa-wrench text-muted"></i> Návody
+                                <hr />
+                                <small class="text-muted">Uživatelské návody a postupy pro servis, vylepšení, úpravy a jiné</small>
+                            </a>
+                        </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_notyet') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-dashboard text-muted"></i> Sportovní úpravy
+                    <hr />
+                    <small class="text-muted">Teorie a návody pro závodní úpravy na okruh, do vrchu, rallycross a další</small>
+                </a>
+            </div>
+            #}
+
             <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
                 <a href="{{ url('frontend_about_changelog') }}" class="btn btn-default">
                     <i class="fa fa-fw fa-list text-muted"></i> Changelog
@@ -78,13 +82,14 @@
                 <h2 class="page-header">
                     Aktuální verze
                 </h2>
-                <div class="panel panel-main">
-                    <div class="panel-heading">{{ version }}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{ version }}</strong>
                         <span class="pull-right">{{ latest['released']|date('d.m.Y') }}</span></div>
                     <div class="panel-body">
-                        <ul>
+                        <ul class="fa-ul">
                             {% for change in latest['changes'] %}
-                                <li>{{ change }}</li>
+                                <li><i class="fa-li fa fa-check-square"></i> {{ change }}</li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -129,7 +134,7 @@
                     </tr>
                     <tr>
                         <td>Souborů ke stažení</td>
-                        <td>0</td>
+                        <td>{{ dbstats['downloads'] }}</td>
                     </tr>
                     </tbody>
                 </table>

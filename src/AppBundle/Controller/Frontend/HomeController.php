@@ -9,8 +9,6 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGenerator;
-use Symfony\Component\Validator\Constraints\Url;
 use Symfony\Component\Yaml\Yaml;
 
 class HomeController extends Controller
@@ -30,7 +28,8 @@ class HomeController extends Controller
                 'latest' => reset($changelog),
                 'version' => key($changelog),
                 'dbstats' => array(
-                    'manuals' => count($this->get('app.service.manual')->getAll())
+                    'manuals' => $this->get('app.service.manual')->countAll(),
+                    'downloads' => $this->get('app.service.download')->countAll()
                 )
             );
         }
