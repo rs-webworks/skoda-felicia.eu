@@ -130,18 +130,20 @@
                         </p>
 
                         {% block footerLinks %}{% endblock %}
-                    {% endif %}
 
-                    {% set theme = app.request.cookies.get('selectedTheme') %}
-                    <div id="theme-picker">
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'lightEmerald'}) }}" class="theme-switch light emerald{% if theme == 'lightEmerald' or theme == null %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Emerald styl"></a>
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'lightCherry'}) }}" class="theme-switch light cherry{% if theme == 'lightCherry' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Cherry styl"></a>
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'lightSky'}) }}" class="theme-switch light sky{% if theme == 'lightSky' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Sky styl"></a>
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkObsidian'}) }}" class="theme-switch dark obsidian{% if theme == 'darkObsidian' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Obsidian styl"></a>
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkEmerald'}) }}" class="theme-switch dark emerald"{% if theme == 'darkEmerald' %} active{% endif %} data-toggle="tooltip" data-placement="top" title="Dark Emerald styl"></a>
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkCherry'}) }}" class="theme-switch dark cherry{% if theme == 'darkCherry' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Cherry styl"></a>
-                        <a href="{{ url('frontend_switch_theme', {'theme': 'darkSky'}) }}" class="theme-switch dark sky{% if theme == 'darkSky' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Sky styl"></a>
-                    </div>
+                        {% set theme = app.request.cookies.get('selectedTheme') %}
+                        <div id="theme-picker">
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'lightEmerald'}) }}" class="theme-switch light emerald{% if theme == 'lightEmerald' or theme == null %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Emerald styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'lightCherry'}) }}" class="theme-switch light cherry{% if theme == 'lightCherry' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Cherry styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'lightSky'}) }}" class="theme-switch light sky{% if theme == 'lightSky' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Sky styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkObsidian'}) }}" class="theme-switch dark obsidian{% if theme == 'darkObsidian' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Obsidian styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkEmerald'}) }}" class="theme-switch dark emerald"{% if theme == 'darkEmerald' %} active{% endif %} data-toggle="tooltip" data-placement="top" title="Dark Emerald styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkCherry'}) }}" class="theme-switch dark cherry{% if theme == 'darkCherry' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Cherry styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkSky'}) }}" class="theme-switch dark sky{% if theme == 'darkSky' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Sky styl"></a>
+                        </div>
+
+
+                    {% endif %}
                 </div>
             </div>
             <div class="row">
