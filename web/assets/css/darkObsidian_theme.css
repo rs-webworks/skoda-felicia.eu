@@ -126,6 +126,9 @@ tr.tr-heading {
   .bg-inverse h2 span {
     color: #4e4e4e; }
 
+.hidden-tmp {
+  display: none; }
+
 .noscript-overlay, .loading-overlay {
   position: fixed;
   top: 0;

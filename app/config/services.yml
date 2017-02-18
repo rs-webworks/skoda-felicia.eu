@@ -4,6 +4,13 @@ parameters:
 #    parameter_name: value
 
 services:
+    session:
+        class: Symfony\Component\HttpFoundation\Session\Session
+        arguments: ['@session.storage', '@app.sessions.namespace', '@session.flash_bag']
+
+    app.sessions.namespace:
+        class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
+
     # Services
     # ------------------------------------------------------------------------------------------------------------------
     app.service.manual:

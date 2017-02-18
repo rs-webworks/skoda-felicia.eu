@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
+use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
+use Symfony\Component\Security\Core\Authentication\Token\PreAuthenticatedToken;
 
 class DownloadController extends Controller
 {
@@ -46,23 +49,44 @@ class DownloadController extends Controller
     }
 
     /**
-     * @Route("/ke-stazeni/soubor/{slug}", name="frontend_download_request")
+     * Tokens are valid only after 10 seconds of their issue time and then 30 seconds from that point
+     * @Route("/ke-stazeni/soubor/{slug}/{token}", name="frontend_download_request", defaults={"token" = null})
      * @param $slug
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @Template("frontend/download/detail.twig")
+     * @Template("frontend/download/request.twig")
+     * @return array|\Symfony\Component\HttpFoundation\StreamedResponse
      */
-    public function requestAction($slug)
+    public function requestAction($slug, $token = null)
     {
         $download = $this->getDoctrine()->getRepository('AppBundle:Download\Download')->findOneBy(array(
             'slug' => $slug
         ));
 
-        $download->addClickCount();
-        $em = $this->getDoctrine()->getManager();
-        $em->merge($download);
-        $em->flush();
+        $session = $this->get('session');
 
-        $downloadHandler = $this->get('vich_uploader.download_handler');
-        return $downloadHandler->downloadObject($download, $fileField = 'file');
+        if ($token) {
+            $validation = $this->get('session')->get('tokens')['downloadRequest'];
+
+            if ($token == $validation['token'] && time() > $validation['validSince'] && time() < $validation['validSince'] + 30) {
+                $download->addClickCount();
+                $em = $this->getDoctrine()->getManager();
+                $em->merge($download);
+                $em->flush();
+
+                $downloadHandler = $this->get('vich_uploader.download_handler');
+                return $downloadHandler->downloadObject($download, $fileField = 'file');
+            }
+
+            $this->addFlash('danger', 'Ověřovací token vypršel nebo není platný. Zkuste to prosím znovu.');
+        }
+
+        $token = md5(time());
+
+        $session->set('tokens/downloadRequest/token', $token);
+        $session->set('tokens/downloadRequest/validSince', time() + 10);
+
+        return array(
+            'token' => $token,
+            'download' => $download
+        );
     }
 }

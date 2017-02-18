@@ -53,6 +53,34 @@ $(function () {
 
     $('body').scrollspy({target: '.spy-active'});
 
+    // Download countdown page
+    // -----------------------------------------------------------------------------------------------------------------
+    if ($('div.container#download-request').length > 0) {
+        var download_countdown = $('h1#download-countdown');
+        var download_time = $('h1#download-countdown #time');
+        var download_button = $('a.btn.btn-success#download-button');
+
+        var counter = 10;
+        var counterInterval = setInterval(function () {
+            if (counter === 0) {
+                clearInterval(counterInterval);
+                download_countdown.fadeOut(function () {
+                    download_button.fadeIn();
+                });
+            } else {
+                --counter;
+                download_time.html(counter);
+            }
+        }, 1000);
+
+        download_button.on('click', function () {
+            setTimeout(function () {
+                window.close();
+            }, 1000);
+        });
+    }
+
+
     // Smooth scrolling effect
     // -----------------------------------------------------------------------------------------------------------------
     $(function () {
