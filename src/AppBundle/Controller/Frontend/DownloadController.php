@@ -89,4 +89,17 @@ class DownloadController extends Controller
             'download' => $download
         );
     }
+
+    /**
+     * @Route("/ke-stazeni/detail/{slug}/", name="frontend_download_detail")
+     * @param $slug
+     * @Template("frontend/download/detail.twig")
+     * @return array|\Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function detailAction($slug)
+    {
+        return array(
+            'download' => $this->getDoctrine()->getRepository('AppBundle:Download\Download')->findOneBy(array('slug' => $slug))
+        );
+    }
 }

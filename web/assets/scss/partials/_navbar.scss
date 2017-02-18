@@ -18,7 +18,7 @@
   letter-spacing: 1px;
   border: 0;
   font-size: 0.8em;
-  z-index: 99999;
+  z-index: 999;
 
   &.affix {
     top: 0;
@@ -45,6 +45,18 @@
 
   .navbar-collapse {
     padding: 0;
+  }
+
+  .navbar-nav {
+    .dropdown.disabled {
+      a.dropdown-toggle {
+        color: #777777;
+
+        &:active, &:focus {
+          background-color: transparent;
+        }
+      }
+    }
   }
 
   .container-wrap {

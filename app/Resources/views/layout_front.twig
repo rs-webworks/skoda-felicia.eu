@@ -90,76 +90,76 @@
                                             </a>
                                         </li>
 
-                                        <li class="dropdown">
+                                        <li class="dropdown disabled">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-fw fa-align-left"></i> Články <span class="caret"></span>
                                             </a>
-                                            <ul class="dropdown-menu">
-                                                {# - Často kladené otázky #}
-                                                {# ------------------------------------------------------------------------------------------ #}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-question-circle"></i> Časté otázky & odpovědi
-                                                    </a>
-                                                </li>
+                                            {#<ul class="dropdown-menu">#}
+                                            {# - Často kladené otázky #}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-question-circle"></i> Časté otázky & odpovědi#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                                {# - Návody #}
-                                                {# ------------------------------------------------------------------------------------------ #}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-wrench"></i> Návody
-                                                    </a>
-                                                </li>
+                                            {# - Návody #}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-wrench"></i> Návody#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                                {# - Technická data #}
-                                                {# ------------------------------------------------------------------------------------------ #}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-info"></i> Technická data
-                                                    </a>
-                                                </li>
+                                            {# - Technická data #}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-info"></i> Technická data#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                                {# - Sportovní úpravy #}
-                                                {# ------------------------------------------------------------------------------------------ #}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy
-                                                    </a>
-                                                </li>
+                                            {# - Sportovní úpravy #}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                            </ul>
+                                            {#</ul>#}
                                         </li>
 
-                                        <li class="dropdown dropdown-submenu">
+                                        <li class="dropdown disabled">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fa fa-fw fa-cogs"></i> Nástroje <span class="caret"></span>
                                             </a>
-                                            <ul class="dropdown-menu">
-                                                {#- Často kladené otázky#}
-                                                {#------------------------------------------------------------------------------------------#}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-car"></i> Dekodér VIN
-                                                    </a>
-                                                </li>
+                                            {#<ul class="dropdown-menu">#}
+                                            {#- Často kladené otázky#}
+                                            {#------------------------------------------------------------------------------------------#}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-car"></i> Dekodér VIN#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                                {#- Návody#}
-                                                {#------------------------------------------------------------------------------------------#}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-car"></i> Dekodér čísla motoru
-                                                    </a>
-                                                </li>
+                                            {#- Návody#}
+                                            {#------------------------------------------------------------------------------------------#}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-car"></i> Dekodér čísla motoru#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                                {#- Technická data#}
-                                                {#------------------------------------------------------------------------------------------#}
-                                                <li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>
-                                                    <a href="{{ url('frontend_notyet') }}">
-                                                        <i class="fa fa-fw fa-car"></i> ETKA
-                                                    </a>
-                                                </li>
+                                            {#- Technická data#}
+                                            {#------------------------------------------------------------------------------------------#}
+                                            {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                            {#<a href="{{ url('frontend_notyet') }}">#}
+                                            {#<i class="fa fa-fw fa-car"></i> ETKA#}
+                                            {#</a>#}
+                                            {#</li>#}
 
-                                            </ul>
+                                            {#</ul>#}
                                         </li>
                                     {% endblock %}
                                 </ul>
@@ -184,12 +184,13 @@
     {% block footerLinks %}
         <ul class="list-inline">
             <li><a href="{{ url('frontend_manual') }}">Dílenská příručka</a></li>
-            <li><a href="{{ url('frontend_notyet') }}">Časté otázky</a></li>
-            <li><a href="{{ url('frontend_notyet') }}">Návody</a></li>
-            <li><a href="{{ url('frontend_notyet') }}">Sportovní úpravy</a></li>
             <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
+            {#<li><a href="{{ url('frontend_notyet') }}">Časté otázky</a></li>#}
+            {#<li><a href="{{ url('frontend_notyet') }}">Návody</a></li>#}
+            {#<li><a href="{{ url('frontend_notyet') }}">Sportovní úpravy</a></li>#}
             <li><a href="{{ url('frontend_about_authors') }}">Autoři</a></li>
             <li><a href="{{ url('frontend_about_changelog') }}">Changelog</a></li>
+            <li><a href="{{ url('frontend_sitemap') }}">Mapa stránek</a></li>
             <li><a href="{{ url('manager_home') }}">Správa obsahu</a></li>
         </ul>
     {% endblock %}

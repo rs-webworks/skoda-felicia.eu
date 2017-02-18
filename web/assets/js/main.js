@@ -15,6 +15,18 @@ $(function () {
         }
     });
 
+    var clipboard = new Clipboard('.btn-copy-link');
+
+    clipboard.on('success', function (e) {
+        console.log('copied');
+        $('.btn-copy-link').tooltip('show');
+        setTimeout(function () {
+            $('.btn-copy-link').tooltip('hide');
+        }, 1000);
+
+        e.clearSelection();
+    });
+
 
     // if ($('.sortable').length > 0) {
     //     Sortable.create($('.sortable')[0], {

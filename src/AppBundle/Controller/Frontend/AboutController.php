@@ -41,4 +41,16 @@ class AboutController extends Controller
     {
 
     }
+
+    /**
+     * @Route("/mapa_stranek", name="frontend_sitemap")
+     * @Template("frontend/about/sitemap.twig")
+     */
+    public function sitemapAction()
+    {
+        return array(
+            'downloadCategories' => $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->findBy(array(), array('position' => 'ASC')),
+            'manualCategories' => $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->findBy(array(), array('position' => 'ASC')),
+        );
+    }
 }
