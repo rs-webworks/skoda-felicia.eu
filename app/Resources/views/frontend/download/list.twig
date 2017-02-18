@@ -76,10 +76,12 @@
                     <article class="panel panel-default download" data-id="{{ download.getId() }}">
                         <div class="panel-body">
                             <div class="row visible-xs">
-                                <div class="col-xs-12 lightgallery">
-                                    <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
-                                        <img class="media-object download-image-mobile" src="{{ vich_uploader_asset(download, 'imageFile') }}" alt="{{ download.getTitle() }}" />
-                                    </a>
+                                <div class="col-xs-12">
+                                    <div class="lightgallery">
+                                        <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
+                                            <img class="media-object download-image-mobile" src="{{ vich_uploader_asset(download, 'imageFile') }}" alt="{{ download.getTitle() }}" />
+                                        </a>
+                                    </div>
                                     <a href="{{ url('frontend_download_detail', {'slug': download.getSlug()}) }}">
                                         <h3>{{ download.getTitle() }}</h3>
                                     </a>

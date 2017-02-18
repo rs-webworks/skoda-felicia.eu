@@ -32,7 +32,7 @@
                         <span class="label label-default"><i class="fa fa-fw fa-{{ download.getCategory().getIcon() }}"></i> {{ download.getCategory().getTitle() }}</span>
                     </small>
                     <div class="pull-right">
-                        <div class="btn btn-copy-link btn-sm btn-default" data-trigger="manual" data-clipboard-text="{{ url('frontend_download_request', {'slug': download.getSlug()}) }}" title="Zkopírováno do schránky!">
+                        <div class="btn btn-copy-link btn-sm btn-default" data-trigger="manual" data-clipboard-text="{{ url('frontend_download_detail', {'slug': download.getSlug()}) }}" title="Zkopírováno do schránky!">
                             <i class="fa fa-fw fa-link"></i> Odkaz
                         </div>
                         <a href="{{ url('frontend_download_request', {'slug': download.getSlug()}) }}" class="btn btn-sm btn-default" target="_blank"><i class="fa fa-fw fa-download"></i> Stáhnout</a>

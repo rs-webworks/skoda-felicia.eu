@@ -178,7 +178,7 @@
 
 
     {% block javascripts %}
-        <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}?version={{ application.getCurrentVersion() }}"></script>
     {% endblock %}
 
     {% block footerLinks %}

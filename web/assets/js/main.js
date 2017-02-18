@@ -85,11 +85,11 @@ $(function () {
             }
         }, 1000);
 
-        download_button.on('click', function () {
-            setTimeout(function () {
-                window.close();
-            }, 1000);
-        });
+        // download_button.on('click', function () {
+        //     setTimeout(function () {
+        //         window.close();
+        //     }, 1000);
+        // });
     }
 
 
