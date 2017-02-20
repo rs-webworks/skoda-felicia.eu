@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
 class AboutController extends Controller
 {
     /**
-     * @Route("/informace/changelog", name="frontend_about_changelog")
+     * @Route("/o-projektu/changelog", name="frontend_about_changelog")
      * @Template("frontend/about/changelog.twig")
      */
     public function changelogAction()
@@ -25,7 +25,7 @@ class AboutController extends Controller
     }
 
     /**
-     * @Route("/informace/autori", name="frontend_about_authors")
+     * @Route("/o-projektu/autori", name="frontend_about_authors")
      * @Template("frontend/about/authors.twig")
      */
     public function authorsAction()
@@ -34,16 +34,7 @@ class AboutController extends Controller
     }
 
     /**
-     * @Route("/pripravujeme", name="frontend_notyet")
-     * @Template("frontend/about/notyet.twig")
-     */
-    public function notyetAction()
-    {
-
-    }
-
-    /**
-     * @Route("/mapa_stranek", name="frontend_sitemap")
+     * @Route("/o-projektu/mapa_stranek", name="frontend_sitemap")
      * @Template("frontend/about/sitemap.twig")
      */
     public function sitemapAction()
@@ -52,5 +43,15 @@ class AboutController extends Controller
             'downloadCategories' => $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->findBy(array(), array('position' => 'ASC')),
             'manualCategories' => $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->findBy(array(), array('position' => 'ASC')),
         );
+    }
+
+
+    /**
+     * @Route("/pripravujeme", name="frontend_notyet")
+     * @Template("frontend/about/notyet.twig")
+     */
+    public function notyetAction()
+    {
+
     }
 }

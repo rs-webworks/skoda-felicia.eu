@@ -30,6 +30,11 @@ class DownloadController extends Controller
         if ($category) {
             $qb->andWhere('d.category = :category');
             $qb->setParameter('category', $category);
+            $sort = 'd.position';
+            $direction = 'ASC';
+        } else {
+            $sort = 'd.id';
+            $direction = 'DESC';
         }
 
         $paginator = $this->get('knp_paginator');
@@ -37,7 +42,7 @@ class DownloadController extends Controller
             $qb,
             $request->query->getInt('page', 1),
             5,
-            array('defaultSortFieldName' => 'd.position', 'defaultSortDirection' => 'asc')
+            array('defaultSortFieldName' => $sort, 'defaultSortDirection' => $direction)
         );
 
         return array(

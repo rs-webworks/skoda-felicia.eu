@@ -1,0 +1,251 @@
+{% extends 'layout_front.twig' %}
+{% block title %}Ke stažení{% endblock %}
+{% block body %}
+
+    <div class="container" id="article-detail">
+        <div class="row">
+            {# Breadcrumbs #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    <li><a href="#">Články</a></li>
+                    <li><a href="#">Technická data</a></li>
+                    <li class="active">Vzorník barev</li>
+                </ol>
+            </div>
+            {# / Breadcrumbs #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header article-title">
+                    Vzorník barev
+                </h2>
+                <div class="metadata">
+                    <div class="btn btn-main btn-sm"><i class="fa fa-fw fa-list"></i> Technická data</div>
+                    <div class="btn btn-default btn-sm"><i class="fa fa-fw fa-calendar"></i> 15.2.2017 15:32:20</div>
+                    <div class="btn btn-default btn-sm"><i class="fa fa-fw fa-user"></i> Raito</div>
+                </div>
+
+                <div class="article-content table-responsive">
+
+
+                    <script>
+                        $(function () {
+                            $('.show-car-overlay').on('click', function () {
+                                console.log('ok');
+                                $(this).parent().parent('tr').find('.color-sample').toggleClass('in');
+                            });
+                        });
+                    </script>
+
+                    <h3 id="hatchback+combi">
+                        Hatchback + Combi
+                        <div class="pull-right">
+                            <div class="btn btn-copy-link btn-sm btn-default" data-trigger="manual" data-clipboard-text="{{ url('frontend_article_detail') }}#hatchback+combi" title="Zkopírováno do schránky!">
+                                <i class="fa fa-fw fa-link"></i> Odkaz
+                            </div>
+                        </div>
+                    </h3>
+
+                    {% set colorsMetalic = {
+                    '9560':{'hexa': '#06ba9f','intCode': '8U8U','name': 'Pacifická zelená metalická / Pacific green metallic', 'metallic': true},
+                    '9571':{'hexa': '#498407','intCode': '8S8S','name': 'Májová zelená metalická / May green metallic', 'metallic': true},
+                    '9595':{'hexa': '#00564b','intCode': '1L1L','name': 'Smaragdová metalická / Magic green metallic', 'metallic': true},
+                    '9590':{'hexa': '#004845','intCode': '','name': 'Tmavá zelená metalická / Dark green metallic', 'metallic': true},
+                    '9570':{'hexa': '#0c2d1c','intCode': '3Y3Y','name': 'Natur zelená metalická / Nature green metallic', 'metallic': true},
+                    '9910':{'hexa': '#0e0c0f','intCode': '1Z1Z','name': 'Magická černá metalická / Magic black mica', 'metallic': true},
+                    '9900':{'hexa': '#41525a','intCode': 'L8L8','name': 'Granitová metalická / Granite metallic', 'metallic': true},
+                    '9451':{'hexa': '#525c68','intCode': '','name': 'Ledová modrá metalická / Ice blue metallic', 'metallic': true},
+                    '9430':{'hexa': '#486078','intCode': '','name': 'Hvězdná modř metalická / Star blue metallic', 'metallic': true},
+                    '9470':{'hexa': '#006087','intCode': '9C9C','name': 'Lagunová modrá metalická / Lagoon blue metallic', 'metallic': true},
+                    '9450':{'hexa': '#05516b','intCode': '','name': 'Indigo modrá L&K metalická / Indigo blue L&K metallic', 'metallic': true},
+                    '9460':{'hexa': '#002e6b','intCode': 'D7D7','name': 'Hlubinná modrá metalická / Deep sea blue metallic', 'metallic': true},
+                    '9890':{'hexa': '#57304f','intCode': '9R9R','name': 'Epsrit fialová metalická / Esprit violet metallic', 'metallic': true},
+                    '9880':{'hexa': '#541f27','intCode': '','name': 'Solitaire červená metalická / Solitaire bordeaux metallic', 'metallic': true},
+                    '9200':{'hexa': '#402325','intCode': 'U4U4','name': 'Kaštanová hnědá metalická / Chestnut brown metallic', 'metallic': true},
+                    '9885':{'hexa': '#550c15','intCode': '8H8H','name': 'Hot-Chilli červená metalická / Hot Chilli red metallic', 'metallic': true},
+                    '9770':{'hexa': '#a01c29','intCode': '7Q7Q','name': 'Kajenská oranžová metalická / Caynne orange metallic', 'metallic': true},
+                    '9596':{'hexa': '#a49c85','intCode': 'M7M7','name': 'Agáve zelená metalická / Agave green metallic', 'metallic': true},
+                    '9151':{'hexa': '#99a0a8','intCode': 'F7F7','name': 'Šedá kámen metalická / Stone gray metallic', 'metallic': true},
+                    '9105':{'hexa': '#b3b7b6','intCode': '','name': 'Safír stříbrná metalická / Saphire silver metallic', 'metallic': true},
+                    '9103':{'hexa': '#d6ccc0','intCode': '','name': 'Zermatt stříbrná metalická / Zermatt silver metallic', 'metallic': true},
+                    '9102':{'hexa': '#D5D5D5','intCode': '1B1B','name': 'Diamantová stříbrná metalická / Diamond silver metallic', 'metallic': true},
+                    } %}
+
+
+                    {% set colorsBasic = {
+                    '5110':{'hexa': '#6a967f','intCode': '','name': 'Fantasy zelená / Fantasy green'},
+                    '5260':{'hexa': '#018465','intCode': 'C5C5','name': 'Atlantik zelená / Atlantic green'},
+                    '5280':{'hexa': '#017069','intCode': '','name': 'Karibská zeleň / Caribic green'},
+                    '5281':{'hexa': '#00504d','intCode': 'T9T9','name': 'Atol zelená / Atol green'},
+                    '5550':{'hexa': '#002726','intCode': 'D9D9','name': 'Zelená Petrol / Petrol green'},
+                    '5930':{'hexa': '#0a1a17','intCode': '','name': 'Tmavá zelená / Deep sea green'},
+                    '1999':{'hexa': '#060606','intCode': '','name': 'Eben brillant černá / Briliant black'},
+                    '4710':{'hexa': '#111d2b','intCode': 'K4K4','name': 'Královská modrá / Royal kings blue'},
+                    '4625':{'hexa': '#00214a','intCode': 'J4J4','name': 'Námořní modrá / Marine blue'},
+                    '4590':{'hexa': '#013066','intCode': '6D6D','name': 'Dynamic modrá / Dynamic blue'},
+                    '4628':{'hexa': '#0a2d65','intCode': '','name': 'Iris modrá / Iris blue'},
+                    '4620':{'hexa': '#003c78','intCode': '','name': 'Akrtická modrá / Arctic blae'},
+                    '4591':{'hexa': '#267699','intCode': 'F4F4','name': 'Světlemodrá Sky / Light Blue Sky'},
+                    '1088':{'hexa': '#d6e2e0','intCode': '','name': 'Perlová bílá / Perlweiss white'},
+                    '1026':{'hexa': '#f9f9f9','intCode': '9P9P','name': 'Candy bílá / Candy white'},
+                    '1021':{'hexa': '#ececec','intCode': 'T7T7','name': 'Šedobílá UNI / Gray white UNI'},
+                    '1050':{'hexa': '#ddd9cd','intCode': 'P1P1','name': 'Alpská bílá / Alpine white'},
+                    '1061':{'hexa': '#d8d4c8','intCode': '','name': 'Labutí bílá / Swan white'},
+                    '6160':{'hexa': '#fdc100','intCode': '','name': 'Sluneční žluť / Sunny yellow'},
+                    '6260':{'hexa': '#dfb14f','intCode': '8Q8Q','name': 'Citron žlutá / Lemon yellow'},
+                    '6225':{'hexa': '#f7c71d','intCode': '','name': 'Telecom II žlutá / Shell yellow'},
+                    '6518':{'hexa': '#db9803','intCode': 'A8A8','name': 'Žlutá FUN / FUN yellow'},
+                    '6515':{'hexa': '#e9ab46','intCode': 'Q4Q4','name': 'Pastelová žlutá / Pastel yellow'},
+                    '7750':{'hexa': '#c75701','intCode': 'E3E3','name': 'Zářivá oranžová / Light orange'},
+                    '8134':{'hexa': '#dd2616','intCode': '','name': 'Červená závodní / Racing red'},
+                    '8150':{'hexa': '#91000a','intCode': 'G2G2','name': 'Tornádo červená / Tornado red'},
+                    '8151':{'hexa': '#8e0000','intCode': '8T8T','name': 'Červená Corrida / Corrida rot'},
+                    '8161':{'hexa': '#971515','intCode': '','name': 'Sportline červená / Sportline red'},
+                    '8180':{'hexa': '#ab0006','intCode': 'H9H9','name': 'Rallye červená / Rally red'},
+                    '8240':{'hexa': '#96112c','intCode': '7G7G','name': 'Malinová červená / Raspberry red'},
+                    '8290':{'hexa': '#7a050d','intCode': 'G1G1','name': 'Romantická červená / Romantic red'},
+                    '8302':{'hexa': '#640d16','intCode': '','name': 'Apollo červená / Regal Apollo red'},
+                    '8530':{'hexa': '#740009','intCode': '','name': 'Červená paprika / Paprika red'},
+                    '9601':{'hexa': '#a07c5a','intCode': 'U1U1','name': 'Atacama béžová / Atacama beige'},
+                    } %}
+
+
+                    <table class="table table-hover colors-table">
+                        <thead>
+                        <tr>
+                            <th class="th-min-width">Vzorek</th>
+                            <th class="col-xs-1 text-center">Ukázka</th>
+                            <th class="">Kód</th>
+                            <th>Název</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {# - Metalízy - #}
+                        {# ------------------------------------------------------------------------------------------------------------ #}
+                        <tr class="tr-heading">
+                            <td colspan="10">Metalické barvy</td>
+                        </tr>
+                        {% for code, color in colorsMetalic %}
+                            {% block colorRow %}
+                                <tr>
+                                    <td>
+                                        <div class="color-sample{% if color['metallic'] is defined %} metallic{% endif %}" style="background-color: {{ color['hexa'] }}">
+                                            <div class="car-overlay"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="btn btn-main btn-sm show-car-overlay"><i class="fa fa-fw fa-car"></i></div>
+                                    </td>
+                                    <td>
+                                        <strong>{{ code }}</strong>{% if color['intCode']|length > 0 %}, {{ color['intCode'] }}{% endif %}
+                                    </td>
+                                    <td>{{ color['name'] }}</td>
+
+                                </tr>
+                            {% endblock %}
+                        {% endfor %}
+
+
+                        {# - Základní - #}
+                        {# ------------------------------------------------------------------------------------------------------------ #}
+                        <tr class="tr-heading">
+                            <td colspan="10">Základní barvy</td>
+                        </tr>
+                        {% for code, color in colorsBasic %}
+                            {{ block('colorRow') }}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                    <h3 id="pick-up+vanplus">
+                        Pick-up + Van Plus
+                        <div class="pull-right">
+                            <div class="btn btn-copy-link btn-sm btn-default" data-trigger="manual" data-clipboard-text="{{ url('frontend_article_detail') }}#pick-up+vanplus" title="Zkopírováno do schránky!">
+                                <i class="fa fa-fw fa-link"></i> Odkaz
+                            </div>
+                        </div>
+                    </h3>
+
+                    {% set colorsBasic = {
+                    '5310':{'hexa': '#005848','intCode': '8Y8Y','name': 'Frižská zelená / Friscian green'},
+                    '5550':{'hexa': '#002726','intCode': 'D9D9','name': 'Zelená Petrol / Petrol green'},
+                    '4625':{'hexa': '#00214a','intCode': 'J4J4','name': 'Námořní modrá / Marine blue'},
+                    '8290':{'hexa': '#7a050d','intCode': 'G1G1','name': 'Romantická červená / Romantic red'},
+                    '8530':{'hexa': '#740009','intCode': '','name': 'Červená paprika / Paprika red'},
+                    '6515':{'hexa': '#e9ab46','intCode': 'Q4Q4','name': 'Pastelová žlutá / Pastel yellow'},
+                    '1021':{'hexa': '#ececec','intCode': 'T7T7','name': 'Šedobílá UNI / Gray white UNI'},
+                    } %}
+
+                    <table class="table table-hover colors-table">
+                        <thead>
+                        <tr>
+                            <th class="th-min-width">Vzorek</th>
+                            <th class="col-xs-1 text-center">Ukázka</th>
+                            <th class="">Kód</th>
+                            <th>Název</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {# - Základní - #}
+                        {# ------------------------------------------------------------------------------------------------------------ #}
+                        <tr class="tr-heading">
+                            <td colspan="10">Základní barvy</td>
+                        </tr>
+                        {% for code, color in colorsBasic %}
+                            {{ block('colorRow') }}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                    <h3 id="fun">
+                        FUN
+                        <div class="pull-right">
+                            <div class="btn btn-copy-link btn-sm btn-default" data-trigger="manual" data-clipboard-text="{{ url('frontend_article_detail') }}#fun" title="Zkopírováno do schránky!">
+                                <i class="fa fa-fw fa-link"></i> Odkaz
+                            </div>
+                        </div>
+                    </h3>
+
+                    {% set colorsBasic = {
+                    '6518':{'hexa': '#db9803','intCode': 'A8A8','name': 'Žlutá FUN / FUN yellow'},
+                    } %}
+
+                    <table class="table table-hover colors-table">
+                        <thead>
+                        <tr>
+                            <th class="th-min-width">Vzorek</th>
+                            <th class="col-xs-1 text-center">Ukázka</th>
+                            <th class="">Kód</th>
+                            <th>Název</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {# - Základní - #}
+                        {# ------------------------------------------------------------------------------------------------------------ #}
+                        <tr class="tr-heading">
+                            <td colspan="10">Základní barvy</td>
+                        </tr>
+                        {% for code, color in colorsBasic %}
+                            {{ block('colorRow') }}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

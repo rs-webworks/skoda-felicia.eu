@@ -79,6 +79,10 @@ tr.tr-heading {
   font-weight: bold;
 }
 
+th.th-min-width {
+  width: 0.01%;
+}
+
 // Modifiers
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -301,6 +305,7 @@ footer {
 
 .btn.btn-main {
   background-color: $colorMainAlt;
+  color: $colorWhite;
 }
 
 .label.label-main {
