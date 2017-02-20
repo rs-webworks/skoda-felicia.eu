@@ -256,6 +256,10 @@ footer {
   background-color: #1b96ff;
   color: #ffffff; }
 
+.alert.alert-main {
+  background-color: #1b96ff;
+  color: #ffffff; }
+
 .label.label-main {
   background-color: #1b96ff; }
 
@@ -587,6 +591,8 @@ article h3.post-title {
 
 #article-detail h2.article-title {
   margin-bottom: 15px; }
+#article-detail .alert.samples-info {
+  line-height: 31px; }
 #article-detail .metadata {
   margin-bottom: 30px; }
 #article-detail .colors-table td {
@@ -596,6 +602,26 @@ article h3.post-title {
   width: 50px;
   transition: all 0.5s;
   position: relative; }
+  #article-detail .colors-table .color-sample .hover-overlay:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle; }
+  #article-detail .colors-table .color-sample .hover-overlay {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    color: #1b96ff;
+    transition: opacity 0.1s;
+    line-height: 100%;
+    z-index: 99;
+    position: absolute; }
+  #article-detail .colors-table .color-sample:hover {
+    cursor: pointer; }
+    #article-detail .colors-table .color-sample:hover .hover-overlay {
+      opacity: 0.9; }
   #article-detail .colors-table .color-sample.metallic {
     background-image: url("../../../images/layout/metallic.png"); }
   #article-detail .colors-table .color-sample .car-overlay {

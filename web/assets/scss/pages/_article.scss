@@ -6,6 +6,10 @@
     margin-bottom: 15px;
   }
 
+  .alert.samples-info {
+    line-height: 31px;
+  }
+
   .metadata {
     margin-bottom: 30px;
   }
@@ -21,6 +25,35 @@
       transition: all 0.5s;
 
       position: relative;
+
+      .hover-overlay:before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .hover-overlay {
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background-color: $colorWhite;
+        color: $colorMainAlt;
+        transition: opacity 0.1s;
+        line-height: 100%;
+        z-index: 99;
+
+        position: absolute;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        .hover-overlay {
+          opacity: 0.9;
+        }
+      }
 
       &.metallic {
         background-image: url('../../../images/layout/metallic.png');
@@ -42,6 +75,7 @@
         .car-overlay {
           opacity: 1;
         }
+
       }
     }
 
