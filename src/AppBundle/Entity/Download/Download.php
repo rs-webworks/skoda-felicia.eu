@@ -25,7 +25,7 @@ class Download
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Download\DownloadCategory", inversedBy="downloads")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Download\Category", inversedBy="downloads")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * @Gedmo\SortableGroup
      */

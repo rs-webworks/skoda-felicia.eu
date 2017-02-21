@@ -2,28 +2,23 @@
 
 namespace AppBundle\Controller\Manager\Manual;
 
-use AppBundle\Entity\Manual\Manual;
-use AppBundle\Entity\Manual\ManualCategory;
-use AppBundle\Entity\Manual\ManualImage;
-use AppBundle\Form\Manual\ManualCategoryForm;
-use AppBundle\Form\ManualForm;
-use AppBundle\Form\ManualImageForm;
+use AppBundle\Entity\Manual\Category;
+use AppBundle\Form\Manual\CategoryForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class ManualCategoryController extends Controller
+class CategoryController extends Controller
 {
 
     /**
      * @Route("/manager/manual/category/list/", name="manager_manual_category_list")
      */
-    public function manualCategoryListAction(Request $request)
+    public function categoryListAction(Request $request)
     {
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->createQueryBuilder('mc'),
+            $this->getDoctrine()->getRepository('AppBundle:Manual\Category')->createQueryBuilder('mc'),
             $request->query->getInt('page', 1),
             20,
             array('defaultSortFieldName' => 'mc.position', 'defaultSortDirection' => 'asc')
@@ -40,15 +35,15 @@ class ManualCategoryController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function manualCategoryEditAction(Request $request, $id)
+    public function categoryEditAction(Request $request, $id)
     {
-        $category = $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->find($id);
-        $form = $this->createForm(ManualCategoryForm::class, $category);
+        $category = $this->getDoctrine()->getRepository('AppBundle:Manual\Category')->find($id);
+        $form = $this->createForm(CategoryForm::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $category = $form->getData();
-            $this->get('app.service.manual')->saveManualCategory($category);
+            $this->get('app.service.manual')->saveCategory($category);
             $this->addFlash('success', 'Kategorie příručky úspěšně upravena');
             return $this->redirectToRoute('manager_manual_category_list');
         }
@@ -63,15 +58,15 @@ class ManualCategoryController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function manualCategoryCreateAction(Request $request)
+    public function categoryCreateAction(Request $request)
     {
-        $category = new ManualCategory();
-        $form = $this->createForm(ManualCategoryForm::class, $category);
+        $category = new Category();
+        $form = $this->createForm(CategoryForm::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $category = $form->getData();
-            $this->get('app.service.manual')->saveManualCategory($category);
+            $this->get('app.service.manual')->saveCategory($category);
             $this->addFlash('success', 'Kategorie příručky úspěšně uložena');
             return $this->redirectToRoute('manager_manual_category_list');
         }
@@ -86,9 +81,9 @@ class ManualCategoryController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function manualCategoryDeleteAction(Request $request, $id)
+    public function categoryDeleteAction(Request $request, $id)
     {
-        $category = $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->find($id);
+        $category = $this->getDoctrine()->getRepository('AppBundle:Manual\Category')->find($id);
         if (!$category) {
             $this->addFlash('danger', 'Kategorie nebyla nalezena');
             return $this->redirectToRoute('manager_manual_category_list');
@@ -114,10 +109,10 @@ class ManualCategoryController extends Controller
      * @param null $changeBy
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function manualCategoryMoveAction($id, $direction, $changeBy = null)
+    public function categoryMoveAction($id, $direction, $changeBy = null)
     {
         $entityTools = $this->get('app.service.entitytools');
-        $entity = $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->find($id);
+        $entity = $this->getDoctrine()->getRepository('AppBundle:Manual\Category')->find($id);
 
         if ($direction == 'up') {
             $entityTools->positionMoveUp($entity);

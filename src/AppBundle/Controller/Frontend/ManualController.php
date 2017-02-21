@@ -31,7 +31,7 @@ class ManualController extends Controller
      */
     public function listAction(Request $request, $slug, $engine = null)
     {
-        $category = $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->findOneBy(array(
+        $category = $this->getDoctrine()->getRepository('AppBundle:Manual\Category')->findOneBy(array(
             'slug' => $slug
         ));
 

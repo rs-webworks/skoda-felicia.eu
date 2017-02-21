@@ -6,9 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
-use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
-use Symfony\Component\Security\Core\Authentication\Token\PreAuthenticatedToken;
 
 class DownloadController extends Controller
 {
@@ -21,7 +18,7 @@ class DownloadController extends Controller
      */
     public function listAction(Request $request, $category = null)
     {
-        $category = $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->findOneBy(array(
+        $category = $this->getDoctrine()->getRepository('AppBundle:Download\Category')->findOneBy(array(
             'slug' => $category
         ));
 
@@ -48,7 +45,7 @@ class DownloadController extends Controller
         return array(
             'downloads' => $pagination,
             'downloadsCount' => count($this->getDoctrine()->getRepository('AppBundle:Download\Download')->findAll()),
-            'categories' => $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->findBy(array(), array('position' => 'ASC')),
+            'categories' => $this->getDoctrine()->getRepository('AppBundle:Download\Category')->findBy(array(), array('position' => 'ASC')),
             'currentCategory' => $category
         );
     }

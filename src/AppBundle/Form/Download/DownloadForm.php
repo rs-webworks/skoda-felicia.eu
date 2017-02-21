@@ -24,7 +24,7 @@ class DownloadForm extends AbstractType
             ->add('title', TextType::class, array('label' => 'Titulek souboru'))
             ->add('category', EntityType::class, array(
                 'label' => 'Kategorie',
-                'class' => 'AppBundle\Entity\Download\DownloadCategory',
+                'class' => 'AppBundle\Entity\Download\Category',
                 'choice_label' => 'title'
             ))
             ->add('imageFile', VichImageType::class, array(

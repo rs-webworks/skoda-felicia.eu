@@ -49,7 +49,7 @@
                         &nbsp;Všechny soubory
                         <span class="badge">{{ downloadsCount }}</span>
                     </a>
-                    {# @var category \AppBundle\Entity\Download\DownloadCategory #}
+                    {# @var category \AppBundle\Entity\Download\Category #}
                     {% for category in categories %}
                         <a href="{{ url('frontend_download', {'category': category.getSlug()}) }}" class="list-group-item clearfix{% if currentCategory == category %} active{% endif %}">
                             <i class="fa fa-fw fa-{{ category.getIcon() }}"></i>

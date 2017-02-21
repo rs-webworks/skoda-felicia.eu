@@ -40,8 +40,8 @@ class AboutController extends Controller
     public function sitemapAction()
     {
         return array(
-            'downloadCategories' => $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->findBy(array(), array('position' => 'ASC')),
-            'manualCategories' => $this->getDoctrine()->getRepository('AppBundle:Manual\ManualCategory')->findBy(array(), array('position' => 'ASC')),
+            'downloadCategories' => $this->getDoctrine()->getRepository('AppBundle:Download\Category')->findBy(array(), array('position' => 'ASC')),
+            'manualCategories' => $this->getDoctrine()->getRepository('AppBundle:Manual\Category')->findBy(array(), array('position' => 'ASC')),
         );
     }
 

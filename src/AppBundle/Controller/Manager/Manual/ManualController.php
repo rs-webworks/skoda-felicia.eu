@@ -2,10 +2,10 @@
 
 namespace AppBundle\Controller\Manager\Manual;
 
+use AppBundle\Entity\Manual\Image;
 use AppBundle\Entity\Manual\Manual;
-use AppBundle\Entity\Manual\ManualImage;
+use AppBundle\Form\Manual\ImageForm;
 use AppBundle\Form\Manual\ManualForm;
-use AppBundle\Form\Manual\ManualImageForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,10 +40,10 @@ class ManualController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function manualImagesAction(Request $request, $id)
+    public function imagesAction(Request $request, $id)
     {
-        $manualImage = new ManualImage();
-        return $this->saveManualImage($manualImage, $request, $id);
+        $manualImage = new Image();
+        return $this->saveImage($manualImage, $request, $id);
     }
 
     /**
@@ -51,9 +51,9 @@ class ManualController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function manualImageDeleteAction($id)
+    public function imageDeleteAction($id)
     {
-        $image = $this->getDoctrine()->getRepository('AppBundle:Manual\ManualImage')->find($id);
+        $image = $this->getDoctrine()->getRepository('AppBundle:Manual\Image')->find($id);
 
         if (!$image) {
             $this->addFlash('danger', 'Obrázek nebyl nalezen');
@@ -172,10 +172,10 @@ class ManualController extends Controller
      * @param $direction
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function manualImageMoveAction($id, $direction)
+    public function imageMoveAction($id, $direction)
     {
         $entityTools = $this->get('app.service.entitytools');
-        $entity = $this->getDoctrine()->getRepository('AppBundle:Manual\ManualImage')->find($id);
+        $entity = $this->getDoctrine()->getRepository('AppBundle:Manual\Image')->find($id);
         $returnId = $entity->getManual()->getId();
 
         if ($direction == 'up') {
@@ -212,20 +212,20 @@ class ManualController extends Controller
     }
 
     /**
-     * @param ManualImage $manualImage
+     * @param Image $image
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    protected function saveManualImage(ManualImage $manualImage, Request $request, $manualId)
+    protected function saveImage(Image $image, Request $request, $manualId)
     {
-        $form = $this->createForm(ManualImageForm::class, $manualImage);
+        $form = $this->createForm(ImageForm::class, $image);
         $form->handleRequest($request);
-        $manualImage->setManual($this->getDoctrine()->getRepository(Manual::class)->find($manualId));
+        $image->setManual($this->getDoctrine()->getRepository(Manual::class)->find($manualId));
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $manualImage = $form->getData();
+            $image = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            $em->persist($manualImage);
+            $em->persist($image);
             $em->flush();
 
             $this->addFlash('success', 'Obrázek byl úspěšně nahrán');
@@ -234,7 +234,7 @@ class ManualController extends Controller
 
         return $this->render('manager/manual/images.twig', array(
             'form' => $form->createView(),
-            'manual' => $manualImage->getManual()
+            'manual' => $image->getManual()
         ));
     }
 }

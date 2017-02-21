@@ -4,9 +4,9 @@ namespace AppBundle\Entity\Manual;
 
 use AppBundle\Entity\Identifier;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -14,7 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @Vich\Uploadable
  * @ORM\Entity(repositoryClass="Gedmo\Sortable\Entity\Repository\SortableRepository")
  */
-class ManualImage
+class Image
 {
     use Identifier;
 
@@ -66,7 +66,7 @@ class ManualImage
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     * @return ManualImage
+     * @return Image
      */
     public function setImageFile(File $image = null)
     {
@@ -84,7 +84,7 @@ class ManualImage
 
     /**
      * @param string $imageName
-     * @return ManualImage
+     * @return Image
      */
     public function setImageName($imageName)
     {

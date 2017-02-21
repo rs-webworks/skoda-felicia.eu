@@ -3,7 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Download\Download;
-use AppBundle\Entity\Download\DownloadCategory;
+use AppBundle\Entity\Download\Category;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
@@ -46,9 +46,9 @@ class DownloadService
     }
 
     /**
-     * @param DownloadCategory $download
+     * @param Category $download
      */
-    public function saveCategory(DownloadCategory $download)
+    public function saveCategory(Category $download)
     {
         $this->em->persist($download);
         $this->em->flush();

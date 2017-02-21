@@ -41,7 +41,7 @@
             </tr>
             </thead>
             <tbody class="sortable">
-            {# @var category \AppBundle\Entity\Manual\ManualCategory #}
+            {# @var category \AppBundle\Entity\Manual\Category #}
             {% for category in categories %}
                 <tr data-id="{{ category.getId() }}">
                     <td>{{ category.getTitle() }}</td>

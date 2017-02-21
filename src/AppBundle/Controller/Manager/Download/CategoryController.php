@@ -2,25 +2,25 @@
 
 namespace AppBundle\Controller\Manager\Download;
 
-use AppBundle\Entity\Download\DownloadCategory;
-use AppBundle\Form\Download\DownloadCategoryForm;
+use AppBundle\Entity\Download\Category;
+use AppBundle\Form\Download\CategoryForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DownloadCategoryController extends Controller
+class CategoryController extends Controller
 {
 
     /**
      * @Route("/manager/download/category/list/", name="manager_download_category_list")
      * @Template("manager/download/categoryList.twig")
      */
-    public function downloadCategoryListAction(Request $request)
+    public function categoryListAction(Request $request)
     {
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->createQueryBuilder('dc'),
+            $this->getDoctrine()->getRepository('AppBundle:Download\Category')->createQueryBuilder('dc'),
             $request->query->getInt('page', 1),
             20,
             array('defaultSortFieldName' => 'dc.position', 'defaultSortDirection' => 'asc')
@@ -38,10 +38,10 @@ class DownloadCategoryController extends Controller
      * @Template("manager/download/categoryEdit.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function downloadCategoryEditAction(Request $request, $id)
+    public function categoryEditAction(Request $request, $id)
     {
-        $category = $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->find($id);
-        $form = $this->createForm(DownloadCategoryForm::class, $category);
+        $category = $this->getDoctrine()->getRepository('AppBundle:Download\Category')->find($id);
+        $form = $this->createForm(CategoryForm::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,10 +62,10 @@ class DownloadCategoryController extends Controller
      * @Template("/manager/download/categoryCreate.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function downloadCategoryCreateAction(Request $request)
+    public function categoryCreateAction(Request $request)
     {
-        $category = new DownloadCategory();
-        $form = $this->createForm(DownloadCategoryForm::class, $category);
+        $category = new Category();
+        $form = $this->createForm(CategoryForm::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -86,9 +86,9 @@ class DownloadCategoryController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @internal param Request $request
      */
-    public function downloadCategoryDeleteAction($id)
+    public function categoryDeleteAction($id)
     {
-        $category = $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->find($id);
+        $category = $this->getDoctrine()->getRepository('AppBundle:Download\Category')->find($id);
         if (!$category) {
             $this->addFlash('danger', 'Kategorie nebyla nalezena');
             return $this->redirectToRoute('manager_download_category_list');
@@ -114,10 +114,10 @@ class DownloadCategoryController extends Controller
      * @param null $changeBy
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function downloadCategoryMoveAction($id, $direction, $changeBy = null)
+    public function categoryMoveAction($id, $direction, $changeBy = null)
     {
         $entityTools = $this->get('app.service.entitytools');
-        $entity = $this->getDoctrine()->getRepository('AppBundle:Download\DownloadCategory')->find($id);
+        $entity = $this->getDoctrine()->getRepository('AppBundle:Download\Category')->find($id);
 
         if ($direction == 'up') {
             $entityTools->positionMoveUp($entity);

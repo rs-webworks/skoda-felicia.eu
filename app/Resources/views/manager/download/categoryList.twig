@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody class="sortable">
-            {# @var category \AppBundle\Entity\Download\DownloadCategory #}
+            {# @var category \AppBundle\Entity\Download\Category #}
             {% for category in categories %}
                 <tr data-id="{{ category.getId() }}">
                     <td><i class="fa fa-fw fa-{{ category.getIcon() }}"></i></td>

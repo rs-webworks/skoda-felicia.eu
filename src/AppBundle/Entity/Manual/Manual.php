@@ -24,7 +24,7 @@ class Manual
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Manual\ManualCategory", inversedBy="manuals")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Manual\Category", inversedBy="manuals")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * @Gedmo\SortableGroup
      */
@@ -37,7 +37,7 @@ class Manual
     private $content;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Manual\ManualImage", mappedBy="manual", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Manual\Image", mappedBy="manual", cascade={"remove"})
      * @ORM\OrderBy({"position"="ASC"})
      */
     private $images;
@@ -112,7 +112,7 @@ class Manual
     }
 
     /**
-     * @return ManualImage[]
+     * @return Image[]
      */
     public function getImages()
     {
@@ -120,7 +120,7 @@ class Manual
     }
 
     /**
-     * @param ManualImage[] $images
+     * @param Image[] $images
      */
     public function setImages($images)
     {
