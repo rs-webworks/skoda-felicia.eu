@@ -626,10 +626,13 @@ article h3.post-title {
     background-image: url("../../../images/layout/metallic.png"); }
   #article-detail .colors-table .color-sample .car-overlay {
     transition: opacity 0.5s;
-    background-image: url("../../../images/layout/vehicle.png");
     opacity: 0;
     width: 100%;
     height: 100%; }
+    #article-detail .colors-table .color-sample .car-overlay.old {
+      background-image: url("../../../images/layout/felicia_old.png"); }
+    #article-detail .colors-table .color-sample .car-overlay.new {
+      background-image: url("../../../images/layout/felicia_new.png"); }
   #article-detail .colors-table .color-sample.in {
     height: 190px;
     width: 255px; }

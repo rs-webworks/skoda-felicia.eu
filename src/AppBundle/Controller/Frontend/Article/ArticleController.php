@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller\Frontend;
+namespace AppBundle\Controller\Frontend\Article;
 
 use AppBundle\Form\SearchForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -18,4 +18,5 @@ class ArticleController extends Controller
     public function detailAction()
     {
     }
+
 }

@@ -4,20 +4,20 @@
 
     <div class="container" id="manager-home">
         <h3>
-            Kategorie souborů
+            Kategorie článků
             <div class="pull-right">
-                <a href="{{ url('manager_download_category_create') }}" class="btn btn-sm btn-success">
+                <a href="{{ url('manager_article_category_create') }}" class="btn btn-sm btn-success">
                     <i class="fa fa-plus"></i> Přidat
                 </a>
-                <a href="{{ url('manager_download_list') }}" class="btn btn-sm btn-default">
-                    <i class="fa fa-list"></i> Seznam souborů
+                <a href="{{ url('manager_article_list') }}" class="btn btn-sm btn-default">
+                    <i class="fa fa-list"></i> Seznam stránek
                 </a>
             </div>
         </h3>
 
         <ol class="breadcrumb">
             <li><a href="{{ url('manager_home') }}">Manažer</a></li>
-            <li><a href="{{ url('manager_download_list') }}">Soubory ke stažení</a></li>
+            <li><a href="{{ url('manager_article_list') }}">Články</a></li>
             <li class="active">Seznam kategorií</li>
         </ol>
 
@@ -26,8 +26,8 @@
             <tr>
                 <th class="th-min-width"></th>
                 <th>
-                    {{ knp_pagination_sortable(categories, 'Název', 'dc.title') }}
-                    {% if categories.isSorted('d.title') %}
+                    {{ knp_pagination_sortable(categories, 'Název', 'mc.title') }}
+                    {% if categories.isSorted('m.title') %}
                         {% if categories.getDirection() == "desc" %}
                             <i class="fa fa-fw fa-chevron-down"></i>
                         {% elseif categories.getDirection() == "asc" %}
@@ -35,34 +35,31 @@
                         {% endif %}
                     {% endif %}
                 </th>
-                <th>Počet souborů</th>
+                <th>Nadřazená kategorie</th>
+                <th>Počet stránek</th>
                 <th class="text-right">
                     Akce
                 </th>
             </tr>
             </thead>
             <tbody class="sortable">
-            {# @var category \AppBundle\Entity\Download\Category #}
+            {# @var category \AppBundle\Entity\Article\Category #}
             {% for category in categories %}
                 <tr data-id="{{ category.getId() }}">
                     <td><i class="fa fa-fw fa-{{ category.getIcon() }}"></i></td>
                     <td>{{ category.getTitle() }}</td>
+                    <td>{% if category.getParent() is not null %}{{ category.getParent().getTitle() }}{% endif %}</td>
                     <td>
-                        <span class="badge">{{ category.getDownloads()|length }}</span>
+                        <span class="badge">{{ category.getArticles()|length }}</span>
                     </td>
                     <td>
                         <div class="pull-right">
-                            <a href="{{ url('manager_download_category_edit', {'id': category.getId()}) }}"
-                               class="btn btn-default btn-xs"><i
-                                        class="fa fa-fw fa-pencil"></i></a>
-                            <a href="{{ url('manager_download_category_delete', {'id': category.getId()}) }}"
-                               class="btn btn-danger btn-xs"><i
-                                        class="fa fa-fw fa-trash"></i></a> &nbsp;&nbsp;
 
-                            <a href="{{ url('manager_download_category_move', {'id': category.getId(), 'direction': 'up'}) }}"><i
-                                        class="fa fa-fw fa-chevron-circle-down"></i></a>
-                            <a href="{{ url('manager_download_category_move', {'id': category.getId(), 'direction': 'down'}) }}"><i
-                                        class="fa fa-fw fa-chevron-circle-up"></i></a>
+                            <a href="{{ url('manager_article_category_edit', {'id': category.getId()}) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-pencil"></i></a>
+                            <a href="{{ url('manager_article_category_delete', {'id': category.getId()}) }}" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i></a> &nbsp;&nbsp;
+
+                            <a href="{{ url('manager_article_category_move', {'id': category.getId(), 'direction': 'up'}) }}"><i class="fa fa-fw fa-chevron-circle-down"></i></a>
+                            <a href="{{ url('manager_article_category_move', {'id': category.getId(), 'direction': 'down'}) }}"><i class="fa fa-fw fa-chevron-circle-up"></i></a>
                         </div>
 
                     </td>

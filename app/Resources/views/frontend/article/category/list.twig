@@ -1,0 +1,79 @@
+{% extends 'layout_front.twig' %}
+{% block title %}Články{% endblock %}
+{% block body %}
+
+    <div class="container" id="manual-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    <li><a href="{{ url('frontend_article_home') }}">Články</a></li>
+                    <li class="active">{{ category.getTitle() }}</li>
+                </ol>
+            </div>
+
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    {{ category.getTitle() }}
+
+                    <div class="pull-right engines">
+                        <small>Výběr motorizace:</small>
+                        {# @var engine \AppBundle\Entity\Engine #}
+                        {% for engine in engines %}
+                            <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug(),'engine': engine.getSlug()}) }}"
+                               class="btn btn-sm btn-main{% if engine == filterEngine %} active{% endif %}">{{ engine.getName() }}</a>
+                        {% endfor %}
+                        <a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}"
+                           class="btn btn-sm btn-default{% if filterEngine is null %} active{% endif %}">Vše</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            {{ knp_pagination_sortable(manuals, 'Titulek', 'm.title') }}
+                            {% if manuals.isSorted('m.title') %}
+                                {% if manuals.getDirection() == "desc" %}
+                                    <i class="fa fa-fw fa-chevron-down"></i>
+                                {% elseif manuals.getDirection() == "asc" %}
+                                    <i class="fa fa-fw fa-chevron-up"></i>
+                                {% endif %}
+                            {% endif %}
+                        </th>
+                        <th>Motorizace</th>
+                    </tr>
+                    </thead>
+                    <tbody class="sortable">
+                    {% if manuals|length == 0 %}
+                        <tr>
+                            <td colspan="2" class="text-muted text-center">V této kategorii nejsou zatím žádné stránky.</td>
+                        </tr>
+                    {% endif %}
+
+                    {# @var page \AppBundle\Entity\Manual\Manual #}
+                    {% for page in manuals %}
+                        <tr data-id="{{ page.getId() }}">
+                            <td>
+                                <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}">{{ page.getTitle() }}</a>
+                            </td>
+                            <td>
+                                {% for engine in page.getEngines() %}
+                                    <span class="label label-main">{{ engine.getName() }}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {{ knp_pagination_render(manuals) }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

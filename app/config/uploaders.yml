@@ -4,7 +4,7 @@ vich_uploader:
     mappings:
         manual_image:
             uri_prefix:         /images/manual
-            upload_destination: '%kernel.root_dir%/../web/images/manual'
+            upload_destination: '%kernel.root_dir%/../%upload_dir%/images/manual'
             namer: vich_uploader.namer_origname
 
             inject_on_load:     false
@@ -13,7 +13,16 @@ vich_uploader:
 
         download_image:
             uri_prefix:         /images/download
-            upload_destination: '%kernel.root_dir%/../web/images/download'
+            upload_destination: '%kernel.root_dir%/../%upload_dir%/images/download'
+            namer: vich_uploader.namer_origname
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        article_image:
+            uri_prefix:         /images/article
+            upload_destination: '%kernel.root_dir%/../%upload_dir%/images/article'
             namer: vich_uploader.namer_origname
 
             inject_on_load:     false
@@ -22,7 +31,7 @@ vich_uploader:
 
         download_file:
             uri_prefix:         /downloads
-            upload_destination: '%kernel.root_dir%/../web/downloads'
+            upload_destination: '%kernel.root_dir%/../%upload_dir%/downloads'
             namer: vich_uploader.namer_origname
 
             inject_on_load:     true
