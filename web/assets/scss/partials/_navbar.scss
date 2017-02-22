@@ -72,6 +72,10 @@
         }
       }
 
+      .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+        background-color: $colorMainAlt;
+      }
+
       #top-menu {
         @media(max-width: $screen-sm-max) {
           max-height: 500px;

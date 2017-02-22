@@ -4,6 +4,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Article\Article;
 use AppBundle\Entity\Article\Category;
+use AppBundle\Entity\Article\Report;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
@@ -61,11 +62,21 @@ class ArticleService
     public function search($query)
     {
         return $this->repository->createQueryBuilder('a')
-            ->addSelect("MATCH_AGAINST (a.content, a.title, :searchterm 'IN NATURAL MODE') as score")
-            ->add('where', 'MATCH_AGAINST(a.content, a.title, :searchterm) > 0')
+            ->addSelect("MATCH_AGAINST (a.perex, a.content, a.title, :searchterm 'IN NATURAL MODE') as score")
+            ->add('where', 'MATCH_AGAINST(a.perex, a.content, a.title, :searchterm) > 0')
             ->setParameter('searchterm', $query)
             ->orderBy('score', 'desc')
             ->getQuery()
             ->getResult();
+    }
+
+
+    /**
+     * @param Report $report
+     */
+    public function saveReport(Report $report)
+    {
+        $this->em->persist($report);
+        $this->em->flush();
     }
 }

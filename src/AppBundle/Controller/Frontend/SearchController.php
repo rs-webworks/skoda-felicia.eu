@@ -3,8 +3,8 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Form\SearchForm;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,6 +26,7 @@ class SearchController extends Controller
 
     /**
      * @Route("/hledani/{query}", name="frontend_search_result", defaults={"query" = null})
+     * @Template("frontend/search/result.twig")
      */
     public function searchResultsAction(Request $request, $query)
     {
@@ -39,13 +40,17 @@ class SearchController extends Controller
 
         $results = array();
         if ($query) {
-            $results = $this->get('app.service.manual')->search($query);
+            $results = array(
+                'manual' => $this->get('app.service.manual')->search($query),
+                'download' => $this->get('app.service.download')->search($query),
+                'article' => $this->get('app.service.article')->search($query)
+            );
         }
 
-        return $this->render('frontend/search/result.twig', array(
+        return array(
             'query' => $query,
             'results' => $results,
             'form' => $form
-        ));
+        );
     }
 }

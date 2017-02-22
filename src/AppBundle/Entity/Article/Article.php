@@ -33,7 +33,7 @@ class Article
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Assert\Length(max="200", maxMessage="Perex může být maximálně {{ limit }} znaků dlouhý")
+     * @Assert\Length(max="500", maxMessage="Perex může být maximálně {{ limit }} znaků dlouhý")
      */
     private $perex;
 

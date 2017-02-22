@@ -1,6 +1,14 @@
 // Manual
 // ---------------------------------------------------------------------------------------------------------------------
 
+#article-category-list {
+  article {
+    img.article-image {
+      max-width: 150px;
+    }
+  }
+}
+
 #article-detail {
   h2.article-title {
     margin-bottom: 15px;
@@ -67,6 +75,10 @@
         height: 100%;
 
         &.old {
+          background-image: url('../../../images/layout/felicia_old.png');
+        }
+
+        &.pickup {
           background-image: url('../../../images/layout/felicia_old.png');
         }
 

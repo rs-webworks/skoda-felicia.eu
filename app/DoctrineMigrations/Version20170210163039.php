@@ -23,6 +23,7 @@ class Version20170210163039 extends AbstractMigration
         $this->addSql('ALTER TABLE downloads ADD CONSTRAINT FK_4B73A4B512469DE2 FOREIGN KEY (category_id) REFERENCES download_categories (id)');
         $this->addSql('ALTER TABLE manual_categories ADD slug VARCHAR(128) NOT NULL');
         $this->addSql('ALTER TABLE manual_pages CHANGE category_id category_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE `downloads` ADD FULLTEXT `fulltext_index` (`description`, `title`);');
     }
 
     /**

@@ -25,7 +25,7 @@ class Version20170221195636 extends AbstractMigration
         $this->addSql('ALTER TABLE article_categories ADD CONSTRAINT FK_3AF3466879066886 FOREIGN KEY (root_id) REFERENCES article_categories (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE article_categories ADD CONSTRAINT FK_3AF34668727ACA70 FOREIGN KEY (parent_id) REFERENCES article_categories (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE articles ADD CONSTRAINT FK_BFDD316812469DE2 FOREIGN KEY (category_id) REFERENCES article_categories (id)');
-        $this->addSql('ALTER TABLE `articles` ADD FULLTEXT `fulltext_index` (`content`, `title`);');
+        $this->addSql('ALTER TABLE `articles` ADD FULLTEXT `fulltext_index` (`content`, `title`, `perex`);');
     }
 
     /**

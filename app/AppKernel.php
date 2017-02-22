@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new Isometriks\Bundle\SpamBundle\IsometriksSpamBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new BFOS\TwigExtensionsBundle\BFOSTwigExtensionsBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
 
             // Application bundles:
             new AppBundle\AppBundle(),

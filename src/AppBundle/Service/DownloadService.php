@@ -2,8 +2,8 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Entity\Download\Download;
 use AppBundle\Entity\Download\Category;
+use AppBundle\Entity\Download\Download;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
@@ -61,8 +61,8 @@ class DownloadService
     public function search($query)
     {
         return $this->repository->createQueryBuilder('d')
-            ->addSelect("MATCH_AGAINST (d.content, d.title, :searchterm 'IN NATURAL MODE') as score")
-            ->add('where', 'MATCH_AGAINST(d.content, d.title, :searchterm) > 0')
+            ->addSelect("MATCH_AGAINST (d.description, d.title, :searchterm 'IN NATURAL MODE') as score")
+            ->add('where', 'MATCH_AGAINST(d.description, d.title, :searchterm) > 0')
             ->setParameter('searchterm', $query)
             ->orderBy('score', 'desc')
             ->getQuery()

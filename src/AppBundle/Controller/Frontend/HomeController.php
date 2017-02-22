@@ -29,7 +29,8 @@ class HomeController extends Controller
                 'version' => key($changelog),
                 'dbstats' => array(
                     'manuals' => $this->get('app.service.manual')->countAll(),
-                    'downloads' => $this->get('app.service.download')->countAll()
+                    'downloads' => $this->get('app.service.download')->countAll(),
+                    'articles_technical_data' => count($this->getDoctrine()->getRepository('AppBundle:Article\Category')->findOneBy(array('slug' => 'technicka-data'))->getArticles())
                 )
             );
         }
