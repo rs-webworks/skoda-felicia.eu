@@ -24,96 +24,137 @@
 
                 {% if results|length %}
 
-                    <h5>
-                        Dílenská příručka
-                        {% set count = results['manual']|length %}
-                        {% transchoice count %}
-                        {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
-                        {% endtranschoice %}
-                    </h5>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Název</th>
-                            <th>Kategorie</th>
-                            <th>Motorizace</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        {% for result in results['manual'] %}
-                            <tr data-id="{{ result[0].getId() }}">
-                                <td class="col-xs-6">
-                                    <a href="{{ url('frontend_manual_show', {'slug': result[0].getSlug()}) }}">{{ result[0].getTitle() }}</a>
-                                </td>
-                                <td class="col-xs-3">{{ result[0].getCategory().getTitle() }}</td>
-                                <td class="col-xs-3">
-                                    {% for engine in result[0].getEngines() %}
-                                        <span class="label label-main">{{ engine.getName() }}</span>
-                                    {% endfor %}
-                                </td>
+                    {# Manual #}
+                    {# ----------------------------------------------------------------------------------------------------------------------------- #}
+                    {% set count = results['manual']|length %}
+                    {% if count == 0 %}
+                        <h5 class="text-muted">
+                            Dílenská příručka
+                            {% set count = results['manual']|length %}
+                            {% transchoice count %}
+                            {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
+                            {% endtranschoice %}
+                        </h5>
+                    {% else %}
+                        <h5>
+                            Dílenská příručka
+                            {% set count = results['manual']|length %}
+                            {% transchoice count %}
+                            {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
+                            {% endtranschoice %}
+                        </h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col-xs-6">Název</th>
+                                <th class="col-xs-3">Kategorie</th>
+                                <th class="col-xs-3">Motorizace</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
 
-                    <h5>
-                        Ke stažení
-                        {% set count = results['download']|length %}
-                        {% transchoice count %}
-                        {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
-                        {% endtranschoice %}
-                    </h5>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Název</th>
-                            <th>Kategorie</th>
-                        </tr>
-                        </thead>
+                            <tbody>
+                            {% for result in results['manual'] %}
+                                <tr data-id="{{ result[0].getId() }}">
+                                    <td>
+                                        <a href="{{ url('frontend_manual_show', {'slug': result[0].getSlug()}) }}">{{ result[0].getTitle() }}</a>
+                                    </td>
+                                    <td>{{ result[0].getCategory().getTitle() }}</td>
+                                    <td>
+                                        {% for engine in result[0].getEngines() %}
+                                            <span class="label label-main">{{ engine.getName() }}</span>
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
 
-                        <tbody>
-                        {% for result in results['download'] %}
-                            <tr data-id="{{ result[0].getId() }}">
-                                <td class="col-xs-6">
-                                    <a href="{{ url('frontend_download_detail', {'slug': result[0].getSlug()}) }}">{{ result[0].getTitle() }}</a>
-                                </td>
-                                <td class="col-xs-6">
-                                    {{ result[0].getCategory().getTitle() }}
-                                </td>
+
+
+                    {# Download #}
+                    {# ----------------------------------------------------------------------------------------------------------------------------- #}
+                    {% set count = results['download']|length %}
+                    {% if count == 0 %}
+                        <h5 class="text-muted">
+                            Ke stažení
+                            {% transchoice count %}
+                            {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
+                            {% endtranschoice %}
+                        </h5>
+                    {% else %}
+                        <h5>
+                            Ke stažení
+                            {% transchoice count %}
+                            {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
+                            {% endtranschoice %}
+                        </h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col-xs-6">Název</th>
+                                <th class="col-xs-6">Kategorie</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
 
-                    <h5>
-                        Články
-                        {% set count = results['article']|length %}
-                        {% transchoice count %}
-                        {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
-                        {% endtranschoice %}
-                    </h5>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Název</th>
-                            <th>Kategorie</th>
-                        </tr>
-                        </thead>
+                            <tbody>
+                            {% for result in results['download'] %}
+                                <tr data-id="{{ result[0].getId() }}">
+                                    <td>
+                                        <a href="{{ url('frontend_download_detail', {'slug': result[0].getSlug()}) }}">{{ result[0].getTitle() }}</a>
+                                    </td>
+                                    <td>
+                                        {{ result[0].getCategory().getTitle() }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
 
-                        <tbody>
-                        {% for result in results['article'] %}
-                            <tr data-id="{{ result[0].getId() }}">
-                                <td class="col-xs-6">
-                                    <a href="{{ url('frontend_article_detail', {'article': result[0].getSlug()}) }}">{{ result[0].getTitle() }}</a>
-                                </td>
-                                <td class="col-xs-6">
-                                    {{ result[0].getCategory().getTitle() }}
-                                </td>
+
+
+                    {# Article #}
+                    {# ----------------------------------------------------------------------------------------------------------------------------- #}
+                    {% set count = results['article']|length %}
+                    {% if count == 0 %}
+                        <h5 class="text-muted">
+                            Články
+                            {% set count = results['article']|length %}
+                            {% transchoice count %}
+                            {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
+                            {% endtranschoice %}
+                        </h5>
+                    {% else %}
+                        <h5>
+                            Články
+                            {% set count = results['article']|length %}
+                            {% transchoice count %}
+                            {0} (Žádné výsledky)|{1} (Jeden výsledek)|[2,3] (%count% výsledky)|[4,Inf[ (%count% výsledků)
+                            {% endtranschoice %}
+                        </h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col-xs-6">Název</th>
+                                <th class="col-xs-6">Kategorie</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+
+                            <tbody>
+                            {% for result in results['article'] %}
+                                <tr data-id="{{ result[0].getId() }}">
+                                    <td>
+                                        <a href="{{ url('frontend_article_detail', {'article': result[0].getSlug()}) }}">{{ result[0].getTitle() }}</a>
+                                    </td>
+                                    <td>
+                                        {{ result[0].getCategory().getTitle() }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
 
                 {% endif %}
             </div>

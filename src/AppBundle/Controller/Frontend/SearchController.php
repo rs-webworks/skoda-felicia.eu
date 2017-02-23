@@ -35,6 +35,9 @@ class SearchController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            if (strlen($data['query']) < 3) {
+                $this->addFlash('warning', 'Hledaný výraz musí být alespoň 3 znaky dlouhý.');
+            }
             return $this->redirectToRoute('frontend_search_result', array('query' => $data['query']));
         }
 
