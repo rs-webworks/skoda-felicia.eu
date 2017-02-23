@@ -29,6 +29,16 @@
                 <thead>
                 <tr>
                     <th>
+                        {{ knp_pagination_sortable(manual, 'ID', 'm.id') }}
+                        {% if manual.isSorted('m.id') %}
+                            {% if manual.getDirection() == "desc" %}
+                                <i class="fa fa-fw fa-chevron-down"></i>
+                            {% elseif manual.getDirection() == "asc" %}
+                                <i class="fa fa-fw fa-chevron-up"></i>
+                            {% endif %}
+                        {% endif %}
+                    </th>
+                    <th>
                         {{ knp_pagination_sortable(manual, 'Titulek', 'm.title') }}
                         {% if manual.isSorted('m.title') %}
                             {% if manual.getDirection() == "desc" %}
@@ -38,6 +48,7 @@
                             {% endif %}
                         {% endif %}
                     </th>
+                    <th>Kategorie</th>
                     <th>Motorizace</th>
                     <th class="text-right">
                         Akce
@@ -48,7 +59,9 @@
                 {# @var page \AppBundle\Entity\Manual\Manual #}
                 {% for page in manual %}
                     <tr data-id="{{ page.getId() }}">
+                        <td>{{ page.getId() }}</td>
                         <td>{{ page.getTitle() }}</td>
+                        <td>{{ page.getCategory().getTitle() }}</td>
                         <td>
                             {% for engine in page.getEngines() %}
                                 <span class="label label-default">{{ engine.getName() }}</span>
