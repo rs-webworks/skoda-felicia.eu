@@ -301,15 +301,15 @@ class Article
     }
 
     /**
-     * @return mixed
+     * @return Report[]
      */
-    public function getReports()
+    public function getReports(): array
     {
         return $this->reports;
     }
 
     /**
-     * @param mixed $reports
+     * @param Report[] $reports
      */
     public function setReports($reports)
     {
