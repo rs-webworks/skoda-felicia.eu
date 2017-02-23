@@ -17,7 +17,8 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/list/", name="manager_manual_list")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Template("manager/manual/manual/list.twig")
+     * @return array
      */
     public function manualListAction(Request $request)
     {
@@ -25,13 +26,13 @@ class ManualController extends Controller
         $pagination = $paginator->paginate(
             $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->createQueryBuilder('m'),
             $request->query->getInt('page', 1),
-            20,
+            15,
             array('defaultSortFieldName' => 'm.position', 'defaultSortDirection' => 'asc')
         );
 
-        return $this->render('manager/manual/list.twig', array(
+        return array(
             'manual' => $pagination
-        ));
+        );
     }
 
     /**
@@ -39,6 +40,7 @@ class ManualController extends Controller
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Template("manager/manual/manual/images.twig")
      */
     public function imagesAction(Request $request, $id)
     {
@@ -72,7 +74,8 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/edit/{id}", name="manager_manual_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Template("manager/manual/manual/edit.twig")
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function manualEditAction(Request $request, $id)
     {
@@ -87,15 +90,16 @@ class ManualController extends Controller
             return $this->redirectToRoute('manager_manual_list');
         }
 
-        return $this->render('manager/manual/edit.twig', array(
+        return array(
             'form' => $form->createView()
-        ));
+        );
     }
 
     /**
      * @Route("/manager/manual/create/", name="manager_manual_create")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Template("manager/manual/manual/create.twig")
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function manualCreateAction(Request $request)
     {
@@ -110,9 +114,9 @@ class ManualController extends Controller
             return $this->redirectToRoute('manager_manual_list');
         }
 
-        return $this->render('manager/manual/create.twig', array(
+        return array(
             'form' => $form->createView()
-        ));
+        );
     }
 
     /**
@@ -193,7 +197,7 @@ class ManualController extends Controller
 
     /**
      * @Route("/manager/manual/reports/", name="manager_manual_reports")
-     * @Template("manager/manual/reports.twig")
+     * @Template("manager/manual/report/list.twig")
      */
     public function manualReportsAction()
     {
@@ -214,7 +218,7 @@ class ManualController extends Controller
     /**
      * @param Image $image
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function saveImage(Image $image, Request $request, $manualId)
     {
@@ -232,9 +236,9 @@ class ManualController extends Controller
             return $this->redirect($request->getRequestUri());
         }
 
-        return $this->render('manager/manual/images.twig', array(
+        return array(
             'form' => $form->createView(),
             'manual' => $image->getManual()
-        ));
+        );
     }
 }

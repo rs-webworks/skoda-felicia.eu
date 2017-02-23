@@ -79,4 +79,23 @@ class ArticleService
         $this->em->persist($report);
         $this->em->flush();
     }
+
+    /**
+     * @param $id
+     */
+    public function toggleReport($id)
+    {
+        $report = $this->em->getRepository('AppBundle:Article\Report')->find($id);
+        $report->setResolved(!$report->isResolved());
+        $this->em->merge($report);
+        $this->em->flush();
+    }
+
+    /**
+     *
+     */
+    public function getUnresolvedReportsCount()
+    {
+        return count($this->em->getRepository('AppBundle:Article\Report')->findBy(array('resolved' => false)));
+    }
 }

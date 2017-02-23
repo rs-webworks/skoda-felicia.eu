@@ -45,9 +45,6 @@ mark {
 .media-left {
   padding-right: 15px; }
 
-div.CodeMirror {
-  height: 800px; }
-
 html, body {
   font-family: "OpenSans", sans-serif;
   height: 100%;

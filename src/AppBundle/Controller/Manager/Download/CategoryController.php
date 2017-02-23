@@ -14,7 +14,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/manager/download/category/list/", name="manager_download_category_list")
-     * @Template("manager/download/categoryList.twig")
+     * @Template("manager/download/category/list.twig")
      */
     public function categoryListAction(Request $request)
     {
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     /**
      * @Route("/manager/download/category/edit/{id}", name="manager_download_category_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @Template("manager/download/categoryEdit.twig")
+     * @Template("manager/download/category/edit.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function categoryEditAction(Request $request, $id)
@@ -59,7 +59,7 @@ class CategoryController extends Controller
     /**
      * @Route("/manager/download/category/create/", name="manager_download_category_create")
      * @param Request $request
-     * @Template("/manager/download/categoryCreate.twig")
+     * @Template("manager/download/category/create.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function categoryCreateAction(Request $request)

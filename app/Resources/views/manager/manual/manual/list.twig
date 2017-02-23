@@ -1,0 +1,79 @@
+{% extends 'layout_manager.twig' %}
+{% block title %}Správa obsahu - Dílenská příručka{% endblock %}
+{% block body %}
+
+    <div class="container" id="manager-manual-list">
+
+        <div class="col-xs-12">
+            <h1>
+                Stránky dílenské příručky
+                <div class="pull-right">
+                    <a href="{{ url('manager_manual_create') }}" class="btn btn-success">
+                        <i class="fa fa-fw fa-plus"></i> Přidat
+                    </a>
+                    <a href="{{ url('manager_manual_category_list') }}" class="btn btn-default">
+                        <i class="fa fa-fw fa-list"></i> Kategorie
+                    </a>
+                </div>
+            </h1>
+
+            <ol class="breadcrumb">
+                <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+                <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
+                <li class="active">Seznam stránek</li>
+            </ol>
+        </div>
+
+        <div class="col-xs-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        {{ knp_pagination_sortable(manual, 'Titulek', 'm.title') }}
+                        {% if manual.isSorted('m.title') %}
+                            {% if manual.getDirection() == "desc" %}
+                                <i class="fa fa-fw fa-chevron-down"></i>
+                            {% elseif manual.getDirection() == "asc" %}
+                                <i class="fa fa-fw fa-chevron-up"></i>
+                            {% endif %}
+                        {% endif %}
+                    </th>
+                    <th>Motorizace</th>
+                    <th class="text-right">
+                        Akce
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="sortable">
+                {# @var page \AppBundle\Entity\Manual\Manual #}
+                {% for page in manual %}
+                    <tr data-id="{{ page.getId() }}">
+                        <td>{{ page.getTitle() }}</td>
+                        <td>
+                            {% for engine in page.getEngines() %}
+                                <span class="label label-default">{{ engine.getName() }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                <a href="{{ url('frontend_manual_show', {'slug': page.getSlug()}) }}" class="btn btn-default btn-xs" target="_blank"><i class="fa fa-fw fa-search"></i> Zobrazit</a>
+                                <a href="{{ url('manager_manual_edit', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-pencil"></i> Upravit</a>
+                                <a href="{{ url('manager_manual_images', {'id': page.getId()}) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-image"></i> Obrázky</a>
+                                <a href="{{ url('manager_manual_delete', {'id': page.getId()}) }}" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> Smazat</a> &nbsp;&nbsp;
+
+                                <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'up'}) }}"><i class="fa fa-fw fa-chevron-circle-down"></i></a>
+                                <a href="{{ url('manager_manual_move', {'id': page.getId(), 'direction': 'down'}) }}"><i class="fa fa-fw fa-chevron-circle-up"></i></a>
+                                {#<i class="fa fa-fw fa-bars text-muted dragger"></i>#}
+                            </div>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {{ knp_pagination_render(manual) }}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -55,6 +55,19 @@ class DownloadService
     }
 
     /**
+     *
+     */
+    public function getTotalDownloadsCount()
+    {
+        $sum = $this->repository->createQueryBuilder('d')
+            ->select('SUM(d.clickCount) as downloads')
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $sum['downloads'];
+    }
+
+    /**
      * @param string $query
      * @return array
      */

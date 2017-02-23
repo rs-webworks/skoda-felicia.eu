@@ -31,8 +31,8 @@ class ArticleForm extends AbstractType
                 'choice_label' => 'title'
             ))
             ->add('author', TextType::class, array('label' => 'Autor'))
-            ->add('createdAt', DateTimeType::class, array('label' => 'Datum a čas vytvoření'))
-            ->add('updatedAt', DateTimeType::class, array('label' => 'Datum a čas změny', 'required' => false))
+            ->add('createdAt', DateTimeType::class, array('label' => 'Vytvořeno'))
+            ->add('updatedAt', DateTimeType::class, array('label' => 'Změněno', 'required' => false))
             ->add('perex', TextareaType::class, array('label' => 'Perex', 'required' => false))
             ->add('published', CheckboxType::class, array('label' => 'Publikováno'))
             ->add('imageFile', VichImageType::class, array(

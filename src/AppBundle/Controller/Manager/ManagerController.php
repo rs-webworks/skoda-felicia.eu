@@ -10,12 +10,25 @@ class ManagerController extends Controller
 {
     /**
      * @Route("/manager/", name="manager_home")
-     * @Template("manager/index.twig")
+     * @Template("manager/home.twig")
      */
     public function indexAction()
     {
         return array(
-            'manual' => array('unresolvedReports' => $this->get('app.service.report')->getUnresolvedCount())
+            'manual' => array(
+                'unresolvedReports' => $this->get('app.service.report')->getUnresolvedCount(),
+                'allReports' => count($this->getDoctrine()->getRepository('AppBundle:Manual\Report')->findAll()),
+                'count' => count($this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->findAll())
+            ),
+            'article' => array(
+                'unresolvedReports' => $this->get('app.service.article')->getUnresolvedReportsCount(),
+                'allReports' => count($this->getDoctrine()->getRepository('AppBundle:Article\Report')->findAll()),
+                'count' => count($this->getDoctrine()->getRepository('AppBundle:Article\Article')->findAll())
+            ),
+            'download' => array(
+                'downloadsMade' => $this->get('app.service.download')->getTotalDownloadsCount(),
+                'count' => count($this->getDoctrine()->getRepository('AppBundle:Download\Download')->findAll())
+            )
         );
     }
 }
