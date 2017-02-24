@@ -9,11 +9,10 @@
     {# Open Graph Tags #}
     <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
 
-    <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ block('title') }}" />
     <meta property="og:type" content="{% block type %}website{% endblock %}" />
     <meta property="og:description" content="{{ block('description') }}" />
-    <meta property="og:image" content="{% block image %}{{ asset('images/layout/default_thumb.png') }}{% endblock %}" />
+    <meta property="og:image" content="{% block image %}{{ absolute_url(asset('images/layout/default_thumb.png')) }}{% endblock %}" />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="fb:app_id" content="281255758961197" />
 

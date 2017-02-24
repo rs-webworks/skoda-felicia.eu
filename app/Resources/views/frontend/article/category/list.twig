@@ -1,5 +1,6 @@
 {% extends 'layout_front.twig' %}
 {% block title %}{{ currentCategory.getTitle() }} - Články{% endblock %}
+{% block description %}Kategorie článků {{ currentCategory.getTitle() }}.{% endblock %}
 {% block body %}
 
     <div class="container" id="article-category-list">

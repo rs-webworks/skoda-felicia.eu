@@ -1,7 +1,7 @@
 {% extends 'layout_front.twig' %}
 {% block title %}{{ download.getTitle() }} - Ke stažení{% endblock %}
 {% block description %}{{ download.getDescription()|truncate(300) }}{% endblock %}
-{% block image %}{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}{% endblock %}
+{% block image %}{{ absolute_url(vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview')) }}{% endblock %}
 
 {% block body %}
 
