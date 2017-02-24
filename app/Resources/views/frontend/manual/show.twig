@@ -1,5 +1,6 @@
 {% extends 'layout_front.twig' %}
 {% block title %}Dílenská příručka{% endblock %}
+
 {% block body %}
     {# @var manual \AppBundle\Entity\Manual\Manual #}
 
@@ -90,13 +91,13 @@
                     {{ include(template_from_string(manual.getContent() | raw)) }}
                 </div>
 
-                <div class="col-xs-12 col-sm-4 col-print-4 lightgallery">
+                <div class="col-xs-12 col-sm-4 col-print-4 lightgallery" id="images-panel">
                     {% for image in manual.getImages() %}
                         <div class="label label-default">
                             <i class="fa fa-picture-o"></i> [{{ image.getPosition() +1 }}]
                         </div>
-                        <a href="{{ vich_uploader_asset(image, 'imageFile') }}">
-                            <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.getTitle() }}" />
+                        <a href="{{ vich_uploader_asset(image, 'imageFile') }}" data-image-name="{{ image.getTitle() }}">
+                            <img src="{{ vich_uploader_asset(image, 'imageFile')|imagine_filter('manual_thumb') }}" alt="{{ image.getTitle() }}" />
                         </a>
                     {% endfor %}
                 </div>

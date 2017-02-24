@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: uploaders.yml }
+    - { resource: thumbnails.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -136,22 +137,3 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
-
-liip_imagine:
-    resolvers:
-       default:
-          web_path:
-            web_root: "%kernel.root_dir%/..%upload_dir%"
-    cache: default
-
-    loaders:
-        default:
-            filesystem:
-                data_root: "%kernel.root_dir%/..%upload_dir%"
-
-    filter_sets:
-        cache: ~
-        default_thumb:
-            quality: 100
-            filters:
-                thumbnail: { size: [150, 85], mode: outbound }

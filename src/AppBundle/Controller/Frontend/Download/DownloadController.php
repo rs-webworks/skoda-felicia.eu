@@ -68,7 +68,7 @@ class DownloadController extends Controller
         if ($token) {
             $validation = $this->get('session')->get('tokens')['downloadRequest'];
 
-            if ($token == $validation['token'] && time() > $validation['validSince'] && time() < $validation['validSince'] + 30) {
+            if ($token == $validation['token'] && time() > $validation['validSince'] && time() < $validation['validSince'] + 25) {
                 $download->addClickCount();
                 $em = $this->getDoctrine()->getManager();
                 $em->merge($download);
@@ -84,7 +84,7 @@ class DownloadController extends Controller
         $token = md5(time());
 
         $session->set('tokens/downloadRequest/token', $token);
-        $session->set('tokens/downloadRequest/validSince', time() + 10);
+        $session->set('tokens/downloadRequest/validSince', time() + 5);
 
         return array(
             'token' => $token,

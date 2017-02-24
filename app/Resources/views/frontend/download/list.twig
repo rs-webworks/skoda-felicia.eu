@@ -1,5 +1,7 @@
 {% extends 'layout_front.twig' %}
-{% block title %}Ke stažení{% endblock %}
+{% block title %}{% if currentCategory is not null %}{{ currentCategory.getTitle() }} - {% endif %}Ke stažení{% endblock %}
+{% block description %}{% if currentCategory is not null %}Kategorie {{ currentCategory.getTitle() }} - {% endif %}Soubory ke stažení.{% endblock %}
+
 {% block body %}
 
     <section class="container" id="download-list">
@@ -78,8 +80,8 @@
                             <div class="row visible-xs">
                                 <div class="col-xs-12">
                                     <div class="lightgallery">
-                                        <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
-                                            <img class="media-object download-image-mobile" src="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('default_thumb') }}" alt="{{ download.getTitle() }}" />
+                                        <a href="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}">
+                                            <img class="media-object download-image-mobile" src="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('default_thumb') }}" alt="{{ download.getTitle() }} (náhled)" />
                                         </a>
                                     </div>
                                     <a href="{{ url('frontend_download_detail', {'slug': download.getSlug()}) }}">
@@ -92,8 +94,8 @@
 
                             <div class="media hidden-xs">
                                 <div class="media-left lightgallery">
-                                    <a href="{{ vich_uploader_asset(download, 'imageFile') }}">
-                                        <img class="media-object download-image" src="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('default_thumb') }}" alt="{{ download.getTitle() }}" />
+                                    <a href="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}">
+                                        <img class="media-object download-image" src="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('default_thumb') }}" alt="{{ download.getTitle() }} (náhled)" />
                                     </a>
                                 </div>
                                 <div class="media-body">

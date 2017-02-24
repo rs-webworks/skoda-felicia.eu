@@ -72,7 +72,7 @@ $(function () {
         var download_time = $('h1#download-countdown #time');
         var download_button = $('a.btn.btn-success#download-button');
 
-        var counter = 10;
+        var counter = 5;
         var counterInterval = setInterval(function () {
             if (counter === 0) {
                 clearInterval(counterInterval);
@@ -90,6 +90,17 @@ $(function () {
         //         window.close();
         //     }, 1000);
         // });
+    }
+
+    // Manual images link
+    // -----------------------------------------------------------------------------------------------------------------
+    if ($('article.container#manual-show').length > 0) {
+        $('a.label').on('click', function (e) {
+
+            if ($(this).find('i.fa.fa-picture-o') && $(this).data("ref-name") != undefined) {
+                $('#images-panel').find("[data-image-name='" + $(this).data("ref-name") + "']").click();
+            }
+        });
     }
 
 

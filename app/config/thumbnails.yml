@@ -1,0 +1,26 @@
+liip_imagine:
+    resolvers:
+       default:
+          web_path:
+            web_root: "%kernel.root_dir%/..%upload_dir%"
+    cache: default
+
+    loaders:
+        default:
+            filesystem:
+                data_root: "%kernel.root_dir%/..%upload_dir%"
+
+    filter_sets:
+        cache: ~
+        default_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [150, 85], mode: outbound }
+        large_preview:
+                    quality: 100
+                    filters:
+                        thumbnail: { size: [600, 340], mode: inset }
+        manual_thumb:
+                    quality: 100
+                    filters:
+                        thumbnail: { size: [360, 270], mode: outbound }

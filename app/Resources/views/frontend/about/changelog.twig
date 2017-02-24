@@ -20,7 +20,7 @@
                         <div class="panel-body">
                             <ul class="fa-ul">
                                 {% for change in log['changes'] %}
-                                    <li><i class="fa-li fa fa-check-square"></i> {{ change }}</li>
+                                    <li><i class="fa-li fa fa-check-square"></i> {{ change|raw }}</li>
                                 {% endfor %}
                             </ul>
                         </div>

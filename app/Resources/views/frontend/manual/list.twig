@@ -1,5 +1,8 @@
 {% extends 'layout_front.twig' %}
-{% block title %}Dílenská příručka{% endblock %}
+{% block type %}{% endblock %}
+{% block title %}{{ category.getTitle() }} - Dílenská příručka{% endblock %}
+{% block description %}Kategorie {{ category.getTitle() }} oficiální dílenské příručky Škoda Felicia.{% endblock %}
+
 {% block body %}
 
     <div class="container" id="manual-list">

@@ -1,5 +1,8 @@
 {% extends 'layout_front.twig' %}
-{% block title %}Ke stažení{% endblock %}
+{% block title %}{{ download.getTitle() }} - Ke stažení{% endblock %}
+{% block description %}{{ download.getDescription()|truncate(300) }}{% endblock %}
+{% block image %}{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}{% endblock %}
+
 {% block body %}
 
     <div class="container" id="download-detail">
@@ -20,8 +23,8 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-4 lightgallery">
-                <a href="{{ vich_uploader_asset(download, 'imageFile') }}" class="download-image">
-                    <img style="width: 100%;" src="{{ vich_uploader_asset(download, 'imageFile') }}" alt="{{ download.getTitle() }}" />
+                <a href="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}" class="download-image">
+                    <img style="width: 100%;" src="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}" alt="{{ download.getTitle() }}" />
                 </a>
             </div>
             <div class="col-xs-12 col-sm-8">
