@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
 class AboutController extends Controller
 {
     /**
-     * @Route("/o-projektu/changelog", name="frontend_about_changelog")
+     * @Route("/o-projektu/changelog", name="frontend_about_changelog", options={"sitemap"=true})
      * @Template("frontend/about/changelog.twig")
      */
     public function changelogAction()
@@ -25,7 +25,7 @@ class AboutController extends Controller
     }
 
     /**
-     * @Route("/o-projektu/autori", name="frontend_about_authors")
+     * @Route("/o-projektu/autori", name="frontend_about_authors", options={"sitemap"=true})
      * @Template("frontend/about/authors.twig")
      */
     public function authorsAction()
@@ -34,7 +34,7 @@ class AboutController extends Controller
     }
 
     /**
-     * @Route("/o-projektu/mapa_stranek", name="frontend_sitemap")
+     * @Route("/o-projektu/mapa_stranek", name="frontend_sitemap", options={"sitemap"=true})
      * @Template("frontend/about/sitemap.twig")
      */
     public function sitemapAction()

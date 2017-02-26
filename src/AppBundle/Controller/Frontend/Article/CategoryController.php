@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
 
     /**
-     * @Route("/clanky/kategorie/{category}", name="frontend_article_category_list", defaults={"category": "null"})
+     * @Route("/clanky/kategorie/{category}/", name="frontend_article_category_list", defaults={"category": "null"})
      * @Template("frontend/article/category/list.twig")
      */
     public function listAction(Request $request, $category)
@@ -34,19 +34,6 @@ class CategoryController extends Controller
             'articles' => $pagination,
             'categories' => $this->getDoctrine()->getRepository('AppBundle:Article\Category')->findBy(array(), array('position' => 'ASC')),
             'currentCategory' => $category
-        );
-    }
-
-    /**
-     * @Route("/clanky/kategorie", name="frontend_article_category_home")
-     * @Template("frontend/article/category/home.twig")
-     */
-    public function homeAction()
-    {
-        $categories = $this->getDoctrine()->getRepository('AppBundle:Article\Category')->findAll();
-
-        return array(
-            'categories' => $categories
         );
     }
 }

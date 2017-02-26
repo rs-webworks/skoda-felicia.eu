@@ -121,7 +121,7 @@ class Article
     }
 
     /**
-     * @return mixed
+     * @return Category
      */
     public function getCategory()
     {

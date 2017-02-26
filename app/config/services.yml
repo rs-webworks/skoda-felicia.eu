@@ -46,6 +46,14 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
+    app.sitemap.subscriber:
+          class:     AppBundle\Listener\SitemapSubscriber
+          arguments:
+              - "@router"
+              - "@doctrine.orm.entity_manager"
+          tags:
+              - { name: "kernel.event_subscriber", priority: 100 }
+
     # Twig
     # ------------------------------------------------------------------------------------------------------------------
     twig.extension.text:

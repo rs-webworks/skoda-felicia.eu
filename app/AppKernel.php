@@ -31,6 +31,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new BFOS\TwigExtensionsBundle\BFOSTwigExtensionsBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new Presta\SitemapBundle\PrestaSitemapBundle(),
+            new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
 
             // Application bundles:
             new AppBundle\AppBundle(),

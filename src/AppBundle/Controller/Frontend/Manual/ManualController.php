@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ManualController extends Controller
 {
     /**
-     * @Route("/dilenska-prirucka/obsah/", name="frontend_manual")
+     * @Route("/dilenska-prirucka/obsah/", name="frontend_manual", options={"sitemap"=true})
      */
     public function indexAction($engine = null)
     {

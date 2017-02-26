@@ -11,12 +11,16 @@
 
     <meta property="og:title" content="{{ block('title') }}" />
     <meta property="og:type" content="{% block type %}website{% endblock %}" />
-    <meta property="og:description" content="{{ block('description') }}" />
+    {% if block('description') is defined %}
+        <meta property="og:description" content="{{ block('description') }}" />
+    {% endif %}
     <meta property="og:image" content="{% block image %}{{ absolute_url(asset('images/layout/default_thumb.png')) }}{% endblock %}" />
     <meta property="og:locale" content="cs_CZ" />
     <meta property="fb:app_id" content="281255758961197" />
 
-    {{ block('ogTags') }}
+    {% if block('ogTags') is defined %}
+        {{ block('ogTags') }}
+    {% endif %}
 
 
     <title>{% block title %}Home{% endblock %} | Škoda Felicia</title>

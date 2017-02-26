@@ -13,7 +13,17 @@ use Symfony\Component\HttpFoundation\Request;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/clanky/detail/{article}", name="frontend_article_detail")
+     * @Route("/clanky/", name="frontend_article_home", options={"sitemap"=true})
+     * @Template("frontend/article/home.twig")
+     */
+    public function homeAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/clanky/detail/{article}", name="frontend_article_detail_old")
+     * @Route("/clanky/kategorie/{category}/{article}", name="frontend_article_detail")
      * @Template("frontend/article/detail.twig")
      */
     public function detailAction($article)

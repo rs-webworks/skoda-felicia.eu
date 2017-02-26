@@ -14,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 class HomeController extends Controller
 {
     /**
-     * @Route("/", name="frontend_home")
+     * @Route("/", name="frontend_home", options={"sitemap"=true})
      * @Template("frontend/home/index.twig")
      */
     public function indexAction()

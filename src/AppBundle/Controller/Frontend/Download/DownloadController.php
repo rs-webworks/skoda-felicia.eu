@@ -11,7 +11,7 @@ class DownloadController extends Controller
 {
 
     /**
-     * @Route("/ke-stazeni/{category}", name="frontend_download", defaults={"category" = null})
+     * @Route("/ke-stazeni/{category}", name="frontend_download", defaults={"category" = null}, options={"sitemap"=true})
      * @Template("frontend/download/list.twig")
      * @param Request $request
      * @return array

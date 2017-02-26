@@ -12,3 +12,11 @@ fos_js_routing:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /
+
+coresphere_console:
+    resource: .
+    type: extra

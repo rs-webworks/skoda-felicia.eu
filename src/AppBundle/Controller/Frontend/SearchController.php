@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends Controller
 {
     /**
-     * @Route("/vyhledavani", name="frontend_search")
+     * @Route("/vyhledavani", name="frontend_search", options={"sitemap"=true})
      */
     public function searchAction(Request $request)
     {
