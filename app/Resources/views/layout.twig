@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Oficiální dílenská příručka pro Škoda Felicia, dále také rady tipy, triky a návody..." />
+    <meta name="theme-color" content="#00b39a" />
 
     {# Open Graph Tags #}
     <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
@@ -22,10 +23,11 @@
         {{ block('ogTags') }}
     {% endif %}
 
-
     <title>{% block title %}Home{% endblock %} | Škoda Felicia</title>
     <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" sizes="192x192" href="{{ asset('bigicon.png') }}" />
+    <link rel="manifest" href="{{ asset('manifest.json') }}" />
 
     {# - Fonts #}
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700Roboto:400,700,900&subset=latin-ext" rel="stylesheet">

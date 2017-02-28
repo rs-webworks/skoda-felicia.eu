@@ -1,0 +1,16 @@
+{
+    "lang": "cs-CZ",
+    "background_color": "#ffffff",
+    "theme_color": "#00b39a",
+    "name": "www.skoda-felicia.eu",
+    "short_name": "Š.Felicia.eu",
+    "start_url": "https://skoda-felicia.eu",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "./bigicon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
