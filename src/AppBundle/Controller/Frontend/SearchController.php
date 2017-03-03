@@ -19,14 +19,14 @@ class SearchController extends Controller
             'action' => $this->generateUrl('frontend_search_result')
         ));
 
-        return $this->render('frontend/search/form.twig', array(
+        return $this->render('frontend/search/form.html.twig', array(
             'searchForm' => $form->createView()
         ));
     }
 
     /**
      * @Route("/hledani/{query}", name="frontend_search_result", defaults={"query" = null})
-     * @Template("frontend/search/result.twig")
+     * @Template("frontend/search/result.html.twig")
      */
     public function searchResultsAction(Request $request, $query)
     {

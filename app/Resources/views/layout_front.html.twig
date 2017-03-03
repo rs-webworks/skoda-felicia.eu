@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="cs-CZ">
+<head>
+    {# META Tags #}
+    {# --------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Oficiální dílenská příručka pro Škoda Felicia, dále také rady tipy, triky a návody..." />
+    <meta name="theme-color" content="#00b39a" />
+
+    {# Open Graph Tags #}
+    <meta property="og:url" content="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
+
+    <meta property="og:title" content="{{ block('title') }}" />
+    <meta property="og:type" content="{% block type %}website{% endblock %}" />
+    {% if block('description') is defined %}
+        <meta property="og:description" content="{{ block('description') }}" />
+    {% endif %}
+    <meta property="og:image" content="{% block image %}{{ absolute_url(asset('images/layout/default_thumb.png')) }}{% endblock %}" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="fb:app_id" content="281255758961197" />
+
+    {% if block('ogTags') is defined %}
+        {{ block('ogTags') }}
+    {% endif %}
+    {# --------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+    {# // META Tags #}
+
+    <title>{% block title %}Home{% endblock %} | Škoda Felicia</title>
+    <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" sizes="192x192" href="{{ asset('bigicon.png') }}" />
+    <link rel="manifest" href="{{ asset('manifest.json') }}" />
+
+    {# Fonts #}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700Roboto:400,700,900&subset=latin-ext" rel="stylesheet">
+
+    {# CSS Loading #}
+    {# --------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+    {% if app.request.cookies.get('selectedTheme') %}
+        {% set theme =  app.request.cookies.get('selectedTheme') %}
+    {% else %}
+        {% set theme = 'darkEmerald' %}
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/lightgallery/dist/css/lightgallery.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootswatch.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/print.css') }}?version={{ application.getCurrentVersion() }}" media="print" />
+    <link rel="stylesheet" href="{{ asset('assets/css/' ~ theme ~ '_theme.min.css') }}?version={{ application.getCurrentVersion() }}" />
+
+    <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    {# --------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+    {# // CSS Loading #}
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<div id="wrapper">
+    <a href="#" id="top"></a>
+    <noscript>
+        <div class="noscript-overlay">
+            <div class="info">Tento web vyžaduje pro správnou funkčnost JavaScript.</div>
+        </div>
+    </noscript>
+
+
+    {% block header %}
+        <div class="header-bg bg-{{ random(8) }}">
+            <header>
+                <div class="display-table">
+                    <div class="display-table-cell">
+                        <div class="container">
+                            <div class="row">
+                                {# - Header XS #}
+                                <div class="col-xs-12 visible-xs text-center">
+                                    <h1 class="heading">
+                                        <a href="{{ url('frontend_home') }}"><strong>Škoda Felicia</strong></a>
+                                    </h1>
+                                    <div id="subtext" class="text-main-light">www.skoda-felicia.eu</div>
+
+                                    {% if maintenance is not defined %}
+                                        <br /><a class="btn btn-main" href="{{ url('frontend_about_authors') }}#donate"><i class="fa fa-paypal"></i> Jak přispět na provoz?</a>
+                                    {% endif %}
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                {# - Header SM > #}
+                                <div class="col-xs-12 hidden-xs">
+                                    <h1 class="heading">
+                                        <a href="{{ url('frontend_home') }}"><strong class="text-large pull-left">Škoda Felicia</strong></a>
+                                    </h1>
+                                    <div class="pull-right">
+                                        {% if maintenance is not defined %}
+                                            <a class="btn btn-main" href="{{ url('frontend_about_authors') }}#donate"><i class="fa fa-paypal"></i> Jak přispět na provoz?</a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <div id="subtext" class="text-main-light">www.skoda-felicia.eu</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <nav class="navbar navbar-default">
+                    <div class="container-wrap">
+                        <div class="container">
+                            <div class="navbar-header hidden-md hidden-lg">
+                                <button type="button" class="btn btn-sm btn-default navbar-btn" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+                                    <i class="fa fa-fw fa-bars"></i> Navigace
+                                </button>
+
+
+                                <a href="#top" class="btn btn-sm btn-default navbar-btn pull-right">
+                                    <i class="fa fa-fw fa-chevron-up"></i> Nahoru
+                                </a>
+                            </div>
+
+                            <div id="top-menu" class="navbar-collapse collapse">
+                                {% if maintenance is not defined %}
+                                    {# - Navbar LG #}
+                                    <ul class="nav navbar-nav">
+
+                                        <li class="totop visible-md visible-lg">
+                                            <a href="#top">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                        </li>
+
+                                        {% block navigationItems %}
+                                            {# - Úvod#}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            <li {% if app.request.attributes.get('_route') starts with 'frontend_home' %}class="active"{% endif %}>
+                                                <a href="{{ url('frontend_home') }}">
+                                                    <i class="fa fa-fw fa-home"></i> Úvod
+                                                </a>
+                                            </li>
+
+                                            {# - Dílenská příručka #}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            <li {% if app.request.attributes.get('_route') starts with 'frontend_manual' %}class="active"{% endif %}>
+                                                <a href="{{ url('frontend_manual') }}">
+                                                    <i class="fa fa-fw fa-book"></i> Dílenská příručka
+                                                </a>
+                                            </li>
+
+                                            {# - Ke stažení #}
+                                            {# ------------------------------------------------------------------------------------------ #}
+                                            <li {% if app.request.attributes.get('_route') starts with 'frontend_download' %}class="active"{% endif %}>
+                                                <a href="{{ url('frontend_download') }}">
+                                                    <i class="fa fa-fw fa-download"></i> Ke stažení
+                                                </a>
+                                            </li>
+
+                                            <li class="dropdown{% if app.request.attributes.get('_route') starts with 'frontend_article' %} active{% endif %}">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-fw fa-align-left"></i> Články <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    {#- Často kladené otázky#}
+                                                    {#------------------------------------------------------------------------------------------#}
+                                                    {#<li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>#}
+                                                    {#<a href="{{ url('frontend_notyet') }}">#}
+                                                    {#<i class="fa fa-fw fa-question-circle"></i> Časté otázky & odpovědi#}
+                                                    {#</a>#}
+                                                    {#</li>#}
+
+                                                    {#- Návody#}
+                                                    {#------------------------------------------------------------------------------------------#}
+                                                    {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                                    {#<a href="{{ url('frontend_notyet') }}">#}
+                                                    {#<i class="fa fa-fw fa-wrench"></i> Návody#}
+                                                    {#</a>#}
+                                                    {#</li>#}
+
+                                                    {#- Technická data#}
+                                                    {#------------------------------------------------------------------------------------------#}
+                                                    <li {% if app.request.attributes.get('_route') starts with 'frontend_article' and
+                                                        app.request.attributes.get('_route_params')['category'] is defined and
+                                                        app.request.attributes.get('_route_params')['category'] == "technicka-data" %}class="active"{% endif %}>
+                                                        <a href="{{ url('frontend_article_category_list', {'category': 'technicka-data'}) }}">
+                                                            <i class="fa fa-fw fa-info"></i> Technická data
+                                                        </a>
+                                                    </li>
+
+                                                    {#- Sportovní úpravy#}
+                                                    {#------------------------------------------------------------------------------------------#}
+                                                    {#<li {% if app.request.attributes.get('_route') starts with 'frontend_tuning' %}class="active"{% endif %}>#}
+                                                    {#<a href="{{ url('frontend_notyet') }}">#}
+                                                    {#<i class="fa fa-fw fa-dashboard"></i> Sportovní úpravy#}
+                                                    {#</a>#}
+                                                    {#</li>#}
+
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown disabled">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-fw fa-cogs"></i> Nástroje <span class="caret"></span>
+                                                </a>
+                                                {#<ul class="dropdown-menu">#}
+                                                {#- Často kladené otázky#}
+                                                {#------------------------------------------------------------------------------------------#}
+                                                {#<li {% if app.request.attributes.get('_route') starts with 'frontend_faq' %}class="active"{% endif %}>#}
+                                                {#<a href="{{ url('frontend_notyet') }}">#}
+                                                {#<i class="fa fa-fw fa-car"></i> Dekodér VIN#}
+                                                {#</a>#}
+                                                {#</li>#}
+
+                                                {#- Návody#}
+                                                {#------------------------------------------------------------------------------------------#}
+                                                {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                                {#<a href="{{ url('frontend_notyet') }}">#}
+                                                {#<i class="fa fa-fw fa-car"></i> Dekodér čísla motoru#}
+                                                {#</a>#}
+                                                {#</li>#}
+
+                                                {#- Technická data#}
+                                                {#------------------------------------------------------------------------------------------#}
+                                                {#<li {% if app.request.attributes.get('_route') starts with 'frontend_guide' %}class="active"{% endif %}>#}
+                                                {#<a href="{{ url('frontend_notyet') }}">#}
+                                                {#<i class="fa fa-fw fa-car"></i> ETKA#}
+                                                {#</a>#}
+                                                {#</li>#}
+
+                                                {#</ul>#}
+                                            </li>
+                                        {% endblock %}
+                                    </ul>
+
+                                    <div class="navbar-form navbar-right">
+                                        {{ render(controller('AppBundle:Frontend/Search:search', {request: app.request})) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+    {% endblock %}
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages  in app.session.flashBag.all() %}
+            {% for message in messages %}
+                <section id="alerts" class="container">
+                    <div class="alert alert-{{ type }}">
+                        <i class="fa fa-exclamation-triangle"></i> {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </section>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <section id="content">
+        {% block body %}{% endblock %}
+    </section>
+
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lightgallery/dist/js/lightgallery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/clipboard/dist/clipboard.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}?version={{ application.getCurrentVersion() }}"></script>
+
+    {% block googleAnalytics %}
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-91626892-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    {% endblock %}
+
+    <footer class="bg-inverse no-print">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    {% if maintenance is not defined %}
+                        <p>
+                            <strong><i class="fa fa-chevron-left"></i> Rychlá navigace
+                                <i class="fa fa-chevron-right"></i>
+                            </strong>
+                        </p>
+
+
+
+                        {% block footerLinks %}
+                            <ul class="list-inline">
+                                <li><a href="{{ url('frontend_manual') }}">Dílenská příručka</a></li>
+                                <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
+                                {#<li><a href="{{ url('frontend_notyet') }}">Časté otázky</a></li>#}
+                                {#<li><a href="{{ url('frontend_notyet') }}">Návody</a></li>#}
+                                {#<li><a href="{{ url('frontend_notyet') }}">Sportovní úpravy</a></li>#}
+                                <li><a href="{{ url('frontend_about_authors') }}">Autoři</a></li>
+                                <li><a href="{{ url('frontend_about_changelog') }}">Changelog</a></li>
+                                <li><a href="{{ url('frontend_sitemap') }}">Mapa stránek</a></li>
+                                <li><a href="{{ url('manager_home') }}">Správa obsahu</a></li>
+                            </ul>
+                        {% endblock %}
+
+                        {% set theme = app.request.cookies.get('selectedTheme') %}
+                        <div id="theme-picker">
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'lightEmerald'}) }}" class="theme-switch light emerald{% if theme == 'lightEmerald' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Emerald styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'lightCherry'}) }}" class="theme-switch light cherry{% if theme == 'lightCherry' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Cherry styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'lightSky'}) }}" class="theme-switch light sky{% if theme == 'lightSky' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Light Sky styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkObsidian'}) }}" class="theme-switch dark obsidian{% if theme == 'darkObsidian' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Obsidian styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkEmerald'}) }}" class="theme-switch dark emerald{% if theme == 'darkEmerald' or theme == null %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Emerald styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkCherry'}) }}" class="theme-switch dark cherry{% if theme == 'darkCherry' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Cherry styl"></a>
+                            <a href="{{ url('frontend_switch_theme', {'theme': 'darkSky'}) }}" class="theme-switch dark sky{% if theme == 'darkSky' %} active{% endif %}" data-toggle="tooltip" data-placement="top" title="Dark Sky styl"></a>
+                        </div>
+
+
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <br />
+                    <a href="#" class="pull-left author"><strong>RS</strong>WEBWORKS 2017</a>
+                    <a class="pull-right" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                        <img alt="Licence Creative Commons" id="creative-license" src="{{ asset('images/layout/cc80x15.png') }}" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+
+</html>
+

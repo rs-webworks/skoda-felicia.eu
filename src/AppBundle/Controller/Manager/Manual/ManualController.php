@@ -17,7 +17,7 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/list/", name="manager_manual_list")
      * @param Request $request
-     * @Template("manager/manual/manual/list.twig")
+     * @Template("manager/manual/manual/list.html.twig")
      * @return array
      */
     public function manualListAction(Request $request)
@@ -40,7 +40,7 @@ class ManualController extends Controller
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Template("manager/manual/manual/images.twig")
+     * @Template("manager/manual/manual/images.html.twig")
      */
     public function imagesAction(Request $request, $id)
     {
@@ -74,7 +74,7 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/edit/{id}", name="manager_manual_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @Template("manager/manual/manual/edit.twig")
+     * @Template("manager/manual/manual/edit.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function manualEditAction(Request $request, $id)
@@ -98,7 +98,7 @@ class ManualController extends Controller
     /**
      * @Route("/manager/manual/create/", name="manager_manual_create")
      * @param Request $request
-     * @Template("manager/manual/manual/create.twig")
+     * @Template("manager/manual/manual/create.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function manualCreateAction(Request $request)
@@ -197,7 +197,7 @@ class ManualController extends Controller
 
     /**
      * @Route("/manager/manual/reports/", name="manager_manual_reports")
-     * @Template("manager/manual/report/list.twig")
+     * @Template("manager/manual/report/list.html.twig")
      */
     public function manualReportsAction()
     {

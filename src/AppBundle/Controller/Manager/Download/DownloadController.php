@@ -14,7 +14,7 @@ class DownloadController extends Controller
 
     /**
      * @Route("/manager/download/list/", name="manager_download_list")
-     * @Template("manager/download/download/list.twig")
+     * @Template("manager/download/download/list.html.twig")
      */
     public function downloadListAction(Request $request)
     {
@@ -34,7 +34,7 @@ class DownloadController extends Controller
     /**
      * @Route("/manager/download/edit/{id}", name="manager_download_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @Template("manager/download/download/edit.twig")
+     * @Template("manager/download/download/edit.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function downloadEditAction(Request $request, $id)
@@ -59,7 +59,7 @@ class DownloadController extends Controller
     /**
      * @Route("/manager/download/create/", name="manager_download_create")
      * @param Request $request
-     * @Template("manager/download/download/create.twig")
+     * @Template("manager/download/download/create.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function downloadCreateAction(Request $request)

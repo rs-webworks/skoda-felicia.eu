@@ -12,7 +12,7 @@ class DownloadController extends Controller
 
     /**
      * @Route("/ke-stazeni/{category}", name="frontend_download", defaults={"category" = null}, options={"sitemap"=true})
-     * @Template("frontend/download/list.twig")
+     * @Template("frontend/download/list.html.twig")
      * @param Request $request
      * @return array
      */
@@ -54,7 +54,7 @@ class DownloadController extends Controller
      * Tokens are valid only after 10 seconds of their issue time and then 30 seconds from that point
      * @Route("/ke-stazeni/soubor/{slug}/{token}", name="frontend_download_request", defaults={"token" = null})
      * @param $slug
-     * @Template("frontend/download/request.twig")
+     * @Template("frontend/download/request.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function requestAction($slug, $token = null)
@@ -95,7 +95,7 @@ class DownloadController extends Controller
     /**
      * @Route("/ke-stazeni/detail/{slug}/", name="frontend_download_detail")
      * @param $slug
-     * @Template("frontend/download/detail.twig")
+     * @Template("frontend/download/detail.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\StreamedResponse
      */
     public function detailAction($slug)

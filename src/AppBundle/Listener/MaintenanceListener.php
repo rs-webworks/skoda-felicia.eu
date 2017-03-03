@@ -2,9 +2,9 @@
 
 namespace AppBundle\Listener;
 
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 class MaintenanceListener
 {
@@ -23,7 +23,7 @@ class MaintenanceListener
 
         if ($maintenance && !$debug) {
             $engine = $this->container->get('templating');
-            $content = $engine->render('maintenance.twig', array('maintenance' => true));
+            $content = $engine->render('maintenance.html.twig', array('maintenance' => true));
             $event->setResponse(new Response($content, 503));
             $event->stopPropagation();
         }

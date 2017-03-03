@@ -1,0 +1,42 @@
+{% extends 'layout_front.html.twig' %}
+{% block title %}Nahlášení chyby{% endblock %}
+{% block body %}
+
+    <div class="container" id="report-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Nahlášení chyby
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <p>Zaslat můžete jakékoliv připomínky týkající se obsahu článků nebo třeba i
+                    gramatických/textových/překlepových chyb.</p>
+                <p>Váš email slouží pouze pro případnou komunikaci nebo uvedení jako reference do článku v případě, že
+                    bude vaše připomínka natolik přínosná, že jí do textu umístíme. Nebudeme Vám posílat žádné
+                    automatické zprávy ani jej předávat někam dále.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <p><strong>Předmět</strong><br /> {{ article.getTitle() }}</p>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6">
+                        <div class="g-recaptcha" data-sitekey="6LeBPg0UAAAAAL_hVWH8VbpkQVZ7v2HJlZYeW0el"></div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6">
+                        <button type="submit" class="btn btn-default pull-right">
+                            <i class="fa fa-fw fa-send"></i> Odeslat
+                        </button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}

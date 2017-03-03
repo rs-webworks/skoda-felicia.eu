@@ -1,0 +1,30 @@
+{% extends 'layout_front.html.twig' %}
+{% block title %} - Články{% endblock %}
+{% block description %}Kategorie článků {% endblock %}
+
+{% block body %}
+
+    <div class="container" id="article-category-list">
+        <div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    <li><a href="{{ url('frontend_article_home') }}">Články</a></li>
+                    <li class="active"></li>
+                </ol>
+            </div>
+
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Kategorie
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

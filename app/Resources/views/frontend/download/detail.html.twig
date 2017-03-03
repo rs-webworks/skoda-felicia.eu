@@ -1,0 +1,53 @@
+{% extends 'layout_front.html.twig' %}
+{% block title %}{{ download.getTitle() }} - Ke stažení{% endblock %}
+{% block description %}{{ download.getDescription()|truncate(300) }}{% endblock %}
+{% block image %}{{ absolute_url(vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview')) }}{% endblock %}
+
+{% block body %}
+
+    <div class="container" id="download-detail">
+        <div class="row">
+            {# Breadcrumbs #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="{{ url('frontend_home') }}">Škoda Felicia</a></li>
+                    <li><a href="{{ url('frontend_download') }}">Ke stažení</a></li>
+                    <li><a href="{{ url('frontend_download', {'category': download.getCategory().getSlug()}) }}">{{ download.getCategory().getTitle() }}</a></li>
+                    <li class="active">Ke stažení</li>
+                </ol>
+            </div>
+            {# / Breadcrumbs #}
+            {# ------------------------------------------------------------------------------------------------------ #}
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 lightgallery">
+                <a href="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}" class="download-image">
+                    <img style="width: 100%;" src="{{ vich_uploader_asset(download, 'imageFile')|imagine_filter('large_preview') }}" alt="{{ download.getTitle() }}" />
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <h3 class="page-header post-title">
+                    {{ download.getTitle() }}
+                    <br>
+                    <small>Kategorie:
+                        <span class="label label-default"><i class="fa fa-fw fa-{{ download.getCategory().getIcon() }}"></i> {{ download.getCategory().getTitle() }}</span>
+                    </small>
+                    <div class="pull-right">
+                        <div class="btn btn-copy-link btn-sm btn-default" data-trigger="manual" data-clipboard-text="{{ url('frontend_download_detail', {'slug': download.getSlug()}) }}" title="Zkopírováno do schránky!">
+                            <i class="fa fa-fw fa-link"></i> Odkaz
+                        </div>
+                        <a href="{{ url('frontend_download_request', {'slug': download.getSlug()}) }}" class="btn btn-sm btn-default" target="_blank"><i class="fa fa-fw fa-download"></i> Stáhnout</a>
+                    </div>
+                </h3>
+                {{ download.getDescription()|raw }}
+                <hr />
+                <span class="label label-main"><i class="fa fa-fw fa-info-circle"></i> Velikost: {{ download.getFile().getSize()|bfos_format_bytes }}</span>
+                <span class="label label-default"><i class="fa fa-fw fa-file"></i> Přípona: .{{ download.getFile().getExtension() }}</span>
+                <span class="label label-default"><i class="fa fa-fw fa-cloud-download"></i> Staženo: {{ download.getClickCount() }}x</span>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

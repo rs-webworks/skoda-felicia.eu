@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
     /**
      * @Route("/", name="frontend_home", options={"sitemap"=true})
-     * @Template("frontend/home/index.twig")
+     * @Template("frontend/home/index.html.twig")
      */
     public function indexAction()
     {

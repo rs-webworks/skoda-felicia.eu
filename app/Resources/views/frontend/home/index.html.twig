@@ -1,0 +1,150 @@
+{% extends 'layout_front.html.twig' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+    <div class="container" id="home-index">
+
+
+        {# Navigation #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+        <section class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Rozcestník
+                </h2>
+            </div>
+        </section>
+        <div class="row row-flex row-flex-wrap navbox">
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_manual') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-book text-muted"></i> Dílenská příručka
+                    <hr />
+                    <small class="text-muted">Oficiální přepis dílenské příručky pro kontroly, seřizování a opravy vozu</small>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_download') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-download text-muted"></i> Ke stažení
+                    <hr />
+                    <small class="text-muted">Užitečné soubory - diagnostické nástroje, schéma pojistek, dílenská příručka...</small>
+                </a>
+            </div>
+            {#
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_notyet') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-question-circle text-muted"></i> Časté otázky
+                    <hr />
+                    <small class="text-muted">Odpovědi na velice často kladené otázky, zejména na Facebooku</small>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_notyet') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-wrench text-muted"></i> Návody
+                    <hr />
+                    <small class="text-muted">Uživatelské návody a postupy pro servis, vylepšení, úpravy a jiné</small>
+                </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_notyet') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-dashboard text-muted"></i> Sportovní úpravy
+                    <hr />
+                    <small class="text-muted">Teorie a návody pro závodní úpravy na okruh, do vrchu, rallycross a další</small>
+                </a>
+            </div>
+            #}
+
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_about_changelog') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-list text-muted"></i> Changelog
+                    <hr />
+                    <small class="text-muted">Historie vývoje této aplikace a seznamy změn jednotlivých verzí pro porovnání</small>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col">
+                <a href="{{ url('frontend_about_authors') }}" class="btn btn-default">
+                    <i class="fa fa-fw fa-user text-muted"></i> Autoři
+                    <hr />
+                    <small class="text-muted">Info o tomto projektu, možnostech přispění a kontakty na autory obsahu</small>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 flex-col"></div>
+
+        </div>
+        {# //Navigation #}
+        {# ---------------------------------------------------------------------------------------------------------- #}
+
+
+        <section class="row">
+            {# Latest version #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="page-header">
+                    Aktuální verze
+                </h2>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{ version }}</strong>
+                        <span class="pull-right">{{ latest['released']|date('d.m.Y') }}</span></div>
+                    <div class="panel-body">
+                        <ul class="fa-ul">
+                            {% for change in latest['changes'] %}
+                                <li><i class="fa-li fa fa-check-square"></i> {{ change|raw }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="{{ url('frontend_about_changelog') }}">Zobrazit changelog</a>
+            </div>
+            {# //Latest version #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+
+
+            {# Database #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+            <div class="col-xs-12 col-sm-6">
+                <h2 class="page-header">
+                    Databáze
+                </h2>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Typ</th>
+                        <th>Počet</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Stránek dílenské příručky</td>
+                        <td>{{ dbstats['manuals'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Otázek a odpovědí</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Počet návodů</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Technická data</td>
+                        <td>{{ dbstats['articles_technical_data'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Stránek sportovních úprav</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Souborů ke stažení</td>
+                        <td>{{ dbstats['downloads'] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            {# //Database #}
+            {# ---------------------------------------------------------------------------------------------------------- #}
+        </section>
+    </div>
+{% endblock %}

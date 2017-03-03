@@ -34,4 +34,4 @@ monolog:
 #    delivery_address: me@example.com
 
 parameters:
-    httpProtocol: http
+    httpProtocol: https

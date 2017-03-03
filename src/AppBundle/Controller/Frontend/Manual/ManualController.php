@@ -14,7 +14,7 @@ class ManualController extends Controller
      */
     public function indexAction($engine = null)
     {
-        return $this->render('frontend/manual/index.twig', array(
+        return $this->render('frontend/manual/index.html.twig', array(
             'manualCategories' => $this->get('app.service.manual')->getAllByCategory(),
             'engines' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findAll()
         ));
@@ -23,7 +23,7 @@ class ManualController extends Controller
 
     /**
      * @Route("/dilenska-prirucka/kategorie/{slug}/{engine}", name="frontend_manual_category_list", defaults={"engine" = null})
-     * @Template("frontend/manual/list.twig")
+     * @Template("frontend/manual/list.html.twig")
      * @param Request $request
      * @param $slug
      * @param null $engine
@@ -78,7 +78,7 @@ class ManualController extends Controller
             $this->redirectToRoute('frontend_manual', null, 404);
         }
 
-        return $this->render('frontend/manual/show.twig', array(
+        return $this->render('frontend/manual/show.html.twig', array(
             'manual' => $page,
             'pagesAround' => $pagesAround
         ));
@@ -86,7 +86,7 @@ class ManualController extends Controller
 
     /**
      * @Route("/dilenska-prirucka/test/", name="frontend_manual_show_test")
-     * @Template("frontend/manual/testShow.twig")
+     * @Template("frontend/manual/testShow.html.twig")
      */
     public function testShowAction()
     {

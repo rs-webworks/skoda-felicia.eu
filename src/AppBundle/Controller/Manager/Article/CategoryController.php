@@ -14,7 +14,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/manager/article/category/list/", name="manager_article_category_list")
-     * @Template("manager/article/category/list.twig")
+     * @Template("manager/article/category/list.html.twig")
      */
     public function categoryListAction(Request $request)
     {
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     /**
      * @Route("/manager/article/category/edit/{id}", name="manager_article_category_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @Template("manager/article/category/edit.twig")
+     * @Template("manager/article/category/edit.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function categoryEditAction(Request $request, $id)
@@ -59,7 +59,7 @@ class CategoryController extends Controller
     /**
      * @Route("/manager/article/category/create/", name="manager_article_category_create")
      * @param Request $request
-     * @Template("/manager/article/category/create.twig")
+     * @Template("/manager/article/category/create.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function categoryCreateAction(Request $request)

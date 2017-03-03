@@ -12,7 +12,7 @@ class AboutController extends Controller
 {
     /**
      * @Route("/o-projektu/changelog", name="frontend_about_changelog", options={"sitemap"=true})
-     * @Template("frontend/about/changelog.twig")
+     * @Template("frontend/about/changelog.html.twig")
      */
     public function changelogAction()
     {
@@ -26,7 +26,7 @@ class AboutController extends Controller
 
     /**
      * @Route("/o-projektu/autori", name="frontend_about_authors", options={"sitemap"=true})
-     * @Template("frontend/about/authors.twig")
+     * @Template("frontend/about/authors.html.twig")
      */
     public function authorsAction()
     {
@@ -35,7 +35,7 @@ class AboutController extends Controller
 
     /**
      * @Route("/o-projektu/mapa_stranek", name="frontend_sitemap", options={"sitemap"=true})
-     * @Template("frontend/about/sitemap.twig")
+     * @Template("frontend/about/sitemap.html.twig")
      */
     public function sitemapAction()
     {
@@ -48,7 +48,7 @@ class AboutController extends Controller
 
     /**
      * @Route("/pripravujeme", name="frontend_notyet")
-     * @Template("frontend/about/notyet.twig")
+     * @Template("frontend/about/notyet.html.twig")
      */
     public function notyetAction()
     {

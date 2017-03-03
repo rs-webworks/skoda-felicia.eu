@@ -1,0 +1,55 @@
+{% extends 'layout_manager.html.twig' %}
+{% block title %}Nová kategorie příručky{% endblock %}
+{% block body %}
+
+    <div class="container" id="manager-manual-category-create">
+
+        <div class="col-xs-12">
+            <h1>
+                Nová kategorie
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+                <li><a href="{{ url('manager_manual_list') }}">Dílenská příručka</a></li>
+                <li><a href="{{ url('manager_manual_category_list') }}">Kategorie</a></li>
+                <li class="active">Nová kategorie</li>
+            </ol>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div class="x_panel">
+
+                <div class="x_title">
+                    <h2>Informace</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    {{ form_widget(form) }}
+
+                    <button type="submit" class="btn btn-default pull-right">
+                        <i class="fa fa-asterisk"></i> Vytvořit kategorii
+                    </button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div class="x_panel">
+
+                <div class="x_title">
+                    <h2>Strom kategorií</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    to be done
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

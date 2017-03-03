@@ -14,7 +14,7 @@ class ArticleController extends Controller
 
     /**
      * @Route("/manager/article/list/", name="manager_article_list")
-     * @Template("manager/article/article/list.twig")
+     * @Template("manager/article/article/list.html.twig")
      */
     public function articleListAction(Request $request)
     {
@@ -34,7 +34,7 @@ class ArticleController extends Controller
     /**
      * @Route("/manager/article/edit/{id}", name="manager_article_edit", requirements={"id": "\d+"})
      * @param Request $request
-     * @Template("manager/article/article/edit.twig")
+     * @Template("manager/article/article/edit.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function articleEditAction(Request $request, $id)
@@ -59,7 +59,7 @@ class ArticleController extends Controller
     /**
      * @Route("/manager/article/create/", name="manager_article_create")
      * @param Request $request
-     * @Template("manager/article/article/create.twig")
+     * @Template("manager/article/article/create.html.twig")
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function articleCreateAction(Request $request)

@@ -1,0 +1,56 @@
+{% extends 'layout_front.html.twig' %}
+{% block title %}Přihlášení{% endblock %}
+{% block body %}
+
+    <div class="container" id="manager-login">
+
+
+        <form action="{{ path('managerLogin') }}" method="post">
+
+            <div class="row">
+                <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4 col-lg-offset-4">
+
+                    {% if error %}
+                        <div class="alert alert-danger"><i
+                                    class="fa fa-fw fa-exclamation-triangle"></i> {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                    {% endif %}
+
+                    <h2 class="text-center">
+                        Správa obsahu
+                        <span>Přihlášení</span>
+                    </h2>
+
+                    <div class="form-group">
+                        <label for="username">Jméno:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                            <input class="form-control" type="text" id="username" name="_username"
+                                   value="{{ last_username }}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Heslo:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
+                            <input class="form-control" type="password" id="password" name="_password" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" name="_target_path" value="/manager" />
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"
+                        >
+                        <button type="submit" class="btn btn-default pull-right"><i class="fa fa-fw fa-sign-in"></i>
+                            Přihlásit
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

@@ -10,7 +10,7 @@ class ManagerController extends Controller
 {
     /**
      * @Route("/manager/", name="manager_home")
-     * @Template("manager/home.twig")
+     * @Template("manager/home.html.twig")
      */
     public function indexAction()
     {

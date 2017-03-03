@@ -1,0 +1,60 @@
+{% extends 'layout_manager.html.twig' %}
+{% block title %}Upravit soubor ke stažení{% endblock %}
+{% block body %}
+
+    <div class="container" id="manager-download-edit">
+
+        <div class="col-xs-12">
+            <h1>
+                Upravit soubor
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-success pull-right">
+                        <i class="fa fa-save"></i> Uložit soubor
+                    </button>
+                </div>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+                <li><a href="{{ url('manager_download_list') }}">Soubory ke stažení</a></li>
+                <li class="active">Upravit soubor</li>
+            </ol>
+        </div>
+
+
+        {{ form_start(form) }}
+        <div class="col-xs-12 col-md-6">
+            <div class="x_panel">
+
+                <div class="x_title">
+                    <h2>Informace</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content cm-small">
+                    {{ form_errors(form) }}
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.category) }}
+
+                    {{ form_row(form.description) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+            <div class="x_panel">
+
+                <div class="x_title">
+                    <h2>Soubory</h2>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    {{ form_row(form.imageFile) }}
+                    {{ form_row(form.file) }}
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

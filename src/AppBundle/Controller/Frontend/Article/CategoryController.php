@@ -12,7 +12,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/clanky/kategorie/{category}/", name="frontend_article_category_list", defaults={"category": "null"})
-     * @Template("frontend/article/category/list.twig")
+     * @Template("frontend/article/category/list.html.twig")
      */
     public function listAction(Request $request, $category)
     {

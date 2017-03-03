@@ -24,7 +24,7 @@ class CategoryController extends Controller
             array('defaultSortFieldName' => 'mc.position', 'defaultSortDirection' => 'asc')
         );
 
-        return $this->render('manager/manual/category/list.twig', array(
+        return $this->render('manager/manual/category/list.html.twig', array(
             'categories' => $pagination
         ));
     }
@@ -48,7 +48,7 @@ class CategoryController extends Controller
             return $this->redirectToRoute('manager_manual_category_list');
         }
 
-        return $this->render('manager/manual/category/edit.twig', array(
+        return $this->render('manager/manual/category/edit.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -71,7 +71,7 @@ class CategoryController extends Controller
             return $this->redirectToRoute('manager_manual_category_list');
         }
 
-        return $this->render('manager/manual/category/create.twig', array(
+        return $this->render('manager/manual/category/create.html.twig', array(
             'form' => $form->createView()
         ));
     }

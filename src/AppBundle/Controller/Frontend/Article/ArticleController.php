@@ -14,7 +14,7 @@ class ArticleController extends Controller
 {
     /**
      * @Route("/clanky/", name="frontend_article_home", options={"sitemap"=true})
-     * @Template("frontend/article/home.twig")
+     * @Template("frontend/article/home.html.twig")
      */
     public function homeAction()
     {
@@ -24,7 +24,7 @@ class ArticleController extends Controller
     /**
      * @Route("/clanky/detail/{article}", name="frontend_article_detail_old")
      * @Route("/clanky/kategorie/{category}/{article}", name="frontend_article_detail")
-     * @Template("frontend/article/detail.twig")
+     * @Template("frontend/article/detail.html.twig")
      */
     public function detailAction($article)
     {
@@ -39,7 +39,7 @@ class ArticleController extends Controller
 
     /**
      * @Route("/clanky/nahlasit-chybu/{article}", name="frontend_article_report")
-     * @Template("frontend/article/report.twig")
+     * @Template("frontend/article/report.html.twig")
      * @param Request $request
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse

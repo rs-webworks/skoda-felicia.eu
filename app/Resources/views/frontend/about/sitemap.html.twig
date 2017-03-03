@@ -1,0 +1,57 @@
+{% extends 'layout_front.html.twig' %}
+{% block title %}Připravujeme{% endblock %}
+{% block body %}
+
+    <section class="container" id="about-sitemap">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Mapa stránek
+                    <span>Sitemap</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul id="sitemap" class="fa-ul">
+                    <li>
+                        <i class="fa-li fa fa-chevron-right"></i>
+                        <a href="{{ url('frontend_home') }}"><h3>Úvod</h3></a>
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-chevron-right"></i>
+                        <a href="{{ url('frontend_manual') }}"><h3>Dílenská příručka</h3></a>
+
+                        <ul>
+                            {% for category in manualCategories %}
+                                <li><a href="{{ url('frontend_manual_category_list', {'slug': category.getSlug()}) }}">{{ category.getTitle() }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-chevron-right"></i>
+                        <a href="{{ url('frontend_download') }}"><h3>Ke stažení</h3></a>
+                        <ul>
+                            {% for category in downloadCategories %}
+                                <li><a href="{{ url('frontend_download', {'category': category.getSlug()}) }}">{{ category.getTitle() }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-chevron-right"></i>
+                        <a href="{{ url('frontend_about_authors') }}"><h3>O projektu</h3></a>
+                        <ul>
+                            <li><a href="{{ url('frontend_about_authors') }}">Autoři</a></li>
+                            <li><a href="{{ url('frontend_about_changelog') }}">Changelog</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-chevron-right"></i>
+                        <a href="{{ url('managerLogin') }}"><h3>Správa obsahu</h3></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

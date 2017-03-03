@@ -14,7 +14,7 @@ class ReportController extends Controller
 {
     /**
      * @Route("/nahlasit-chybu/{slug}", name="frontend_report_bug")
-     * @Template("frontend/report/bug.twig")
+     * @Template("frontend/report/bug.html.twig")
      * @param Request $request
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse

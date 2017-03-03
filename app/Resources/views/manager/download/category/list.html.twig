@@ -1,0 +1,74 @@
+{% extends 'layout_manager.html.twig' %}
+{% block title %}Seznam souborů ke stažení{% endblock %}
+{% block body %}
+
+    <div class="container" id="manager-download-category-list">
+
+        <div class="col-xs-12">
+            <h1>
+                Kategorie souborů
+                <div class="pull-right">
+                    <a href="{{ url('manager_download_category_create') }}" class="btn btn btn-success">
+                        <i class="fa fa-plus"></i> Přidat
+                    </a>
+                    <a href="{{ url('manager_download_list') }}" class="btn btn btn-default">
+                        <i class="fa fa-list"></i> Seznam souborů
+                    </a>
+                </div>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('manager_home') }}">Manažer</a></li>
+                <li><a href="{{ url('manager_download_list') }}">Soubory ke stažení</a></li>
+                <li class="active">Seznam kategorií</li>
+            </ol>
+        </div>
+
+        <div class="col-xs-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="th-min-width"></th>
+                    <th>
+                        {{ knp_pagination_sortable(categories, 'Název', 'dc.title') }}
+                        {% if categories.isSorted('d.title') %}
+                            {% if categories.getDirection() == "desc" %}
+                                <i class="fa fa-fw fa-chevron-down"></i>
+                            {% elseif categories.getDirection() == "asc" %}
+                                <i class="fa fa-fw fa-chevron-up"></i>
+                            {% endif %}
+                        {% endif %}
+                    </th>
+                    <th>Počet souborů</th>
+                    <th class="text-right">
+                        Akce
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="sortable">
+                {# @var category \AppBundle\Entity\Download\Category #}
+                {% for category in categories %}
+                    <tr data-id="{{ category.getId() }}">
+                        <td><i class="fa fa-fw fa-{{ category.getIcon() }}"></i></td>
+                        <td>{{ category.getTitle() }}</td>
+                        <td>
+                            <span class="badge">{{ category.getDownloads()|length }}</span>
+                        </td>
+                        <td>
+                            <div class="pull-right">
+                                <a href="{{ url('manager_download_category_edit', {'id': category.getId()}) }}" class="btn btn-default btn-xs"><i class="fa fa-fw fa-pencil"></i> Upravit</a>
+                                <a href="{{ url('manager_download_category_delete', {'id': category.getId()}) }}" class="btn btn-danger btn-xs"><i class="fa fa-fw fa-trash"></i> Smazat</a> &nbsp;&nbsp;
+
+                                <a href="{{ url('manager_download_category_move', {'id': category.getId(), 'direction': 'up'}) }}"><i class="fa fa-fw fa-chevron-circle-down"></i></a>
+                                <a href="{{ url('manager_download_category_move', {'id': category.getId(), 'direction': 'down'}) }}"><i class="fa fa-fw fa-chevron-circle-up"></i></a>
+                            </div>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {{ knp_pagination_render(categories) }}
+        </div>
+    </div>
+
+{% endblock %}

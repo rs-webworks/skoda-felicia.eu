@@ -11,7 +11,7 @@ class ReportController extends Controller
 
     /**
      * @Route("/manager/article/reports/", name="manager_article_reports")
-     * @Template("manager/article/report/list.twig")
+     * @Template("manager/article/report/list.html.twig")
      */
     public function manualReportsAction()
     {
