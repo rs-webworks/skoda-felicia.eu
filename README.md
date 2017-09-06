@@ -25,3 +25,4 @@ Deployment:
 
 1. Fill the correct settings into the `config_prod.yml`
 2. Generate sitemaps with `php app/console presta:sitemap:dump`
+3. Run YUI Compressor to compress the CSS to minified versions

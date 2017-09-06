@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Vich\UploaderBundle\Handler\DownloadHandler;
 
 class DownloadController extends Controller
 {
@@ -54,19 +57,22 @@ class DownloadController extends Controller
      * Tokens are valid only after 10 seconds of their issue time and then 30 seconds from that point
      * @Route("/ke-stazeni/soubor/{slug}/{token}", name="frontend_download_request", defaults={"token" = null})
      * @param $slug
-     * @Template("frontend/download/request.html.twig")
+     * @param null $token
+     * @param SessionInterface $session
+     * @param DownloadHandler $downloadHandler
      * @return array|\Symfony\Component\HttpFoundation\StreamedResponse
+     * @Template("frontend/download/request.html.twig")
      */
-    public function requestAction($slug, $token = null)
+    public function requestAction(SessionInterface $session, DownloadHandler $downloadHandler, $slug, $token = null)
     {
         $download = $this->getDoctrine()->getRepository('AppBundle:Download\Download')->findOneBy(array(
             'slug' => $slug
         ));
 
-        $session = $this->get('session');
+        dump($session);
 
         if ($token) {
-            $validation = $this->get('session')->get('tokens')['downloadRequest'];
+            $validation = $session->get('tokens')['downloadRequest'];
 
             if ($token == $validation['token'] && time() > $validation['validSince'] && time() < $validation['validSince'] + 25) {
                 $download->addClickCount();
@@ -74,7 +80,6 @@ class DownloadController extends Controller
                 $em->merge($download);
                 $em->flush();
 
-                $downloadHandler = $this->get('vich_uploader.download_handler');
                 return $downloadHandler->downloadObject($download, $fileField = 'file');
             }
 
@@ -85,6 +90,7 @@ class DownloadController extends Controller
 
         $session->set('tokens/downloadRequest/token', $token);
         $session->set('tokens/downloadRequest/validSince', time() + 5);
+        dump($session->get('tokens'));
 
         return array(
             'token' => $token,

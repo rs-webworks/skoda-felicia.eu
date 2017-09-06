@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\Frontend\Manual;
 
+use AppBundle\Service\ManualService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,10 +13,10 @@ class ManualController extends Controller
     /**
      * @Route("/dilenska-prirucka/obsah/", name="frontend_manual", options={"sitemap"=true})
      */
-    public function indexAction($engine = null)
+    public function indexAction($engine = null, ManualService $manualService)
     {
         return $this->render('frontend/manual/index.html.twig', array(
-            'manualCategories' => $this->get('app.service.manual')->getAllByCategory(),
+            'manualCategories' => $manualService->getAllByCategory(),
             'engines' => $this->get('doctrine')->getRepository('AppBundle:Engine')->findAll()
         ));
     }

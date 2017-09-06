@@ -5,25 +5,48 @@ namespace AppBundle\Listener;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Templating\EngineInterface;
+use Symfony\Component\Templating\PhpEngine;
 
+/**
+ * Class MaintenanceListener
+ * @package AppBundle\Listener
+ */
 class MaintenanceListener
 {
-    private $container;
+    /** @var  KernelInterface */
+    private $kernel;
 
-    public function __construct(ContainerInterface $container)
+    /** @var EngineInterface */
+    protected $templating;
+
+    /** @var  bool */
+    protected $maintenance;
+
+    /**
+     * MaintenanceListener constructor.
+     * @param $maintenance
+     * @param KernelInterface $kernel
+     * @param EngineInterface $templating
+     */
+    public function __construct($maintenance, KernelInterface $kernel, EngineInterface $templating)
     {
-        $this->container = $container;
+        $this->maintenance = ($maintenance == "true" ? true : false);
+        $this->kernel = $kernel;
+        $this->templating = $templating;
     }
 
+    /**
+     * @param GetResponseEvent $event
+     */
     public function onKernelRequest(GetResponseEvent $event)
     {
-        $maintenance = $this->container->hasParameter('maintenance') ? $this->container->getParameter('maintenance') : false;
+        $debug = in_array($this->kernel->getEnvironment(), array('test', 'dev'));
 
-        $debug = in_array($this->container->get('kernel')->getEnvironment(), array('test', 'dev'));
-
-        if ($maintenance && !$debug) {
-            $engine = $this->container->get('templating');
-            $content = $engine->render('maintenance.html.twig', array('maintenance' => true));
+        if ($this->maintenance && !$debug) {
+            $content = $this->templating->render('maintenance.html.twig', array('maintenance' => true));
             $event->setResponse(new Response($content, 503));
             $event->stopPropagation();
         }

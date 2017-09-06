@@ -18,7 +18,7 @@ trait Identifier
 
     /**
      * @ORM\Id
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=false)
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * @var integer
      */

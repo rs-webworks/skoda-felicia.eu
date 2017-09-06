@@ -1,48 +1,41 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
-parameters:
-#    parameter_name: value
-
+# app/config/services.yml
 services:
-    session:
-        class: Symfony\Component\HttpFoundation\Session\Session
-        arguments: ['@session.storage', '@app.sessions.namespace', '@session.flash_bag']
 
-    app.sessions.namespace:
-        class: Symfony\Component\HttpFoundation\Session\Attribute\NamespacedAttributeBag
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # makes classes in src/AppBundle available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    AppBundle\:
+        resource: '../../src/AppBundle/*'
+        exclude: '../../src/AppBundle/{Entity,Repository}'
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    AppBundle\Controller\:
+        resource: '../../src/AppBundle/Controller'
+        public: false
+        tags: ['controller.service_arguments']
+
 
     # Services
     # ------------------------------------------------------------------------------------------------------------------
-    app.service.manual:
-        class: AppBundle\Service\ManualService
-        arguments: ['@doctrine.orm.entity_manager']
-
-    app.service.download:
-        class: AppBundle\Service\DownloadService
-        arguments: ['@doctrine.orm.entity_manager']
-
-    app.service.report:
-        class: AppBundle\Service\ReportService
-        arguments: ['@doctrine.orm.entity_manager']
-
-    app.service.entitytools:
-        class: AppBundle\Service\EntityToolsService
-        arguments: ['@doctrine.orm.entity_manager']
-
-    app.service.article:
-        class: AppBundle\Service\ArticleService
-        arguments: ['@doctrine.orm.entity_manager']
-
-    app.service.application:
-        class: AppBundle\Service\ApplicationService
-        arguments: ['%kernel.root_dir%']
+    AppBundle\Service\ManualService: ~
+    AppBundle\Service\DownloadService: ~
+    AppBundle\Service\ReportService: ~
+    AppBundle\Service\EntityToolsService: ~
+    AppBundle\Service\ArticleService: ~
+    AppBundle\Service\ApplicationService:
+        arguments:
+            $kernelPath: '%kernel.root_dir%'
 
     # Listener
     # ------------------------------------------------------------------------------------------------------------------
-    app.listener.maintenance:
-        class: AppBundle\Listener\MaintenanceListener
+    AppBundle\Listener\MaintenanceListener:
         arguments:
-            container: "@service_container"
+            $maintenance: '%maintenance%'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 

@@ -39,7 +39,8 @@
         "knplabs/knp-paginator-bundle": "~2.5",
         "brazilianfriendsofsymfony/twig-extensions-bundle": "dev-master",
         "presta/sitemap-bundle": "~1.5.1",
-        "coresphere/console-bundle": "~0.5"
+        "coresphere/console-bundle": "~0.5",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -271,18 +271,6 @@ footer {
 
 form .vich-image .preview img {
   max-width: 150px; }
-form .form-group input[type="checkbox"] {
-  display: none; }
-form .form-group input[type="checkbox"] + .btn-group > label span {
-  width: 20px; }
-form .form-group input[type="checkbox"] + .btn-group > label span:first-child {
-  display: none; }
-form .form-group input[type="checkbox"] + .btn-group > label span:last-child {
-  display: inline-block; }
-form .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
-  display: inline-block; }
-form .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
-  display: none; }
 
 .vag-display {
   margin: 20px; }
