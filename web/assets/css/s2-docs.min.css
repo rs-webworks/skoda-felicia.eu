@@ -1,0 +1,1 @@
+body:before{white-space:pre;font-family:monospace;content:"Error: Invalid CSS after \"...trap/variables\"\": expected \"{\", was \";\"\A         on line 4 of s2-docs.scss\A \A 1: ---\A 2: ---\A 3: \A 4: @import \"vendor/bootstrap/variables\";\A 5: \A 6: @import \"result-repository\";\A 7: @import \"sidenav\";\A 8: @import \"hamburger\";\A 9: @import \"code\";"}

@@ -1,0 +1,1 @@
+body:before{white-space:pre;font-family:monospace;content:"Error: Undefined variable: \"$line-height-computed\".\A         on line 1 of bootstrap-progressbar-3.0.0-3.1.x.scss\A \A 1: $progressbarVerticalWidth: $line-height-computed;\A 2: $progressbarFontSize: $font-size-small;\A 3: \A 4: // bootstrap-progressbar global styles\A 5: // -----------------------------------\A 6: "}
