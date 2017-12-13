@@ -27,7 +27,7 @@ class AppKernel extends Kernel
             // Others:
             new Vich\UploaderBundle\VichUploaderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+//            new FOS\UserBundle\FOSUserBundle(),
             new Isometriks\Bundle\SpamBundle\IsometriksSpamBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new BFOS\TwigExtensionsBundle\BFOSTwigExtensionsBundle(),

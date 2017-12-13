@@ -66,13 +66,14 @@ class ManualController extends Controller
 
     /**
      * @Route("/dilenska-prirucka/{slug}", name="frontend_manual_show")
+     * @param ManualService $manualService
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction($slug)
+    public function showAction(ManualService $manualService, $slug)
     {
         $page = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->findOneBy(array('slug' => $slug));
-        $pagesAround = $this->get('app.service.manual')->getPagesAround($page);
+        $pagesAround = $manualService->getPagesAround($page);
 
         if (!$page) {
             $this->addFlash('danger', 'Hledaná stránka nebyla nalezena');

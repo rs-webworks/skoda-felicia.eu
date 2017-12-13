@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\Manual\Report;
 use AppBundle\Form\ReportForm;
+use AppBundle\Service\ReportService;
 use ReCaptcha\ReCaptcha;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,10 +17,11 @@ class ReportController extends Controller
      * @Route("/nahlasit-chybu/{slug}", name="frontend_report_bug")
      * @Template("frontend/report/bug.html.twig")
      * @param Request $request
+     * @param ReportService $reportService
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function reportBugAction(Request $request, $slug)
+    public function reportBugAction(Request $request, ReportService $reportService, $slug)
     {
         $manual = $this->getDoctrine()->getRepository('AppBundle:Manual\Manual')->findOneBy(array('slug' => $slug));
         $report = new Report();
@@ -36,7 +38,7 @@ class ReportController extends Controller
             } else {
                 $report->setIp($request->getClientIp());
                 $report->setManual($manual);
-                $this->get('app.service.report')->save($report);
+                $reportService->save($report);
                 $this->addFlash('success', 'Tvoje připomínka byla úspěšně uložena a brzy se jí bude někdo věnovat. Děkujeme.');
                 return $this->redirectToRoute('frontend_home');
             }

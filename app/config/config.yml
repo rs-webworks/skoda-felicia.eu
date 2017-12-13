@@ -139,10 +139,10 @@ knp_paginator:
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
 
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    user_class: AppBundle\Entity\User\User
-    from_email:
-        address: "%mailer_user%"
-        sender_name: "%mailer_user%"
+#fos_user:
+#    db_driver: orm
+#    firewall_name: main
+#    user_class: AppBundle\Entity\User\User
+#    from_email:
+#        address: "%mailer_user%"
+#        sender_name: "%mailer_user%"

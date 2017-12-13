@@ -3,6 +3,9 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Form\SearchForm;
+use AppBundle\Service\ArticleService;
+use AppBundle\Service\DownloadService;
+use AppBundle\Service\ManualService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,8 +30,14 @@ class SearchController extends Controller
     /**
      * @Route("/hledani/{query}", name="frontend_search_result", defaults={"query" = null})
      * @Template("frontend/search/result.html.twig")
+     * @param Request $request
+     * @param ManualService $manualService
+     * @param DownloadService $downloadService
+     * @param ArticleService $articleService
+     * @param $query
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function searchResultsAction(Request $request, $query)
+    public function searchResultsAction(Request $request, ManualService $manualService, DownloadService $downloadService, ArticleService $articleService, $query)
     {
         $form = $this->createForm(SearchForm::class);
         $form->handleRequest($request);
@@ -44,9 +53,9 @@ class SearchController extends Controller
         $results = array();
         if ($query) {
             $results = array(
-                'manual' => $this->get('app.service.manual')->search($query),
-                'download' => $this->get('app.service.download')->search($query),
-                'article' => $this->get('app.service.article')->search($query)
+                'manual' => $manualService->search($query),
+                'download' => $downloadService->search($query),
+                'article' => $articleService->search($query)
             );
         }
 

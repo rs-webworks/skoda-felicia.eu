@@ -2,8 +2,10 @@
 
 namespace AppBundle\Controller\Frontend\Article;
 
+use AppBundle\Entity\Article\Article;
 use AppBundle\Entity\Article\Report;
 use AppBundle\Form\Article\ReportForm;
+use AppBundle\Service\ArticleService;
 use ReCaptcha\ReCaptcha;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -44,7 +46,7 @@ class ArticleController extends Controller
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function reportBugAction(Request $request, $article)
+    public function reportBugAction(Request $request, ArticleService $articleService, $article)
     {
         $article = $this->getDoctrine()->getRepository('AppBundle:Article\Article')->findOneBy(array('slug' => $article));
         $report = new Report();
@@ -61,7 +63,7 @@ class ArticleController extends Controller
             } else {
                 $report->setIp($request->getClientIp());
                 $report->setArticle($article);
-                $this->get('app.service.article')->saveReport($report);
+                $articleService->saveReport($report);
                 $this->addFlash('success', 'Tvoje připomínka byla úspěšně uložena a brzy se jí bude někdo věnovat. Děkujeme.');
                 return $this->redirectToRoute('frontend_article_detail', array('article' => $article->getSlug()));
             }

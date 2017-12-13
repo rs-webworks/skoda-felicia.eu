@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller\Frontend;
 
+use AppBundle\Service\DownloadService;
+use AppBundle\Service\ManualService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,8 +18,11 @@ class HomeController extends Controller
     /**
      * @Route("/", name="frontend_home", options={"sitemap"=true})
      * @Template("frontend/home/index.html.twig")
+     * @param ManualService $manualService
+     * @param DownloadService $downloadService
+     * @return array
      */
-    public function indexAction()
+    public function indexAction(ManualService $manualService, DownloadService $downloadService)
     {
         $finder = new Finder();
         $files = $finder->files()->in($this->getParameter('kernel.root_dir') . '/Resources')->name('changelog.yml');
@@ -28,8 +33,8 @@ class HomeController extends Controller
                 'latest' => reset($changelog),
                 'version' => key($changelog),
                 'dbstats' => array(
-                    'manuals' => $this->get('app.service.manual')->countAll(),
-                    'downloads' => $this->get('app.service.download')->countAll(),
+                    'manuals' => $manualService->countAll(),
+                    'downloads' => $downloadService->countAll(),
                     'articles_technical_data' => count($this->getDoctrine()->getRepository('AppBundle:Article\Category')->findOneBy(array('slug' => 'technicka-data'))->getArticles())
                 )
             );
